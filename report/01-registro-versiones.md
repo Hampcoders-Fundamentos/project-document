@@ -2,4 +2,4 @@
 
 | Versión | Fecha | Autor(es) | Descripción de modificación |
 |---------|-------|-----------|----------------------------|
-| **TB1** | 16/09/2025 | **Ethan Matías Aliaga Aguirre** | Redacción del Capítulo I a V... |
+| **TB1** | 06/09/2026 | **Ethan Matías Aliaga Aguirre** | Establecer estructura principal para el informe del proyecto |
