@@ -1,0 +1,42 @@
+input-files:
+  - report/00-caratula.md
+  - report/01-registro-versiones.md
+  - report/02-collaboration-insights.md
+  - report/04-student-outcome.md
+  - report/10-cap1-introduccion.md
+  #- report/20-cap2-requirements.md
+  #- report/30-cap3-ui-ux-design.md
+  #- report/40-cap4-implementation.md
+  #- report/90-conclusiones.md
+  #- report/91-bibliografia.md
+  #- report/99-anexos.md
+
+output-file: dist/glottia-report.pdf
+
+pdf-engine: lualatex
+toc: false
+toc-depth: 4
+number-sections: false
+file-scope: true
+
+resource-path:
+  - "."
+  - "assets/img"
+  - "assets/img/cap1"
+  - "assets/img/cap2"
+  - "assets/img/cap3"
+  - "assets/img/cap4"
+  - "assets/img/general"
+
+variables:
+  geometry: [margin=1in]
+  mainfont: "Arial"
+  fontsize: 11pt
+  colorlinks: true
+  linkcolor: "blue"
+  lang: "es"
+  logo: "assets/img/general/upc-logo.png"
+  titlepage: true
+  titlepage-color: "FFFFFF"
+  header-includes:
+    - \usepackage{graphicx}
