@@ -12,7 +12,7 @@
 
 \vspace{1cm}
 
-{\large 1ACC0238 | Aplicaciones para Dispositivos Móviles}\\
+{\large 1ACC0238 | Fundamentos de Arquitectura de Software}\\
 
 \vspace{0.5cm}
 
