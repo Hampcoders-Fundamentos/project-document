@@ -4,11 +4,23 @@
 
 \vspace{1cm}
 
-{\LARGE \textbf{Informe de Trabajo Final}}\\
+{\LARGE \textbf{Univerisdad Peruana de Ciencias Aplicadas}}\\
+
+\vspace{1cm}
+
+{\large Periodo: Ingeniería de Software}\\
 
 \vspace{0.5cm}
 
 {\large 1ACC0238 | Aplicaciones para Dispositivos Móviles}\\
+
+\vspace{0.5cm}
+
+{\large Periodo: 202610}\\
+
+\vspace{1cm}
+
+{\LARGE \textbf{Informe del Trabajo Final}}\\
 
 \vspace{1cm}
 
