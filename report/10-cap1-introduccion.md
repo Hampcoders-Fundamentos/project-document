@@ -5,12 +5,11 @@ En este capítulo el equipo presenta el contexto general del proyecto que se tra
 En esta sección el equipo describe el perfil de la startup, el propósito y el perfil de los integrantes.
 
 ### 1.1.1. Descripción de la Startup
-Hampcoders es una startup enfocada en el desarrollo de soluciones innovadoras orientadas a servicios, utilizando tecnologías open-source para la construcción de productos eficientes y sostenibles. A través de esta iniciativa, buscamos resolver problemas reales que impacten tanto a personas como a emprendendores, diseñando herramientas digitales que optimicen algún proceso o que les genere valor en diferentes contextos.
+En Hampcoders creemos en crear tecnología que realmente tenga impacto. Usamos herramientas open-source para desarrollar soluciones digitales pensadas en problemas reales del día a día. Desde el inicio tuvimos claro que no se trata solo de programar, sino de ayudar a las personas y a los emprendedores a trabajar mejor, simplificando sus procesos y dándoles herramientas útiles, prácticas y sin complicaciones.
 
-Misión:
+Misión: Democratizar la tecnología open-source para resolver los problemas reales de personas y emprendedores.
 
-Visión:
-
+Visión: Ser el motor tecnológico detrás de la próxima generación de emprendedores exitosos, impulsados por el código abierto.
 
 ### 1.1.2. Perfiles de Integrantes del equipo
 
@@ -24,9 +23,10 @@ Visión:
 
 ## 1.2. Solution Profile 
 
-En Perú, la pandemia ha dejado secuelas claras en tres frentes que encajan con nuestra solución: por un lado, un número significativo de jóvenes presenta serias dificultades para relacionarse en persona. Por otro lado, un gran número de personas estudia idiomas pero no logran practicarlos de manera activa en entornos conversacionales. Finalmente, numerosos negocios pequeños como cafeterías y restaurantes han cerrado o enfrentan baja afluencia de clientes, lo que los hace más receptivos a alianzas que les permitan atraer nuevos flujos de público.
+Tras la pandemia en Perú, notamos una oportunidad al juntar tres problemas actuales. Por una parte, muchos jóvenes tienen dificultades para relacionarse cara a cara, mientras que miles de estudiantes de idiomas se quedan en la teoría por falta de espacios para conversar. A esto se le suma que los pequeños negocios, como cafeterías, buscan constantemente nuevas formas de generar tráfico de clientes. 
 
-Por ello, Glottia es una solución que busca incentivar la practica continua de idiomas en entornos presenciales, conectando de esta forma a usuarios interesados en mejorar su fluidez en un idioma con locales como cafeterías y restaurantes que ofrecen sus espacios como puntos de encuentro.
+Así nace Glottia, una iniciativa para incentivar la práctica presencial de idiomas. Lo que hacemos es conectar a personas que quieren soltarse al hablar con restaurantes y cafés locales, dándoles a los usuarios un lugar cómodo para practicar y a los negocios un flujo constante de público.
+
 
 ### 1.2.1 Nombre del producto
 ### 1.2.2 Antecedentes y problemática
