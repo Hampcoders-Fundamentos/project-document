@@ -24,9 +24,9 @@ Visión:
 
 ## 1.2. Solution Profile 
 
-En Perú, la pandemia ha dejado secuelas claras en tres frentes que encajan con nuestra solución: por un lado, un número significativo de jóvenes presenta serias dificultades para relacionarse en persona. Por otro, un gran número de personas estudia idiomas pero no logran practicarlos de manera activa en entornos conversacionales. Finalmente, numerosos negocios pequeños como cafeterías y restaurantes han cerrado o enfrentan baja afluencia de clientes, lo que los hace más receptivos a alianzas.
+En Perú, la pandemia ha dejado secuelas claras en tres frentes que encajan con nuestra solución: por un lado, un número significativo de jóvenes presenta serias dificultades para relacionarse en persona. Por otro lado, un gran número de personas estudia idiomas pero no logran practicarlos de manera activa en entornos conversacionales. Finalmente, numerosos negocios pequeños como cafeterías y restaurantes han cerrado o enfrentan baja afluencia de clientes, lo que los hace más receptivos a alianzas que les permitan atraer nuevos flujos de público.
 
-Glottia es una solución que busca incentivar la practica continua de idiomas en entornos presenciales 
+Por ello, Glottia es una solución que busca incentivar la practica continua de idiomas en entornos presenciales, conectando de esta forma a usuarios interesados en mejorar su fluidez en un idioma con locales como cafeterías y restaurantes que ofrecen sus espacios como puntos de encuentro.
 
 ### 1.2.1 Nombre del producto
 ### 1.2.2 Antecedentes y problemática
