@@ -23,13 +23,28 @@ Visión: Ser el motor tecnológico detrás de la próxima generación de emprend
 
 ## 1.2. Solution Profile 
 
+En esta sección el equipo describe el perfil de la solución, inluyendo el análisis mediante la metodología Lean UX
+
+### 1.2.1 Nombre del producto
+
 Tras la pandemia en Perú, notamos una oportunidad al juntar tres problemas actuales. Por una parte, muchos jóvenes tienen dificultades para relacionarse cara a cara, mientras que miles de estudiantes de idiomas se quedan en la teoría por falta de espacios para conversar. A esto se le suma que los pequeños negocios, como cafeterías, buscan constantemente nuevas formas de generar tráfico de clientes. 
 
 Así nace Glottia, una iniciativa para incentivar la práctica presencial de idiomas. Lo que hacemos es conectar a personas que quieren soltarse al hablar con restaurantes y cafés locales, dándoles a los usuarios un lugar cómodo para practicar y a los negocios un flujo constante de público.
 
-
-### 1.2.1 Nombre del producto
 ### 1.2.2 Antecedentes y problemática
+
+Para detallar los antecedentes de la solución y presentar correctamente la descripción de la problemática, se ha utilizado la herramienta 5 'W' s y 2 'H' s.
+
+| Pregunta                                          | Respuesta |
+| ------------------------------------------------- | --------- |
+| ¿Qué?(What) - ¿Cuál es el problema?               |           |
+| ¿Quién?(Who) - ¿Quiénes son los beneficiarios?    |           |
+| ¿Cuando?(When) - ¿Cuándo se origina el problema?  |           |
+| ¿Por qué?(Why) - ¿Por qué se origina el problema? |           |
+| ¿Dónde?(Where) - ¿Dónde ocurre el problema?       |           |
+| ¿Cómo?(How) - ¿Cómo se origina el problema?       |           |
+| ¿Cuánto?(Cuánto) - ¿Cuánto dinero está implicado? |           |
+
 ### 1.2.3 Lean UX Process
 #### 1.2.3.1 Lean UX Problem Statement
 #### 1.2.3.2 Lean UX Assumptions
