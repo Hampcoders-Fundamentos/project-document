@@ -40,3 +40,4 @@ variables:
   titlepage-color: "FFFFFF"
   header-includes:
     - \usepackage{graphicx}
+    - \usepackage{longtable}

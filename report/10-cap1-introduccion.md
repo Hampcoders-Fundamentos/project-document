@@ -13,13 +13,47 @@ Visión: Ser el motor tecnológico detrás de la próxima generación de emprend
 
 ### 1.1.2. Perfiles de Integrantes del equipo
 
-| Miembros del Equipo              | Código de Estudiante | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| -------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Ethan Matias Aliaga Aguirre      | U202318323           | Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Software en la UPC, sede San Miguel. Me caracterizo por mi compromiso, responsabilidad, habilidad para trabajar en equipo y comunicación. Mis conocimientos Incluyen arquitectura de Software , desarrollo de APIs . Además, tengo experiencia en el uso de herramientas como Photoshop, Filmadora y Vegas Studio, lo que me permite aportar con soluciones creativas y técnicas en mis proyectos. Estoy comprometido con mi crecimiento personal y profesional, siempre buscando aprender y mejorar en cada oportunidad que se presente. |
-| Leandro Saul Contreras Lopez     | U20231E215           | Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de Software en la UPC, sede San Miguel, tengo 19 años y estoy cursando el sexto ciclo académico. Me considero una persona adaptativa, perseverante y comprometida con lo que me propongo. En este proyecto tengo como objetivo buscar múltiples soluciones que beneficien a todo el grupo, por experiencia propia suelo trabajar de manera colaborativa y eficaz. Terminando la carrera de ingeniería, me gustaría estudiar una segunda carrera: Gastronomía y Gestión culinaria                                                         |
-| Ivo Marcelo Machado Bracamonte   | U20231C368           | Mi nombre es Ivo Machado, tengo 19 años, soy estudiante y actualmente estudio en el sexto ciclo de ingeniería de software en la UPC. Mis fuertes son la mentalidad, no me rindo con facilidad y no le tengo miedo al error, tengo empatía con los demás, me gusta resolver problemas y siempre intento mejorar en lo que hago y seguir aprendiendo. Tengo conocimientos del lenguaje de programación C++, Java y un poco de Python, HTML, CSS y JavaScript, también domino el Inglés y sé Portugués.                                                                                                                |
-| Italo Ludwing Sanchez Manrique   | U202316967           | Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de Software en la UPC, tengo 19 años y actualmente curso el sexto ciclo académico. Destaco por mi perseverancia, tolerancia y compromiso con mis metas. En este proyecto, mi objetivo es buscar soluciones que beneficien al grupo, ya que tengo experiencia en trabajar de forma proactiva y colaborativa. Además, poseo sólidos conocimientos en lenguajes de programación como Java y C++.                                                                                                                                             | 
-| Cesar Augusto Arostegui Alzamora | U202114548           | Soy César Augusto, estudiante de Ingeniería de Software, actualmente con 21 años, mi lenguaje más utilizado y favorito es TypeScript, actualmente adaptándome en temas de DevOps y frameworks de desarrollo móvil.                                                                                                                                                                                                                                                                                                                                                                                                  |
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\linewidth]{assets/img/cap1/team/ethan.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+**Ethan Matias Aliaga Aguirre**  
+\\
+Código: U202318323  
+
+Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Software en la UPC, sede San Miguel. Me caracterizo por mi compromiso, responsabilidad, habilidad para trabajar en equipo y comunicación. Mis conocimientos incluyen arquitectura de software y desarrollo de APIs. Además, tengo experiencia en el uso de herramientas como Photoshop, Filmora y Vegas Studio, lo que me permite aportar con soluciones creativas y técnicas en mis proyectos. Estoy comprometido con mi crecimiento personal y profesional, siempre buscando aprender y mejorar en cada oportunidad que se presente.
+\end{minipage}
+
+\vspace{1cm}
+
+---
+
+Leandro Saul Contreras López
+**Código:** U20231E215
+
+Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de Software en la UPC, sede San Miguel. Tengo 19 años y estoy cursando el sexto ciclo académico. Me considero una persona adaptativa, perseverante y comprometida con lo que me propongo. En este proyecto tengo como objetivo buscar múltiples soluciones que beneficien a todo el grupo. Por experiencia propia, suelo trabajar de manera colaborativa y eficaz. Al terminar la carrera de ingeniería, me gustaría estudiar una segunda carrera: Gastronomía y Gestión Culinaria.
+
+---
+
+ Ivo Marcelo Machado Bracamonte
+**Código:** U20231C368
+
+Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ingeniería de Software en la UPC. Me caracterizo por mi mentalidad resiliente, ya que no me rindo con facilidad y no le tengo miedo al error. Tengo empatía con los demás, disfruto resolver problemas y busco mejorar constantemente en lo que hago. Poseo conocimientos en lenguajes de programación como C++, Java y Python, así como en HTML, CSS y JavaScript. Además, domino el inglés y tengo conocimientos de portugués.
+
+---
+
+ Italo Ludwing Sanchez Manrique
+**Código:** U202316967
+
+Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de Software en la UPC. Tengo 19 años y actualmente curso el sexto ciclo académico. Destaco por mi perseverancia, tolerancia y compromiso con mis metas. En este proyecto, mi objetivo es buscar soluciones que beneficien al grupo, ya que tengo experiencia trabajando de forma proactiva y colaborativa. Además, poseo sólidos conocimientos en lenguajes de programación como Java y C++.
+
+---
+
+ Cesar Augusto Arostegui Alzamora
+**Código:** U202114548
+
+Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 años. Mi lenguaje de programación más utilizado y favorito es TypeScript. Actualmente me encuentro desarrollando habilidades en áreas como DevOps y frameworks de desarrollo móvil.
 
 ## 1.2. Solution Profile 
 
@@ -33,17 +67,42 @@ Así nace Glottia, una iniciativa para incentivar la práctica presencial de idi
 
 ### 1.2.2 Antecedentes y problemática
 
-Para detallar los antecedentes de la solución y presentar correctamente la descripción de la problemática, se ha utilizado la herramienta 5 'W' s y 2 'H' s.
+Para detallar los antecedentes de la solución y describir la problemática de manera estructurada, se utilizó la técnica de las 5W + 2H.
 
-| Pregunta                                          | Respuesta |
-| ------------------------------------------------- | --------- |
-| ¿Qué?(What) - ¿Cuál es el problema?               | Jóvenes interesados en aprender idiomas no pueden encontrar espacios sociales y constantes para practicar un idioma con conversación real.  |
-| ¿Quién?(Who) - ¿Quiénes son los beneficiarios?    | Jóvenes adultos de 18 a 35 años, universitarios, egresados y profesionales que buscan mejorar su fluidez en idiomas. |
-| ¿Cuando?(When) - ¿Cuándo se origina el problema?  | El problema ocurre cuando una persona quiere practicar un idioma en un entorno real y no encuentra un espacio apropiado y flexible para hacerlo.w|
-| ¿Por qué?(Why) - ¿Por qué se origina el problema? | Se origina debido al alto costo de cursos conversacionales de academias y escasez de espacios organizados para practicar idiomas de forma social.          |
-| ¿Dónde?(Where) - ¿Dónde ocurre el problema?       | Contextos urbanos donde no existen espacios accesibles para la practica activa de idiomas. |
-| ¿Cómo?(How) - ¿Cómo se origina el problema?       | Se origina por la falta de integración entre personas con interés en idiomas y espacios adecuados, además de la ausencia de plataformas que combinen interacción social y presencialidad.       |
-| ¿Cuánto?(Cuánto) - ¿Cuánto dinero está implicado? | Los cursos enfocados en conversación en academias y centros de idiomas en Lima suelen oscilar entre 100 y 250 soles mensuales, variando según duración y frecuencia. |
+\begin{longtable}{|p{6cm}|p{9cm}|}
+\hline
+\textbf{Pregunta} & \textbf{Respuesta} \\
+\hline
+
+¿Qué (What) - ¿Cuál es el problema?
+& Jóvenes interesados en aprender idiomas no pueden encontrar espacios sociales y constantes para practicar un idioma con conversación real. \\
+\hline
+
+¿Quién (Who) - ¿Quiénes son los beneficiarios?
+& Jóvenes adultos de 18 a 35 años, universitarios, egresados y profesionales que buscan mejorar su fluidez en idiomas. \\
+\hline
+
+¿Cuándo (When) - ¿Cuándo se origina el problema?
+& El problema ocurre cuando una persona quiere practicar un idioma en un entorno real y no encuentra un espacio apropiado y flexible para hacerlo. \\
+\hline
+
+¿Por qué (Why) - ¿Por qué se origina el problema?
+& Se origina debido al alto costo de cursos conversacionales de academias y escasez de espacios organizados para practicar idiomas de forma social. \\
+\hline
+
+¿Dónde (Where) - ¿Dónde ocurre el problema?
+& Contextos urbanos donde no existen espacios accesibles para la práctica activa de idiomas. \\
+\hline
+
+¿Cómo (How) - ¿Cómo se origina el problema?
+& Se origina por la falta de integración entre personas con interés en idiomas y espacios adecuados, además de la ausencia de plataformas que combinen interacción social y presencialidad. \\
+\hline
+
+¿Cuánto (How much) - ¿Cuánto dinero está implicado?
+& Los cursos enfocados en conversación en academias y centros de idiomas en Lima suelen oscilar entre 100 y 250 soles mensuales, variando según duración y frecuencia. \\
+\hline
+
+\end{longtable}
 
 ### 1.2.3 Lean UX Process
 
@@ -62,3 +121,6 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 #### 1.2.3.4 Lean UX Canvas
 
 ## 1.3 Segmentos objetivo
+
+
+\newpage
