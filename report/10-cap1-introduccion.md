@@ -37,16 +37,26 @@ Para detallar los antecedentes de la solución y presentar correctamente la desc
 
 | Pregunta                                          | Respuesta |
 | ------------------------------------------------- | --------- |
-| ¿Qué?(What) - ¿Cuál es el problema?               |           |
-| ¿Quién?(Who) - ¿Quiénes son los beneficiarios?    |           |
-| ¿Cuando?(When) - ¿Cuándo se origina el problema?  |           |
-| ¿Por qué?(Why) - ¿Por qué se origina el problema? |           |
-| ¿Dónde?(Where) - ¿Dónde ocurre el problema?       |           |
-| ¿Cómo?(How) - ¿Cómo se origina el problema?       |           |
-| ¿Cuánto?(Cuánto) - ¿Cuánto dinero está implicado? |           |
+| ¿Qué?(What) - ¿Cuál es el problema?               | Jóvenes interesados en aprender idiomas no pueden encontrar espacios sociales y constantes para practicar un idioma con conversación real.  |
+| ¿Quién?(Who) - ¿Quiénes son los beneficiarios?    | Jóvenes adultos de 18 a 35 años, universitarios, egresados y profesionales que buscan mejorar su fluidez en idiomas. |
+| ¿Cuando?(When) - ¿Cuándo se origina el problema?  | El problema ocurre cuando una persona quiere practicar un idioma en un entorno real y no encuentra un espacio apropiado y flexible para hacerlo.w|
+| ¿Por qué?(Why) - ¿Por qué se origina el problema? | Se origina debido al alto costo de cursos conversacionales de academias y escasez de espacios organizados para practicar idiomas de forma social.          |
+| ¿Dónde?(Where) - ¿Dónde ocurre el problema?       | Contextos urbanos donde no existen espacios accesibles para la practica activa de idiomas. |
+| ¿Cómo?(How) - ¿Cómo se origina el problema?       | Se origina por la falta de integración entre personas con interés en idiomas y espacios adecuados, además de la ausencia de plataformas que combinen interacción social y presencialidad.       |
+| ¿Cuánto?(Cuánto) - ¿Cuánto dinero está implicado? | Los cursos enfocados en conversación en academias y centros de idiomas en Lima suelen oscilar entre 100 y 250 soles mensuales, variando según duración y frecuencia. |
 
 ### 1.2.3 Lean UX Process
+
+En esta sección el equipo aplica la metodología Lean UX para definir el problema, las suposiciones y las hipotesis.
+
 #### 1.2.3.1 Lean UX Problem Statement
+
+Nuestra plataforma tiene como propósito brindar oportunidades de práctica conversacional en distintos idiomas, eliminando barreras económicas y geográficas. Buscamos que cualquier persona, sin importar su ubicación o condición económica, pueda mejorar su fluidez y confianza al comunicarse en otra lengua.
+
+Hemos observado que los jóvenes adultos enfrentan cada vez mayores obstáculos para acceder a prácticas lingüísticas constantes, principalmente debido al alto costo de las academias tradicionales o la ausencia de espacios organizados cerca de sus zonas de residencia o estudio.
+
+Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones accesibles (económicamente y geográficamente) para practicar idiomas sin depender de instituciones costosas o ubicaciones limitadas?
+
 #### 1.2.3.2 Lean UX Assumptions
 #### 1.2.3.3 Lean UX Hypothesis
 #### 1.2.3.4 Lean UX Canvas
