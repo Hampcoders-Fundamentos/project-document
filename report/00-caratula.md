@@ -4,24 +4,57 @@
 
 \vspace{1cm}
 
-{\LARGE \textbf{Informe de Trabajo Final}}\\
+{\LARGE \textbf{Univerisdad Peruana de Ciencias Aplicadas}}\\
+
+\vspace{1cm}
+
+{\LARGE Ingeniería de Software}\\
+
+\vspace{1cm}
+
+{\large 1ACC0238 | Fundamentos de Arquitectura de Software}\\
 
 \vspace{0.5cm}
 
-{\large 1ACC0238 | Aplicaciones para Dispositivos Móviles}\\
+{\large NRC: 7944}\\
 
-\vspace{1cm}
+\vspace{0.5cm}
+
+{\large Periodo: 202610}\\
+
+\vspace{1.5cm}
+
+{\LARGE \textbf{Informe del Trabajo Final}}\\
+
+\vspace{1.25cm}
+
+{\large Startup: HampCoders}\\
+
+\vspace{0.5cm}
+
+{\large Producto: Glottia}\\
+
+\vspace{1.25cm}
 
 Ethan Matias Aliaga Aguirre\\
+
+\vspace{0.25cm}
+
 Leandro Saul Contreras López\\
+
+\vspace{0.25cm}
+
 Italo Ludwing Sanchez Manrique\\
+
+\vspace{0.25cm}
+
 Ivo Marcelo Machado Bracamonte\\
 
+\vspace{0.25cm}
+
+Cesar Arostegui Alzamora\\
+
 \vspace{1cm}
-
-Universidad Peruana de Ciencias Aplicadas\\
-
-\vspace{0.5cm}
 
 Noviembre 2025
 
