@@ -7,5 +7,7 @@
 | **TB1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar Startup Profile |
 | **TB1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar Solution Profile |
 | **TB1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar tabla base para colocar nombres de los integrantes |
+| **TB1** | 13/04/2026 | **Ethan Matías Aliaga Aguirre** | Ajustar segmentos objetivos |
+| **TB1** | 13/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadio To-Be Scenario Mapping |
 
 \newpage

@@ -13,30 +13,32 @@ Visión: Ser el motor tecnológico detrás de la próxima generación de emprend
 
 ### 1.1.2. Perfiles de Integrantes del equipo
 
+<!-- Imitar esto-->
 \begin{minipage}{0.3\textwidth}
 \includegraphics[width=\linewidth]{assets/img/cap1/team/ethan.png}
 \end{minipage}
 \hfill
 \begin{minipage}{0.65\textwidth}
-**Ethan Matias Aliaga Aguirre**  
-\\
+
+\textbf{Ethan Matias Aliaga Aguirre} \\
 Código: U202318323  
 
 Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Software en la UPC, sede San Miguel. Me caracterizo por mi compromiso, responsabilidad, habilidad para trabajar en equipo y comunicación. Mis conocimientos incluyen arquitectura de software y desarrollo de APIs. Además, tengo experiencia en el uso de herramientas como Photoshop, Filmora y Vegas Studio, lo que me permite aportar con soluciones creativas y técnicas en mis proyectos. Estoy comprometido con mi crecimiento personal y profesional, siempre buscando aprender y mejorar en cada oportunidad que se presente.
 \end{minipage}
 
 \vspace{1cm}
+<!-- Imitar esto-->
 
 ---
 
-Leandro Saul Contreras López
+\textbf{Ethan Matias Aliaga Aguirre}
 **Código:** U20231E215
 
 Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de Software en la UPC, sede San Miguel. Tengo 19 años y estoy cursando el sexto ciclo académico. Me considero una persona adaptativa, perseverante y comprometida con lo que me propongo. En este proyecto tengo como objetivo buscar múltiples soluciones que beneficien a todo el grupo. Por experiencia propia, suelo trabajar de manera colaborativa y eficaz. Al terminar la carrera de ingeniería, me gustaría estudiar una segunda carrera: Gastronomía y Gestión Culinaria.
 
 ---
 
- Ivo Marcelo Machado Bracamonte
+Ivo Marcelo Machado Bracamonte
 **Código:** U20231C368
 
 Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ingeniería de Software en la UPC. Me caracterizo por mi mentalidad resiliente, ya que no me rindo con facilidad y no le tengo miedo al error. Tengo empatía con los demás, disfruto resolver problemas y busco mejorar constantemente en lo que hago. Poseo conocimientos en lenguajes de programación como C++, Java y Python, así como en HTML, CSS y JavaScript. Además, domino el inglés y tengo conocimientos de portugués.
@@ -122,5 +124,43 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 ## 1.3 Segmentos objetivo
 
+**Segmento objetivo #1: Usuarios aprendices de idiomas**
+
+#### Aspectos demográficos:
+- Sexo: Masculino, femenino y no binario.
+- Edad: Entre 16 y 40 años (desde estudiantes de secundaria superior hasta jóvenes/adultos profesionales).
+- Nivel socioeconómico: Medio a medio-alto.
+
+#### Aspectos geográficos:
+- Residen en áreas urbanas o metropolitanas con buena conectividad y vida cultural activa.
+- Se concentran en ciudades con alta población estudiantil, diversidad cultural o presencia de comunidades extranjeras.
+- Frecuentan espacios como universidades, bibliotecas, coworkings, cafeterías, bares, centros culturales y parques urbanos.
+
+#### Aspectos psicográficos:
+- Tienen motivación tanto académica/profesional (certificaciones, prácticas, empleabilidad) como social/personal (viajar, conocer culturas, socializar).
+- Buscan fluidez, vocabulario conversacional y confianza al hablar en un entorno real.
+- Valoran experiencias auténticas, accesibles y presenciales fuera de un aula tradicional.
+- Son curiosos, abiertos, sociables y dispuestos a salir de su zona de confort.
+
+---
+
+**Segmento objetivo #2: Administradores que ofrecen su establecimiento como punto de reunión**
+
+#### Aspectos demográficos:
+- Perfil: Administradores, dueños o encargados de cafetería.
+- Tipo de negocio: Establecimientos con espacios adecuados para grupos pequeños o medianos (3 a 4 personas).
+- Ubicación: Zonas céntricas, estudiantiles o con alto tránsito de jóvenes/adultos interesados en socializar y aprender idiomas.
+
+#### Aspectos geográficos:
+- Se encuentran en áreas urbanas y metropolitanas con vida cultural activa.
+- Están ubicados en distritos o barrios con alta concentración de estudiantes, profesionales jóvenes y comunidades extranjeras.
+- Sus locales suelen estar cerca de universidades, residencias estudiantiles, coworkings o zonas de ocio.
+
+#### Aspectos psicográficos:
+- Buscan atraer nuevos clientes mediante experiencias innovadoras.
+- Están interesados en diferenciar su local con propuestas culturales y sociales.
+- Valoran el posicionamiento digital y la visibilidad que les brinda la app.
+- Quieren generar mayor consumo en su establecimiento a través de las reuniones organizadas.
+- Desean fidelizar clientes al vincular su espacio con un ambiente inclusivo, cultural e internacional.
 
 \newpage
