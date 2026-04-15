@@ -119,6 +119,39 @@ Hemos observado que los jóvenes adultos enfrentan cada vez mayores obstáculos 
 Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones accesibles (económicamente y geográficamente) para practicar idiomas sin depender de instituciones costosas o ubicaciones limitadas?
 
 #### 1.2.3.2 Lean UX Assumptions
+
+#### Business Outcomes:
+
+**Creemos que nuestros usuarios necesitan** una plataforma que conecte la práctica de idiomas en espacios reales con negocios que necesitan una demanda más alta, mediante la organización de encuentros grupales que generen un valor tanto para los aprendices como para los negocios.
+
+**Estas necesidades se pueden resolver mediante el** desarrollo de una plataforma que facilite la reserva y organización de espacios en cafeterías para encuentros grupales de prácticas de idiomas. Para las cafeterías, esta plataforma debe contar con funcionalidades que automaticen y simplifiquen la gestión de los espacios y para los aprendices, la plataforma debe ofrecer herramientas qu faciliten la búsqueda de encuentros.
+
+**Nuestros clientes iniciales son** dueños de cafeterias que buscan mejorar sus ingresos y clientes concurrentes, a su vez, aprendices de idiomas que desean una experiencia más real, dínamica y efectiva para alcanzar sus objetivos.
+
+**El valor #1 que los clientes quiere de nuestro servicio es** reservar espacios en cafeterías para iniciar conversaciones grupales donde pueda practicar y aprender. Los dueños de cafetería buscan impulsar sus ventas y volverse un local mas concurrente, confiable y amigable.
+
+**El cliente también puede obtener estos beneficios adicionales** como descuentos y promociones en las cafaterías afiliadas, incentivando particiación y generando fidelización. Por parte de las cafeterías, obtendrán un incremento del flujo de clientes y tendrán mayor consumo en horarios de baja demanda.
+
+**Vamos a adquirir la mayoría de los clientes a través de** afiliaciones a cafeterías potenciales que deseen promover sus espacios para la práctica de idiomas grupales. Promover la práctica de idiomas cara a cara siendo promocionadas en centros de estudios de idiomas para generar interración en nuestro público objetivo.
+
+**Haremos dinero a través de** un modelo de suscripciones y afiliaciones adaptado a la necesidad del segmento objetivo y ofreciendo funcionalidades especiales.
+
+**Nuestra competencia de mercado serán** plataformas digitales de aprendizaje de idiomas como DuoLingo, Tandem, HelloTalk las cuales ofrecen la práctica de idiomas mediante chat, audio y video. También, establecimientos físicos que son una competencia indirecta como Británico, ICPNA, Starbucks.
+
+**Los venceremos debido a** que nuestra solución ofrece una combinación entre lo digital y lo presencial, facilitando la práctica de idiomas mediante la encuentros organizados en cafeterías que ofrecen espacios tranquilos, permitiendo una experiencia interactiva, accesible y social en comparación a las alternativas tradicionales. 
+
+**Nuestro mayor riesgo de producto es** que los dueños de cafeterías no ofrezcan sus espacios exclusivamente a reservar de su local. Asimismo, temen desconfiar que los aprendices no realicen consumos dentro del local. Finalmente; no ser de suficiente de relevancia para impulsar su negocio.
+
+**Resolveremos esto a través de** pruebas gratuitas y promociones a los aprendices para que consuman en los locales y al mismo tiempo recomendarlos, lo que permite desarrollar una economía estable, mejor oferta/demanda y mejor rating en la plataforma.
+
+**Qué otras suposiciones tenemos que, de probarse falsas, pueden causar que nuestro proyecto fracase:**
+
+- Los dueños de las cafeterías estarán dispuestos a ofrecer sus espacios a disponibilidad de los grupos de aprendices que hagan reservas por encima de cualquier otro cliente que desee usar el espacio espontáneamente.
+
+- Creemos que los aprendices prefieren un modelo de práctica del habla y escucha de un idioma distinto en grupos presenciales de práctica en un establecimiento.
+
+- Creemos que los aprendices tomarán las promociones y descuentos como motivación para realizar encuentros y consumir en las cafeterias de manera que les permitan impulsar las ganancias y mejorar el reconocimiento de los locales afiliados.
+
 #### 1.2.3.3 Lean UX Hypothesis
 #### 1.2.3.4 Lean UX Canvas
 
