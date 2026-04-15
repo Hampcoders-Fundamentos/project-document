@@ -24,3 +24,13 @@ Este escenario detalla la interacción de los negocios asociados (cafeterías) c
 ## 3.3	Impact Map
 
 ## 3.4	Product Backlog   
+=======
+# Capítulo III: Requirements Specification
+
+## 3.1	To-Be Scenario Mapping
+
+## 3.2	User Stories
+
+## 3.3	Impact Map
+
+## 3.4	Product Backlog   
