@@ -153,6 +153,23 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 - Creemos que los aprendices tomarán las promociones y descuentos como motivación para realizar encuentros y consumir en las cafeterias de manera que les permitan impulsar las ganancias y mejorar el reconocimiento de los locales afiliados.
 
 #### 1.2.3.3 Lean UX Hypothesis
+
+**Creemos que** los aprendices estarán interesados en utilizar Glottia porque les permite mejorar sus habilidades lingüisticas al tener reuniones presenciales grupales. 
+
+**Sabremos que** los aprendices encontrarán valor en la plataforma **cuando veamos** que el 50% de los aprendices comiencen a realizar reuniones en un nivel avanzado o nativo dentro de la aplicación.
+
+**Cremos que** incluir examenés o pruebas simuladas dentro de la aplicación fomentará un dominio en su idioma preferido 
+
+**Sabremos que** los aprendices estarán mejorando sus habilidades **cuando veamos** que el 40% de los aprendices se encuentran rindiendo pruebas o examenes dentro de la aplicación además de cumplir con sus reuniones grupales.
+
+**Creemos que** los dueños de cafeterías de Lima estarán interesados en Glottia porque les permite aumentar las ganancias en horarios de baja demanda.
+
+**Sabremos que** los dueños de cafeterías van a encontrar valor en la plataforma **cuando veamos** que el 60% de las cafeterías se encuentren afiliadas a la aplicación y utilicen diariamente sus funcionalidades para gestionar sus espacios.
+
+**Creemos que** al agregar descuentos en las cafeterías por la participación en encuentros de práctica de idiomas lograremos fidelización de parte de los usuarios hacia Glottia.
+
+**Sabremos que** los descuentos agregados son efectivos **cuando veamos** que la tasa de usuarios recurrentes y de participación en encuentros aumente en un 20% en 6 semanas.
+
 #### 1.2.3.4 Lean UX Canvas
 
 ## 1.3 Segmentos objetivo
