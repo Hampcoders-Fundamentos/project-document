@@ -100,9 +100,9 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-## 2.1.3 Estrategias frente a competidores
+### 2.1.3 Estrategias frente a competidores
 
-### 2.1.3.1 Competidores directos
+#### 2.1.3.1 Competidores directos
 
 Son aquellas plataformas que, al igual que Glottia, buscan conectar personas interesadas en practicar idiomas, ya sea de forma presencial o con posibilidad de interacción social.
 
@@ -114,7 +114,7 @@ Estas plataformas están enfocadas principalmente en el intercambio virtual medi
 
 ---
 
-### 2.1.3.2 Competidores indirectos
+#### 2.1.3.2 Competidores indirectos
 
 Son servicios que no ofrecen exactamente la misma propuesta que Glottia, pero satisfacen la necesidad de practicar idiomas o socializar en contextos similares.
 
@@ -126,7 +126,7 @@ Plataformas como Bumble o grupos de Facebook permiten a los usuarios encontrar p
 
 ---
 
-### 2.1.3.3 Estrategias frente a competidores
+#### 2.1.3.3 Estrategias frente a competidores
 
 Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la diferenciación y en la creación de valor a través de la experiencia del usuario:
 
@@ -136,7 +136,7 @@ Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la
 
 ---
 
-### 2.1.3.4 Tácticas de implementación
+#### 2.1.3.4 Tácticas de implementación
 
 Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
