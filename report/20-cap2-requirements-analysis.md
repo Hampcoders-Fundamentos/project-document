@@ -1,10 +1,11 @@
 # Capítulo II: Requirements & Analysis
+En este capítulo, el equipo recopila a información y requerimientos para realizar analisis y proyectar la solución frente a los competidores directos.
 
 ## 2.1 Competidores
 En esta sección se identifican y describen los principales competidores de Glottia, considerando tanto competidores directos (plataformas de intercambio de idiomas) como indirectos (plataformas de eventos sociales).
 
-#  Análisis Competitivo
-#  Competitive Analysis Landscape
+### 2.1.1 Análisis Competitivo
+**Competitive Analysis Landscape**
 
 | **Categoría** | **Subcategoría** | **Glottia (Startup)** | **HelloTalk (Competidor 1)** | **Tandem (Competidor 2)** | **Meetup (Competidor 3)** |
 |--------------|----------------|----------------------|------------------------------|---------------------------|----------------------------|
@@ -21,9 +22,9 @@ En esta sección se identifican y describen los principales competidores de Glot
 |  | Oportunidades | Crecimiento del aprendizaje social | Expansión digital | Crecimiento global | Más eventos sociales |
 |  | Amenazas | Competidores digitales fuertes | Nuevas plataformas híbridas | Competencia innovadora | Plataformas nicho |
 
-#  Análisis SWOT
+### 2.1.2 Análisis SWOT
 
-##  Glottia
+#### 2.1.2.1 Glottia
 
 - **Fortalezas**
   - Experiencia híbrida (presencial + digital)
@@ -45,7 +46,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-##  HelloTalk
+#### 2.1.2.2 HelloTalk
 
 - **Fortalezas**
   - Gran comunidad global
@@ -63,7 +64,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-##  Tandem
+#### 2.1.2.3 Tandem
 
 - **Fortalezas**
   - Conexión con hablantes nativos
@@ -81,7 +82,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-##  Meetup
+#### 2.1.2.4 Meetup
 
 - **Fortalezas**
   - Plataforma consolidada
@@ -99,9 +100,9 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-## 2.1.1. Análisis competitivo y estrategias frente a competidores
+## 2.1.3 Estrategias frente a competidores
 
-###  Competidores directos
+### 2.1.3.1 Competidores directos
 
 Son aquellas plataformas que, al igual que Glottia, buscan conectar personas interesadas en practicar idiomas, ya sea de forma presencial o con posibilidad de interacción social.
 
@@ -113,7 +114,7 @@ Estas plataformas están enfocadas principalmente en el intercambio virtual medi
 
 ---
 
-###  Competidores indirectos
+### 2.1.3.2 Competidores indirectos
 
 Son servicios que no ofrecen exactamente la misma propuesta que Glottia, pero satisfacen la necesidad de practicar idiomas o socializar en contextos similares.
 
@@ -125,7 +126,7 @@ Plataformas como Bumble o grupos de Facebook permiten a los usuarios encontrar p
 
 ---
 
-###  Estrategias frente a competidores
+### 2.1.3.3 Estrategias frente a competidores
 
 Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la diferenciación y en la creación de valor a través de la experiencia del usuario:
 
@@ -135,7 +136,7 @@ Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la
 
 ---
 
-###  Tácticas de implementación
+### 2.1.3.4 Tácticas de implementación
 
 Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
@@ -149,7 +150,7 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
 ## 2.2 Entrevistas
 
-### Diseño de entrevistas
+### 2.2.1 Diseño de entrevistas
 #### Segmento objetivo #1: Usuarios aprendices de idiomas
 #### Preguntas principales:
 - ¿Qué métodos usas actualmente para practicar un idioma (apps, clases, grupos, amigos)?
@@ -188,17 +189,18 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio?
 - ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
 
-## 2.3 Needfinding
+### 2.2.2
 
+## 2.3 Needfinding
 ### 2.3.1 User Personas
 
 En la presente sección se presentan las fichas de User Persona elaboradas teniendo en cuenta las entrevistas realizadas y analizadas previamente y la revisión de soluciones existentes en el mercado. En cada arquetipo se presentan las características demográficas, de personalidad, los objetivos, las motivaciones, frustraciones y preferencias de los usuarios clave de cada segmento. La construcción de estos User Persona se basa en resultados y análisis obtenidos durante la investigación previa con el objetivo de tomar decisiones de diseño y desarrollo adecuadas para resolver los problemas identificados.
 
-### Segmento 1:
+#### Segmento 1:
 
 ![](assets/img/cap2/user-person-1.png)
 
-### Segmento 2:
+#### Segmento 2:
 
 ![](assets/img/cap2/user-person-2.png)
 
@@ -210,9 +212,9 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ![](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
 
-#  Áreas Negativas
+#### Áreas Negativas
 
-##  Búsqueda de espacios para practicar idiomas
+#### Búsqueda de espacios para practicar idiomas
 
 - Frustración por tener que buscar en múltiples plataformas sin encontrar opciones claras.
 - Sensación de no encontrar espacios confiables o adecuados a su nivel.
@@ -221,7 +223,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-##  Contacto y coordinación
+#### Contacto y coordinación
 
 - Ansiedad por la falta de respuesta rápida de organizadores.
 - Desconfianza debido a la desorganización en la comunicación.
@@ -230,7 +232,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-##  Práctica del idioma
+#### Práctica del idioma
 
 - Vergüenza al hablar con desconocidos por miedo a equivocarse.
 - Inseguridad al compararse con personas de mayor nivel.
@@ -239,7 +241,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-##  Post-experiencia
+#### Post-experiencia
 
 - Frustración cuando la experiencia fue desorganizada o poco útil.
 - Falta de continuidad para seguir practicando regularmente.
@@ -248,9 +250,9 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-#  Áreas Positivas
+#### Áreas Positivas
 
-##  Búsqueda de espacios
+#### Búsqueda de espacios
 
 - Esperanza al encontrar eventos que parecen interesantes.
 - Motivación por aprender idiomas de forma práctica y social.
@@ -258,14 +260,14 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-##  Contacto y coordinación
+#### Contacto y coordinación
 
 - Flexibilidad para adaptarse a diferentes horarios y dinámicas.
 - Disposición para interactuar con nuevas personas.
 
 ---
 
-##  Práctica del idioma
+#### Práctica del idioma
 
 - Satisfacción cuando logra comunicarse efectivamente.
 - Alegría al conectar con personas de otras culturas.
@@ -273,7 +275,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-##  Post-experiencia
+#### Post-experiencia
 
 - Motivación para seguir practicando después de una buena experiencia.
 - Esperanza de encontrar espacios más constantes y organizados.
@@ -281,7 +283,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ---
 
-# Conclusión
+#### Conclusión
 
 Sofía enfrenta múltiples dificultades a lo largo de su proceso de aprendizaje de idiomas, principalmente en la búsqueda de espacios adecuados, la coordinación desorganizada y la falta de entornos estructurados para practicar. Estas limitaciones generan frustración, inseguridad y poca continuidad en su aprendizaje.
 
