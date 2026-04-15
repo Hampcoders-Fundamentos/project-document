@@ -51,7 +51,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ### Segmento 1:
 
-
+![](assets/img/cap2/user-person-1.png)
 
 ### Segmento 2:
 
