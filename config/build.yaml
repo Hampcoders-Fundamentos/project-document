@@ -5,7 +5,7 @@ input-files:
   - report/04-student-outcome.md
   - report/10-cap1-introduccion.md
   - report/20-cap2-requirements-analysis.md
-  #- report/30-cap3-ui-ux-design.md
+  - report/30-cap3-requirements-spec.md
   #- report/40-cap4-implementation.md
   #- report/90-conclusiones.md
   #- report/91-bibliografia.md
