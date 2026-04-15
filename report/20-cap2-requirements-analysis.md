@@ -207,3 +207,82 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 ### 2.3.3 Empathy Maps
 
 ### 2.3.4 As-is Scenario Mapping
+
+![](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
+
+#  Áreas Negativas
+
+##  Búsqueda de espacios para practicar idiomas
+
+- Frustración por tener que buscar en múltiples plataformas sin encontrar opciones claras.
+- Sensación de no encontrar espacios confiables o adecuados a su nivel.
+- Incertidumbre por la falta de información sobre eventos (horarios, dinámica, asistentes).
+- Desmotivación al no encontrar experiencias constantes o accesibles.
+
+---
+
+##  Contacto y coordinación
+
+- Ansiedad por la falta de respuesta rápida de organizadores.
+- Desconfianza debido a la desorganización en la comunicación.
+- Incomodidad por tener que usar múltiples aplicaciones para coordinar.
+- Inseguridad al no tener confirmación clara del evento o asistencia.
+
+---
+
+##  Práctica del idioma
+
+- Vergüenza al hablar con desconocidos por miedo a equivocarse.
+- Inseguridad al compararse con personas de mayor nivel.
+- Dificultad para iniciar conversaciones en entornos poco estructurados.
+- Frustración por no aprovechar al máximo la experiencia de práctica.
+
+---
+
+##  Post-experiencia
+
+- Frustración cuando la experiencia fue desorganizada o poco útil.
+- Falta de continuidad para seguir practicando regularmente.
+- Sensación de que el progreso es lento o inconsistente.
+- Dificultad para encontrar nuevamente experiencias similares.
+
+---
+
+#  Áreas Positivas
+
+##  Búsqueda de espacios
+
+- Esperanza al encontrar eventos que parecen interesantes.
+- Motivación por aprender idiomas de forma práctica y social.
+- Interés en conocer nuevas culturas y personas.
+
+---
+
+##  Contacto y coordinación
+
+- Flexibilidad para adaptarse a diferentes horarios y dinámicas.
+- Disposición para interactuar con nuevas personas.
+
+---
+
+##  Práctica del idioma
+
+- Satisfacción cuando logra comunicarse efectivamente.
+- Alegría al conectar con personas de otras culturas.
+- Incremento de confianza en momentos de interacción exitosa.
+
+---
+
+##  Post-experiencia
+
+- Motivación para seguir practicando después de una buena experiencia.
+- Esperanza de encontrar espacios más constantes y organizados.
+- Interés en repetir experiencias positivas.
+
+---
+
+# Conclusión
+
+Sofía enfrenta múltiples dificultades a lo largo de su proceso de aprendizaje de idiomas, principalmente en la búsqueda de espacios adecuados, la coordinación desorganizada y la falta de entornos estructurados para practicar. Estas limitaciones generan frustración, inseguridad y poca continuidad en su aprendizaje.
+
+Sin embargo, existen momentos clave de motivación y satisfacción cuando logra interactuar exitosamente, lo que evidencia un alto interés en este tipo de experiencias. Esto demuestra la necesidad de una solución como Glottia, que permita centralizar, organizar y facilitar encuentros seguros, accesibles y constantes para la práctica de idiomas, mejorando significativamente la experiencia del usuario.
