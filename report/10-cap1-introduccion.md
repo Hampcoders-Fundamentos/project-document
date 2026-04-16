@@ -52,7 +52,13 @@ Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de So
 
 ---
 
- Cesar Augusto Arostegui Alzamora
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\linewidth]{assets/img/cap1/team/cesar.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+
+\textbf{César Augusto Arostegui Alzamora} \\
 **Código:** U202114548
 
 Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 años. Mi lenguaje de programación más utilizado y favorito es TypeScript. Actualmente me encuentro desarrollando habilidades en áreas como DevOps y frameworks de desarrollo móvil.
