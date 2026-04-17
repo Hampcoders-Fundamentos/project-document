@@ -233,7 +233,7 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 
 *(Leyenda: **Sí** = El segmento realiza la tarea de forma directa; **-** = El segmento no realiza o no requiere acceso a esta tarea)*
 
-**Análisis de la Matriz de Tareas:**
+**Análisis del User Task Matrix:**
 
 El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la solución y la priorización del *Product Backlog* en futuras iteraciones:
 
