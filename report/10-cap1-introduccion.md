@@ -158,6 +158,27 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 - Creemos que los aprendices tomarán las promociones y descuentos como motivación para realizar encuentros y consumir en las cafeterias de manera que les permitan impulsar las ganancias y mejorar el reconocimiento de los locales afiliados.
 
+#### User Outcomes:
+
+1. ¿Quien será el usuario?
+    - Glottia incluirá dos usuarios: los aprendices; quienes buscan tener encuentros grupales en locales agradables para estudiar, practicar y mejorar sus habilidades en distintos idiomas. Y los dueños de cafeterías; que aspiran a mejorar sus ganancias y ser reconocidos en el mercado.
+
+2. ¿Donde encaja nuestro producto en su trabajo o vida?
+    - Ambos usuarios pueden utilizarlo en sus quehaceres diarios o jornadas habituales, pues los dueños de cafetería querrán tener conocimiento acerca de estadísticas de su local, sea en ganancias o calificaciones. Del mismo modo, los aprendices, pueden realizar reservas durante el día en el horario más adecuado para ellos y no perderse de sus lecciones.
+
+3. ¿Qué problemas busca resolver nuestro producto? 
+    - Buscamos desconectar la brecha de incomodidad y monotonía por parte de los aprendices al sacarlos de su zona de confort (generadas por las clases remotas) para brindarles una alternativa más dinámica y eficiente gracias a reuniones grupales en locales de cafeterías. Además planeamos brindar una plataforma interactiva hacia los dueños de locales donde podrán organizar, administrar y medir sus indicadores clave de desempeño (KPI’s)
+4. ¿Cuándo y Cómo es usado nuestro producto? 
+    - Puede ser utilizado en cualquier momento del día -laboral- tanto por aprendices como locales para concretar reuniones o análisis (según el usuario) y generar una experiencia más colectiva y servicial. Ambos usuarios accederán a la aplicación mediante un dispositivo móvil 
+5. ¿Que características son importantes? 
+    - Reserva y asignación de espacio en la cafetería seleccionada de preferencia. 
+    - Interfaz intuitiva y minimalista para optimizar el flujo de navegación. 
+    - Dashboard visual que muestren diferentes campos asociados a la administración del local. 
+    - Recompensar a los usuarios con premios dentro de la aplicación para fomentar su uso con frecuencia.
+6. ¿Como debe comportarse y verse nuestro producto? 
+    -  Incluir secciones personalizadas: Cada usuario debe visualizar diferentes interfaces acordes a sus necesidades y objetivos. 
+    - Interfaz minimalista e intuitiva: Fundamental para crear una comunidad y permitir expandir la aplicación a mas usuarios que quieran aprovechar de esta solución.
+
 #### 1.2.3.3 Lean UX Hypothesis
 
 **Creemos que** los aprendices estarán interesados en utilizar Glottia porque les permite mejorar sus habilidades lingüisticas al tener reuniones presenciales grupales. 
