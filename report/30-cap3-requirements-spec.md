@@ -83,5 +83,12 @@ Este escenario detalla la interacción de los negocios asociados (cafeterías) c
 | **Título** | **Visualización del Pie de Página (Footer)** |  |  |
 | **Descripción** | **Como** visitante **Quiero** ver un pie de página organizado con enlaces de interés **Para** encontrar información adicional o contactar con la empresa. **Escenario \#1: Contenido completo del pie de página** \- Dado que un visitante se desplaza hasta el final de la landing page, Cuando llega al pie de página, Entonces debe ver enlaces a "Términos y Condiciones", "Política de Privacidad", y enlaces a las redes sociales del proyecto. |  |  |
 ## 3.3	Impact Map
+Se presentara los mapas de impacto realizados por cada segemnto 
+
+![](assets/img/cap3/Impact-map.png)
+
+---
+![](assets/img/cap3/Impact-map-Carlos.png)
+
 
 ## 3.4	Product Backlog   
