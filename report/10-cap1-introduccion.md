@@ -205,7 +205,7 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 #### 1.2.3.4 Lean UX Canvas
 
-![](assets/img/cap1/canvas/Lean UX Canvas - Glottia.png)
+![](assets/img/cap1/canvas/lean-ux-canvas-Glottia.png)
 
 ## 1.3 Segmentos objetivo
 
