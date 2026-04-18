@@ -206,6 +206,41 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 ### 2.3.2 User Task Matrix
 
+A continuación, se presenta el User Task Matrix  alineada a los User Personas identificados: **Sofía Ramírez** (Aprendiz Universitaria que busca fluidez y comunidad) y **Enzo Fernandez** (Dueño de Cafetería que busca maximizar sus horas muertas con control y rentabilidad).
+
+Esta matriz categoriza las acciones principales según la etapa de interacción de cada usuario con la plataforma Glottia, valorando la frecuencia con que interactúan y la criticidad de la funcionalidad.
+
+| Etapa / Tarea Principal | Segmento 1: Aprendiz (Sofía) | Segmento 2: Admin. Local (Enzo) | Frecuencia | Importancia |
+| :--- | :---: | :---: | :---: | :---: |
+| **Onboarding & Configuración** | | | | |
+| Registrar cuenta e iniciar sesión en Glottia | Sí | Sí | Única vez | Alta |
+| Completar perfil personal (idiomas de interés, nivel de fluidez, gustos) | Sí | - | Única vez | Alta |
+| Configurar perfil del local (fotos del ambiente, ubicación, políticas) | - | Sí | Única vez | Alta |
+| Definir horarios de disponibilidad (enfocado en horas valle o de baja demanda) | - | Sí | Ocasional | Alta |
+| **Descubrimiento & Gestión de Reservas** | | | | |
+| Explorar y filtrar encuentros presenciales (por idioma, nivel, cercanía geográfica) | Sí | - | Frecuente | Alta |
+| Reservar cupo seguro en una mesa temática para practicar en grupo | Sí | - | Frecuente | Alta |
+| Monitorear y gestionar las reservas activas para controlar el aforo máximo | - | Sí | Frecuente | Alta |
+| **Durante el Encuentro (Dinámica Presencial)** | | | | |
+| Mostrar código QR de reserva para registrar asistencia (Check-in) | Sí | - | Frecuente | Alta |
+| Escanear y validar ingresos (Check-in) para mantener el orden y seguridad | - | Sí | Frecuente | Alta |
+| Redimir descuentos y promociones en consumos por pertenecer al encuentro | Sí | - | Frecuente | Alta |
+| **Retención, Análisis & Gamificación** | | | | |
+| Calificar el espacio, la organización y la experiencia post-encuentro | Sí | Sí | Frecuente | Media |
+| Revisar progreso de aprendizaje (puntos de lealtad, insignias de logros) | Sí | - | Frecuente | Alta |
+| Visualizar el dashboard analítico (retención de clientes, impacto en ventas) | - | Sí | Frecuente | Alta |
+| Activar promociones personalizadas para fidelizar a usuarios recurrentes | - | Sí | Ocasional | Media |
+
+*(Leyenda: **Sí** = El segmento realiza la tarea de forma directa; **-** = El segmento no realiza o no requiere acceso a esta tarea)*
+
+**Análisis del User Task Matrix:**
+
+El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la solución y la priorización del *Product Backlog* en futuras iteraciones:
+
+1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante QR es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
+2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
+3. **Roles Complementarios (Oferta y Demanda):** Se observa una clara separación de tareas en la fase de descubrimiento. Sofía tiene un rol activo de búsqueda y reserva, mientras que Enzo asume un rol asíncrono de configuración de disponibilidad. Esta asimetría indica que los flujos de experiencia de usuario serán completamente distintos, justificando la creación de interfaces o módulos separados.
+
 ### 2.3.3 Empathy Maps
 
 ### 2.3.4 As-is Scenario Mapping
