@@ -31,7 +31,13 @@ Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Softw
 
 ---
 
-\textbf{Ethan Matias Aliaga Aguirre}
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\linewidth]{assets/img/cap1/team/leandro.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+
+\textbf{Leandro Saúl Contreras López} \\
 **Código:** U20231E215
 
 Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de Software en la UPC, sede San Miguel. Tengo 19 años y estoy cursando el sexto ciclo académico. Me considero una persona adaptativa, perseverante y comprometida con lo que me propongo. En este proyecto tengo como objetivo buscar múltiples soluciones que beneficien a todo el grupo. Por experiencia propia, suelo trabajar de manera colaborativa y eficaz. Al terminar la carrera de ingeniería, me gustaría estudiar una segunda carrera: Gastronomía y Gestión Culinaria.
@@ -177,6 +183,8 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 **Sabremos que** los descuentos agregados son efectivos **cuando veamos** que la tasa de usuarios recurrentes y de participación en encuentros aumente en un 20% en 6 semanas.
 
 #### 1.2.3.4 Lean UX Canvas
+
+![](assets/img/cap1/canvas/Lean UX Canvas - Glottia.png)
 
 ## 1.3 Segmentos objetivo
 
