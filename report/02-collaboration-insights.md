@@ -7,6 +7,6 @@
   
 **Insights del TB1**
 
-![](assets/img/cap3/Insgith-1.png)
+![](assets/img/cap2/Insgith-1.png)
 
 \newpage
