@@ -252,6 +252,24 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
+**Entrevista N°1: Virgilio Sanchez**
+
+- Sexo: Masculino
+- Edad: 65 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQBEM5B_aIDCSLpXh7So9i2xAZHFPevkYbwJ9FiRhPvnYc4?e=3lSEOG&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D>
+- Inicia en: 0:36
+- Duración: 5:56
+
+![Entrevista Virgilio](assets/img/cap2/entrevista-2-1.png)
+
+**Resumen de la entrevista:**
+- **Contexto del establecimiento:** Administra una panadería/cafetería muy cercana a una universidad. Su horario punta es por las mañanas (7 a 9 AM) y el negocio familiar cuenta con un total de 4 sucursales en el distrito.
+- **Gestión de grupos y reservas:** Actualmente no manejan reservas de mesas. Tuvieron malas experiencias pasadas con pedidos muy grandes que no fueron pagados, por lo que es vital un sistema de compromiso seguro.
+- **Disposición como punto de encuentro:** Está totalmente dispuesto y le parece una gran idea. Comenta que los universitarios ya frecuentan el local para hacer trabajos o estudiar, por lo que el ambiente casual se adapta perfectamente a reuniones para practicar idiomas, sin imponer condiciones restrictivas.
+- **Expectativa de consumo:** Espera que, mientras conversan, los estudiantes soliciten productos de la vitrina como bocaditos (empanadas, alfajores, pasteles, trozos de pizza) y bebidas (café o gaseosas).
+- **Expectativas estructurales de la app:** Espera que la aplicación funcione como una herramienta de visibilidad, indicando su ubicación exacta, cómo llegar y su catálogo de productos para atraer más consumidores a sus locales.
+- **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
+
 ### 2.2.3 Análisis de entrevistas
 
 ## 2.3 Needfinding
