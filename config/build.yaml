@@ -7,9 +7,9 @@ input-files:
   - report/20-cap2-requirements-analysis.md
   - report/30-cap3-requirements-spec.md
   #- report/40-cap4-implementation.md
-  #- report/90-conclusiones.md
-  #- report/91-bibliografia.md
-  #- report/99-anexos.md
+  - report/90-conclusiones.md
+  - report/91-bibliografia.md
+  - report/99-anexos.md
 
 output-file: dist/glottia-report.pdf
 
