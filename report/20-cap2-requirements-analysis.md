@@ -189,7 +189,33 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio?
 - ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
 
-### 2.2.2
+### 2.2.2 Registro de entrevistas
+
+En esta sección se documentan las entrevistas a los segmentos respectivos.
+
+#### Segmento 1: Usuarios aprendices de idiomas
+
+**Entrevista N°1: Alexander Gabriel Montoya**
+
+- Sexo: Masculino
+- Edad: 20 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Inicia en: 0:21
+- Duración: 6:44
+
+![Entrevista Alexander](assets/img/cap2/entrevista-1.png)
+
+**Resumen de la entrevista:**
+- **Contexto y métodos actuales:** Integra el inglés en su vida cotidiana (viendo series, leyendo), pero no utiliza métodos formales ni plataformas especializadas.
+- **Principales limitaciones:** Su mayor dificultad es la falta de práctica oral. Siente que las ideas suenan bien en su cabeza, pero al hablar le cuesta poder aterrizar la idea y pronunciar correctamente.
+- **Preferencias de entorno y lugares:** Prefiere conversar con desconocidos porque siente que la charla fluye de manera más fácil. Su lugar ideal para estos encuentros presenciales son las **cafeterías** por ser espacios sociales, cotidianos y cómodos.
+- **Motivaciones y perfil de compañeros:** Busca desarrollar habilidades blandas y utilizar el idioma para fines sociales y posiblemente académicos (viajar a estudiar). Prefiere practicar con personas de su **mismo nivel** para favorecer un aprendizaje y desarrollo mutuo. Asistiría con una frecuencia moderada adaptándose a sus horarios de universidad.
+- **Rol en conversaciones:** Le gusta participar activamente y hablar mucho, dependiendo del tema, tratando de transmitir sus ideas de la mejor forma.
+- **Expectativas e inquietudes sobre la aplicación:** Considera que la plataforma sería una excelente motivación para enfocarse en el habla. Los factores vitales para confiar en ella son el **precio** (saber de antemano la inversión) y la **seguridad** (verificación de los usuarios para evitar encuentros con extraños no filtrados o personas peligrosas).
+
+#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+
+### 2.2.3 Análisis de entrevistas
 
 ## 2.3 Needfinding
 ### 2.3.1 User Personas
