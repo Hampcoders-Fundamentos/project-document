@@ -14,6 +14,7 @@ input-files:
 output-file: dist/glottia-report.pdf
 
 pdf-engine: lualatex
+
 toc: false
 toc-depth: 4
 number-sections: false
@@ -29,6 +30,8 @@ resource-path:
   - "assets/img/general"
 
 variables:
+  classoption:
+    - table
   geometry: [margin=1in]
   mainfont: "Arial"
   fontsize: 11pt
@@ -41,3 +44,9 @@ variables:
   header-includes:
     - \usepackage{graphicx}
     - \usepackage{longtable}
+    - \usepackage{array}
+    - \usepackage{booktabs}
+    - \usepackage{tabularx}
+    - \newcolumntype{L}{>{\raggedright\arraybackslash}X}
+    - \setlength{\tabcolsep}{5pt}
+    - \renewcommand{\arraystretch}{1.3}
