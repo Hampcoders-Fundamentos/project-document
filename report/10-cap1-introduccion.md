@@ -46,6 +46,7 @@ Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de S
 \vspace{1cm}
 
 ---
+
 \begin{minipage}{0.3\textwidth}
 \includegraphics[width=\linewidth]{assets/img/cap1/team/ivo.png}
 \end{minipage}
@@ -56,7 +57,6 @@ Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de S
 **Código:** U20231C368
 
 Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ingeniería de Software en la UPC. Me caracterizo por mi mentalidad resiliente, ya que no me rindo con facilidad y no le tengo miedo al error. Tengo empatía con los demás, disfruto resolver problemas y busco mejorar constantemente en lo que hago. Poseo conocimientos en lenguajes de programación como C++, Java y Python, así como en HTML, CSS y JavaScript. Además, domino el inglés y tengo conocimientos de portugués.
-
 \end{minipage}
 
 \vspace{1cm}
