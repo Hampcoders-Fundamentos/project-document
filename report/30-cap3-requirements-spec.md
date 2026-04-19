@@ -397,6 +397,7 @@ Se presentara los mapas de impacto realizados por cada segemnto
 ![](assets/img/cap3/Impact-map.png)
 
 ---
+
 ![](assets/img/cap3/Impact-map-Carlos.png)
 
 
@@ -452,3 +453,12 @@ En esta sección, el equipo organiza el Product Backlog en base a su valor para 
 | 44 | US38 | Ver horas pico | **Como** Partner **Quiero** ver un reporte que me muestre qué días de la semana y a qué horas se realizan más encuentros en mi local **Para** optimizar mi personal. | 8 |
 | 45 | US39 | Clientes nuevos vs recurrentes | **Como** Partner **Quiero** saber qué porcentaje de los asistentes son nuevos clientes versus personas que ya han venido antes **Para** medir la captación de nuevo público. | 8 |
 | 46 | US40 | Descargar reportes | **Como** Partner **Quiero** poder descargar un resumen la información de mi actividad en un formato que pueda usar fuera de la plataforma **Para** mis registros internos.| 5 |
+
+---
+
+![](assets/img/cap3/Product-Blackog.png)
+
+[Ver Product Backlog en Jira](https://upc-hampcoders-fundamentos.atlassian.net/jira/software/projects/PI/boards/2/backlog?atlOrigin=eyJpIjoiNjI0Njg0NzE3MDRlNGNjOWE5ODM3ODhmMWQ2YjA5NDYiLCJwIjoiaiJ9)
+
+
+
