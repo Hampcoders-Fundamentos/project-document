@@ -1,5 +1,6 @@
 # Registro de Versiones del Informe
 
+
 | Versión | Fecha | Autor(es) | Descripción de modificación |
 |---------|-------|-----------|----------------------------|
 | **TB1** | 06/04/2026 | **Ethan Matías Aliaga Aguirre** | Establecer estructura principal para el informe del proyecto |
@@ -12,5 +13,10 @@
 | **TB1** | 15/04/2026 | **Ethan Matias Aliaga Aguirre** | Corregir el formato del documento |
 | **TB1** | 15/04/2026 | **Cesar Augusto Arostegui Alzamora** | Realiza el User Task Matrix y su respectivo análisis |
 | **TB1** | 18/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadir el registro de entrevistas para los 2 segmentos objetivos y análisis de las entrevistas |
+| **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Elaboración del Impact Map para definir objetivos de negocio y alineación de funcionalidades |
+| **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Análisis de competidores para identificar oportunidades y diferenciación del producto |
+| **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Desarrollo del Customer Journey Map (As-Is) para identificar problemas actuales del usuario |
+| **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Apoyo en la realización y análisis de entrevistas a usuarios |
+| **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Creación y priorización del Product Backlog basado en valor de negocio |
 
 \newpage
