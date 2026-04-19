@@ -41,3 +41,7 @@ variables:
   header-includes:
     - \usepackage{graphicx}
     - \usepackage{longtable}
+    - \usepackage{array}
+    - \usepackage{booktabs}
+    - \usepackage{tabularx}
+    

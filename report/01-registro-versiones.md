@@ -11,5 +11,6 @@
 | **TB1** | 13/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadio To-Be Scenario Mapping y realización de entrevistas |
 | **TB1** | 15/04/2026 | **Ethan Matias Aliaga Aguirre** | Corregir el formato del documento |
 | **TB1** | 15/04/2026 | **Cesar Augusto Arostegui Alzamora** | Realiza el User Task Matrix y su respectivo análisis |
+| **TB1** | 18/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadir el registro de entrevistas para los 2 segmentos objetivos |
 
 \newpage
