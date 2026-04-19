@@ -51,11 +51,21 @@ Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ing
 
 ---
 
- Italo Ludwing Sanchez Manrique
-**Código:** U202316967
+<!-- Imitar esto-->
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\linewidth]{assets/img/cap1/team/Italo-foto.jpeg}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
+
+\textbf{Italo Ludwing Sanchez Manrique} \\
+Código: U202316967  
 
 Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de Software en la UPC. Tengo 19 años y actualmente curso el sexto ciclo académico. Destaco por mi perseverancia, tolerancia y compromiso con mis metas. En este proyecto, mi objetivo es buscar soluciones que beneficien al grupo, ya que tengo experiencia trabajando de forma proactiva y colaborativa. Además, poseo sólidos conocimientos en lenguajes de programación como Java y C++.
+\end{minipage}
 
+\vspace{1cm}
+<!-- Imitar esto-->
 ---
 
 \begin{minipage}{0.3\textwidth}

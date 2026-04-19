@@ -313,6 +313,31 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - **Expectativas estructurales de la app:** Espera que la aplicación funcione como una herramienta de visibilidad, indicando su ubicación exacta, cómo llegar y su catálogo de productos para atraer más consumidores a sus locales.
 - **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
 
+
+**Entrevista N°1: Yamilie Francia**
+
+- Sexo: Femenimo
+- Edad: 26 años
+- Link: <https://www.youtube.com/watch?v=Y0F_L92XEGc>
+- Inicia en: 0:06
+- Duración: 5:49
+
+![Entrevista Yamile](assets/img/cap2/entrevista-Yamile.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto del establecimiento:** Administra la cafetería "21 Grados" en Carmen de la Legua. Sus horarios de mayor afluencia son de 8:00 a.m. a 11:00 a.m. y por la noche, mientras que presenta horas de baja demanda entre las 2:00 p.m. y las 5:00 p.m., lo que representa una oportunidad para atraer nuevos clientes.
+
+- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de WhatsApp y redes sociales, registrándolas manualmente en cuadernos. Ha tenido problemas con cancelaciones sin previo aviso, lo que genera pérdidas y desorganización, por lo que considera necesario un sistema más confiable.
+
+- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros. Considera que el ambiente es ideal para este tipo de actividades y que puede atraer a un público joven y dinámico, siempre que no afecte a sus clientes habituales.
+
+- **Expectativa de consumo:** Espera como mínimo el consumo de una bebida por asistente, aunque considera ideal incentivar la compra de alimentos o combos grupales para aumentar el ticket promedio.
+
+- **Expectativas estructurales de la app:** Espera que la aplicación permita gestionar reservas de forma clara, controlar aforo, reducir inasistencias mediante confirmaciones seguras y optimizar la organización del negocio, especialmente en horarios de baja demanda.
+
+- **Manejo de promociones e incentivos:** Está dispuesta a ofrecer descuentos, combos grupales y promociones por horario para atraer clientes. Sin embargo, enfatiza que prefiere **tener control total sobre sus propias promociones**, aunque valora recibir sugerencias basadas en datos y comportamiento de los usuarios.
+
 ### 2.2.3 Análisis de entrevistas
 
 En este apartado se realiza un análisis de las entrevistas realizadas a los segmentos objetivo, identificando patrones, insights y oportunidades clave para el diseño de la solución.
