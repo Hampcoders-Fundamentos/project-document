@@ -213,6 +213,43 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - **Rol en conversaciones:** Le gusta participar activamente y hablar mucho, dependiendo del tema, tratando de transmitir sus ideas de la mejor forma.
 - **Expectativas e inquietudes sobre la aplicación:** Considera que la plataforma sería una excelente motivación para enfocarse en el habla. Los factores vitales para confiar en ella son el **precio** (saber de antemano la inversión) y la **seguridad** (verificación de los usuarios para evitar encuentros con extraños no filtrados o personas peligrosas).
 
+**Entrevista N°2: Ricardo Del Aguila Ayala**
+
+- Sexo: Masculino
+- Edad: 21 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Inicia en: 0:45
+- Duración: 9:00
+
+![Entrevista Ricardo](assets/img/cap2/entrevista-2.png)
+
+**Resumen de la entrevista:** 
+- **Contexto y métodos actuales:** Actualmente practica el idioma en sus ratos libres usando aplicaciones móviles como Duolingo. Antes tomaba cursos en academias, pero los tuvo que dejar.
+- **Principales limitaciones:** Su mayor obstáculo es la falta de tiempo para matricularse en clases formales. Además, siente que las aplicaciones móviles son muy básicas y se le dificulta seguir perfeccionando su nivel solo con ellas.
+- **Preferencias de entorno y lugares:** Prefiere un entorno con un enfoque **académico y formal**, ya que busca aplicarlo a su carrera universitaria y entorno laboral. Para los encuentros físicos, considera ideales las **cafeterías o lugares tranquilos** (como bares sin ruido excesivo) que permitan charlar cómodamente cara a cara y salir de la zona de confort de las pantallas.
+- **Motivaciones y perfil de compañeros:** Su meta es certificar su nivel de inglés, mejorar su fluidez y utilizarlo para su desarrollo profesional. Tiene disponibilidad para reunirse los fines de semana (sábados o domingos) por un par de horas. Le encantaría practicar con **personas nativas**, pues considera que de ellos se aprende mejor la forma natural de hablar, las expresiones y las jergas.
+- **Rol en conversaciones:** Adopta un rol muy directo. Prefiere decir justo lo necesario y no darle muchas vueltas a sus ideas ("no explayarse mucho") para evitar trabarse o dudar al momento de hablar.
+- **Expectativas e inquietudes sobre la aplicación:**  Espera que la aplicación sea eficiente y **segmente a los usuarios por niveles** (para no juntar a un avanzado con un principiante). Los factores vitales para él son la **seguridad y la confianza**, por lo que sugiere implementar perfiles verificados y un sistema de valoraciones (ratings) para saber la calidad y las intenciones de los participantes antes de reunirse. Además, busca un ambiente de apoyo, ya que en experiencias pasadas en EE. UU. llegó a sentir frustración o vergüenza cuando no le entendían.
+
+
+**Entrevista N°3: Eric Olivera Barzola**
+
+- Sexo: Masculino
+- Edad: 21 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Inicia en: 0:25
+- Duración: 7:45
+
+![Entrevista Eric](assets/img/cap2/entrevista-3.png)
+
+**Resumen de la entrevista:**
+- **Contexto y métodos actuales:** Utiliza herramientas digitales como Duolingo, además de consumir contenido en inglés (series y películas con subtítulos). Ocasionalmente practica con amigos cercanos, pero no asiste a clases formales actualmente.
+- **Principales limitaciones:** Presenta dificultades relacionadas con la falta de constancia debido a responsabilidades académicas y la dificultad para encontrar personas con quienes practicar en tiempo real. Además, experimenta vergüenza y miedo a equivocarse, especialmente al interactuar con desconocidos o al no contar con suficiente vocabulario.
+- **Preferencias de entorno y lugares:** Prefiere entornos académicos y estructurados, donde se sienta más cómodo y seguro. En cuanto a espacios físicos, opta por cafeterías, ya que las percibe como lugares tranquilos y adecuados para mantener conversaciones sin interrupciones.
+- **Motivaciones y perfil de compañeros:** Su principal motivación es el **desarrollo profesional**, reconociendo el inglés como una herramienta clave para acceder a mejores oportunidades laborales. Está dispuesto a asistir con una frecuencia de 1 a 2 veces por semana, dependiendo de su disponibilidad. Prefiere iniciar con personas de su mismo nivel, aunque también considera valioso interactuar con hablantes más avanzados progresivamente.
+- **Rol en conversaciones:** Tiende a adoptar un rol más **reservado al inicio**, participando poco mientras gana confianza. Con el tiempo, se vuelve más activo y participativo en la conversación.
+- **Expectativas e inquietudes sobre la aplicación:** Espera que la plataforma sea **fácil de usar** y permita visualizar el nivel de los participantes para formar grupos equilibrados. Los factores clave para generar confianza son la **verificación de perfiles**, la existencia de **reseñas** y la presencia de **moderadores o facilitadores**. Además, valora que las dinámicas eviten situaciones donde algunos participantes dominen la conversación y limiten la participación de otros.
+
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
 ### 2.2.3 Análisis de entrevistas
@@ -271,7 +308,7 @@ El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la s
 
 ### 2.3.4 As-is Scenario Mapping
 
-![](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
+![As-Is Segmento 1](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
 
 #### Áreas Negativas
 

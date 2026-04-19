@@ -63,6 +63,10 @@ Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de So
 
 Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 años. Mi lenguaje de programación más utilizado y favorito es TypeScript. Actualmente me encuentro desarrollando habilidades en áreas como DevOps y frameworks de desarrollo móvil.
 
+\end{minipage}
+
+\vspace{1cm}
+
 ## 1.2. Solution Profile 
 
 En esta sección el equipo describe el perfil de la solución, inluyendo el análisis mediante la metodología Lean UX
