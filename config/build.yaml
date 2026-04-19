@@ -9,7 +9,7 @@ input-files:
   #- report/40-cap4-implementation.md
   - report/90-conclusiones.md
   - report/91-bibliografia.md
-  - report/99-anexos.md
+  #- report/99-anexos.md
 
 output-file: dist/glottia-report.pdf
 
@@ -44,4 +44,5 @@ variables:
     - \usepackage{array}
     - \usepackage{booktabs}
     - \usepackage{tabularx}
+    - \renewcommand{\arraystretch}{1.3}
     

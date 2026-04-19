@@ -315,9 +315,71 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 ### 2.2.3 Análisis de entrevistas
 
+En este apartado se realiza un análisis de las entrevistas realizadas a los segmentos objetivo, identificando patrones, insights y oportunidades clave para el diseño de la solución.
+
+#### Segmento 1: Usuarios aprendices de idiomas (Análisis Estadístico)
+
+Total de entrevistas: 3
+
+A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han extraído métricas contundentes sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis estadístico respaldado visualmente:
+
+**1. Principales obstáculos en el aprendizaje**
+
+![Principales obstáculos en el aprendizaje](assets/img/cap2/analisis-entrevista-1.png)
+
+**Conclusión:** La *falta de espacios para práctica oral* representa una barrera absoluta (100%) para los entrevistados. Sumado a la falta de tiempo (66%) y la inseguridad (33%), esto corrobora la premisa de Glottia: existe una necesidad urgente de proveer entornos físicos accesibles, cercanos y amigables estructurados exclusivamente para la expresión oral.
+
+**2. Preferencias de nivel del compañero de conversación**
+
+![Preferencias de nivel del compañero de conversación](assets/img/cap2/analisis-entrevista-2.png)
+
+**Conclusión:** El 66% de los usuarios prefiere conversar con pares de su mismo nivel para generar mayor confianza y disminuir la presión al hablar (temor a ser juzgados), mientras que el 34% prefiere interactuar con nativos o usuarios nivel avanzado. Esto evidencia que el sistema de búsqueda o match de Glottia debe tener como prioridad el filtro por niveles de fluidez.
+
+**3. Factores de confianza exigidos a la plataforma**
+
+![Factores de confianza exigidos a la plataforma](assets/img/cap2/analisis-entrevista-3.png)
+
+**Conclusión:** Para atreverse a llevar la aplicación al plano presencial (reunirse), el requerimiento máximo (100%) es la *seguridad y verificación de perfiles*. Características como un sistema de reseñas y ver el nivel del compañero representan un factor importante para el 66% de la muestra. Esto indica arquitectónicamente que el *Core* inicial del diseño de software debe integrar fuertes validaciones de identidad (Identity Management).
+
+**4. Opinión y Nivel de Acuerdo con la Aplicación Glottia**
+
+![Opinión y Nivel de Acuerdo con la Aplicación Glottia](assets/img/cap2/analisis-entrevista-4.png)
+
+**Conclusión:** Existe una total validación del concepto. El 100% de la muestra lo consideró una excelente iniciativa y declaró estar completamente de acuerdo en que la plataforma aliviaría sus mayores frustraciones cotidianas de aprendizaje, lo cual avala contundentemente la viabilidad del mercado y la deseabilidad del producto.
+
+#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+
+Total de entrevistas: 3
+
+A partir de las entrevistas realizadas a los administradores de establecimientos, se han extraído métricas clave sobre su disposición, expectativas y condiciones para colaborar con una plataforma como Glottia. A continuación, se presenta el análisis estadístico respaldado visualmente:
+
+**1. Disposición a ofrecer su establecimiento como punto de encuentro**
+
+![Disposición a ofrecer su establecimiento como punto de encuentro](assets/img/cap2/analisis-entrevista-5.png)
+
+**Conclusión:** El 100% de los administradores muestra una disposición total para afiliarse a Glottia y prestar sus locales. Ven en la plataforma una iniciativa altamente viable que les permite atraer a un público joven y utilizar productivamente sus "horas muertas", confirmando la deseabilidad del modelo de negocio desde la perspectiva de la oferta (Supply-side).
+
+**2. Expectativas de consumo durante los encuentros**
+
+![Expectativas de consumo durante los encuentros](assets/img/cap2/analisis-entrevista-6.png)
+
+**Conclusión:** Existe un consenso (100%) en exigir un consumo mínimo garantizado (al menos una bebida por asistente) para justificar la ocupación de las mesas, con un especial interés en lograr la venta de alimentos o "combos grupales". Esto indica que Glottia debe establecer políticas claras de consumo mínimo dentro de los términos y condiciones de las reservas generadas desde la app.
+
+**3. Preferencia en la gestión de promociones e incentivos**
+
+![Preferencia en la gestión de promociones e incentivos](assets/img/cap2/analisis-entrevista-7.png)
+
+**Conclusión:** La totalidad de los entrevistados (100%) requiere tener autonomía absoluta para definir, configurar y activar sus propias promociones, rechazando que la aplicación genere descuentos automáticos sin su control. Arquitectónicamente, esto revalida la necesidad fundamental de desarrollar un **Panel Gestor (Dashboard B2B)** donde los aliados manejen directamente todo su inventario y cupones.
+
+**4. Expectativas estructurales de la aplicación para su negocio**
+
+![Expectativas estructurales de la aplicación para su negocio](assets/img/cap2/analisis-entrevista-8.png)
+
+**Conclusión:** Para mitigar su frustración actual relacionada a anulaciones y mesas bloqueadas innecesariamente, el 100% exige un sistema de reservas preciso con control estricto de aforo. Este requerimiento consolida la validación 100% digital (ej. **Check-in mediante código QR**) como una de las funciones *Core* indispensables a programar para garantizar el compromiso de los asistentes.
+
 ## 2.3 Needfinding
 
-En esta seección, el equipo realiza el proceso de búsqueda de necesidades en un método cualitativo.
+En esta seccción, el equipo realiza el proceso de búsqueda de necesidades en un método cualitativo.
 
 ### 2.3.1 User Personas
 
