@@ -314,7 +314,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
 
 
-**Entrevista N°1: Yamilie Francia**
+**Entrevista N°2: Yamilie Francia**
 
 - Sexo: Femenimo
 - Edad: 26 años
@@ -337,6 +337,30 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - **Expectativas estructurales de la app:** Espera que la aplicación permita gestionar reservas de forma clara, controlar aforo, reducir inasistencias mediante confirmaciones seguras y optimizar la organización del negocio, especialmente en horarios de baja demanda.
 
 - **Manejo de promociones e incentivos:** Está dispuesta a ofrecer descuentos, combos grupales y promociones por horario para atraer clientes. Sin embargo, enfatiza que prefiere **tener control total sobre sus propias promociones**, aunque valora recibir sugerencias basadas en datos y comportamiento de los usuarios.
+
+
+**Entrevista N°3: Mercedes Gonzalez**
+- Sexo: Femenimo
+- Edad: 42 años
+- Link: <https://youtu.be/RdPUO-An214>
+- Inicia en: 0:08
+- Duración: 7:24
+
+![Entrevista Mercedez](assets/img/cap2/entrevista-3-1.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto del establecimiento:** Mercedes González es una emprendedora que recientemente abrió su propia cafetería, donde ofrece productos como brownies, croissants y diversos tipos de café. Los horarios de mayor afluencia son por la mañana, de **8:30 a.m. a 10:00 a.m.**, y por la noche, de **6:00 p.m. a 8:00 p.m.**. Presenta horas de baja demanda entre las **2:00 p.m. y las 4:00 p.m.**, lo que representa una oportunidad para atraer nuevos clientes.
+
+- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de llamadas y WhatsApp, solicitando estas con un día de anticipación para grupos de **cuatro personas a más**. Para asegurar la reserva, solicita el **pago adelantado del 50%** del consumo estimado. Ante inasistencias, mantiene un margen de espera de **15 a 20 minutos** antes de liberar el espacio. Además, menciona que el ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer en tranquilidad.
+
+- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros de idiomas. Considera que el ambiente es ideal para este tipo de actividades y valora positivamente que el negocio aparezca en una plataforma para organizar encuentros, viéndolo como una excelente herramienta de **marketing y posicionamiento** para su marca.
+
+- **Expectativa de consumo:** La condición principal para el uso del espacio es que los asistentes **consuman los productos** de la cafetería, como café o repostería.
+
+- **Expectativas estructurales de la app:** La aplicación debe permitir gestionar y difundir **cupos máximos** para los encuentros. Además, espera que sea un sistema **intuitivo para confirmar asistencias**, que proporcione información sobre el tipo de cliente que asistirá y que no complique la labor operativa de los meseros.
+
+- **Manejo de promociones e incentivos:** Mercedes se muestra abierta a ofrecer **descuentos y promociones** para atraer a los usuarios de la aplicación. Sin embargo, enfatiza que los términos y condiciones de estos incentivos deben ser **conversados y acordados directamente** con la persona o entidad que solicita el servicio.
 
 ### 2.2.3 Análisis de entrevistas
 
