@@ -401,3 +401,54 @@ Se presentara los mapas de impacto realizados por cada segemnto
 
 
 ## 3.4	Product Backlog   
+
+En esta sección, el equipo organiza el Product Backlog en base a su valor para el negocio y su peso en Story Points.
+
+| Orden | User Story Id | Título | Descripción | Story Points |
+|------|--------------|--------|------------|--------------|
+| 1 | US01 | Registro de nuevo aprendiz | Como** una persona interesada en practicar idiomas **Quiero** registrarme en la plataforma con mi correo y contraseña **Para** poder acceder a la comunidad y a los encuentros. | 3 |
+| 2 | US03 | Inicio de sesión | **Como** usuario registrado (aprendiz o dueño de local) **Quiero** iniciar sesión con mi correo y contraseña **Para** acceder a mis funcionalidades personalizadas. | 3 |
+| 3 | US06 | Completar perfil de aprendiz | **Como** nuevo aprendiz **Quiero** completar mi perfil con mi idioma nativo, los idiomas que quiero practicar y mi nivel **Para** que otros usuarios me conozcan y el sistema me recomiende encuentros relevantes. | 3 |
+| 4 | US15 | Buscar encuentros | **Como** aprendiz **Quiero** buscar encuentros usando filtros por idioma, ciudad y fecha **Para** encontrar fácilmente una sesión de práctica que me interese. | 3 |
+| 5 | US16 | Ver detalles de encuentro | **Como** aprendiz **Quiero** ver los detalles completos de un encuentro **Para** saber el idioma, el tema, el lugar, la hora y quiénes más asistirán. | 2 |
+| 6 | US17 | Reservar encuentro | **Como** aprendiz **Quiero** reservar mi cupo en un encuentro que tenga plazas disponibles **Para** asegurar mi asistencia. | 5 |
+| 7 | US22 | Recordatorio de encuentro | **Como** aprendiz con una reserva **Quiero** recibir una notificación de recordatorio 24 horas antes del encuentro **Para** no olvidarme de asistir. | 2 |
+| 8 | US26 | Cancelar reserva | **Como** aprendiz **Quiero** poder cancelar mi reserva a un encuentro con antelación **Para** liberar mi cupo si no puedo asistir. | 3 |
+| 9 | US27 | Historial de encuentros | **Como** aprendiz **Quiero** tener un historial de los encuentros a los que he asistido **Para** recordar los lugares y las fechas. | 2 |
+| 10 | US25 | Feedback de encuentro | **Como** aprendiz que asistió a un encuentro **Quiero** dejar una calificación y un comentario sobre mi experiencia **Para** ayudar a otros usuarios y a los locales. | 3 |
+| 11 | US28 | Ver mapa de locales |  **Como** aprendiz **Quiero** ver locales disponibles según mi ubicación **Para** encontrar los lugares más cercanos donde para organizar encuentros. | 5 |
+| 12 | US02 | Registro de nuevo local | **Como** dueño de un local **Quiero** registrar mi negocio en la plataforma **Para** ofrecer mi espacio para los encuentros y ganar visibilidad. | 5 |
+| 13 | US10 | Registrar local | **Como** dueño de negocio (Partner) **Quiero** añadir los detalles de mi local, incluyendo nombre, dirección, aforo y horario **Para** que aparezca en la plataforma como un lugar disponible para encuentros. | 5 |
+| 14 | US13 | Definir consumo mínimo | **Como** Partner **Quiero** tener la opción de definir un consumo mínimo sugerido para los asistentes a encuentros en mi local **Para** asegurar un retorno económico. | 2 |
+| 15 | US11 | Editar local |  **Como** Partner **Quiero** poder editar los detalles de mi local registrado **Para** mantener la información actualizada (ej. cambio de horario). | 3 |
+| 16 | US12 | Añadir fotos del local | **Como** Partner **Quiero** subir varias fotos de mi local **Para** hacerlo más atractivo y mostrar el ambiente a los aprendices. | 3 |
+| 17 | US14 | Dashboard del local | **Como** Partner **Quiero** acceder a un resumen de la actividad de mi local **Para** entender rápidamente cuántos encuentros se han realizado y cuántas personas han asistido. | 5 |
+| 18 | US36 | Ver asistentes por mes |  **Como** Partner **Quiero** conocer la cantidad de asistentes en mi local cada mes mediante gráficos **Para** medir el impacto de la plataforma. | 5 |
+| 19 | US37 | Ver calificación promedio |  **Como** Partner **Quiero** ver la calificación promedio que los aprendices le han dado a los encuentros realizados en mi local **Para** evaluar la satisfacción del cliente. | 3 |
+| 20 | US29 | Ganar puntos | **Como** aprendiz **Quiero** ganar puntos de lealtad cada vez que hago check-in en un encuentro **Para** ser recompensado por mi participación activa. | 5 |
+| 21 | US30 | Ver puntos y nivel | **Como** aprendiz **Quiero** poder ver mi saldo total de puntos y mi nivel actual en mi perfil **Para** seguir mi progreso. | 1 |
+| 22 | US35 | Mantener racha | **Como** aprendiz **Quiero** que el sistema registre mi racha de asistencia semanal **Para** motivarme a participar de forma consistente. | 3 |
+| 23 | US31 | **Como** aprendiz **Quiero** desbloquear insignias al alcanzar ciertos hitos (ej. "Asistir a 5 encuentros de francés") **Para** sentir que logro algo. | 5 |
+| 24 | US41 | Enviar solicitud de contacto |  **Como** aprendiz **Quiero** poder enviar una solicitud de contacto a otra persona con la que interactué en un encuentro **Para** mantener la comunicación. | 3 |
+| 25 | US42 | Aceptar solicitudes |  **Como** aprendiz **Quiero** recibir notificaciones de nuevas solicitudes de contacto **Para** poder aceptarlas o rechazarlas. | 3 |
+| 26 | US43 | Ver contactos | **Como** aprendiz **Quiero** tener una lista de todos los usuarios con los que he conectado **Para** poder iniciar una conversación. | 2 |
+| 27 | US44 | Enviar mensajes | **Como** aprendiz **Quiero** poder enviar un mensaje directo a uno de mis contactos **Para** organizar una futura práctica de idiomas. | 5 |
+| 28 | US45 | Notificaciones de mensajes |  **Como** usuario **Quiero** recibir una notificación cuando uno de mis contactos me envía un mensaje **Para** poder responder a tiempo. | 5 |
+| 29 | US08 | Ver perfil de otros usuarios | **Como** aprendiz **Quiero** ver el perfil de otros asistentes a un encuentro **Para** conocer sus idiomas de interés y conectar con ellos.  | 2 |
+| 30 | US07 | Editar perfil |  **Como** aprendiz **Quiero** poder editar la información de mi perfil en cualquier momento **Para** mantenerla actualizada. | 2 |
+| 31 | US09 | Subir foto de perfil |  **Como** usuario **Quiero** subir una foto de perfil **Para** personalizar mi cuenta y que otros me reconozcan más fácilmente.| 2 |
+| 32 | US46 | Reportar usuario | **Como** usuario **Quiero** tener la opción de reportar a otro usuario por comportamiento inapropiado **Para** mantener un ambiente seguro y respetuoso en la comunidad. | 5 |
+| 33 | US47 | Dashboard admin | **Como** administrador de la plataforma **Quiero** acceder a información sobre el uso que se le da a la plataforma en mi local **Para** monitorear su buen funcionamiento. | 8 |
+| 34 | US48 | Gestionar usuarios | **Como** administrador **Quiero** poder ver la lista de todos los usuarios y poder desactivar una cuenta en caso de abuso **Para** mantener la calidad de la comunidad. | 5 |
+| 35 | US49 | Validar locales | **Como** administrador **Quiero** tener un proceso para validar y aprobar los nuevos locales que se registran **Para** asegurar que son lugares apropiados y reales. | 5 |
+| 36 | US50 | Gestionar reportes |  **Como** administrador **Quiero** ver una lista de todos los reportes enviados por los usuarios **Para** poder investigarlos y tomar acciones. | 8 |
+| 37 | US51 | Comunicación global | **Como** administrador **Quiero** poder enviar notificaciones o correos electrónicos a todos los usuarios **Para** comunicar novedades o mantenimientos de la plataforma.| 8 |
+| 38 | US18 | Confirmación con QR | **Como** aprendiz **Quiero** recibir una confirmación de mi reserva **Para** poder hacer check-in fácilmente al llegar al local. | 5 |
+| 39 | US20 | Check-in con QR |  **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **Para** para registrar mi participación y recebir los beneficios por ello. | 8 |
+| 40 | US23 | Lista de espera |  **Como** aprendiz **Quiero** unirme a una lista de espera si un encuentro está lleno **Para** tener la oportunidad de asistir si alguien cancela. | 3 |
+| 41 | US24 | Notificación de cupo | **Como** aprendiz en una lista de espera **Quiero** recibir una notificación inmediata si un cupo se libera **Para** poder reservarlo rápidamente. | 5 |
+| 42 | US04 | Cierre de sesión | **Como** usuario autenticado **Quiero** poder cerrar mi sesión **Para** proteger la privacidad de mi cuenta en dispositivos compartidos.  | 1 |
+| 43 | US05 | Recuperación de contraseña |  **Como** usuario registrado **Quiero** solicitar un enlace para restablecer mi contraseña si la he olvidado **Para** poder recuperar el acceso a mi cuenta. | 2 |
+| 44 | US38 | Ver horas pico | **Como** Partner **Quiero** ver un reporte que me muestre qué días de la semana y a qué horas se realizan más encuentros en mi local **Para** optimizar mi personal. | 8 |
+| 45 | US39 | Clientes nuevos vs recurrentes | **Como** Partner **Quiero** saber qué porcentaje de los asistentes son nuevos clientes versus personas que ya han venido antes **Para** medir la captación de nuevo público. | 8 |
+| 46 | US40 | Descargar reportes | **Como** Partner **Quiero** poder descargar un resumen la información de mi actividad en un formato que pueda usar fuera de la plataforma **Para** mis registros internos.| 5 |
