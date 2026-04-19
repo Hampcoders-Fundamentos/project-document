@@ -18,5 +18,7 @@
 | **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Desarrollo del Customer Journey Map (As-Is) para identificar problemas actuales del usuario |
 | **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Apoyo en la realización y análisis de entrevistas a usuarios |
 | **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Creación y priorización del Product Backlog basado en valor de negocio |
+| **TB1** | 12/04/2026 | **Ivo Machado Bracamonte** | Apoyo en la definición del Lean UX Assumptions e Hipotesis |
+| **TB1** | 15/04/2026 | **Ivo Machado Bracamonte** | Creación y priorización del Product Backlog basado en valor de negocio |
 
 \newpage
