@@ -41,13 +41,25 @@ Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Softw
 **Código:** U20231E215
 
 Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de Software en la UPC, sede San Miguel. Tengo 19 años y estoy cursando el sexto ciclo académico. Me considero una persona adaptativa, perseverante y comprometida con lo que me propongo. En este proyecto tengo como objetivo buscar múltiples soluciones que beneficien a todo el grupo. Por experiencia propia, suelo trabajar de manera colaborativa y eficaz. Al terminar la carrera de ingeniería, me gustaría estudiar una segunda carrera: Gastronomía y Gestión Culinaria.
+\end{minipage}
+
+\vspace{1cm}
 
 ---
+\begin{minipage}{0.3\textwidth}
+\includegraphics[width=\linewidth]{assets/img/cap1/team/ivo.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.65\textwidth}
 
-Ivo Marcelo Machado Bracamonte
+\textbf{Ivo Marcelo Machado Bracamonte} \\
 **Código:** U20231C368
 
 Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ingeniería de Software en la UPC. Me caracterizo por mi mentalidad resiliente, ya que no me rindo con facilidad y no le tengo miedo al error. Tengo empatía con los demás, disfruto resolver problemas y busco mejorar constantemente en lo que hago. Poseo conocimientos en lenguajes de programación como C++, Java y Python, así como en HTML, CSS y JavaScript. Además, domino el inglés y tengo conocimientos de portugués.
+
+\end{minipage}
+
+\vspace{1cm}
 
 ---
 
@@ -78,7 +90,6 @@ Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de So
 **Código:** U202114548
 
 Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 años. Mi lenguaje de programación más utilizado y favorito es TypeScript. Actualmente me encuentro desarrollando habilidades en áreas como DevOps y frameworks de desarrollo móvil.
-
 \end{minipage}
 
 \vspace{1cm}
@@ -219,7 +230,7 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 #### 1.2.3.4 Lean UX Canvas
 
-![](assets/img/cap1/canvas/lean-ux-canvas-Glottia.png)
+![](assets/img/cap1/canvas/lean-ux-canvas-Glottia.jpg)
 
 ## 1.3 Segmentos objetivo
 
