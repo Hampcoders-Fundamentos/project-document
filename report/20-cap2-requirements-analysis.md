@@ -7,59 +7,20 @@ En esta sección se identifican y describen los principales competidores de Glot
 ### 2.1.1 Análisis Competitivo
 **Competitive Analysis Landscape**
 
-
-#### 2.1.1.1 Objetivo del análisis
-| Plataforma | Objetivo del análisis |
-|-----------|----------------------|
-| Glottia | Identificar oportunidades de diferenciación mediante experiencias presenciales y virtuales para la práctica de idiomas. |
-| HelloTalk | Comprender su enfoque digital en aprendizaje. |
-| Tandem | Analizar su comunidad global. |
-| Meetup | Evaluar su modelo de eventos sociales. |
-
-
-#### 2.1.1.2 Perfil Overview
-
-| Plataforma | Descripción |
-|-----------|-------------|
-| Glottia | Plataforma que conecta personas para practicar idiomas en espacios físicos y virtuales. |
-| HelloTalk | App de intercambio de idiomas con chat y correcciones. |
-| Tandem | Plataforma de intercambio con hablantes nativos. |
-| Meetup | Plataforma de organización de eventos sociales. |
-
-#### 2.1.1.3 Ventaja Competitiva
-
-| Plataforma | Valor ofrecido |
-|-----------|----------------|
-| Glottia | Experiencia híbrida (presencial + digital) y conexión cultural. |
-| HelloTalk | Corrección en tiempo real y herramientas integradas. |
-| Tandem | Conexión global con hablantes nativos. |
-| Meetup | Amplia red de eventos y usuarios. |
-
-
-#### 2.1.1.4 Perfil de Marketing
-
-| Plataforma | Mercado objetivo | Estrategias de marketing |
-|-----------|------------------|---------------------------|
-| Glottia | Jóvenes (16-40) y establecimientos | Redes sociales, alianzas con locales, eventos |
-| HelloTalk | Estudiantes de idiomas | Marketing digital, comunidad |
-| Tandem | Usuarios globales | Marketing digital, app |
-| Meetup | Público general | SEO, eventos, comunidades |
-
-#### 2.1.1.4.5 Perfil de Producto
-| Plataforma | Productos & Servicios | Precios & Costos | Canales de distribución |
-|-----------|------------------------|------------------|--------------------------|
-| Glottia | Encuentros presenciales y virtuales | Freemium + comisiones | Web + App + espacios físicos |
-| HelloTalk | Chat, traducción, corrección | Freemium + premium | App móvil |
-| Tandem | Chat, videollamadas | Freemium + suscripción | App móvil |
-| Meetup | Eventos sociales | Gratuito / eventos pagos | Web + App |
-
-#### 2.1.1.4.6 Análisis SWOT
-| Plataforma | Fortalezas | Debilidades | Oportunidades | Amenazas |
-|-----------|-------------|--------------|----------------|------------|
-| Glottia | Experiencia híbrida, alianzas, enfoque social | Dependencia de locales | Crecimiento del aprendizaje social | Competidores digitales fuertes |
-| HelloTalk | Gran comunidad | No presencial | Expansión digital | Nuevas plataformas híbridas |
-| Tandem | Conexión con nativos | Solo digital | Crecimiento global | Competencia innovadora |
-| Meetup | Plataforma consolidada | No especializado en idiomas | Más eventos sociales | Plataformas nicho |
+| **Categoría** | **Subcategoría** | **Glottia (Startup)** | **HelloTalk (Competidor 1)** | **Tandem (Competidor 2)** | **Meetup (Competidor 3)** |
+|--------------|----------------|----------------------|------------------------------|---------------------------|----------------------------|
+| **Objetivo del análisis** | ¿Por qué llevar a cabo este análisis? | Identificar oportunidades de diferenciación mediante experiencias presenciales y virtuales para la práctica de idiomas | Comprender su enfoque digital en aprendizaje | Analizar su comunidad global | Evaluar su modelo de eventos sociales |
+| **Perfil Overview** | Descripción | Plataforma que conecta personas para practicar idiomas en espacios físicos y virtuales | App de intercambio de idiomas con chat y correcciones | Plataforma de intercambio con hablantes nativos | Plataforma de organización de eventos sociales |
+| **Ventaja competitiva** | Valor ofrecido | Experiencia híbrida (presencial + digital) y conexión cultural | Corrección en tiempo real y herramientas integradas | Conexión global con hablantes nativos | Amplia red de eventos y usuarios |
+| **Perfil de Marketing** | Mercado objetivo | Jóvenes (16-40) y establecimientos | Estudiantes de idiomas | Usuarios globales | Público general |
+|  | Estrategias de marketing | Redes sociales, alianzas con locales, eventos | Marketing digital, comunidad | Marketing digital, app | SEO, eventos, comunidades |
+| **Perfil de Producto** | Productos & Servicios | Encuentros presenciales y virtuales | Chat, traducción, corrección | Chat, videollamadas | Eventos sociales |
+|  | Precios & Costos | Freemium + comisiones | Freemium + premium | Freemium + suscripción | Gratuito / eventos pagos |
+|  | Canales de distribución | Web + App + espacios físicos | App móvil | App móvil | Web + App |
+| **Análisis SWOT** | Fortalezas | Experiencia híbrida, alianzas, enfoque social | Gran comunidad | Conexión con nativos | Plataforma consolidada |
+|  | Debilidades | Dependencia de locales | No presencial | Solo digital | No especializado en idiomas |
+|  | Oportunidades | Crecimiento del aprendizaje social | Expansión digital | Crecimiento global | Más eventos sociales |
+|  | Amenazas | Competidores digitales fuertes | Nuevas plataformas híbridas | Competencia innovadora | Plataformas nicho |
 
 ### 2.1.2 Análisis SWOT
 
@@ -427,9 +388,6 @@ A partir de las entrevistas realizadas a los administradores de establecimientos
 **Conclusión:** Para mitigar su frustración actual relacionada a anulaciones y mesas bloqueadas innecesariamente, el 100% exige un sistema de reservas preciso con control estricto de aforo. Este requerimiento consolida la validación 100% digital (ej. **Check-in mediante código QR**) como una de las funciones *Core* indispensables a programar para garantizar el compromiso de los asistentes.
 
 ## 2.3 Needfinding
-
-En esta seccción, el equipo realiza el proceso de búsqueda de necesidades en un método cualitativo.
-
 ### 2.3.1 User Personas
 
 En la presente sección se presentan las fichas de User Persona elaboradas teniendo en cuenta las entrevistas realizadas y analizadas previamente y la revisión de soluciones existentes en el mercado. En cada arquetipo se presentan las características demográficas, de personalidad, los objetivos, las motivaciones, frustraciones y preferencias de los usuarios clave de cada segmento. La construcción de estos User Persona se basa en resultados y análisis obtenidos durante la investigación previa con el objetivo de tomar decisiones de diseño y desarrollo adecuadas para resolver los problemas identificados.
@@ -448,35 +406,26 @@ A continuación, se presenta el User Task Matrix  alineada a los User Personas i
 
 Esta matriz categoriza las acciones principales según la etapa de interacción de cada usuario con la plataforma Glottia, valorando la frecuencia con que interactúan y la criticidad de la funcionalidad.
 
-\begin{longtable}{p{4cm} p{3cm} p{2cm} p{2cm} p{2cm}}
-\toprule
-Etapa / Tarea Principal & Aprendiz (Sofía) & Admin. Local (Enzo) & Frecuencia & Importancia \\
-\midrule
-
-\textbf{Onboarding \& Configuración} & & & & \\
-Registrar cuenta e iniciar sesión en Glottia & Sí & Sí & Única vez & Alta \\
-Completar perfil personal. (idiomas, nivel, gustos) & Sí & No & Única vez & Alta \\
-Configurar perfil del local. (fotos, ubicación, políticas) & No & Sí & Única vez & Alta \\
-Definir horarios de disponibilidad. & No & Sí & Ocasional & Alta \\
-
-\textbf{Descubrimiento \& Reservas} & & & & \\
-Explorar y filtrar encuentros. & Sí & No & Frecuente & Alta \\
-Reservar cupo en mesa temática. & Sí & No & Frecuente & Alta \\
-Gestionar reservas y aforo. & No & Sí & Frecuente & Alta \\
-
-\textbf{Durante el Encuentro} & & & & \\
-Mostrar código QR (Check-in). & Sí & No & Frecuente & Alta \\
-Validar ingresos (Check-in). & No & Sí & Frecuente & Alta \\
-Redimir descuentos. & Sí & No & Frecuente & Alta \\
-
-\textbf{Retención \& Análisis} & & & & \\
-Calificar experiencia. & Sí & Sí & Frecuente & Media \\
-Revisar progreso. & Sí & No & Frecuente & Alta \\
-Visualizar dashboard. & No & Sí & Frecuente & Alta \\
-Activar promociones. & No & Sí & Ocasional & Media \\
-
-\bottomrule
-\end{longtable}
+| Etapa / Tarea Principal | Segmento 1: Aprendiz (Sofía) | Segmento 2: Admin. Local (Enzo) | Frecuencia | Importancia |
+| :--- | :---: | :---: | :---: | :---: |
+| **Onboarding & Configuración** | | | | |
+| Registrar cuenta e iniciar sesión en Glottia | Sí | Sí | Única vez | Alta |
+| Completar perfil personal (idiomas de interés, nivel de fluidez, gustos) | Sí | - | Única vez | Alta |
+| Configurar perfil del local (fotos del ambiente, ubicación, políticas) | - | Sí | Única vez | Alta |
+| Definir horarios de disponibilidad (enfocado en horas valle o de baja demanda) | - | Sí | Ocasional | Alta |
+| **Descubrimiento & Gestión de Reservas** | | | | |
+| Explorar y filtrar encuentros presenciales (por idioma, nivel, cercanía geográfica) | Sí | - | Frecuente | Alta |
+| Reservar cupo seguro en una mesa temática para practicar en grupo | Sí | - | Frecuente | Alta |
+| Monitorear y gestionar las reservas activas para controlar el aforo máximo | - | Sí | Frecuente | Alta |
+| **Durante el Encuentro (Dinámica Presencial)** | | | | |
+| Mostrar código QR de reserva para registrar asistencia (Check-in) | Sí | - | Frecuente | Alta |
+| Escanear y validar ingresos (Check-in) para mantener el orden y seguridad | - | Sí | Frecuente | Alta |
+| Redimir descuentos y promociones en consumos por pertenecer al encuentro | Sí | - | Frecuente | Alta |
+| **Retención, Análisis & Gamificación** | | | | |
+| Calificar el espacio, la organización y la experiencia post-encuentro | Sí | Sí | Frecuente | Media |
+| Revisar progreso de aprendizaje (puntos de lealtad, insignias de logros) | Sí | - | Frecuente | Alta |
+| Visualizar el dashboard analítico (retención de clientes, impacto en ventas) | - | Sí | Frecuente | Alta |
+| Activar promociones personalizadas para fidelizar a usuarios recurrentes | - | Sí | Ocasional | Media |
 
 *(Leyenda: **Sí** = El segmento realiza la tarea de forma directa; **-** = El segmento no realiza o no requiere acceso a esta tarea)*
 
@@ -490,9 +439,18 @@ El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la s
 
 ### 2.3.3 Empathy Maps
 
+#### Empathy Map para los dueños de cafeterias.
+
+![](assets/img/cap2/empathy-map-enzo-fernandez.png)
+
+---
+
+#### Empathy Map para los aprendices.
+![](assets/img/cap2/empathy-map-sofia-ramirez.png)
+
 ### 2.3.4 As-is Scenario Mapping
 
-![As-Is Segmento 1](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
+![](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
 
 #### Áreas Negativas
 
