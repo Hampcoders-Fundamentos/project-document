@@ -19,6 +19,14 @@
 | **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Apoyo en la realización y análisis de entrevistas a usuarios |
 | **TB1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Creación y priorización del Product Backlog basado en valor de negocio |
 | **TB1** | 12/04/2026 | **Ivo Machado Bracamonte** | Apoyo en la definición del Lean UX Assumptions e Hipotesis |
+<<<<<<< HEAD
 | **TB1** | 15/04/2026 | **Ivo Machado Bracamonte** | Apoyo en la definición del User Persona |
+=======
+| **TB1** | 15/04/2026 | **Ivo Machado Bracamonte** | Creación y priorización del Product Backlog basado en valor de negocio |
+| **TB1** | 18/04/2026 | **Contreras López, Leandro Saul** | Elaboración del Impact Map para definir objetivos de negocio y alineación de funcionalidades |
+| **TB1** | 18/04/2026 | **Contreras López,  Leandro Saul** | Apoyo en la definición del Lean UX Assumptions e Hipotesis |
+| **TB1** | 18/04/2026 | **Contreras López, Leandro Saul** | Apoyo en la realización y análisis de entrevistas a usuarios |
+| **TB1** | 18/04/2026 | **Contreras López,  Leandro Saul** | Creación y priorización del Product Backlog basado en valor de negocio |
+>>>>>>> f7f88707914ab7a51e455badc3250336183bece8
 
 \newpage
