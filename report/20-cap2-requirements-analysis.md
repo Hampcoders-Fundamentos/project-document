@@ -189,7 +189,179 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio?
 - ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
 
-### 2.2.2
+### 2.2.2 Registro de entrevistas
+
+En esta sección se documentan las entrevistas a los segmentos respectivos.
+
+#### Segmento 1: Usuarios aprendices de idiomas
+
+**Entrevista N°1: Alexander Gabriel Montoya**
+
+- Sexo: Masculino
+- Edad: 20 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Inicia en: 0:21
+- Duración: 6:44
+
+![Entrevista Alexander](assets/img/cap2/entrevista-1-1.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto y métodos actuales:** Integra el inglés en su vida cotidiana (viendo series, leyendo), pero no utiliza métodos formales ni plataformas especializadas.
+- **Principales limitaciones:** Su mayor dificultad es la falta de práctica oral. Siente que las ideas suenan bien en su cabeza, pero al hablar le cuesta poder aterrizar la idea y pronunciar correctamente.
+- **Preferencias de entorno y lugares:** Prefiere conversar con desconocidos porque siente que la charla fluye de manera más fácil. Su lugar ideal para estos encuentros presenciales son las **cafeterías** por ser espacios sociales, cotidianos y cómodos.
+- **Motivaciones y perfil de compañeros:** Busca desarrollar habilidades blandas y utilizar el idioma para fines sociales y posiblemente académicos (viajar a estudiar). Prefiere practicar con personas de su **mismo nivel** para favorecer un aprendizaje y desarrollo mutuo. Asistiría con una frecuencia moderada adaptándose a sus horarios de universidad.
+- **Rol en conversaciones:** Le gusta participar activamente y hablar mucho, dependiendo del tema, tratando de transmitir sus ideas de la mejor forma.
+- **Expectativas e inquietudes sobre la aplicación:** Considera que la plataforma sería una excelente motivación para enfocarse en el habla. Los factores vitales para confiar en ella son el **precio** (saber de antemano la inversión) y la **seguridad** (verificación de los usuarios para evitar encuentros con extraños no filtrados o personas peligrosas).
+
+**Entrevista N°2: Ricardo Del Aguila Ayala**
+
+- Sexo: Masculino
+- Edad: 21 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Inicia en: 0:45
+- Duración: 9:00
+
+![Entrevista Ricardo](assets/img/cap2/entrevista-2.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto y métodos actuales:** Actualmente practica el idioma en sus ratos libres usando aplicaciones móviles como Duolingo. Antes tomaba cursos en academias, pero los tuvo que dejar.
+- **Principales limitaciones:** Su mayor obstáculo es la falta de tiempo para matricularse en clases formales. Además, siente que las aplicaciones móviles son muy básicas y se le dificulta seguir perfeccionando su nivel solo con ellas.
+- **Preferencias de entorno y lugares:** Prefiere un entorno con un enfoque **académico y formal**, ya que busca aplicarlo a su carrera universitaria y entorno laboral. Para los encuentros físicos, considera ideales las **cafeterías o lugares tranquilos** (como bares sin ruido excesivo) que permitan charlar cómodamente cara a cara y salir de la zona de confort de las pantallas.
+- **Motivaciones y perfil de compañeros:** Su meta es certificar su nivel de inglés, mejorar su fluidez y utilizarlo para su desarrollo profesional. Tiene disponibilidad para reunirse los fines de semana (sábados o domingos) por un par de horas. Le encantaría practicar con **personas nativas**, pues considera que de ellos se aprende mejor la forma natural de hablar, las expresiones y las jergas.
+- **Rol en conversaciones:** Adopta un rol muy directo. Prefiere decir justo lo necesario y no darle muchas vueltas a sus ideas ("no explayarse mucho") para evitar trabarse o dudar al momento de hablar.
+- **Expectativas e inquietudes sobre la aplicación:**  Espera que la aplicación sea eficiente y **segmente a los usuarios por niveles** (para no juntar a un avanzado con un principiante). Los factores vitales para él son la **seguridad y la confianza**, por lo que sugiere implementar perfiles verificados y un sistema de valoraciones (ratings) para saber la calidad y las intenciones de los participantes antes de reunirse. Además, busca un ambiente de apoyo, ya que en experiencias pasadas en EE. UU. llegó a sentir frustración o vergüenza cuando no le entendían.
+
+
+**Entrevista N°3: Eric Olivera Barzola**
+
+- Sexo: Masculino
+- Edad: 21 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Inicia en: 0:25
+- Duración: 7:45
+
+![Entrevista Eric](assets/img/cap2/entrevista-3.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto y métodos actuales:** Utiliza herramientas digitales como Duolingo, además de consumir contenido en inglés (series y películas con subtítulos). Ocasionalmente practica con amigos cercanos, pero no asiste a clases formales actualmente.
+- **Principales limitaciones:** Presenta dificultades relacionadas con la falta de constancia debido a responsabilidades académicas y la dificultad para encontrar personas con quienes practicar en tiempo real. Además, experimenta vergüenza y miedo a equivocarse, especialmente al interactuar con desconocidos o al no contar con suficiente vocabulario.
+- **Preferencias de entorno y lugares:** Prefiere entornos académicos y estructurados, donde se sienta más cómodo y seguro. En cuanto a espacios físicos, opta por cafeterías, ya que las percibe como lugares tranquilos y adecuados para mantener conversaciones sin interrupciones.
+- **Motivaciones y perfil de compañeros:** Su principal motivación es el **desarrollo profesional**, reconociendo el inglés como una herramienta clave para acceder a mejores oportunidades laborales. Está dispuesto a asistir con una frecuencia de 1 a 2 veces por semana, dependiendo de su disponibilidad. Prefiere iniciar con personas de su mismo nivel, aunque también considera valioso interactuar con hablantes más avanzados progresivamente.
+- **Rol en conversaciones:** Tiende a adoptar un rol más **reservado al inicio**, participando poco mientras gana confianza. Con el tiempo, se vuelve más activo y participativo en la conversación.
+- **Expectativas e inquietudes sobre la aplicación:** Espera que la plataforma sea **fácil de usar** y permita visualizar el nivel de los participantes para formar grupos equilibrados. Los factores clave para generar confianza son la **verificación de perfiles**, la existencia de **reseñas** y la presencia de **moderadores o facilitadores**. Además, valora que las dinámicas eviten situaciones donde algunos participantes dominen la conversación y limiten la participación de otros.
+
+#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+
+**Entrevista N°1: Virgilio Sanchez**
+
+- Sexo: Masculino
+- Edad: 65 años
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQBEM5B_aIDCSLpXh7So9i2xAZHFPevkYbwJ9FiRhPvnYc4?e=3lSEOG&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D>
+- Inicia en: 0:36
+- Duración: 5:56
+
+![Entrevista Virgilio](assets/img/cap2/entrevista-2-1.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto del establecimiento:** Administra una panadería/cafetería muy cercana a una universidad. Su horario punta es por las mañanas (7 a 9 AM) y el negocio familiar cuenta con un total de 4 sucursales en el distrito.
+- **Gestión de grupos y reservas:** Actualmente no manejan reservas de mesas. Tuvieron malas experiencias pasadas con pedidos muy grandes que no fueron pagados, por lo que es vital un sistema de compromiso seguro.
+- **Disposición como punto de encuentro:** Está totalmente dispuesto y le parece una gran idea. Comenta que los universitarios ya frecuentan el local para hacer trabajos o estudiar, por lo que el ambiente casual se adapta perfectamente a reuniones para practicar idiomas, sin imponer condiciones restrictivas.
+- **Expectativa de consumo:** Espera que, mientras conversan, los estudiantes soliciten productos de la vitrina como bocaditos (empanadas, alfajores, pasteles, trozos de pizza) y bebidas (café o gaseosas).
+- **Expectativas estructurales de la app:** Espera que la aplicación funcione como una herramienta de visibilidad, indicando su ubicación exacta, cómo llegar y su catálogo de productos para atraer más consumidores a sus locales.
+- **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
+
+
+**Entrevista N°2: Yamilie Francia**
+
+- Sexo: Femenimo
+- Edad: 26 años
+- Link: <https://www.youtube.com/watch?v=Y0F_L92XEGc>
+- Inicia en: 0:06
+- Duración: 5:49
+
+![Entrevista Yamile](assets/img/cap2/entrevista-Yamile.png)
+
+**Resumen de la entrevista:**
+
+- **Contexto del establecimiento:** Administra la cafetería "21 Grados" en Carmen de la Legua. Sus horarios de mayor afluencia son de 8:00 a.m. a 11:00 a.m. y por la noche, mientras que presenta horas de baja demanda entre las 2:00 p.m. y las 5:00 p.m., lo que representa una oportunidad para atraer nuevos clientes.
+
+- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de WhatsApp y redes sociales, registrándolas manualmente en cuadernos. Ha tenido problemas con cancelaciones sin previo aviso, lo que genera pérdidas y desorganización, por lo que considera necesario un sistema más confiable.
+
+- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros. Considera que el ambiente es ideal para este tipo de actividades y que puede atraer a un público joven y dinámico, siempre que no afecte a sus clientes habituales.
+
+- **Expectativa de consumo:** Espera como mínimo el consumo de una bebida por asistente, aunque considera ideal incentivar la compra de alimentos o combos grupales para aumentar el ticket promedio.
+
+- **Expectativas estructurales de la app:** Espera que la aplicación permita gestionar reservas de forma clara, controlar aforo, reducir inasistencias mediante confirmaciones seguras y optimizar la organización del negocio, especialmente en horarios de baja demanda.
+
+- **Manejo de promociones e incentivos:** Está dispuesta a ofrecer descuentos, combos grupales y promociones por horario para atraer clientes. Sin embargo, enfatiza que prefiere **tener control total sobre sus propias promociones**, aunque valora recibir sugerencias basadas en datos y comportamiento de los usuarios.
+
+### 2.2.3 Análisis de entrevistas
+
+En este apartado se realiza un análisis de las entrevistas realizadas a los segmentos objetivo, identificando patrones, insights y oportunidades clave para el diseño de la solución.
+
+#### Segmento 1: Usuarios aprendices de idiomas (Análisis Estadístico)
+
+Total de entrevistas: 3
+
+A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han extraído métricas contundentes sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis estadístico respaldado visualmente:
+
+**1. Principales obstáculos en el aprendizaje**
+
+![Principales obstáculos en el aprendizaje](assets/img/cap2/analisis-entrevista-1.png)
+
+**Conclusión:** La *falta de espacios para práctica oral* representa una barrera absoluta (100%) para los entrevistados. Sumado a la falta de tiempo (66%) y la inseguridad (33%), esto corrobora la premisa de Glottia: existe una necesidad urgente de proveer entornos físicos accesibles, cercanos y amigables estructurados exclusivamente para la expresión oral.
+
+**2. Preferencias de nivel del compañero de conversación**
+
+![Preferencias de nivel del compañero de conversación](assets/img/cap2/analisis-entrevista-2.png)
+
+**Conclusión:** El 66% de los usuarios prefiere conversar con pares de su mismo nivel para generar mayor confianza y disminuir la presión al hablar (temor a ser juzgados), mientras que el 34% prefiere interactuar con nativos o usuarios nivel avanzado. Esto evidencia que el sistema de búsqueda o match de Glottia debe tener como prioridad el filtro por niveles de fluidez.
+
+**3. Factores de confianza exigidos a la plataforma**
+
+![Factores de confianza exigidos a la plataforma](assets/img/cap2/analisis-entrevista-3.png)
+
+**Conclusión:** Para atreverse a llevar la aplicación al plano presencial (reunirse), el requerimiento máximo (100%) es la *seguridad y verificación de perfiles*. Características como un sistema de reseñas y ver el nivel del compañero representan un factor importante para el 66% de la muestra. Esto indica arquitectónicamente que el *Core* inicial del diseño de software debe integrar fuertes validaciones de identidad (Identity Management).
+
+**4. Opinión y Nivel de Acuerdo con la Aplicación Glottia**
+
+![Opinión y Nivel de Acuerdo con la Aplicación Glottia](assets/img/cap2/analisis-entrevista-4.png)
+
+**Conclusión:** Existe una total validación del concepto. El 100% de la muestra lo consideró una excelente iniciativa y declaró estar completamente de acuerdo en que la plataforma aliviaría sus mayores frustraciones cotidianas de aprendizaje, lo cual avala contundentemente la viabilidad del mercado y la deseabilidad del producto.
+
+#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+
+Total de entrevistas: 3
+
+A partir de las entrevistas realizadas a los administradores de establecimientos, se han extraído métricas clave sobre su disposición, expectativas y condiciones para colaborar con una plataforma como Glottia. A continuación, se presenta el análisis estadístico respaldado visualmente:
+
+**1. Disposición a ofrecer su establecimiento como punto de encuentro**
+
+![Disposición a ofrecer su establecimiento como punto de encuentro](assets/img/cap2/analisis-entrevista-5.png)
+
+**Conclusión:** El 100% de los administradores muestra una disposición total para afiliarse a Glottia y prestar sus locales. Ven en la plataforma una iniciativa altamente viable que les permite atraer a un público joven y utilizar productivamente sus "horas muertas", confirmando la deseabilidad del modelo de negocio desde la perspectiva de la oferta (Supply-side).
+
+**2. Expectativas de consumo durante los encuentros**
+
+![Expectativas de consumo durante los encuentros](assets/img/cap2/analisis-entrevista-6.png)
+
+**Conclusión:** Existe un consenso (100%) en exigir un consumo mínimo garantizado (al menos una bebida por asistente) para justificar la ocupación de las mesas, con un especial interés en lograr la venta de alimentos o "combos grupales". Esto indica que Glottia debe establecer políticas claras de consumo mínimo dentro de los términos y condiciones de las reservas generadas desde la app.
+
+**3. Preferencia en la gestión de promociones e incentivos**
+
+![Preferencia en la gestión de promociones e incentivos](assets/img/cap2/analisis-entrevista-7.png)
+
+**Conclusión:** La totalidad de los entrevistados (100%) requiere tener autonomía absoluta para definir, configurar y activar sus propias promociones, rechazando que la aplicación genere descuentos automáticos sin su control. Arquitectónicamente, esto revalida la necesidad fundamental de desarrollar un **Panel Gestor (Dashboard B2B)** donde los aliados manejen directamente todo su inventario y cupones.
+
+**4. Expectativas estructurales de la aplicación para su negocio**
+
+![Expectativas estructurales de la aplicación para su negocio](assets/img/cap2/analisis-entrevista-8.png)
+
+**Conclusión:** Para mitigar su frustración actual relacionada a anulaciones y mesas bloqueadas innecesariamente, el 100% exige un sistema de reservas preciso con control estricto de aforo. Este requerimiento consolida la validación 100% digital (ej. **Check-in mediante código QR**) como una de las funciones *Core* indispensables a programar para garantizar el compromiso de los asistentes.
 
 ## 2.3 Needfinding
 ### 2.3.1 User Personas
