@@ -179,8 +179,22 @@ Los atributos de calidad definen el comportamiento esperado del sistema Glottia 
 | **Modificabilidad (evolutivo)** | Equipo de desarrollo | Despliegue de nueva versión o cambio en algoritmo de emparejado | Producción durante ciclo de entrega | Contextos desacoplados, pipeline de integración y entrega continua (CI/CD), flags de funcionalidad | Despliegue con impacto acotado y posibilidad de reversión; compatibilidad hacia atrás mantenida | Despliegue canario < 15 min; rollback automático si falla |
 | **Usabilidad** | Aprendiz / propietario | Flujo de reserva, confirmación y notificaciones en móviles y web | Uso típico en dispositivos móviles y navegadores | Interfaz de usuario, API de aplicación y sistema de notificaciones en tiempo real | Retroalimentación inmediata en las interacciones; notificaciones claras y sincronizadas entre participantes | Retroalimentación < 0,5 s; tasa de error de usuario < 2%; tareas clave ≤ 3 pasos |
 
-### 4.2.4 Constraints
-### 4.2.5 Architectural Concerns
+### 4.2.4 Constraints 
+
+En arquitectura de software, las  **constraints (restricciones)**  son básicamente  **límites o condiciones que el sistema debe respetar sí o sí**  al momento de diseñar y construir una aplicación.
+
+En Glottia hemos definido restricciones por categoría para adaptarnos a ellas y poder manejar una arquitectura escalable y sostenible.
+
+|Categoría|Detalles de restricción|
+|-----------|---------------------|
+|**Plataforma y Entorno**| Despliegue obligatorio en  **Android (mínimo API 24)**  e  **iOS (mínimo v15)**  mediante base de código única en  **Flutter/Kotlin Multiplatform**.|
+|**Infraestructura Cloud**|Uso de  **Firebase**  como BaaS (Backend as a Service) para autenticación y base de datos en tiempo real.|
+|**Persistencia de Datos**|La base de datos local debe implementarse con  **Room (Android)**  o  **SQLite**  para soporte offline.|
+|**Cumplimiento Legal**|Obligatoriedad de cumplir con la  **Ley N.º 29733**  (Ley de Protección de Datos Personales en Perú), especialmente en el cifrado de correos y nombres de usuarios.|
+|**Integraciones Externas**|Las llamadas a APIs de terceros (ej. Google Translate API o DeepL) deben estar limitadas por cuotas de consumo para evitar sobrecostos.|
+|**Metodología de Trabajo**|El desarrollo debe seguir un flujo de  **GitFlow**  y documentación de arquitectura basada en el modelo **C4**.|
+
+### 4.2.5 Architectural Concerns 
 
 ## 4.3 ADD Iterations
 ### 4.2.X Iteration N: <Iteration Name>
