@@ -30,9 +30,111 @@ Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders 
 | Seguridad y Protección de información sencible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sencible. |                              |
 
 ### 4.1.3 Context Diagram
+
+![Diagrama de Contexto para Glottia](assets/img/cap4/context.png)
+
 ### 4.1.4 Approach driven ViewPoints Diagrams
 ### 4.1.5 Relational/Non Relational Database Diagram
-### 4.1.6 Design Patterns 
+
+### 4.1.6 Design Patterns
+
+En esta sección, el equipo de Hampcoders describe los principales patrones de diseño utilizados en el sistema. Estos patrones permiten mejorar la calidad de código desacoplando y modularizando.
+
+#### 4.1.6.1 Patrones de Creación
+
+Aqui se definiran los patrones de creación, aquellos que se enfocan en la forma de instanciar los objetos dentro de sistema. Su objetivo es encapsular la lógica de construcción.
+
+##### Factory Method
+- Cuándo: Se necesita crear entidades de dominio controlando las invariantes.
+- Beneficio: Encapsular la lógica de creación y evita estados inválidos.
+- Aplicación: Métodos estaticos como User.create(...) para construir agregados de forma segura.
+
+
+#### 4.1.6.2 Patrones de Comportamiento
+
+Los patrones de comportamiento definen el cómo interactuán los objetos y cómo se distribuyen las responsabilidades dentro del sistema.
+
+##### Command
+- Cuándo: Se necesita representar acciones del sistema.
+- Beneficio: Desacoplar la invocación de la lógica de ejecución.
+- Aplicación: Clases o Records como SignUpCommand, SignInCommand.
+
+##### Strategy
+- Cuándo: Se neceseitan múltiples algoritmas intercambiables.
+- Beneficio: Cambiar implementación sin afectar lógica de negocio
+- Aplicación: Clases que representan servicios como HashingService, TokenService
+
+
+
+##### Observer
+- Cuándo: Se necesita desacoplada entre componentes.
+- Beneficio: Permitir reaccionar a eventos sin dependencias directas.
+- Aplicación: Eventos con @EventListener.
+
+
+#### 4.1.6.3 Patrones de Estructura
+
+Los patrones estructurales se centran en la organización de objetos, facilitando la composición de componentes complejos.
+
+##### Facade
+- Cuándo: Se necesita simplificar el acceso a subsistemas complejos.
+- Beneficio: Reducir acoplamiento entre bounded contexts.
+- Aplicación: Clases como IamContextFacade.
+
+#### 4.1.6.4 Patrones Empresariales
+
+Los patrones empresariales están orientados a resolver problemas comunes en aplicaciones empresariales, específicamente en el manejo de lógica, persistencia y comunicación entre capas.
+
+##### Service Layer
+- Cuándo: Se necesita centralizar lógica de aplicación.
+- Beneficio: Separar dominio de infraestructura.
+- Aplicación: Clases como UserCommandService.
+
+##### Repository Pattern
+- Cuándo: Se necesita acceso a persistencia
+- Beneficio: Desacoplar base de datos del dominio.
+- Aplicación: Clases como UserRepository.
+
+##### Data Transfer Object (DTO)
+- Cuándo: Se necesita transferencia de datos entre capas.
+- Beneficio: Evitar exponer el dominio directamente.
+- Aplicación: Clases como UserResource, SignInResource.
+
+##### Mapper / Assembler
+- Cuándo: Se necesita transformar entre DTO y entidades.
+- Beneficio: Mantener separación entre capas.
+- Aplicación: Clases como UserResourceFromEntityAssembler.
+
+##### Unit of Work
+- Cuándo: Se necesita manejar de transacciones.
+- Beneficio: Garantizar consistencia de datos.
+- Aplicación: Clases gestionadas por JPA/Hibernate.
+
+##### Gateway
+- Cuándo: Se necesita integración con otros contextos o servicios.
+- Beneficio: Encapsular dependencias externas.
+- Aplicación: Clases ProfilesContextFacade.
+
+#### 4.1.6.5 Patrones Arquitectonicos
+
+Los patrones arquitectónicos definen la estructura desde un punto de vista de alto nivel del sistema, permitiendo organizar los components en capas o con responsabilidades definidas.vv
+
+##### CQRS
+- Cuándo: Se necesita separar lectura y escritura.
+- Beneficio: Mejorar claridad y escalabilidad.
+- Aplicación: Clases CommandService vs QueryService.
+
+##### Layered Architecture
+- Cuándo: Se necesita organizar el sistema por capas.
+- Beneficio: Separar responsabilidades.
+- Aplicación: Domain, Application, Infrastructure, Interfaces.
+
+##### MVC
+- Cuándo: Se necesita estructurar la capa de presentación.
+- Beneficio: Separar entre vista, lógica y datos.
+- Aplicación: Controllers + Resources.
+
+
 ### 4.1.7 Tactics
 
 ## 4.1.7 Tactics
