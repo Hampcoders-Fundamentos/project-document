@@ -52,9 +52,30 @@ Las tácticas arquitectónicas de Glottia han sido definidas considerando su enf
 
 
 ## 4.2 Architectural Drivers
+
+Los drivers arquitectónicos constituyen los factores determinantes que orientan las decisiones de diseño y construcción de la arquitectura de Glottia. Estos elementos definen tanto las prioridades estratégicas como las restricciones técnicas y operacionales que el equipo de desarrollo debe incorporar para garantizar el cumplimiento de los objetivos de negocio, sin comprometer los atributos de calidad esenciales: escalabilidad, mantenibilidad, confiabilidad y rendimiento.
+
+En este contexto, los drivers arquitectónicos se articulan en torno a cuatro dimensiones fundamentales: el propósito del diseño y los objetivos comerciales; las funcionalidades prioritarias derivadas de los requerimientos funcionales; los escenarios de atributos de calidad que definen comportamientos esperados bajo condiciones específicas; y las restricciones y concernimientos arquitectónicos que limitan el espacio de soluciones viables. La integración coherente de estos elementos permitirá construir una arquitectura sostenible que evolucione conforme las necesidades del negocio y del mercado lo requieran.
+
 ### 4.2.1 Design Purpose
+
+El propósito del diseño arquitectónico de Glottia es construir una estructura modular, escalable y segura basada en Bounded Contexts que conecte de manera confiable a aprendices de idiomas con establecimientos aliados, garantizando consistencia operacional, rendimiento óptimo en operaciones críticas y la capacidad de evolucionar hacia microservicios conforme las necesidades del negocio y mercado lo requieran.
+
 ### 4.2.2 Primary Functionality (Primary User Stories)
 ### 4.2.3 Quality Attribute Scenarios
+
+Los atributos de calidad definen el comportamiento esperado del sistema Glottia bajo condiciones operacionales reales. Estos escenarios validan cómo los Bounded Contexts (Usuarios, Sesiones, Locales, Matching, Notificaciones) y la infraestructura subyacente soportan los objetivos de confiabilidad, rendimiento, seguridad y escalabilidad en entornos de carga típicos del negocio.
+
+| Atributo | Fuente de Estímulo | Estímulo | Entorno | Artefacto | Respuesta | Medida |
+|----------|-------------------|----------|---------|-----------|-----------|--------|
+| **Disponibilidad** | Aprendices y propietarios de locales | Acceso simultáneo a búsqueda de encuentros, gestión de reservas y validación de asistencia | Sistema en horas pico con concurrencia alta | Bounded Contexts de Sesiones, Locales y Matching | La plataforma permanece operativa con balanceo de carga y tolerancia a fallos en módulos no críticos | 99.5% uptime anual |
+| **Confiabilidad** | Sistema de reservas | Confirmación de asistencia y sincronización de estado entre Bounded Contexts de Sesiones y Locales | Procesamiento de encuentros simultáneos | Bounded Contexts de Sesiones y Locales con comunicación asíncrona | No hay inconsistencias entre estado de reservas y disponibilidad de espacios; eventos de compensación resuelven conflictos | 100% consistencia en transacciones críticas |
+| **Rendimiento** | Usuario final (aprendiz o propietario) | Búsqueda de encuentros filtrados, geolocalización y matching de usuarios | Consultas concurrentes en horario de pico | Bounded Context de Matching y búsqueda con caché distribuido | Sistema responde con resultados relevantes y optimizados | Latencia < 1500ms en búsquedas; < 800ms en matching |
+| **Seguridad** | Sistema de autenticación centralizado | Validación de tokens JWT y control de acceso basado en roles | Durante autenticación de usuarios y acceso a funcionalidades específicas | API Gateway y Bounded Context de Identidad y Acceso | Solo usuarios verificados acceden a sus datos y funcionalidades; tokens expirados son rechazados | 100% cumplimiento de autenticación; cifrado de credenciales en tránsito y en reposo |
+| **Escalabilidad** | Administrador o equipo de operaciones | Incremento del 200% en usuarios concurrentes o establecimientos aliados | Período de crecimiento acelerado o campaña de marketing | Monolito modular con capacidad para escalar módulos específicos | Se agregan instancias de Bounded Contexts críticos sin rediseño arquitectónico; la migración a microservicios es viable | Escalamiento horizontal < 5 minutos; capacidad para 10x usuarios actuales |
+| **Modificabilidad** | Host de reunión (usuario aprendiz) | Cancela o modifica una reunión hosteada hasta 24 horas antes de la hora acordada desde la app móvil | Aplicación móvil en horario de operación normal | Bounded Context de Sesiones con lógica de ventanas temporales y notificaciones | La aplicación procesa la solicitud, actualiza el estado de la sesión, notifica a todos los participantes inscritos, libera el espacio en el local aliado y procesa compensaciones (reembolsos si aplica) | Procesamiento de cancelación < 2s; notificaciones a participantes enviadas < 5s; impacto cero en otros módulos |
+| **Usabilidad** | Aprendiz o propietario | Interacción con flujo de reserva, confirmación de asistencia o gestión de promociones | Uso normal de la aplicación en dispositivos móviles | Interfaz de usuario y API de aplicación | Feedback visual inmediato (< 500ms) en cada acción; notificaciones en tiempo real sobre cambios en encuentros | Tasa de error de usuario < 2%; tiempo de tareas críticas < 3 pasos |
+
 ### 4.2.4 Constraints
 ### 4.2.5 Architectural Concerns
 
