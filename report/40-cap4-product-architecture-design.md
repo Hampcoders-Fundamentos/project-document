@@ -34,23 +34,53 @@ Estos son los estilos y patrones arquitectónicos que se ha seleccionado para gu
 ### 4.1.3 Context Diagram
 
 Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principales actores, sistemas externos y los límites del sistema. Este diagrama ayuda a visualizar cómo Glottia interactúa con su entorno y define claramente las interfaces entre el sistema y sus usuarios o servicios externos. El software principal se conectará con servicios externos de Gemini AI y Stripe para generación de contenido y procesamiento de pagos, respectivamente.
-
+\
 ![Diagrama de Contexto para Glottia](assets/img/cap4/context.png)
 
 ### 4.1.4 Approach driven ViewPoints Diagrams
 
 #### Class Diagram
 
-![Diagrama de Clases](assets/img/cap4/class_diagram.svg)
+- Diagramas de Estados
+\
+
+Diagrama de estado sobre el ciclo de vida de Asistencia
+\
+![Ciclo de vida de Asistencia](assets/img/cap4/diagramas/estados/Ciclovidaasistencia.png)
+
+Diagrama de estado sobre el ciclo de vida de Fidelidad
+\
+![Ciclo de vida de Cuenta de Fidelidad](assets/img/cap4/diagramas/estados/CicloVidaLoyalty.png)
+\
+Diagrama de estado sobre el ciclo de vida de Venues
+\
+![Ciclo de vida de Venues](assets/img/cap4/diagramas/estados/CicloVidaVenues.png)
+\
+Diagrama de estado sobre el ciclo de vida de Encuentro
+\
+![Ciclo de vida de un Encuentro](assets/img/cap4/diagramas/estados/CicloVidaEncuentro.png)
+\
+Diagrama de estado sobre el ciclo de vida de Promoción
+\
+![Ciclo de vida de una Promoción](assets/img/cap4/diagramas/estados/CicloVidaPromotions.png)
+
+
+- Diagrama de Clases
+\
+![Diagrama de Clases](assets/img/cap4/class_diagram.png)
 
 ### 4.1.5 Relational/Non Relational Database Diagram
+
+Diagrama de base de datos que representa el modelamiento entidad relación de la plataforma Glottia.
+\
+![Diagrama de Clases](assets/img/cap4/database.png)
 
 ### 4.1.6 Design Patterns
 
 En esta sección, el equipo de Hampcoders describe los principales patrones de diseño utilizados en el sistema. Estos patrones permiten mejorar la calidad de código desacoplando y modularizando.
 
 #### 4.1.6.1 Patrones de Creación
-
+\
 Aqui se definiran los patrones de creación, aquellos que se enfocan en la forma de instanciar los objetos dentro de sistema. Su objetivo es encapsular la lógica de construcción.
 
 ##### Factory Method
@@ -60,7 +90,7 @@ Aqui se definiran los patrones de creación, aquellos que se enfocan en la forma
 
 
 #### 4.1.6.2 Patrones de Comportamiento
-
+\
 Los patrones de comportamiento definen el cómo interactuán los objetos y cómo se distribuyen las responsabilidades dentro del sistema.
 
 ##### Command
@@ -73,8 +103,6 @@ Los patrones de comportamiento definen el cómo interactuán los objetos y cómo
 - Beneficio: Cambiar implementación sin afectar lógica de negocio
 - Aplicación: Clases que representan servicios como HashingService, TokenService
 
-
-
 ##### Observer
 - Cuándo: Se necesita desacoplada entre componentes.
 - Beneficio: Permitir reaccionar a eventos sin dependencias directas.
@@ -82,7 +110,7 @@ Los patrones de comportamiento definen el cómo interactuán los objetos y cómo
 
 
 #### 4.1.6.3 Patrones de Estructura
-
+\
 Los patrones estructurales se centran en la organización de objetos, facilitando la composición de componentes complejos.
 
 ##### Facade
@@ -91,7 +119,7 @@ Los patrones estructurales se centran en la organización de objetos, facilitand
 - Aplicación: Clases como IamContextFacade.
 
 #### 4.1.6.4 Patrones Empresariales
-
+\
 Los patrones empresariales están orientados a resolver problemas comunes en aplicaciones empresariales, específicamente en el manejo de lógica, persistencia y comunicación entre capas.
 
 ##### Service Layer
@@ -125,7 +153,7 @@ Los patrones empresariales están orientados a resolver problemas comunes en apl
 - Aplicación: Clases ProfilesContextFacade.
 
 #### 4.1.6.5 Patrones Arquitectonicos
-
+\
 Los patrones arquitectónicos definen la estructura desde un punto de vista de alto nivel del sistema, permitiendo organizar los components en capas o con responsabilidades definidas.vv
 
 ##### CQRS
@@ -175,7 +203,7 @@ El propósito del diseño arquitectónico de Glottia es construir una estructura
 Se identifican aquí los requisitos funcionales de alta prioridad que impactan directamente en las decisiones de diseño de la arquitectura. A través de estas historias de usuario clave, se establecen los módulos base y las relaciones de datos de Glottia, asegurando que la estructura soporte tanto la lógica operativa como los atributos de calidad esperados.
 
 |ID|Título|Descripción|Impacto estructural|
-|--|------|---------------|--------------|
+|--------|------|---------------|--------------|
 |US001–US003| Registro, autenticación y gestión de sesión de usuario| Permite al Learner y al Partner registrarse con email/contraseña, iniciar sesión y obtener tokens JWT para acceder al sistema.| BC IAM genera `UserRegistered` -> dispara creación de perfil en Profiles. Punto de entrada de toda la arquitectura; todos los BCs consumen el JWT para autorización. | 
 |US004–US007| Creación y configuración del perfil de aprendiz | El Learner completa su perfil indicando idioma nativo, idiomas meta, nivel CEFR y disponibilidad horaria. El perfil es prerequisito para reservar encuentros. | BC Profiles publica `ProfileCompleted` -> Encounters lo consume para habilitar la funcionalidad de reserva. Relación directa con los BCs Engagement (nivel CEFR para leaderboard) y Analytics (segmentación de KPIs)|
 |US008–US011|Registro de local aliado y publicación de venues|El Partner da de alta su establecimiento (cafetería, bar, coworking), registra mesas y configura la disponibilidad horaria de los espacios.|BC Venues publica `VenueActivated` -> consumido por Encounters (para asociar encuentros a locales) y Promotions (para validar la existencia del venue al crear links promocionales).|
@@ -236,14 +264,14 @@ En Glottia hemos definido restricciones por categoría para adaptarnos a ellas y
 Estas son las metas de alto nivel que nuestra arquitectura debe "solucionar" para que el proyecto sea exitoso.
 
 #### 1. Desacoplamiento de Lógica de Negocio (DDD)
-
+\
 Dado que Glottia busca ser una solución escalable, una preocupación principal es evitar que la lógica del lenguaje o servicios se mezcle con el código de la interfaz (UI).
 
 - **Solución:** Implementar una arquitectura de capas (Dominio, Aplicación, Infraestructura).
     
 
 #### 2. Sincronización y Estado Offline
-
+\
 Siendo una aplicación móvil, la conectividad intermitente es un riesgo crítico.
 
 - **Preocupación:** ¿Cómo garantizamos que el progreso del usuario no se pierda sin conexión?
@@ -252,7 +280,7 @@ Siendo una aplicación móvil, la conectividad intermitente es un riesgo crític
     
 
 #### 3. Rendimiento y Latencia de Interfaz
-
+\
 En una app de aprendizaje o servicios, la percepción de fluidez es vital.
 
 - **Preocupación:** El procesamiento de datos pesados no debe bloquear el hilo principal (UI Thread).
@@ -261,7 +289,7 @@ En una app de aprendizaje o servicios, la percepción de fluidez es vital.
     
 
 #### 4. Seguridad en el Transporte de Datos
-
+\
 Protección de la integridad de los datos entre el dispositivo y Firebase.
 
 - **Preocupación:** Evitar ataques de Man-in-the-Middle y asegurar que solo usuarios autenticados accedan a sus propios recursos.
@@ -270,7 +298,7 @@ Protección de la integridad de los datos entre el dispositivo y Firebase.
     
 
 #### 5. Extensibilidad del Sistema
-
+\
 Glottia debe permitir añadir nuevos idiomas o tipos de servicios sin reescribir el núcleo.
 
 - **Preocupación:** El "Gran Lodo" (Big Ball of Mud) donde todo depende de todo.
@@ -293,25 +321,25 @@ En este backlog se definiran las características arquitectónicas clave para ga
 
 | User Stories | Tareas | Criterios de Aceptación |
 |--------------|--------|------------------------:|
-| US-01: Como aprendiz, quiero registrarme con mis datos personales para acceder a la plataforma. | Implementar autenticación centralizada con JWT y OAuth2. Configurar RBAC con roles ROLE_APRENDIZ y ROLE_ESTABLECIMIENTO. Cifrar datos sensibles en reposo. | Solo usuarios autenticados acceden a reservas y encuentros. Las contraseñas se almacenan con hashing BCrypt. El sistema bloquea accesos no autorizados a perfiles ajenos. |
-| US-02: Como administrador de establecimiento, quiero que solo yo pueda gestionar mi local para proteger mi información. | Implementar validación de propiedad por rol en cada endpoint. Configurar API Gateway para validar tokens JWT antes de enrutar peticiones. | Un aprendiz no puede modificar datos de un establecimiento. El 100% de operaciones sensibles queda registrado en el log de auditoría. | 
+| Como aprendiz, quiero registrarme con mis datos personales para acceder a la plataforma. | Implementar autenticación centralizada con JWT y OAuth2. Configurar RBAC con roles ROLE_APRENDIZ y ROLE_ESTABLECIMIENTO. Cifrar datos sensibles en reposo. | Solo usuarios autenticados acceden a reservas y encuentros. Las contraseñas se almacenan con hashing BCrypt. El sistema bloquea accesos no autorizados a perfiles ajenos. |
+| Como administrador de establecimiento, quiero que solo yo pueda gestionar mi local para proteger mi información. | Implementar validación de propiedad por rol en cada endpoint. Configurar API Gateway para validar tokens JWT antes de enrutar peticiones. | Un aprendiz no puede modificar datos de un establecimiento. El 100% de operaciones sensibles queda registrado en el log de auditoría. | 
 
 #### Disponibilidad
 
 | User Stories | Tareas | Criterios de Aceptación |
 |--------------|--------|------------------------:|
-| US-17: Como aprendiz, quiero reservar mi cupo en un encuentro para asegurar mi asistencia. | Implementar replicación del servicio de reservas en múltiples instancias. Aplicar Circuit Breaker en llamadas entre el servicio de reservas y el de notificaciones. Usar comunicación asíncrona para el envío de confirmaciones. | El sistema mantiene disponibilidad del 99.5% mensual. Si el servicio de notificaciones falla, la reserva igual se procesa. El sistema se recupera automáticamente ante caídas dentro de 2 horas. |
+| Como aprendiz, quiero reservar mi cupo en un encuentro para asegurar mi asistencia. | Implementar replicación del servicio de reservas en múltiples instancias. Aplicar Circuit Breaker en llamadas entre el servicio de reservas y el de notificaciones. Usar comunicación asíncrona para el envío de confirmaciones. | El sistema mantiene disponibilidad del 99.5% mensual. Si el servicio de notificaciones falla, la reserva igual se procesa. El sistema se recupera automáticamente ante caídas dentro de 2 horas. |
 
 
 #### Mantenibilidad
 
 | User Stories | Tareas | Criterios de Aceptación |
 |--------------|--------|------------------------:|
-| TS-: Como desarrollador de HampCoders, quiero modificar la lógica de reservas sin afectar el módulo de establecimientos para desplegar más rápido.  | Diseñar la arquitectura con Bounded Contexts independientes (IAM, Event, Reservas, Establecimientos, Notificaciones). Implementar Database per Service. Definir contratos OpenAPI versionados entre servicios. | Un cambio en la lógica de reservas se puede desplegar en menos de 4 horas sin afectar otros servicios. Cada microservicio tiene su propia base de datos sin acoplamiento compartido. |
-| TS-: Como desarrollador, quiero que las dependencias a sistemas externos queden completamente aisladas. | Encapsular la dependencia de Claude/GPT-4 exclusivamente en el microservicio Learning Feedback. Ningún otro BC importa ni conoce la librería del LLM. | Si el LLM API falla, solo Learning Feedback se ve afectado. El resto del sistema opera con normalidad |
+| Como desarrollador de HampCoders, quiero modificar la lógica de reservas sin afectar el módulo de establecimientos para desplegar más rápido.  | Diseñar la arquitectura con Bounded Contexts independientes (IAM, Event, Reservas, Establecimientos, Notificaciones). Implementar Database per Service. Definir contratos OpenAPI versionados entre servicios. | Un cambio en la lógica de reservas se puede desplegar en menos de 4 horas sin afectar otros servicios. Cada microservicio tiene su propia base de datos sin acoplamiento compartido. |
+| Como desarrollador, quiero que las dependencias a sistemas externos queden completamente aisladas. | Encapsular la dependencia de Claude/GPT-4 exclusivamente en el microservicio Learning Feedback. Ningún otro BC importa ni conoce la librería del LLM. | Si el LLM API falla, solo Learning Feedback se ve afectado. El resto del sistema opera con normalidad |
 
 #### 4.3.1.2 Establish Iteration Goal by Selecting Drivers
-
+\
 En esta iteración el equipo de Hampcoders seleccionará los drivers de Seguridad, Disponibilidad y Mantenibilidad como base del diseño de Glottia.
 
 ##### Meta de Seguridad
@@ -336,7 +364,7 @@ En esta iteración el equipo de Hampcoders seleccionará los drivers de Segurida
 - Mantenibilidad: Definir la descomposición en microservicios alineada a los Bounded Contexts del negocio de Glottia.
 
 #### 4.3.1.3 Choose One or More Elements of the System to Refine
-
+\
 Aquí se presentan los elementos clave del sistema que se refinarán en esta iteración, junto con las razones para su selección y lo que se espera lograr con cada uno de ellos. Estos elementos son fundamentales para alcanzar los objetivos de seguridad, disponibilidad y mantenibilidad definidos previamente.
 
 | Elemento a Refinar | Razón | Esperado |
@@ -347,7 +375,7 @@ Aquí se presentan los elementos clave del sistema que se refinarán en esta ite
 | Dependencia LLM | En el monolito, esta dependencia podría haberse filtrado a otros módulos. En microservicios debe quedar encapsulada. | Learning Feedback es el único servicio que importa la librería del LLM. Ningún otro BC la conoce. |
 
 #### 4.3.1.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
-
+\
 Se eligen los siguientes conceptos de diseño para abordar los drivers seleccionados en esta iteración, garantizando que la arquitectura de Glottia sea segura, disponible y mantenible:
 
 ##### Seguridad
@@ -384,7 +412,7 @@ Se eligen los siguientes conceptos de diseño para abordar los drivers seleccion
     - Justificación: Aisla el único punto de variabilidad técnica alta del sistema. Ningún otro microservicio importa ni conoce el LLM.
 
 #### 4.3.1.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
-
+\
 Se definen los elementos arquitectónicos clave de Glottia, asignando responsabilidades específicas a cada uno y detallando las interfaces que expondrán para interactuar con otros componentes del sistema. Esta definición es fundamental para garantizar que cada microservicio cumpla con su rol dentro de la arquitectura general, facilitando la comunicación entre ellos y asegurando que se respeten los principios de diseño establecidos.
 
 | **Elemento**                           | **Responsabilidad**                                                                        | **Interfaces**                                                                                                                                                                                                  |
@@ -402,7 +430,7 @@ Se definen los elementos arquitectónicos clave de Glottia, asignando responsabi
 | **PostgreSQL**          | Cada microservicio tiene su propio esquema exclusivo.                                      | Repositorios internos de cada servicio. Sin acceso cruzado entre esquemas.                                                                                                                                      |
 
 #### 4.3.1.6 Sketch Views (C4 & UML) and Record Design Decisions
-
+\
 Las decisiones de diseño arquitectónico tomadas durante esta iteración se documentan a continuación, detallando el ID de la decisión, la descripción, el estado actual y la justificación que respalda cada elección. Estas decisiones reflejan las elecciones estratégicas realizadas para cumplir con los objetivos de seguridad, disponibilidad y mantenibilidad definidos para Glottia.
 
 | ID | Decisión | Estado | Justificación |
@@ -414,7 +442,7 @@ Las decisiones de diseño arquitectónico tomadas durante esta iteración se doc
 | DD-005 | API Gateway como punto único de entrada | Aceptada | Centraliza seguridad, enrutamiento y políticas transversales como rate limiting. |
 
 #### 4.3.1.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
-
+\
 Tras completar la primera iteración, la arquitectura base de Glottia establece los cimientos necesarios para soportar los dos segmentos de usuarios.
 
 - Fortalezas del diseño:
@@ -434,3 +462,5 @@ Tras completar la primera iteración, la arquitectura base de Glottia establece 
 | Diseñar contratos OpenAPI por microservicio | Migración de esquemas PostgreSQL a Database per Service | Decisiones de diseño DD-001 a DD-005 documentadas |
 
 Finalmente, con esta primera iteración se sientan las bases arquitectónicas de Glottia, estableciendo un marco sólido para las siguientes iteraciones que se enfocarán en la implementación de funcionalidades específicas, optimización de rendimiento y refinamiento de la experiencia de usuario.
+
+\newpage
