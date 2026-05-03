@@ -38,6 +38,11 @@ Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principale
 ![Diagrama de Contexto para Glottia](assets/img/cap4/context.png)
 
 ### 4.1.4 Approach driven ViewPoints Diagrams
+
+#### Class Diagram
+
+![Diagrama de Clases](assets/img/cap4/class_diagram.svg)
+
 ### 4.1.5 Relational/Non Relational Database Diagram
 
 ### 4.1.6 Design Patterns
