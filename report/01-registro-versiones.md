@@ -40,5 +40,6 @@
 | **TB1** | 18/04/2026 | **Contreras López,  Leandro Saul** | Creación y priorización del Product Backlog basado en valor de negocio |
 | **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Redactar escenarios de atributos de calidad y sus respectivos drivers |
 | **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de la sección de Tácticas Arquitectónicas |
+| **AV2** | 2/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de descripciones de los User Stories y Product Backlog |
 
 \newpage
