@@ -25,5 +25,7 @@
 | **TB1** | 18/04/2026 | **Contreras López,  Leandro Saul** | Apoyo en la definición del Lean UX Assumptions e Hipotesis |
 | **TB1** | 18/04/2026 | **Contreras López, Leandro Saul** | Apoyo en la realización y análisis de entrevistas a usuarios |
 | **TB1** | 18/04/2026 | **Contreras López,  Leandro Saul** | Creación y priorización del Product Backlog basado en valor de negocio |
+| **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Redactar escenarios de atributos de calidad y sus respectivos drivers |
+| **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de la sección de Tácticas Arquitectónicas |
 
 \newpage

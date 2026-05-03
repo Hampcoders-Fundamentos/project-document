@@ -21,6 +21,8 @@ Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders 
 
 ### 4.1.2 Approaches Statements Architectural Styles & Patterns
 
+Estos son los estilos y patrones arquitectónicos que se ha seleccionado para guiar el diseño de la arquitectura de Glottia, asegurando que se alineen con los principios definidos y los drivers seleccionados para esta iteración. Cada enfoque se ha elegido por su capacidad para abordar aspectos clave como la modularidad, escalabilidad, mantenibilidad y seguridad del sistema.
+
 | Enfoque | Descripción | Aplicación dentro de Glottia |
 | ------- | ----------- | ---------------------------- |
 | Domain Driven Design (DDD) | Definir sub dominios con delimitaciones y alcances claros como bounded contexts. |                              |
