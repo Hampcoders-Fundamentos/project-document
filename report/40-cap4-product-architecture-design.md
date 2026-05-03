@@ -196,6 +196,50 @@ En Glottia hemos definido restricciones por categoría para adaptarnos a ellas y
 
 ### 4.2.5 Architectural Concerns 
 
+Estas son las metas de alto nivel que nuestra arquitectura debe "solucionar" para que el proyecto sea exitoso.
+
+#### 1. Desacoplamiento de Lógica de Negocio (DDD)
+
+Dado que Glottia busca ser una solución escalable, una preocupación principal es evitar que la lógica del lenguaje o servicios se mezcle con el código de la interfaz (UI).
+
+- **Solución:** Implementar una arquitectura de capas (Dominio, Aplicación, Infraestructura).
+    
+
+#### 2. Sincronización y Estado Offline
+
+Siendo una aplicación móvil, la conectividad intermitente es un riesgo crítico.
+
+- **Preocupación:** ¿Cómo garantizamos que el progreso del usuario no se pierda sin conexión?
+    
+- **Meta:** Estrategia de  _Offline-first_  con sincronización en segundo plano cuando se recupere el aliento de red.
+    
+
+#### 3. Rendimiento y Latencia de Interfaz
+
+En una app de aprendizaje o servicios, la percepción de fluidez es vital.
+
+- **Preocupación:** El procesamiento de datos pesados no debe bloquear el hilo principal (UI Thread).
+    
+- **Meta:** Uso intensivo de programación asíncrona y manejo eficiente de memoria en el dispositivo móvil.
+    
+
+#### 4. Seguridad en el Transporte de Datos
+
+Protección de la integridad de los datos entre el dispositivo y Firebase.
+
+- **Preocupación:** Evitar ataques de Man-in-the-Middle y asegurar que solo usuarios autenticados accedan a sus propios recursos.
+    
+- **Meta:** Implementación de  **Firebase Security Rules**  y comunicación exclusiva vía HTTPS con TLS 1.3.
+    
+
+#### 5. Extensibilidad del Sistema
+
+Glottia debe permitir añadir nuevos idiomas o tipos de servicios sin reescribir el núcleo.
+
+- **Preocupación:** El "Gran Lodo" (Big Ball of Mud) donde todo depende de todo.
+    
+- **Meta:** Definición clara de  **Bounded Contexts**  para que el módulo de "Usuarios" sea independiente del módulo de "Contenido Académico/Servicios".
+
 ## 4.3 ADD Iterations
 ### 4.2.X Iteration N: <Iteration Name>
 #### 4.2.X.1 Architectural Design Backlog N
