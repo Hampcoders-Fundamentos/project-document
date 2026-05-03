@@ -169,6 +169,10 @@ El propósito del diseño arquitectónico de Glottia es construir una estructura
 
 Se identifican aquí los requisitos funcionales de alta prioridad que impactan directamente en las decisiones de diseño de la arquitectura. A través de estas historias de usuario clave, se establecen los módulos base y las relaciones de datos de Glottia, asegurando que la estructura soporte tanto la lógica operativa como los atributos de calidad esperados.
 
+|ID|Título|Descripción|Impacto estructural|
+|--|------|---------------|--------------|
+|US001–US003| Registro, autenticación y gestión de sesión de usuario| Permite al Learner y al Partner registrarse con email/contraseña, iniciar sesión y obtener tokens JWT para acceder al sistema.| BC IAM genera `UserRegistered` -> dispara creación de perfil en Profiles. Punto de entrada de toda la arquitectura; todos los BCs consumen el JWT para autorización. | 
+
 
 ### 4.2.3 Quality Attribute Scenarios
 
