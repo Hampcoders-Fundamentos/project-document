@@ -167,6 +167,9 @@ El propósito del diseño arquitectónico de Glottia es construir una estructura
 
 ### 4.2.2 Primary Functionality (Primary User Stories)
 
+Se identifican aquí los requisitos funcionales de alta prioridad que impactan directamente en las decisiones de diseño de la arquitectura. A través de estas historias de usuario clave, se establecen los módulos base y las relaciones de datos de Glottia, asegurando que la estructura soporte tanto la lógica operativa como los atributos de calidad esperados.
+
+
 ### 4.2.3 Quality Attribute Scenarios
 
 Los atributos de calidad definen el comportamiento esperado del sistema Glottia bajo condiciones operacionales reales. Los escenarios siguientes describen estímulos concretos, los componentes afectados y las respuestas esperadas, con medidas cuantificables para validar la arquitectura basada en contextos de dominio (Usuarios, Sesiones, Locales, Matching, Notificaciones) e infraestructura (pasarela API, caché, bus de eventos).
