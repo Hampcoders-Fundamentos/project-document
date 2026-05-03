@@ -171,24 +171,29 @@ El propósito del diseño arquitectónico de Glottia es construir una estructura
 
 Los atributos de calidad definen el comportamiento esperado del sistema Glottia bajo condiciones operacionales reales. Los escenarios siguientes describen estímulos concretos, los componentes afectados y las respuestas esperadas, con medidas cuantificables para validar la arquitectura basada en contextos de dominio (Usuarios, Sesiones, Locales, Matching, Notificaciones) e infraestructura (pasarela API, caché, bus de eventos).
 
-- QAS-01: Seguridad - Control de acceso basado en roles
+ - QAS-01: Seguridad - Control de acceso basado en roles
+
 | Atributo      | Fuente de Estímulo                     | Estímulo                                                                            | Entorno          | Artefacto                        | Respuesta                                                                                                      | Medida                                                                                             |
 | ------------- | -------------------------------------- | ----------------------------------------------------------------------------------- | ---------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+
 | **Seguridad** | Usuario autenticado con rol incorrecto | Solicitud `POST /api/v1/encounters/{id}/join` con JWT válido pero rol no autorizado | Operación normal | API Gateway + IAM Service + RBAC | El sistema rechaza la solicitud con HTTP 403 antes de llegar al microservicio. Se registra el intento en logs. | 100% de accesos no autorizados rechazados. Tiempo de respuesta < 200 ms. Logs retenidos ≥ 90 días. |
 
-- QAS-02: Disponibilidad - Procesamiento de reservas ante fallo de servicios no críticos
+ - QAS-02: Disponibilidad - Procesamiento de reservas ante fallo de servicios no críticos
 
 | Atributo           | Fuente de Estímulo | Estímulo                                                                             | Entorno                   | Artefacto                                            | Respuesta                                                                                                 | Medida                                                                                          |
 | ------------------ | ------------------ | ------------------------------------------------------------------------------------ | ------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+
 | **Disponibilidad** | Usuario aprendiz   | Solicitud `POST /api/v1/encounters/{id}/join` durante caída del Notification Service | Fallo parcial del sistema | Encounters Service + RabbitMQ + Notification Service | La reserva se procesa correctamente. La notificación se encola y se envía cuando el servicio se recupera. | Disponibilidad ≥ 99.5%. 0 pérdida de reservas. Mensajes persistidos en cola hasta recuperación. |
 
-- QAS-03: Mantenibilidad - Despliegue independiente de Bounded Contexts
+ - QAS-03: Mantenibilidad - Despliegue independiente de Bounded Contexts
 
 | Atributo           | Fuente de Estímulo   | Estímulo                                                | Entorno           | Artefacto                                                  | Respuesta                                                                               | Medida                                                                |
 | ------------------ | -------------------- | ------------------------------------------------------- | ----------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+
 | **Mantenibilidad** | Equipo de desarrollo | Cambio en lógica de acumulación de puntos en Engagement | Desarrollo activo | Engagement Service + API versionada + Database per Service | El cambio se implementa sin afectar otros servicios. No requiere redeploy de otros BCs. | Cambio desplegado < 4h. 0 cambios en otros servicios. CI/CD < 10 min. |
 
-- QAS-04: Mantenibilidad - Extensibilidad del sistema de recompensas
+ - QAS-04: Mantenibilidad - Extensibilidad del sistema de recompensas
+
 | Atributo           | Fuente de Estímulo   | Estímulo                                                                 | Entorno           | Artefacto                                                             | Respuesta                                                                                                                                      | Medida                                                                                                         |
 | ------------------ | -------------------- | ------------------------------------------------------------------------ | ----------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | **Mantenibilidad** | Equipo de desarrollo | Incorporación de un nuevo tipo de recompensa en el sistema de Engagement | Desarrollo activo | Engagement Service + arquitectura modular + contratos API versionados | El nuevo tipo de recompensa se implementa extendiendo la lógica existente sin modificar otros servicios. No afecta a Encounters ni Promotions. | Implementación < 6 horas. 0 cambios en otros microservicios. Cobertura de tests ≥ 80% en el módulo modificado. |
@@ -402,7 +407,8 @@ Tras completar la primera iteración, la arquitectura base de Glottia establece 
 - Áreas de mejora identificadas: 
     - La consistencia eventual entre BCs requiere que el equipo diseñe con cuidado las sagas de datos, especialmente en el flujo de canje
 
-- Kanban Board:
+ - Kanban Board:
+
 | **To Do** | **In Progress** | **Done** |
 | ------------ | ---------- | -------- |
 | Configurar RabbitMQ con queues por evento | Implementación de IAM Service con Spring Security 6 + JWT | Definición de los 8 BCs como microservicios independientes                         |
