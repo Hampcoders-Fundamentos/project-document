@@ -164,20 +164,32 @@ En este contexto, los drivers arquitectónicos se articulan en torno a cuatro di
 El propósito del diseño arquitectónico de Glottia es construir una estructura modular, escalable y segura basada en Bounded Contexts que conecte de manera confiable a aprendices de idiomas con establecimientos aliados, garantizando consistencia operacional, rendimiento óptimo en operaciones críticas y la capacidad de evolucionar hacia microservicios conforme las necesidades del negocio y mercado lo requieran.
 
 ### 4.2.2 Primary Functionality (Primary User Stories)
+
 ### 4.2.3 Quality Attribute Scenarios
 
 Los atributos de calidad definen el comportamiento esperado del sistema Glottia bajo condiciones operacionales reales. Los escenarios siguientes describen estímulos concretos, los componentes afectados y las respuestas esperadas, con medidas cuantificables para validar la arquitectura basada en contextos de dominio (Usuarios, Sesiones, Locales, Matching, Notificaciones) e infraestructura (pasarela API, caché, bus de eventos).
 
-| Atributo | Fuente de Estímulo | Estímulo | Entorno | Componentes / Artefactos | Respuesta esperada | Medida |
-|----------|--------------------|---------:|---------|-------------------------|-------------------|--------|
-| **Disponibilidad** | Aprendices y propietarios | Operaciones concurrentes (búsqueda, reserva, registro de asistencia) | Horas punta con alta concurrencia | Pasarela API (API Gateway), contexto de Sesiones, réplicas de base de datos, bus de eventos, caché distribuida | El servicio permanece disponible; las funcionalidades no críticas pueden degradarse; conmutación por error automática | Disponibilidad ≥ 99,5% anual; conmutación por error < 30 s |
-| **Confiabilidad** | Sistema de reservas / local | Conflictos de reserva simultáneos o cancelaciones masivas | Procesamiento en tiempo real de sesiones y reservas | Contextos de Sesiones y Locales con mensajería asíncrona (bus de eventos) y manejo de compensaciones | No debe ocurrir corrupción de datos; inconsistencias resueltas por procesos automáticos de reconciliación | 0 pérdida de reservas críticas; reconciliación automática < 60 s |
-| **Rendimiento** | Usuario final (aprendiz/propietario) | Búsqueda con filtros, geolocalización y emparejado de usuarios con alta concurrencia | Pico de consultas (95% solicitudes objetivo) | Contexto de Matching, caché distribuida (ej. Redis), índices geoespaciales | Resultados entregados rápidamente y ordenados por relevancia; operaciones de emparejado procesadas eficientemente | 95% de búsquedas ≤ 1,5 s; 95% de emparejados ≤ 0,8 s; degradación controlada para el resto |
-| **Seguridad** | Pasarela API / servicio de identidad | Validación de tokens JWT y control de acceso por roles | Durante autenticación y acceso a funciones sensibles | Pasarela API, servicio de Identidad y Acceso, sistema de auditoría, cifrado en tránsito y en reposo | Solo identidades válidas acceden a recursos; se registra trazabilidad de accesos y acciones administrativas | 100% validación de tokens; registros de auditoría retenidos 90 días; TLS en tránsito y cifrado en reposo |
-| **Escalabilidad** | Equipo de operaciones | Incremento temporal del 200% de usuarios concurrentes por campaña | Período de crecimiento acelerado o promoción | Orquestador de contenedores (Kubernetes), autoescalado, bus de eventos, diseño desacoplado por contexto | Escalado horizontal de componentes críticos; degradación controlada de servicios no esenciales | Escalado horizontal < 3 min; soportar hasta 10× la carga base sin pérdida de funciones críticas |
-| **Modificabilidad (operacional)** | Host de reunión (usuario) | Cancelación o modificación de reunión desde la app móvil hasta 24 h antes | Uso normal de la aplicación móvil | Contexto de Sesiones con reglas de ventana temporal, notificaciones y lógica de compensación | La modificación se procesa, se notifica a inscritos, se libera capacidad en el local y se calculan reembolsos si aplica | Procesamiento < 2 s; notificaciones < 5 s; estado consistente visible en < 5 s |
-| **Modificabilidad (evolutivo)** | Equipo de desarrollo | Despliegue de nueva versión o cambio en algoritmo de emparejado | Producción durante ciclo de entrega | Contextos desacoplados, pipeline de integración y entrega continua (CI/CD), flags de funcionalidad | Despliegue con impacto acotado y posibilidad de reversión; compatibilidad hacia atrás mantenida | Despliegue canario < 15 min; rollback automático si falla |
-| **Usabilidad** | Aprendiz / propietario | Flujo de reserva, confirmación y notificaciones en móviles y web | Uso típico en dispositivos móviles y navegadores | Interfaz de usuario, API de aplicación y sistema de notificaciones en tiempo real | Retroalimentación inmediata en las interacciones; notificaciones claras y sincronizadas entre participantes | Retroalimentación < 0,5 s; tasa de error de usuario < 2%; tareas clave ≤ 3 pasos |
+- QAS-01: Seguridad - Control de acceso basado en roles
+| Atributo      | Fuente de Estímulo                     | Estímulo                                                                            | Entorno          | Artefacto                        | Respuesta                                                                                                      | Medida                                                                                             |
+| ------------- | -------------------------------------- | ----------------------------------------------------------------------------------- | ---------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| **Seguridad** | Usuario autenticado con rol incorrecto | Solicitud `POST /api/v1/encounters/{id}/join` con JWT válido pero rol no autorizado | Operación normal | API Gateway + IAM Service + RBAC | El sistema rechaza la solicitud con HTTP 403 antes de llegar al microservicio. Se registra el intento en logs. | 100% de accesos no autorizados rechazados. Tiempo de respuesta < 200 ms. Logs retenidos ≥ 90 días. |
+
+- QAS-02: Disponibilidad - Procesamiento de reservas ante fallo de servicios no críticos
+
+| Atributo           | Fuente de Estímulo | Estímulo                                                                             | Entorno                   | Artefacto                                            | Respuesta                                                                                                 | Medida                                                                                          |
+| ------------------ | ------------------ | ------------------------------------------------------------------------------------ | ------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| **Disponibilidad** | Usuario aprendiz   | Solicitud `POST /api/v1/encounters/{id}/join` durante caída del Notification Service | Fallo parcial del sistema | Encounters Service + RabbitMQ + Notification Service | La reserva se procesa correctamente. La notificación se encola y se envía cuando el servicio se recupera. | Disponibilidad ≥ 99.5%. 0 pérdida de reservas. Mensajes persistidos en cola hasta recuperación. |
+
+- QAS-03: Mantenibilidad - Despliegue independiente de Bounded Contexts
+
+| Atributo           | Fuente de Estímulo   | Estímulo                                                | Entorno           | Artefacto                                                  | Respuesta                                                                               | Medida                                                                |
+| ------------------ | -------------------- | ------------------------------------------------------- | ----------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **Mantenibilidad** | Equipo de desarrollo | Cambio en lógica de acumulación de puntos en Engagement | Desarrollo activo | Engagement Service + API versionada + Database per Service | El cambio se implementa sin afectar otros servicios. No requiere redeploy de otros BCs. | Cambio desplegado < 4h. 0 cambios en otros servicios. CI/CD < 10 min. |
+
+- QAS-04: Mantenibilidad - Extensibilidad del sistema de recompensas
+| Atributo           | Fuente de Estímulo   | Estímulo                                                                 | Entorno           | Artefacto                                                             | Respuesta                                                                                                                                      | Medida                                                                                                         |
+| ------------------ | -------------------- | ------------------------------------------------------------------------ | ----------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Mantenibilidad** | Equipo de desarrollo | Incorporación de un nuevo tipo de recompensa en el sistema de Engagement | Desarrollo activo | Engagement Service + arquitectura modular + contratos API versionados | El nuevo tipo de recompensa se implementa extendiendo la lógica existente sin modificar otros servicios. No afecta a Encounters ni Promotions. | Implementación < 6 horas. 0 cambios en otros microservicios. Cobertura de tests ≥ 80% en el módulo modificado. |
 
 ### 4.2.4 Constraints 
 
@@ -241,11 +253,142 @@ Glottia debe permitir añadir nuevos idiomas o tipos de servicios sin reescribir
 - **Meta:** Definición clara de  **Bounded Contexts**  para que el módulo de "Usuarios" sea independiente del módulo de "Contenido Académico/Servicios".
 
 ## 4.3 ADD Iterations
-### 4.2.X Iteration N: <Iteration Name>
-#### 4.2.X.1 Architectural Design Backlog N
-#### 4.2.X.2 Establish Iteration Goal by Selecting Drivers
-#### 4.2.X.3 Choose One or More Elements of the System to Refine
-#### 4.2.X.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
-#### 4.2.X.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
-#### 4.2.X.6 Sketch Views (C4 & UML) and Record Design Decisions 
-#### 4.2.X.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
+### 4.3.1 Iteration 1: Definición del Core Arquitectónico de Glottia
+#### 4.3.1.1 Architectural Design Backlog 1
+
+En este backlog se definiran las características arquitectónicas clave para garantizar el correcto funcionamiento de Glottia. Se priorizaran tres atributos de calidad: : Seguridad, para proteger los datos personales de los aprendices y establecimientos; Disponibilidad, para garantizar que las reservas y encuentros funcionen sin interrupciones; y Mantenibilidad, para permitir que el sistema evolucione de forma independiente por dominio funcional.
+
+#### Seguridad
+
+| User Stories | Tareas | Criterios de Aceptación |
+|--------------|--------|------------------------:|
+| US-01: Como aprendiz, quiero registrarme con mis datos personales para acceder a la plataforma. | Implementar autenticación centralizada con JWT y OAuth2. Configurar RBAC con roles ROLE_APRENDIZ y ROLE_ESTABLECIMIENTO. Cifrar datos sensibles en reposo. | Solo usuarios autenticados acceden a reservas y encuentros. Las contraseñas se almacenan con hashing BCrypt. El sistema bloquea accesos no autorizados a perfiles ajenos. |
+| US-02: Como administrador de establecimiento, quiero que solo yo pueda gestionar mi local para proteger mi información. | Implementar validación de propiedad por rol en cada endpoint. Configurar API Gateway para validar tokens JWT antes de enrutar peticiones. | Un aprendiz no puede modificar datos de un establecimiento. El 100% de operaciones sensibles queda registrado en el log de auditoría. | 
+
+#### Disponibilidad
+
+| User Stories | Tareas | Criterios de Aceptación |
+|--------------|--------|------------------------:|
+| US-17: Como aprendiz, quiero reservar mi cupo en un encuentro para asegurar mi asistencia. | Implementar replicación del servicio de reservas en múltiples instancias. Aplicar Circuit Breaker en llamadas entre el servicio de reservas y el de notificaciones. Usar comunicación asíncrona para el envío de confirmaciones. | El sistema mantiene disponibilidad del 99.5% mensual. Si el servicio de notificaciones falla, la reserva igual se procesa. El sistema se recupera automáticamente ante caídas dentro de 2 horas. |
+
+
+#### Mantenibilidad
+
+| User Stories | Tareas | Criterios de Aceptación |
+|--------------|--------|------------------------:|
+| TS-: Como desarrollador de HampCoders, quiero modificar la lógica de reservas sin afectar el módulo de establecimientos para desplegar más rápido.  | Diseñar la arquitectura con Bounded Contexts independientes (IAM, Event, Reservas, Establecimientos, Notificaciones). Implementar Database per Service. Definir contratos OpenAPI versionados entre servicios. | Un cambio en la lógica de reservas se puede desplegar en menos de 4 horas sin afectar otros servicios. Cada microservicio tiene su propia base de datos sin acoplamiento compartido. |
+| TS-: Como desarrollador, quiero que las dependencias a sistemas externos queden completamente aisladas. | Encapsular la dependencia de Claude/GPT-4 exclusivamente en el microservicio Learning Feedback. Ningún otro BC importa ni conoce la librería del LLM. | Si el LLM API falla, solo Learning Feedback se ve afectado. El resto del sistema opera con normalidad |
+
+#### 4.3.1.2 Establish Iteration Goal by Selecting Drivers
+
+En esta iteración el equipo de Hampcoders seleccionará los drivers de Seguridad, Disponibilidad y Mantenibilidad como base del diseño de Glottia.
+
+##### Meta de Seguridad
+
+- Objetivo: Garantizar que el flujo de reservas y encuentros funcione de forma continua, especialmente durante picos de uso.
+- Acciones clave: Implementar replicación de servicios críticos. Aplicar el patrón Circuit Breaker entre servicios. Usar comunicación asíncrona para notificaciones con un Message Broker.
+
+##### Meta de Mantenibilidad
+
+- Objetivo: Convertir los 8 Bounded Contexts del monolito modular en 8 microservicios Java 21 + Spring Boot independientes, cada uno con su propio esquema PostgreSQL, repositorio Git y pipeline de despliegue.
+
+- Acciones clave: Migrar cada paquete Maven a un proyecto Spring Boot independiente. Aplicar Database per Service con esquemas PostgreSQL exclusivos. Definir contratos OpenAPI por servicio. Aislar la dependencia LLM exclusivamente en Learning Feedback.
+
+##### Meta de Disponibilidad
+- Objetivo: Garantizar que la caída de un microservicio no crítico no afecte los flujos core de negocio.
+- Acciones clave: Reemplazar Spring ApplicationEvents por RabbitMQ como Message Broker entre microservicios. Aplicar Circuit Breaker en las llamadas síncronas entre servicios. Establecer health checks por microservicio.
+
+##### Objetivo de la Iteración
+
+- Seguridad: Establecer la base de autenticación centralizada y protección de datos de usuarios aprendices y establecimientos bajo los estándares de la Ley N.° 29733 de Perú.
+- Disponibilidad: Asegurar que el servicio de reservas sea resiliente ante fallos de componentes no críticos como las notificaciones.
+- Mantenibilidad: Definir la descomposición en microservicios alineada a los Bounded Contexts del negocio de Glottia.
+
+#### 4.3.1.3 Choose One or More Elements of the System to Refine
+
+| Elemento a Refinar | Razón | Esperado |
+|--------------------|-------|---------:|
+| Monolito modular completo | Es el sistema de partida. Debe descomponerse en 8 microservicios independientes alineados a los BCs de DDD. | Autenticación centralizada con JWT, RBAC por rol y protección de endpoints sensibles. | 8 proyectos Spring Boot independientes: IAM, Profiles, Venues, Promotions, Encounters, Engagement, Learning Feedback, Analytics. |
+| Comunicación entre Bounded Contexts | Los ApplicationEvents funcionan dentro del mismo proceso JVM. Al separar en microservicios distintos, se necesita un mecanismo de mensajería externo. | RabbitMQ como Message Broker. Cada microservicio publica y consume eventos mediante colas. |
+| API Gateway | Al tener múltiples servicios expuestos, se necesita un punto único de entrada que centralice autenticación, enrutamiento y rate limiting. | Spring Cloud Gateway como API Gateway. Valida JWT y enruta hacia el microservicio correspondiente. | 
+| Dependencia LLM | En el monolito, esta dependencia podría haberse filtrado a otros módulos. En microservicios debe quedar encapsulada. | Learning Feedback es el único servicio que importa la librería del LLM. Ningún otro BC la conoce. |
+
+#### 4.3.1.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
+
+##### Seguridad
+
+- Autenticación y Autorización Centralizada (OAuth2 + JWT + RBAC)
+    - Descripción: El microservicio IAM gestiona registro, login y emisión de tokens JWT con roles USER, PARTNER y ADMIN. Los demás servicios confían en el token ya validado por el Gateway.
+    - Justificación: Centraliza la fuente de verdad de autenticación y autorización. Cumple con los estándares OAuth2 y con la Ley N.° 29733 de Perú.
+
+- API Gateway como punto único de entrada
+    - Descripción: Todo el tráfico externo pasa por el API Gateway, que valida los tokens JWT antes de enrutar las peticiones a los microservicios internos.
+    - Justificación: Proporciona una capa de seguridad centralizada y simplifica la gestión de autenticación y rate limiting.
+
+##### Disponibilidad
+
+- Comunicación Asíncrona con Message Broker
+    - Descripción: Reemplaza los Spring ApplicationEvents del monolito por RabbitMQ. Los microservicios publican eventos en colas, y los consumidores (ej. Engagement, Analytics) los procesan de forma independiente.
+    - Justificación: Desacopla los microservicios productores de los consumidores. Si Analytics cae, Encounters sigue funcionando; los eventos se acumulan en la cola hasta que Analytics se recupere.
+
+- Patrón Circuit Breaker
+    - Descripción: Aplicar Circuit Breaker en la única llamada síncrona entre servicios.
+    - Justificación: Si Promotions está lento o caído, el Circuit Breaker evita que Engagement quede bloqueado esperando respuesta, degradando el servicio de forma controlada.
+
+##### Mantenibilidad
+- Arquitectura de Microservicios alineada a Bounded Contexts DDD
+    - Descripción: Cada uno de los 8 Bounded Contexts de Glottia se convierte en un microservicio Spring Boot independiente, con su propio repositorio Git, pipeline CI/CD y esquema PostgreSQL.
+    - Justificación: Permite que equipos distintos desarrollen, prueben y desplieguen su BC sin afectar a los demás. Un cambio en Engagement no requiere redesplegar Encounters ni IAM.
+
+- Database per Service
+    - Descripción: Cada microservicio es dueño exclusivo de su esquema PostgreSQL. Ningún servicio accede directamente a la base de datos de otro.
+    - Justificación: Garantiza bajo acoplamiento a nivel de datos. El esquema de Promotions puede evolucionar sin afectar a Engagement ni a Venues.
+
+- Patrón Adapter para dependencias externas
+    - Descripción: La dependencia del LLM API en Learning Feedback se encapsula detrás de una interfaz interna, de modo que si cambia el proveedor, solo se reemplaza el adaptador, sin tocar la lógica de negocio.
+    - Justificación: Aisla el único punto de variabilidad técnica alta del sistema. Ningún otro microservicio importa ni conoce el LLM.
+
+#### 4.3.1.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
+
+| **Elemento**                           | **Responsabilidad**                                                                        | **Interfaces**                                                                                                                                                                                                  |
+| -------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **API Gateway** | Punto único de entrada. Valida JWT, enruta peticiones, aplica rate limiting.               | Expone `/api/v1/*` hacia clientes Flutter y Kotlin. Enruta internamente a cada microservicio.                                                                                                                   |
+| **IAM Service**                        | Registro, login, emisión y renovación de JWT. Gestión de roles USER/PARTNER/ADMIN.         | `POST /auth/register`<br>`POST /auth/login`<br>`POST /auth/refresh`<br>Publica evento `UserRegistered`.                                                                                                         |
+| **Profiles Service**                   | Perfil de usuario, idiomas, nivel CEFR y disponibilidad.                                   | `GET /profiles`<br>`POST /profiles`<br>`PUT /profiles`<br>Consume `UserRegistered`. Publica `ProfileCompleted`.                                                                                                 |
+| **Venues Service**                     | Alta de partners, gestión de venues, mesas y disponibilidad horaria.                       | `GET /venues`<br>`POST /venues`<br>`PUT /venues`<br>`/partners`<br>Publica `VenueActivated`, `VenueCreated`.                                                                                                    |
+| **Promotions Service**                 | Catálogo de promociones, vigencia, stock y canje.                                          | `GET /promotions`<br>`POST /promotions`<br>`POST /promotions/{id}/redeem`<br>Consume `VenueActivated`. Publica `PromotionRedeemed`.                                                                             |
+| **Encounters Service**                 | Búsqueda de encuentros, reserva de cupos, check-in QR y gestión de estados.                | `GET /encounters/search`<br>`POST /encounters/{id}/join`<br>`POST /encounters/{id}/check-in`<br>Publica `UserCheckedIn`, `EncounterCompleted`.                                                                  |
+| **Engagement Service**                 | Acumulación de puntos, badges, leaderboard y canje de puntos.                              | `GET /engagement/rewards/catalog`<br>`POST /engagement/rewards/redeem`<br>Consume `UserCheckedIn`, `AssessmentCompleted`, `QuizPassed`, `FeedbackSubmitted`.<br>Llama síncronamente a Promotions para el canje. |
+| **Learning Feedback Service**          | Self-assessment, peer feedback, quiz LLM y FluencyScore. Único con dependencia al LLM API. | `POST /feedback/self-assessment`<br>`POST /feedback/peer`<br>`POST /feedback/quiz/{id}/answer`<br>Consume `EncounterCompleted`.<br>Publica `AssessmentCompleted`, `QuizPassed`, `FeedbackSubmitted`.            |
+| **Analytics Service**                  | KPIs y métricas para partners y admin. Consumidor puro de eventos.                         | `GET /analytics/monthly`<br>Consume todos los eventos del sistema. No publica eventos.                                                                                                                          |
+| **RabbitMQ**                           | Message Broker central para comunicación asíncrona entre todos los microservicios.         | Queues/Topics por evento: `encounter.completed`, `user.checked-in`, `assessment.completed`, etc.                                                                                                                |
+| **PostgreSQL**          | Cada microservicio tiene su propio esquema exclusivo.                                      | Repositorios internos de cada servicio. Sin acceso cruzado entre esquemas.                                                                                                                                      |
+
+#### 4.3.1.6 Sketch Views (C4 & UML) and Record Design Decisions
+
+| ID | Decisión | Estado | Justificación |
+| -------- | --------- | ---------- | ---------- |
+| DD-001 | Migración de monolito modular a microservicios por BC | Aceptada | Permite despliegues independientes por Bounded Context y escala según dominio. |
+| DD-002 | Autenticación centralizada con JWT + RBAC | Aceptada | Centraliza la seguridad y cumple con Ley N.° 29733. |
+| DD-003 | Comunicación asíncrona con RabbitMQ para notificaciones | Aceptada | Desacopla el flujo crítico (reserva) del no crítico (notificación), mejorando disponibilidad. |
+| DD-004 | Database per Service con PostgreSQL | Aceptada | Garantiza bajo acoplamiento entre servicios y permite evolución independiente del esquema. |
+| DD-005 | API Gateway como punto único de entrada | Aceptada | Centraliza seguridad, enrutamiento y políticas transversales como rate limiting. |
+
+#### 4.3.1.7 Analysis of Current Design and Review Iteration Goal (Kanban Board)
+
+Tras completar la primera iteración, la arquitectura base de Glottia establece los cimientos necesarios para soportar los dos segmentos de usuarios.
+
+- Fortalezas del diseño:
+    - La separación por Bounded Contexts garantiza que el equipo pueda trabajar en paralelo sobre IAM, Encounters y Learning Feedback sin interferencias. 
+    - El aislamiento del LLM en un único servicio protege al resto del sistema ante latencias o fallos del proveedor externo. 
+    - La comunicación asíncrona con RabbitMQ garantiza que Analytics y Engagement puedan procesar eventos aunque exista lag temporal.
+
+- Áreas de mejora identificadas: 
+    - La consistencia eventual entre BCs requiere que el equipo diseñe con cuidado las sagas de datos, especialmente en el flujo de canje
+
+- Kanban Board:
+| **To Do** | **In Progress** | **Done** |
+| ------------ | ---------- | -------- |
+| Configurar RabbitMQ con queues por evento | Implementación de IAM Service con Spring Security 6 + JWT | Definición de los 8 BCs como microservicios independientes                         |
+| Implementar Circuit Breaker en Engagement - Promotions | Configuración de Spring Cloud Gateway | Definición del Context Map y reglas de dependencia |
+| Diseñar contratos OpenAPI por microservicio | Migración de esquemas PostgreSQL a Database per Service | Decisiones de diseño DD-001 a DD-005 documentadas |
