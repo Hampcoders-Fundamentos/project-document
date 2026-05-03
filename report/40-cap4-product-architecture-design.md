@@ -172,28 +172,46 @@ El propósito del diseño arquitectónico de Glottia es construir una estructura
 
 ### 4.2.2 Primary Functionality (Primary User Stories)
 
+Se identifican aquí los requisitos funcionales de alta prioridad que impactan directamente en las decisiones de diseño de la arquitectura. A través de estas historias de usuario clave, se establecen los módulos base y las relaciones de datos de Glottia, asegurando que la estructura soporte tanto la lógica operativa como los atributos de calidad esperados.
+
+|ID|Título|Descripción|Impacto estructural|
+|--|------|---------------|--------------|
+|US001–US003| Registro, autenticación y gestión de sesión de usuario| Permite al Learner y al Partner registrarse con email/contraseña, iniciar sesión y obtener tokens JWT para acceder al sistema.| BC IAM genera `UserRegistered` -> dispara creación de perfil en Profiles. Punto de entrada de toda la arquitectura; todos los BCs consumen el JWT para autorización. | 
+|US004–US007| Creación y configuración del perfil de aprendiz | El Learner completa su perfil indicando idioma nativo, idiomas meta, nivel CEFR y disponibilidad horaria. El perfil es prerequisito para reservar encuentros. | BC Profiles publica `ProfileCompleted` -> Encounters lo consume para habilitar la funcionalidad de reserva. Relación directa con los BCs Engagement (nivel CEFR para leaderboard) y Analytics (segmentación de KPIs)|
+|US008–US011|Registro de local aliado y publicación de venues|El Partner da de alta su establecimiento (cafetería, bar, coworking), registra mesas y configura la disponibilidad horaria de los espacios.|BC Venues publica `VenueActivated` -> consumido por Encounters (para asociar encuentros a locales) y Promotions (para validar la existencia del venue al crear links promocionales).|
+|US012–US016|Creación, búsqueda y reserva de encuentros presenciales|El Learner busca encuentros por idioma, fecha y ubicación; reserva un cupo disponible y recibe confirmación. Incluye gestión de cupo lleno con estado de espera.|BC Encounters es el Core operativo central; consume `ProfileCompleted` y `VenueActivated`. Su evento `UserCheckedIn` dispara puntos en Engagement y métricas en Analytics.|
+|US017–US019|Check-in por QR y cierre de encuentro|El Learner realiza check-in escaneando un código QR en el local. El sistema valida la asistencia, actualiza el estado del encuentro a `COMPLETED` y desencadena el loop post-encuentro.|BC Encounters publica `UserCheckedIn` -> Engagement (+10 pts) y `EncounterCompleted` -> Learning Feedback (genera quiz) y Analytics (registra asistencia). Evento pivote del sistema.|
+|US020–US024|Self-assessment y peer feedback post-encuentro|Tras el encuentro, el Learner evalúa su desempeño en 5 dimensiones (expresión, comprensión, vocabulario, fluidez, confianza) y recibe feedback anónimo de sus pares.|BC Learning Feedback publica `AssessmentCompleted` y `FeedbackSubmitted` -> Engagement acumula puntos. Actualiza `FluencyScore` en su propio esquema, sin acoplarse a otros BCs.|
+|US025–US027|Generación y resolución de quiz LLM post-encuentro| El sistema genera automáticamente un quiz de 5 preguntas usando LLM (Claude/GPT-4) basado en el tema e idioma del encuentro completado. El Learner lo responde y obtiene retroalimentación inmediata.|BC Learning Feedback es el único con dependencia externa (LLM API). Consume `EncounterCompleted` de Encounters y publica `QuizPassed` -> Engagement (+10 pts). Dependencia externa completamente aislada en este BC.|
+|US028–US032|Acumulación de puntos, badges y leaderboard|El sistema acredita puntos automáticamente por cada acción validada (check-in, quiz aprobado, self-assessment, peer feedback). El Learner visualiza su posición en el leaderboard segmentado por nivel CEFR.|BC Engagement consume `UserCheckedIn`, `AssessmentCompleted`, `QuizPassed`, `FeedbackSubmitted`. Publica `PointsAwarded` y `BadgeUnlocked`-> Analytics. Coordinación directa con Promotions para el flujo de canje.|
+|US033–US036| Creación de promociones y asociación a venues|El Partner crea promociones (descuentos, cortesías, 2×1), define vigencia y stock, y las asocia a uno o múltiples venues.|BC Promotions consume `VenueActivated` para validar la existencia del venue. Publica `PromotionRedeemed` -> Analytics. Relación many-to-many con Venues mediante VenuePromotionLink.|
+|US037–US039|Canje de puntos por promociones en venues aliados|El Learner consulta el catálogo de recompensas disponibles y canjea sus puntos acumulados por una promoción en el venue donde realizó el encuentro.|Engagement orquesta el canje llamando directamente a Promotions (Partnership pattern). Promotions descuenta stock y emite `RedemptionCode`. Cierre del loop motivacional del segmento Learner.|
+|US040–US043| Dashboard de KPIs para Partner y Admin|El Partner visualiza métricas mensuales de su venue: reservas, tasa de asistencia, rating promedio y tasa de canje de promociones. El Admin accede a KPIs globales del sistema.|BC Analytics es consumidor puro de eventos de todos los BCs Core (`UserCheckedIn`, `EncounterCompleted`, `PointsAwarded`, `PromotionRedeemed`, `VenueCreated`). No publica eventos; no tiene lógica de negocio propia.|
+
 ### 4.2.3 Quality Attribute Scenarios
 
 Los atributos de calidad definen el comportamiento esperado del sistema Glottia bajo condiciones operacionales reales. Los escenarios siguientes describen estímulos concretos, los componentes afectados y las respuestas esperadas, con medidas cuantificables para validar la arquitectura basada en contextos de dominio (Usuarios, Sesiones, Locales, Matching, Notificaciones) e infraestructura (pasarela API, caché, bus de eventos).
 
-- QAS-01: Seguridad - Control de acceso basado en roles
+#### QAS-01: Seguridad - Control de acceso basado en roles
+
 | Atributo      | Fuente de Estímulo                     | Estímulo                                                                            | Entorno          | Artefacto                        | Respuesta                                                                                                      | Medida                                                                                             |
 | ------------- | -------------------------------------- | ----------------------------------------------------------------------------------- | ---------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | **Seguridad** | Usuario autenticado con rol incorrecto | Solicitud `POST /api/v1/encounters/{id}/join` con JWT válido pero rol no autorizado | Operación normal | API Gateway + IAM Service + RBAC | El sistema rechaza la solicitud con HTTP 403 antes de llegar al microservicio. Se registra el intento en logs. | 100% de accesos no autorizados rechazados. Tiempo de respuesta < 200 ms. Logs retenidos ≥ 90 días. |
 
-- QAS-02: Disponibilidad - Procesamiento de reservas ante fallo de servicios no críticos
+#### QAS-02: Disponibilidad - Procesamiento de reservas ante fallo de servicios no críticos
 
 | Atributo           | Fuente de Estímulo | Estímulo                                                                             | Entorno                   | Artefacto                                            | Respuesta                                                                                                 | Medida                                                                                          |
 | ------------------ | ------------------ | ------------------------------------------------------------------------------------ | ------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | **Disponibilidad** | Usuario aprendiz   | Solicitud `POST /api/v1/encounters/{id}/join` durante caída del Notification Service | Fallo parcial del sistema | Encounters Service + RabbitMQ + Notification Service | La reserva se procesa correctamente. La notificación se encola y se envía cuando el servicio se recupera. | Disponibilidad ≥ 99.5%. 0 pérdida de reservas. Mensajes persistidos en cola hasta recuperación. |
 
-- QAS-03: Mantenibilidad - Despliegue independiente de Bounded Contexts
+#### QAS-03: Mantenibilidad - Despliegue independiente de Bounded Contexts
 
 | Atributo           | Fuente de Estímulo   | Estímulo                                                | Entorno           | Artefacto                                                  | Respuesta                                                                               | Medida                                                                |
 | ------------------ | -------------------- | ------------------------------------------------------- | ----------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | **Mantenibilidad** | Equipo de desarrollo | Cambio en lógica de acumulación de puntos en Engagement | Desarrollo activo | Engagement Service + API versionada + Database per Service | El cambio se implementa sin afectar otros servicios. No requiere redeploy de otros BCs. | Cambio desplegado < 4h. 0 cambios en otros servicios. CI/CD < 10 min. |
 
-- QAS-04: Mantenibilidad - Extensibilidad del sistema de recompensas
+#### QAS-04: Mantenibilidad - Extensibilidad del sistema de recompensas
+
 | Atributo           | Fuente de Estímulo   | Estímulo                                                                 | Entorno           | Artefacto                                                             | Respuesta                                                                                                                                      | Medida                                                                                                         |
 | ------------------ | -------------------- | ------------------------------------------------------------------------ | ----------------- | --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | **Mantenibilidad** | Equipo de desarrollo | Incorporación de un nuevo tipo de recompensa en el sistema de Engagement | Desarrollo activo | Engagement Service + arquitectura modular + contratos API versionados | El nuevo tipo de recompensa se implementa extendiendo la lógica existente sin modificar otros servicios. No afecta a Encounters ni Promotions. | Implementación < 6 horas. 0 cambios en otros microservicios. Cobertura de tests ≥ 80% en el módulo modificado. |
@@ -407,7 +425,8 @@ Tras completar la primera iteración, la arquitectura base de Glottia establece 
 - Áreas de mejora identificadas: 
     - La consistencia eventual entre BCs requiere que el equipo diseñe con cuidado las sagas de datos, especialmente en el flujo de canje
 
-- Kanban Board:
+ - Kanban Board:
+
 | **To Do** | **In Progress** | **Done** |
 | ------------ | ---------- | -------- |
 | Configurar RabbitMQ con queues por evento | Implementación de IAM Service con Spring Security 6 + JWT | Definición de los 8 BCs como microservicios independientes                         |
