@@ -21,6 +21,8 @@ Este escenario detalla la interacción de los negocios asociados (cafeterías) c
 
 ## 3.2	User Stories
 
+A continuación se presentan las User Stories detalladas para cada Epic del proyecto, organizadas en tablas para facilitar su lectura y seguimiento. Cada User Story incluye un título, una descripción clara del requisito, y escenarios específicos que ilustran cómo se espera que los usuarios interactúen con la aplicación para cumplir con sus necesidades.
+
 ## Tabla de User Stories de Landing Page
 
 | Story ID | User | Story Points | Epic |
@@ -392,18 +394,34 @@ Este escenario detalla la interacción de los negocios asociados (cafeterías) c
 | **Description** | **Como** administrador **Quiero** poder enviar notificaciones o correos electrónicos a todos los usuarios **Para** comunicar novedades o mantenimientos de la plataforma. **Escenario #1: Anuncio de nueva funcionalidad** - Dado que se necesita comunicar una novedad a todos los usuarios, Cuando el administrador envía una comunicación global, Entonces todos los usuarios registrados reciben la notificación. |
 
 ## 3.3	Impact Map
-Se presentara los mapas de impacto realizados por cada segemnto 
+
+Se presentara los mapas de impacto realizados por cada segemento, el primero es para el segmento de aprendices y el segundo para el segmento de locales, ambos realizados por Carlos.
 
 ![](assets/img/cap3/Impact-map.png)
+
+Como se puede observar, el mapa de impacto para los aprendices se enfoca en mejorar la experiencia de búsqueda y reserva de encuentros, así como en fomentar la participación a través de un sistema de puntos y recompensas. Por otro lado, el mapa para los locales se centra en facilitar la gestión de sus espacios y eventos, y en proporcionarles herramientas para medir el impacto de su colaboración con la plataforma.
 
 ---
 
 ![](assets/img/cap3/Impact-map-Carlos.png)
 
+En el mapa de impacto para los locales, se identifican objetivos como aumentar la visibilidad de los locales, mejorar la gestión de eventos y obtener insights sobre el rendimiento de sus espacios. Las funcionalidades propuestas incluyen la creación de un dashboard para locales, la posibilidad de subir fotos y definir consumos mínimos, y la generación de reportes analíticos sobre asistentes y calificaciones.
 
 ## 3.4	Product Backlog   
 
-En esta sección, el equipo organiza el Product Backlog en base a su valor para el negocio y su peso en Story Points.
+En esta sección, el equipo organiza el Product Backlog en función de su valor comercial y su complejidad relativa estimada en Story Points. La secuencia de Fibonacci (1, 2, 3, 5, 8) se ha utilizado para establecer una escala consistente que refleja tanto el esfuerzo técnico como la complejidad de implementación de cada historia de usuario.
+
+**Escala de Story Points y su Interpretación:**
+
+| Story Points | Descripción | Estimación de Esfuerzo |
+|--------------|-------------|------------------------|
+| 1 | Tarea trivial con bajo acoplamiento y sin dependencias externas. Requiere implementación mínima y pruebas directas. | 2-4 horas |
+| 2 | Tarea simple con pocas dependencias. Incluye lógica básica y puede completarse dentro de un día laboral. | 4-8 horas |
+| 3 | Tarea de complejidad moderada con algunas dependencias internas. Requiere coordinación mínima entre módulos e integración limitada. | 1-2 días |
+| 5 | Tarea compleja con múltiples dependencias. Involucra integración entre varios componentes y requiere ciclos de prueba iterativas. | 3-5 días |
+| 8 | Tarea crítica y altamente compleja con numerosas dependencias arquitectónicas. Requiere coordinación entre módulos, integración extensiva y ciclos amplios de validación. | 1-2 semanas |
+
+A continuación se presenta la tabla con el orden de desarrollo propuesto:
 
 | Orden | User Story Id | Título | Descripción | Story Points |
 |------|--------------|--------|------------|--------------|
