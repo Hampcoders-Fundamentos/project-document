@@ -173,6 +173,7 @@ Se identifican aquí los requisitos funcionales de alta prioridad que impactan d
 |--|------|---------------|--------------|
 |US001–US003| Registro, autenticación y gestión de sesión de usuario| Permite al Learner y al Partner registrarse con email/contraseña, iniciar sesión y obtener tokens JWT para acceder al sistema.| BC IAM genera `UserRegistered` -> dispara creación de perfil en Profiles. Punto de entrada de toda la arquitectura; todos los BCs consumen el JWT para autorización. | 
 |US004–US007| Creación y configuración del perfil de aprendiz | El Learner completa su perfil indicando idioma nativo, idiomas meta, nivel CEFR y disponibilidad horaria. El perfil es prerequisito para reservar encuentros. | BC Profiles publica `ProfileCompleted` -> Encounters lo consume para habilitar la funcionalidad de reserva. Relación directa con los BCs Engagement (nivel CEFR para leaderboard) y Analytics (segmentación de KPIs)|
+|US008–US011|Registro de local aliado y publicación de venues|El Partner da de alta su establecimiento (cafetería, bar, coworking), registra mesas y configura la disponibilidad horaria de los espacios.|BC Venues publica `VenueActivated` → consumido por Encounters (para asociar encuentros a locales) y Promotions (para validar la existencia del venue al crear links promocionales).|
 
 ### 4.2.3 Quality Attribute Scenarios
 
