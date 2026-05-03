@@ -441,15 +441,22 @@ El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la s
 
 #### Empathy Map para los dueños de cafeterias.
 
+Mapa de Empatia de Enzo Fernandez
+\
 ![](assets/img/cap2/empathy-map-enzo-fernandez.png)
 
 ---
 
 #### Empathy Map para los aprendices.
+
+Mapa de Empatia de Sofia Ramirez
+\
 ![](assets/img/cap2/empathy-map-sofia-ramirez.png)
 
 ### 2.3.4 As-is Scenario Mapping
 
+As-is Scenario de Sofia 
+\
 ![](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
 
 #### Áreas Negativas
