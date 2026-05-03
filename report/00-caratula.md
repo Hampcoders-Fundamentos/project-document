@@ -56,7 +56,7 @@ Cesar Arostegui Alzamora\\
 
 \vspace{1cm}
 
-Noviembre 2025
+Mayo 2026
 
 \end{center}
 

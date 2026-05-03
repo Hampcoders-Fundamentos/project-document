@@ -28,6 +28,7 @@
 |---------|-------|-----------|----------------------------|
 | **AV2** | 25/04/2026 | **Ethan Matías Aliaga Aguirre** | Definición de principios arquitectónicos y estilos/patrones de arquitectura |
 | **AV2** | 27/04/2026 | **Ethan Matías Aliaga Aguirre** | Elaboración del Context Diagram y viewpoints arquitectónicos |
+| **AV2** | 28/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar los patrones de diseño que seran utiizados |
 | **AV2** | 26/04/2026 | **Sánchez Manrique, Italo Ludwing** | Desarrollo de tácticas arquitectónicas orientadas a atributos de calidad |
 | **AV2** | 28/04/2026 | **Sánchez Manrique, Italo Ludwing** | Aplicación del método ADD y desarrollo de iteraciones arquitectónicas |
 | **AV2** | 26/04/2026 | **Ivo Machado Bracamonte** | Desarrollo de diagramas C4 y UML para representar la arquitectura|

@@ -23,13 +23,13 @@ Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders 
 
 Estos son los estilos y patrones arquitectónicos que se ha seleccionado para guiar el diseño de la arquitectura de Glottia, asegurando que se alineen con los principios definidos y los drivers seleccionados para esta iteración. Cada enfoque se ha elegido por su capacidad para abordar aspectos clave como la modularidad, escalabilidad, mantenibilidad y seguridad del sistema.
 
-| Enfoque | Descripción | Aplicación dentro de Glottia |
-| ------- | ----------- | ---------------------------- |
-| Domain Driven Design (DDD) | Definir sub dominios con delimitaciones y alcances claros como bounded contexts. |                              |
-| Arquitectura de Microservicios | Desglozar el sistema en servicios independientes y escalables. |                              |
-| Organización N Capas | Dividir responsabilidades en 3 capas: presentación, logica de negoci y acceso a datos |                              |
-| Documentación OpenAPI | Documentar las APIs siguiendo el estandar OpenAPI |                              |
-| Seguridad y Protección de información sencible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sencible. |                              |
+| Enfoque | Descripción |
+| ------- | ----------- |
+| Domain Driven Design (DDD) | Definir sub dominios con delimitaciones y alcances claros como bounded contexts. |
+| Arquitectura de Microservicios | Desglozar el sistema en servicios independientes y escalables. |
+| Organización N Capas | Dividir responsabilidades en 3 capas: presentación, logica de negoci y acceso a datos |
+| Documentación OpenAPI | Documentar las APIs siguiendo el estandar OpenAPI |
+| Seguridad y Protección de información sencible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sencible. |
 
 ### 4.1.3 Context Diagram
 
@@ -38,6 +38,14 @@ Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principale
 ![Diagrama de Contexto para Glottia](assets/img/cap4/context.png)
 
 ### 4.1.4 Approach driven ViewPoints Diagrams
+
+
+#### Container Diagrama
+
+Diagrama de Contenedores de Glottia
+\
+![Diagrama de Contenedores](assets/img/cap4/contenedores.png)
+
 
 #### Class Diagram
 
