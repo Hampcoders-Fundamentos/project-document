@@ -37,5 +37,8 @@
 | **TB2** | 28/04/2026 | **Contreras López, Leandro Saul** | Desarrollo de diagramas C4 y UML para representar la arquitectura |
 | **TB2** | 29/04/2026 | **Ivo Machado Bracamonte** | Construcción del backlog arquitectónico y alineación con requerimientos |
 | **TB2** | 30/04/2026 | **Equipo Hampcoders** | Integración final del Capítulo IV: Product Architecture Design y revisión general del documento |
+| **TB1** | 18/04/2026 | **Contreras López,  Leandro Saul** | Creación y priorización del Product Backlog basado en valor de negocio |
+| **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Redactar escenarios de atributos de calidad y sus respectivos drivers |
+| **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de la sección de Tácticas Arquitectónicas |
 
 \newpage
