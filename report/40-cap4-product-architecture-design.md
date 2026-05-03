@@ -31,6 +31,8 @@ Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders 
 
 ### 4.1.3 Context Diagram
 
+Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principales actores, sistemas externos y los límites del sistema. Este diagrama ayuda a visualizar cómo Glottia interactúa con su entorno y define claramente las interfaces entre el sistema y sus usuarios o servicios externos. El software principal se conectará con servicios externos de Gemini AI y Stripe para generación de contenido y procesamiento de pagos, respectivamente.
+
 ![Diagrama de Contexto para Glottia](assets/img/cap4/context.png)
 
 ### 4.1.4 Approach driven ViewPoints Diagrams
@@ -136,8 +138,6 @@ Los patrones arquitectónicos definen la estructura desde un punto de vista de a
 
 
 ### 4.1.7 Tactics
-
-## 4.1.7 Tactics
 
 Las tácticas arquitectónicas de Glottia han sido definidas considerando su enfoque basado en Domain-Driven Design (DDD), arquitectura de monolito modular y comunicación asíncrona por eventos. Estas tácticas buscan reforzar los principales atributos de calidad del sistema: disponibilidad, modificabilidad, rendimiento, seguridad, usabilidad y escalabilidad, garantizando una experiencia fluida tanto para usuarios como para establecimientos aliados.
 
@@ -253,7 +253,13 @@ Glottia debe permitir añadir nuevos idiomas o tipos de servicios sin reescribir
 - **Meta:** Definición clara de  **Bounded Contexts**  para que el módulo de "Usuarios" sea independiente del módulo de "Contenido Académico/Servicios".
 
 ## 4.3 ADD Iterations
+
+En esta sección se describen las iteraciones de diseño arquitectónico que el equipo llevará a cabo para construir la solución Glottia, partiendo desde un monolito modular hasta una arquitectura de microservicios alineada a los Bounded Contexts definidos. Cada iteración se enfocará en aspectos específicos de la arquitectura, abordando los drivers seleccionados y refinando elementos clave del sistema.
+
 ### 4.3.1 Iteration 1: Definición del Core Arquitectónico de Glottia
+
+Primera iteración enfocada en establecer las bases arquitectónicas de Glottia, definiendo los elementos clave que garantizarán la seguridad, disponibilidad y mantenibilidad del sistema. Se priorizarán los drivers relacionados con la protección de datos, la resiliencia ante fallos y la capacidad de evolución independiente por dominio funcional.
+
 #### 4.3.1.1 Architectural Design Backlog 1
 
 En este backlog se definiran las características arquitectónicas clave para garantizar el correcto funcionamiento de Glottia. Se priorizaran tres atributos de calidad: : Seguridad, para proteger los datos personales de los aprendices y establecimientos; Disponibilidad, para garantizar que las reservas y encuentros funcionen sin interrupciones; y Mantenibilidad, para permitir que el sistema evolucione de forma independiente por dominio funcional.
@@ -306,6 +312,8 @@ En esta iteración el equipo de Hampcoders seleccionará los drivers de Segurida
 
 #### 4.3.1.3 Choose One or More Elements of the System to Refine
 
+Aquí se presentan los elementos clave del sistema que se refinarán en esta iteración, junto con las razones para su selección y lo que se espera lograr con cada uno de ellos. Estos elementos son fundamentales para alcanzar los objetivos de seguridad, disponibilidad y mantenibilidad definidos previamente.
+
 | Elemento a Refinar | Razón | Esperado |
 |--------------------|-------|---------:|
 | Monolito modular completo | Es el sistema de partida. Debe descomponerse en 8 microservicios independientes alineados a los BCs de DDD. | Autenticación centralizada con JWT, RBAC por rol y protección de endpoints sensibles. | 8 proyectos Spring Boot independientes: IAM, Profiles, Venues, Promotions, Encounters, Engagement, Learning Feedback, Analytics. |
@@ -314,6 +322,8 @@ En esta iteración el equipo de Hampcoders seleccionará los drivers de Segurida
 | Dependencia LLM | En el monolito, esta dependencia podría haberse filtrado a otros módulos. En microservicios debe quedar encapsulada. | Learning Feedback es el único servicio que importa la librería del LLM. Ningún otro BC la conoce. |
 
 #### 4.3.1.4 Choose One or More Design Concepts That Satisfy the Selected Drivers
+
+Se eligen los siguientes conceptos de diseño para abordar los drivers seleccionados en esta iteración, garantizando que la arquitectura de Glottia sea segura, disponible y mantenible:
 
 ##### Seguridad
 
@@ -350,6 +360,8 @@ En esta iteración el equipo de Hampcoders seleccionará los drivers de Segurida
 
 #### 4.3.1.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
 
+Se definen los elementos arquitectónicos clave de Glottia, asignando responsabilidades específicas a cada uno y detallando las interfaces que expondrán para interactuar con otros componentes del sistema. Esta definición es fundamental para garantizar que cada microservicio cumpla con su rol dentro de la arquitectura general, facilitando la comunicación entre ellos y asegurando que se respeten los principios de diseño establecidos.
+
 | **Elemento**                           | **Responsabilidad**                                                                        | **Interfaces**                                                                                                                                                                                                  |
 | -------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **API Gateway** | Punto único de entrada. Valida JWT, enruta peticiones, aplica rate limiting.               | Expone `/api/v1/*` hacia clientes Flutter y Kotlin. Enruta internamente a cada microservicio.                                                                                                                   |
@@ -365,6 +377,8 @@ En esta iteración el equipo de Hampcoders seleccionará los drivers de Segurida
 | **PostgreSQL**          | Cada microservicio tiene su propio esquema exclusivo.                                      | Repositorios internos de cada servicio. Sin acceso cruzado entre esquemas.                                                                                                                                      |
 
 #### 4.3.1.6 Sketch Views (C4 & UML) and Record Design Decisions
+
+Las decisiones de diseño arquitectónico tomadas durante esta iteración se documentan a continuación, detallando el ID de la decisión, la descripción, el estado actual y la justificación que respalda cada elección. Estas decisiones reflejan las elecciones estratégicas realizadas para cumplir con los objetivos de seguridad, disponibilidad y mantenibilidad definidos para Glottia.
 
 | ID | Decisión | Estado | Justificación |
 | -------- | --------- | ---------- | ---------- |
@@ -392,3 +406,5 @@ Tras completar la primera iteración, la arquitectura base de Glottia establece 
 | Configurar RabbitMQ con queues por evento | Implementación de IAM Service con Spring Security 6 + JWT | Definición de los 8 BCs como microservicios independientes                         |
 | Implementar Circuit Breaker en Engagement - Promotions | Configuración de Spring Cloud Gateway | Definición del Context Map y reglas de dependencia |
 | Diseñar contratos OpenAPI por microservicio | Migración de esquemas PostgreSQL a Database per Service | Decisiones de diseño DD-001 a DD-005 documentadas |
+
+Finalmente, con esta primera iteración se sientan las bases arquitectónicas de Glottia, estableciendo un marco sólido para las siguientes iteraciones que se enfocarán en la implementación de funcionalidades específicas, optimización de rendimiento y refinamiento de la experiencia de usuario.
