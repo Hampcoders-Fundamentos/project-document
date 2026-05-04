@@ -8,7 +8,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 **Competitive Analysis Landscape**
 
 | **Categoría** | **Subcategoría** | **Glottia (Startup)** | **HelloTalk (Competidor 1)** | **Tandem (Competidor 2)** | **Meetup (Competidor 3)** |
-|--------------|----------------|----------------------|------------------------------|---------------------------|----------------------------|
+|:---|:---|:---|:---|:---|:---|
 | **Objetivo del análisis** | ¿Por qué llevar a cabo este análisis? | Identificar oportunidades de diferenciación mediante experiencias presenciales y virtuales para la práctica de idiomas | Comprender su enfoque digital en aprendizaje | Analizar su comunidad global | Evaluar su modelo de eventos sociales |
 | **Perfil Overview** | Descripción | Plataforma que conecta personas para practicar idiomas en espacios físicos y virtuales | App de intercambio de idiomas con chat y correcciones | Plataforma de intercambio con hablantes nativos | Plataforma de organización de eventos sociales |
 | **Ventaja competitiva** | Valor ofrecido | Experiencia híbrida (presencial + digital) y conexión cultural | Corrección en tiempo real y herramientas integradas | Conexión global con hablantes nativos | Amplia red de eventos y usuarios |

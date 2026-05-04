@@ -2,7 +2,7 @@
 
 
 | Versión | Fecha | Autor(es) | Descripción de modificación |
-|---------|-------|-----------|----------------------------|
+|:---|:---|:---|:---|
 | **AV1** | 06/04/2026 | **Ethan Matías Aliaga Aguirre** | Establecer estructura principal para el informe del proyecto |
 | **AV1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar primera versión del Capítulo I |
 | **AV1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar Startup Profile |
@@ -25,7 +25,6 @@
 | **AV1** | 18/04/2026 | **Contreras López, Leandro Saul** | Apoyo en la definición del Lean UX Assumptions e Hipótesis |
 | **AV1** | 18/04/2026 | **Contreras López, Leandro Saul** | Apoyo en la realización y análisis de entrevistas a usuarios |
 | **AV1** | 18/04/2026 | **Contreras López, Leandro Saul** | Creación y priorización del Product Backlog basado en valor de negocio |
-|---------|-------|-----------|----------------------------|
 | **AV2** | 25/04/2026 | **Ethan Matías Aliaga Aguirre** | Definición de principios arquitectónicos y estilos/patrones de arquitectura |
 | **AV2** | 27/04/2026 | **Ethan Matías Aliaga Aguirre** | Elaboración del Context Diagram y viewpoints arquitectónicos |
 | **AV2** | 28/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar los patrones de diseño que seran utiizados |
