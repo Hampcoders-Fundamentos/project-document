@@ -29,9 +29,9 @@ resource-path:
   - "assets/img/general"
 
 variables:
-  geometry: [margin=1in]
+  geometry: [left=0.8in, right=0.8in, top=1in, bottom=1in]
   mainfont: "Arial"
-  fontsize: 11pt
+  fontsize: 10pt
   colorlinks: true
   linkcolor: "blue"
   lang: "es"
@@ -44,5 +44,10 @@ variables:
     - \usepackage{array}
     - \usepackage{booktabs}
     - \usepackage{tabularx}
+    - \usepackage{etoolbox}
+    - \setlength{\tabcolsep}{4pt}
     - \renewcommand{\arraystretch}{1.3}
+    - \AtBeginEnvironment{tabular}{\small}
+    - \AtBeginEnvironment{tabularx}{\small}
+    - \AtBeginEnvironment{longtable}{\small}
     
