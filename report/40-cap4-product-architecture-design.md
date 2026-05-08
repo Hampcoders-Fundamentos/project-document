@@ -328,7 +328,7 @@ En este backlog se definiran las características arquitectónicas clave para ga
 #### Seguridad
 
 | User Stories | Tareas | Criterios de Aceptación |
-|:---|:---|:---|:---|
+|:---|:---|:---|
 | Como aprendiz, quiero registrarme con mis datos personales para acceder a la plataforma. | Implementar autenticación centralizada con JWT y OAuth2. Configurar RBAC con roles ROLE_APRENDIZ y ROLE_ESTABLECIMIENTO. Cifrar datos sensibles en reposo. | Solo usuarios autenticados acceden a reservas y encuentros. Las contraseñas se almacenan con hashing BCrypt. El sistema bloquea accesos no autorizados a perfiles ajenos. |
 | Como administrador de establecimiento, quiero que solo yo pueda gestionar mi local para proteger mi información. | Implementar validación de propiedad por rol en cada endpoint. Configurar API Gateway para validar tokens JWT antes de enrutar peticiones. | Un aprendiz no puede modificar datos de un establecimiento. El 100% de operaciones sensibles queda registrado en el log de auditoría. | 
 
