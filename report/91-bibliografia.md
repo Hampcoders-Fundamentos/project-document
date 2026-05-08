@@ -1,4 +1,4 @@
-# Referencias Bibliografícas
+# Referencias bibliográficas
 
 Carrillo-García, M. E., Cascales-Martínez, A., & Valero, A. L. (2018). Apps para el aprendizaje de idiomas en la Universidad de Murcia. Revista de Educación a Distancia (RED), (58). https://revistas.um.es/red/article/view/351511/
 

@@ -4,7 +4,7 @@
 
 \vspace{1cm}
 
-{\LARGE \textbf{Univerisdad Peruana de Ciencias Aplicadas}}\\
+{\LARGE \textbf{Universidad Peruana de Ciencias Aplicadas}}\\
 
 \vspace{1cm}
 

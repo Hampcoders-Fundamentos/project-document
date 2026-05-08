@@ -1,5 +1,16 @@
 \footnotesize
 
+# Abstract : 
+
+El presente proyecto, denominado Glottia, consiste en el diseño y desarrollo de una solución de software orientada a mejorar la experiencia de aprendizaje y gestión de usuarios en entornos digitales, mediante la aplicación de principios de arquitectura de software moderna y metodologías centradas en el usuario. La propuesta está dirigida principalmente a usuarios que requieren herramientas eficientes, intuitivas y personalizadas, integrando funcionalidades que responden a necesidades reales identificadas a través de técnicas como entrevistas, análisis de usuarios y mapeo de experiencias.
+
+Glottia surge como respuesta a la falta de plataformas que combinen una experiencia de usuario optimizada con una arquitectura sólida, escalable y alineada a atributos de calidad como rendimiento, seguridad y disponibilidad. En este contexto, el proyecto busca no solo plantear una solución funcional, sino también demostrar la aplicación rigurosa de enfoques como Lean UX, Domain-Driven Design (DDD) y Attribute-Driven Design (ADD), los cuales permiten estructurar de manera efectiva tanto el diseño como la toma de decisiones arquitectónicas.
+
+El alcance del presente trabajo (TB2) se centra en la definición de la arquitectura del sistema, incluyendo la identificación de drivers arquitectónicos, la elaboración de vistas arquitectónicas basadas en el modelo C4, la definición de tácticas orientadas a atributos de calidad, así como el modelado de datos y la estructuración del sistema bajo un enfoque de monolito modular. Asimismo, se desarrollan artefactos clave que evidencian la evolución del proyecto desde la comprensión del problema hasta la propuesta de una solución técnicamente fundamentada.
+
+De esta manera, Glottia no solo representa una solución tecnológica, sino también un ejercicio integral de aplicación de conocimientos avanzados en ingeniería de software, enfocados en el desarrollo de sistemas robustos, mantenibles y alineados a las necesidades del usuario.
+
+
 # Student Outcome 
 
 | Criterio específico | Acciones realizadas | Conclusiones |

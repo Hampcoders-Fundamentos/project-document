@@ -2,7 +2,7 @@
 
 En este capítulo el equipo presentará el diseño de la arquitectura de la solución Glottia, detallando los conceptos y puntos de vista en diferentes entornos que definiran la construcción del sistema. El objetivo de este capítulo será ilustrar las decisiones arquitectónicas con respecto al alcande de la solución y los requerimientos funcionales y no funcionales para garantizar una solución robusta y escalable. 
 
-## 4.1 Desing Concepts, ViewPoints & ER Diagrams
+## 4.1 Design Concepts, ViewPoints & ER Diagrams
 
 En la presente sección se desarrollaran puntos de vista, principios de diseño y diagramas que permitiran presentar la arquitectura de nuestra solución.
 

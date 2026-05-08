@@ -277,7 +277,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 **Entrevista N°2: Yamilie Francia**
 
-- Sexo: Femenimo
+- Sexo: Femenino
 - Edad: 26 años
 - Link: <https://www.youtube.com/watch?v=Y0F_L92XEGc>
 - Inicia en: 0:06
