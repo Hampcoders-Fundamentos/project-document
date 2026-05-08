@@ -397,13 +397,13 @@ A continuación se presentan las User Stories detalladas para cada Epic del proy
 
 Se presentara los mapas de impacto realizados por cada segemento, el primero es para el segmento de aprendices y el segundo para el segmento de locales, ambos realizados por Carlos.
 
-![](assets/img/cap3/Impact-map.png)
+![Impact Map 1](assets/img/cap3/Impact-map.png)
 
 Como se puede observar, el mapa de impacto para los aprendices se enfoca en mejorar la experiencia de búsqueda y reserva de encuentros, así como en fomentar la participación a través de un sistema de puntos y recompensas. Por otro lado, el mapa para los locales se centra en facilitar la gestión de sus espacios y eventos, y en proporcionarles herramientas para medir el impacto de su colaboración con la plataforma.
 
 ---
 
-![](assets/img/cap3/Impact-map-Carlos.png)
+![Impact Map 2](assets/img/cap3/Impact-map-Carlos.png)
 
 En el mapa de impacto para los locales, se identifican objetivos como aumentar la visibilidad de los locales, mejorar la gestión de eventos y obtener insights sobre el rendimiento de sus espacios. Las funcionalidades propuestas incluyen la creación de un dashboard para locales, la posibilidad de subir fotos y definir consumos mínimos, y la generación de reportes analíticos sobre asistentes y calificaciones.
 
@@ -474,7 +474,7 @@ A continuación se presenta la tabla con el orden de desarrollo propuesto:
 
 ---
 
-![](assets/img/cap3/Product-Blackog.png)
+![Product Backlog](assets/img/cap3/Product-Blackog.png)
 
 [Ver Product Backlog en Jira](https://upc-hampcoders-fundamentos.atlassian.net/jira/software/projects/PI/boards/2/backlog?atlOrigin=eyJpIjoiNjI0Njg0NzE3MDRlNGNjOWE5ODM3ODhmMWQ2YjA5NDYiLCJwIjoiaiJ9)
 
