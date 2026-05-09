@@ -205,7 +205,7 @@ A continuación se presentan las User Stories detalladas para cada Epic del proy
 | :--- | :--- | :--- | :--- |
 | US20 | Aprendiz | 8 | Gestión de Encuentros (Event) |
 | **Title** | **Check-in en un encuentro** |
-| **Description** | **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **para** para registrar mi participación y recebir los beneficios por ello. **Escenario #1: Check-in exitoso por parte del local** - Dado que un aprendiz llega al local del encuentro, Cuando su código QR es validado por el organizador, Entonces el sistema registra su asistencia y le asigna los puntos correspondientes. |
+| **Description** | **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **para** para registrar mi participación y recibir los beneficios por ello. **Escenario #1: Check-in exitoso por parte del local** - Dado que un aprendiz llega al local del encuentro, Cuando su código QR es validado por el organizador, Entonces el sistema registra su asistencia y le asigna los puntos correspondientes. |
 
 | Story ID | User | Priority | Epic |
 | :--- | :--- | :--- | :--- |
@@ -395,7 +395,7 @@ A continuación se presentan las User Stories detalladas para cada Epic del proy
 
 ## 3.3	Impact Map
 
-Se presentara los mapas de impacto realizados por cada segemento, el primero es para el segmento de aprendices y el segundo para el segmento de locales, ambos realizados por Carlos.
+Se presentara los mapas de impacto realizados por cada segmento, el primero es para el segmento de aprendices y el segundo para el segmento de locales, ambos realizados por Carlos.
 
 ![Impact Map 1](assets/img/cap3/Impact-map.png)
 
@@ -463,7 +463,7 @@ A continuación se presenta la tabla con el orden de desarrollo propuesto:
 | 36 | US50 | Gestionar reportes |  **Como** administrador **Quiero** ver una lista de todos los reportes enviados por los usuarios **Para** poder investigarlos y tomar acciones. | 8 |
 | 37 | US51 | Comunicación global | **Como** administrador **Quiero** poder enviar notificaciones o correos electrónicos a todos los usuarios **Para** comunicar novedades o mantenimientos de la plataforma.| 8 |
 | 38 | US18 | Confirmación con QR | **Como** aprendiz **Quiero** recibir una confirmación de mi reserva **Para** poder hacer check-in fácilmente al llegar al local. | 5 |
-| 39 | US20 | Check-in con QR |  **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **Para** para registrar mi participación y recebir los beneficios por ello. | 8 |
+| 39 | US20 | Check-in con QR |  **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **Para** para registrar mi participación y recibir los beneficios por ello. | 8 |
 | 40 | US23 | Lista de espera |  **Como** aprendiz **Quiero** unirme a una lista de espera si un encuentro está lleno **Para** tener la oportunidad de asistir si alguien cancela. | 3 |
 | 41 | US24 | Notificación de cupo | **Como** aprendiz en una lista de espera **Quiero** recibir una notificación inmediata si un cupo se libera **Para** poder reservarlo rápidamente. | 5 |
 | 42 | US04 | Cierre de sesión | **Como** usuario autenticado **Quiero** poder cerrar mi sesión **Para** proteger la privacidad de mi cuenta en dispositivos compartidos.  | 1 |

@@ -1,23 +1,23 @@
 # Capítulo IV: Product Architecture Design
 
-En este capítulo el equipo presentará el diseño de la arquitectura de la solución Glottia, detallando los conceptos y puntos de vista en diferentes entornos que definiran la construcción del sistema. El objetivo de este capítulo será ilustrar las decisiones arquitectónicas con respecto al alcande de la solución y los requerimientos funcionales y no funcionales para garantizar una solución robusta y escalable. 
+En este capítulo el equipo presentará el diseño de la arquitectura de la solución Glottia, detallando los conceptos y puntos de vista en diferentes entornos que definirán la construcción del sistema. El objetivo de este capítulo será ilustrar las decisiones arquitectónicas con respecto al alcance de la solución y los requerimientos funcionales y no funcionales para garantizar una solución robusta y escalable. 
 
 ## 4.1 Design Concepts, ViewPoints & ER Diagrams
 
-En la presente sección se desarrollaran puntos de vista, principios de diseño y diagramas que permitiran presentar la arquitectura de nuestra solución.
+En la presente sección se desarrollaran puntos de vista, principios de diseño y diagramas que permitirán presentar la arquitectura de nuestra solución.
 
 ### 4.1.1 Principles Statements
 
-Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders definiran los principios que permitiran garantizar sostenibilidad a largo plazo para la solución Glottia.
+Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders definirán los principios que permitirán garantizar sostenibilidad a largo plazo para la solución Glottia.
 
 | Principio | Descripción |
 | --------- | ----------- |
 | Arquitectura de Monolito Modular guiada por el Dominio | El sistema se estructurará internamente mediante Bounded Contexts (BC) estrictos. Cada BC es dueño absoluto de su modelo, lógica de negocio y datos.                                                                                            |
-| Coordinación Asíncrona basada en Eventos               | Con el fin de evitar el acoplamienta directo y mejorar el rendimiento de la experiencia de usuario, la comunicación de flujos no críticos entre módulos se realizará mediante publicación y suscripción de eventos.                             |
+| Coordinación Asíncrona basada en Eventos               | Con el fin de evitar el acoplamiento directo y mejorar el rendimiento de la experiencia de usuario, la comunicación de flujos no críticos entre módulos se realizará mediante publicación y suscripción de eventos.                             |
 | Consistencia Eventual sobre Consistencia Inmediata     | No se forzarán transacciones distribuidas entre diferentes Bounded Contexts. Cada módulo garantizará su consistencia interna inmediata, pero la sincronización de datos entre distintos BCs operará bajo el principio de consistencia eventual. |
 | Aislamiento de Datos e Interfaces Explícitas           | Toda comunicación e intercambio de información entre módulos se realizará mediante interfaces explícitas y transferencia de objetos de datos bien definidos y versionados.                                                                      |
-| Encapsulamiento Estricto de Integraciones Externas     | Todo servicio o dependencia externa deberá estar aislado detrás de su propio adaptador evitando que la logica de negocio dependa directamente de bibliotecas de terceros.                                                                       |
-| Seguridad en Profundidad por Defecto                   | La solución aplicará una autenticación centralizada bajo el estandar OAuth2 manejando JWT y sesiones para la gestión de acceso y la protección de datos sensibles mediante cifrado y encriptación.                                              |
+| Encapsulamiento Estricto de Integraciones Externas     | Todo servicio o dependencia externa deberá estar aislado detrás de su propio adaptador evitando que la lógica de negocio dependa directamente de bibliotecas de terceros.                                                                       |
+| Seguridad en Profundidad por Defecto                   | La solución aplicará una autenticación centralizada bajo el estándar OAuth2 manejando JWT y sesiones para la gestión de acceso y la protección de datos sensibles mediante cifrado y encriptación.                                              |
 
 ### 4.1.2 Approaches Statements Architectural Styles & Patterns
 
@@ -26,10 +26,10 @@ Estos son los estilos y patrones arquitectónicos que se ha seleccionado para gu
 | Enfoque | Descripción |
 | ------- | ----------- |
 | Domain Driven Design (DDD) | Definir sub dominios con delimitaciones y alcances claros como bounded contexts. |
-| Arquitectura de Microservicios | Desglozar el sistema en servicios independientes y escalables. |
-| Organización N Capas | Dividir responsabilidades en 3 capas: presentación, logica de negoci y acceso a datos |
-| Documentación OpenAPI | Documentar las APIs siguiendo el estandar OpenAPI |
-| Seguridad y Protección de información sencible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sencible. |
+| Arquitectura de Microservicios | Desglosar el sistema en servicios independientes y escalables. |
+| Organización N Capas | Dividir responsabilidades en 3 capas: presentación, lógica de negocio y acceso a datos |
+| Documentación OpenAPI | Documentar las APIs siguiendo el estándar OpenAPI |
+| Seguridad y Protección de información sensible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sensible. |
 
 ### 4.1.3 Context Diagram
 
@@ -89,17 +89,17 @@ En esta sección, el equipo de Hampcoders describe los principales patrones de d
 
 #### 4.1.6.1 Patrones de Creación
 \
-Aqui se definiran los patrones de creación, aquellos que se enfocan en la forma de instanciar los objetos dentro de sistema. Su objetivo es encapsular la lógica de construcción.
+Aquí se definirán los patrones de creación, aquellos que se enfocan en la forma de instanciar los objetos dentro de sistema. Su objetivo es encapsular la lógica de construcción.
 
 ##### Factory Method
 - Cuándo: Se necesita crear entidades de dominio controlando las invariantes.
 - Beneficio: Encapsular la lógica de creación y evita estados inválidos.
-- Aplicación: Métodos estaticos como User.create(...) para construir agregados de forma segura.
+- Aplicación: Métodos estáticos como User.create(...) para construir agregados de forma segura.
 
 
 #### 4.1.6.2 Patrones de Comportamiento
 \
-Los patrones de comportamiento definen el cómo interactuán los objetos y cómo se distribuyen las responsabilidades dentro del sistema.
+Los patrones de comportamiento definen el cómo interactúan los objetos y cómo se distribuyen las responsabilidades dentro del sistema.
 
 ##### Command
 - Cuándo: Se necesita representar acciones del sistema.
@@ -107,7 +107,7 @@ Los patrones de comportamiento definen el cómo interactuán los objetos y cómo
 - Aplicación: Clases o Records como SignUpCommand, SignInCommand.
 
 ##### Strategy
-- Cuándo: Se neceseitan múltiples algoritmas intercambiables.
+- Cuándo: Se necesitan múltiples algoritmos intercambiables.
 - Beneficio: Cambiar implementación sin afectar lógica de negocio
 - Aplicación: Clases que representan servicios como HashingService, TokenService
 
@@ -160,7 +160,7 @@ Los patrones empresariales están orientados a resolver problemas comunes en apl
 - Beneficio: Encapsular dependencias externas.
 - Aplicación: Clases ProfilesContextFacade.
 
-#### 4.1.6.5 Patrones Arquitectonicos
+#### 4.1.6.5 Patrones Arquitectónicos
 \
 Los patrones arquitectónicos definen la estructura desde un punto de vista de alto nivel del sistema, permitiendo organizar los components en capas o con responsabilidades definidas.vv
 
@@ -213,7 +213,7 @@ Se identifican aquí los requisitos funcionales de alta prioridad que impactan d
 |ID|Título|Descripción|Impacto estructural|
 |:---|:---|:---|:---|
 |US001–US003| Registro, autenticación y gestión de sesión de usuario| Permite al Learner y al Partner registrarse con email/contraseña, iniciar sesión y obtener tokens JWT para acceder al sistema.| BC IAM genera `UserRegistered` -> dispara creación de perfil en Profiles. Punto de entrada de toda la arquitectura; todos los BCs consumen el JWT para autorización. | 
-|US004–US007| Creación y configuración del perfil de aprendiz | El Learner completa su perfil indicando idioma nativo, idiomas meta, nivel CEFR y disponibilidad horaria. El perfil es prerequisito para reservar encuentros. | BC Profiles publica `ProfileCompleted` -> Encounters lo consume para habilitar la funcionalidad de reserva. Relación directa con los BCs Engagement (nivel CEFR para leaderboard) y Analytics (segmentación de KPIs)|
+|US004–US007| Creación y configuración del perfil de aprendiz | El Learner completa su perfil indicando idioma nativo, idiomas meta, nivel CEFR y disponibilidad horaria. El perfil es prerrequisito para reservar encuentros. | BC Profiles publica `ProfileCompleted` -> Encounters lo consume para habilitar la funcionalidad de reserva. Relación directa con los BCs Engagement (nivel CEFR para leaderboard) y Analytics (segmentación de KPIs)|
 |US008–US011|Registro de local aliado y publicación de venues|El Partner da de alta su establecimiento (cafetería, bar, coworking), registra mesas y configura la disponibilidad horaria de los espacios.|BC Venues publica `VenueActivated` -> consumido por Encounters (para asociar encuentros a locales) y Promotions (para validar la existencia del venue al crear links promocionales).|
 |US012–US016|Creación, búsqueda y reserva de encuentros presenciales|El Learner busca encuentros por idioma, fecha y ubicación; reserva un cupo disponible y recibe confirmación. Incluye gestión de cupo lleno con estado de espera.|BC Encounters es el Core operativo central; consume `ProfileCompleted` y `VenueActivated`. Su evento `UserCheckedIn` dispara puntos en Engagement y métricas en Analytics.|
 |US017–US019|Check-in por QR y cierre de encuentro|El Learner realiza check-in escaneando un código QR en el local. El sistema valida la asistencia, actualiza el estado del encuentro a `COMPLETED` y desencadena el loop post-encuentro.|BC Encounters publica `UserCheckedIn` -> Engagement (+10 pts) y `EncounterCompleted` -> Learning Feedback (genera quiz) y Analytics (registra asistencia). Evento pivote del sistema.|
@@ -323,7 +323,7 @@ Primera iteración enfocada en establecer las bases arquitectónicas de Glottia,
 
 #### 4.3.1.1 Architectural Design Backlog 1
 
-En este backlog se definiran las características arquitectónicas clave para garantizar el correcto funcionamiento de Glottia. Se priorizaran tres atributos de calidad: : Seguridad, para proteger los datos personales de los aprendices y establecimientos; Disponibilidad, para garantizar que las reservas y encuentros funcionen sin interrupciones; y Mantenibilidad, para permitir que el sistema evolucione de forma independiente por dominio funcional.
+En este backlog se definirán las características arquitectónicas clave para garantizar el correcto funcionamiento de Glottia. Se priorizaran tres atributos de calidad: : Seguridad, para proteger los datos personales de los aprendices y establecimientos; Disponibilidad, para garantizar que las reservas y encuentros funcionen sin interrupciones; y Mantenibilidad, para permitir que el sistema evolucione de forma independiente por dominio funcional.
 
 #### Seguridad
 
@@ -417,7 +417,7 @@ Se eligen los siguientes conceptos de diseño para abordar los drivers seleccion
 
 - Patrón Adapter para dependencias externas
     - Descripción: La dependencia del LLM API en Learning Feedback se encapsula detrás de una interfaz interna, de modo que si cambia el proveedor, solo se reemplaza el adaptador, sin tocar la lógica de negocio.
-    - Justificación: Aisla el único punto de variabilidad técnica alta del sistema. Ningún otro microservicio importa ni conoce el LLM.
+    - Justificación: Aísla el único punto de variabilidad técnica alta del sistema. Ningún otro microservicio importa ni conoce el LLM.
 
 #### 4.3.1.5 Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces
 \

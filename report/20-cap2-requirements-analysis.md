@@ -1,5 +1,5 @@
 # Capítulo II: Requirements & Analysis
-En este capítulo, el equipo recopila a información y requerimientos para realizar analisis y proyectar la solución frente a los competidores directos.
+En este capítulo, el equipo recopila a información y requerimientos para realizar análisis y proyectar la solución frente a los competidores directos.
 
 ## 2.1 Competidores
 En esta sección se identifican y describen los principales competidores de Glottia, considerando tanto competidores directos (plataformas de intercambio de idiomas) como indirectos (plataformas de eventos sociales).
@@ -275,7 +275,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
 
 
-**Entrevista N°2: Yamilie Francia**
+**Entrevista N°2: Yamile Francia**
 
 - Sexo: Femenino
 - Edad: 26 años
@@ -436,7 +436,7 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la solución y la priorización del *Product Backlog* en futuras iteraciones:
 
 1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante QR es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
-2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
+2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **Gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
 3. **Roles Complementarios (Oferta y Demanda):** Se observa una clara separación de tareas en la fase de descubrimiento. Sofía tiene un rol activo de búsqueda y reserva, mientras que Enzo asume un rol asíncrono de configuración de disponibilidad. Esta asimetría indica que los flujos de experiencia de usuario serán completamente distintos, justificando la creación de interfaces o módulos separados.
 
 ### 2.3.3 Empathy Maps
