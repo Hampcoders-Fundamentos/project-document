@@ -396,11 +396,19 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 #### Segmento 1:
 
-![User Persona 1](assets/img/cap2/user-person-1.png)
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-1.png}
+\end{center}
+
+*Descripción:* Ficha resumida de la persona (demografía, metas, motivaciones y canales preferidos).
 
 #### Segmento 2:
 
-![User Persona 2](assets/img/cap2/user-person-2.png)
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-2.png}
+\end{center}
+
+*Descripción:* Ficha resumida de la persona (perfil del dueño de local: background, objetivos y frustraciones).
 
 ### 2.3.2 User Task Matrix
 
@@ -439,11 +447,15 @@ El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la s
 2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **Gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
 3. **Roles Complementarios (Oferta y Demanda):** Se observa una clara separación de tareas en la fase de descubrimiento. Sofía tiene un rol activo de búsqueda y reserva, mientras que Enzo asume un rol asíncrono de configuración de disponibilidad. Esta asimetría indica que los flujos de experiencia de usuario serán completamente distintos, justificando la creación de interfaces o módulos separados.
 
+\clearpage
+
 ### 2.3.3 Empathy Maps
 
 #### Empathy Map para los dueños de cafeterías.
 
-![Empathy Map de Enzo Fernandez](assets/img/cap2/empathy-map-enzo-fernandez.png)
+\begin{center}
+\includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-enzo-fernandez.png}
+\end{center}
 
 En este Empathy Map se presenta una representación visual de las emociones, pensamientos, necesidades y frustraciones de Enzo Fernandez, un dueño de cafetería que busca maximizar sus horas muertas con control y rentabilidad. Se destacan sus motivaciones para participar en la plataforma Glottia, así como los desafíos que enfrenta en la gestión de su negocio y cómo la solución propuesta puede ayudarlo a superar esos obstáculos.
 
@@ -451,7 +463,9 @@ En este Empathy Map se presenta una representación visual de las emociones, pen
 
 #### Empathy Map para los aprendices.
 
-![Empathy Map de Sofia Ramirez](assets/img/cap2/empathy-map-sofia-ramirez.png)
+\begin{center}
+\includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-sofia-ramirez.png}
+\end{center}
 
 Respecto al Empathy Map de Sofía Ramírez, sus pensamientos y emociones giran en torno a su deseo de mejorar su fluidez en idiomas y encontrar una comunidad de práctica. Sin embargo, enfrenta frustraciones relacionadas con la falta de espacios organizados para practicar, la inseguridad al interactuar con desconocidos y la dificultad para mantener la constancia en su aprendizaje.
 
