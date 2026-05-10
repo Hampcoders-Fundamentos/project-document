@@ -40,5 +40,7 @@
 | **AV2** | 2/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de descripciones de los User Stories y Product Backlog |
 | **AV2** | 27/04/2026 | **Cesar Augusto Arostegui Alzamora** | Definición de architectural drivers y quality attribute scenarios |
 | **AV2** | 25/04/2026 | **Cesar Augusto Arostegui Alzamora** | Elaboración de diagramas de base de datos relacional y no relacional |
+| **TB1** | 8/05/2026 | **Cesar Augusto Arostegui Alzamora** | Correcciones de ortografía y gramática, y mejoras en la redacción con exportación correcta de las tablas del reporte |
+| **TB1** | 9/05/2026 | **Cesar Augusto Arostegui Alzamora** | Agregar escenarios a los user stories, manteniendo una linealidad de (3-6) por user story |
 
 \newpage
