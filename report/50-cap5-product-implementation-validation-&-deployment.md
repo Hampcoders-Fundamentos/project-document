@@ -41,3 +41,8 @@ El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: l
 #### 5.2.1.6 Software Deployment Evidence for Sprint Review
 #### 5.2.1.7 Team Collaboration Insights during Sprint
 #### 5.2.1.8 Kanban Board --> TP1
+
+\
+![Sprint 1 Kanban Board](assets/img/cap5/Glottia-Sprint1-KanbanBoard.jpeg)
+\
+[Ver Sprint 1 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiMDFiMTg2M2NkNTA3NDJjZDllZTQ3ZTlhNDU5MmNjMjUiLCJwIjoiaiJ9)
