@@ -27,6 +27,13 @@
 El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (IAM, Profiles y Encounters, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
 
 #### 5.2.1.1 Sprint Backlog 1
+
+\
+![Sprint Backlog 1](assets/img/cap5/Glottia-SprintBacklog-1.jpeg)
+\
+[Ver Sprint Backlog 1 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiOGU3YWU0ZDBkN2NjNGQ2MDkxMGQxZjk4ZjUwYWFmNTAiLCJwIjoiaiJ9)
+
+
 #### 5.2.1.2 Development Evidence for Sprint Review
 #### 5.2.1.3 Testing Suite Evidence for Sprint Review
 #### 5.2.1.4 Execution Evidence for Sprint Review
