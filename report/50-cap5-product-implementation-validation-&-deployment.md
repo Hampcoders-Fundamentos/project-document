@@ -2,11 +2,23 @@
 
 ## 5.1 Testing Suites & General Patterns
 
-En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
+Para el desarrollo de Glottia, la fase de validación se fundamenta en la automatización de pruebas de integración y aceptación utilizando la metodología **Behavior-Driven Development (BDD)**. El propósito principal de este enfoque es cerrar la brecha de comunicación entre las definiciones de negocio (User Stories) y la implementación técnica del software, garantizando que cada incremento entregable funcione exactamente como se especificó.
 
-Esta metodología permite definir el comportamiento del sistema desde la perspectiva del usuario mediante escenarios estructurados (*Given-When-Then*), facilitando la verificación técnica de los Web Services y asegurando que cada microservicio cumpla estrictamente con las reglas del negocio digital antes de su despliegue.
+Las pruebas se redactan en lenguaje **Gherkin**, un lenguaje específico de dominio estructurado mediante la semántica intuitiva *Given-When-Then* (Dado-Cuando-Entonces). Esta estructura permite documentar de forma viva los requisitos del sistema y convertirlos en scripts ejecutables que auditan los contratos de las APIs (códigos de estado HTTP, payloads de respuesta, persistencia en base de datos y flujos excepcionales de seguridad) de manera continua en nuestro pipeline de Integración Continua (CI).
 
-### Relación de Tests Diseñados por User Story
+---
+
+### 5.1.1 Backend Application Core Testing Suite
+
+Esta suite de pruebas agrupa los escenarios de prueba funcionales, unitarios y de integración automatizados destinados a validar la lógica de negocio pura y las operaciones fundamentales del núcleo de la aplicación (*Core Application*) de Glottia. Estas pruebas garantizan que los servicios e hilos transaccionales principales funcionen de manera óptima bajo los criterios de aceptación técnicos antes de su empaquetado y despliegue en los entornos de Staging y Producción.
+
+* **Frameworks y Herramientas Utilizadas:** Se utiliza **Cucumber.js** como motor de ejecución BDD para interpretar los archivos `.feature`, **Supertest** para la orquestación de peticiones HTTP dirigidas a los endpoints sin levantar el servidor de forma física, y **Chai / Jest Expect** como biblioteca de aserciones para validar las estructuras de las respuestas JSON.
+* **Cobertura e Impacto de las Pruebas Core:**
+    * **Gestión de Identidad y Acceso (IAM):** Validación de flujos de registro de usuarios bajo el rol de estudiantes (*Learners*) y negocios asociados (*Partners*), control de unicidad de correos electrónicos y robustez de credenciales.
+    * **Autenticación y Ciclo de Sesión:** Verificación de inicio de sesión (*Sign-In*), persistencia de estados de usuario, y revocación segura de tokens en el proceso de cierre de sesión (*Sign-Out*).
+    * **Gestión de Perfiles (*Profiles*):** Pruebas de integración sobre el proceso de *Onboarding* de nuevos usuarios, actualización dinámica de niveles de fluidez en idiomas y persistencia de preferencias de práctica oral.
+
+#### Relación de Tests Diseñados por User Story
 
 | Código del Test | Nombre del Archivo .feature | Componente / Microservicio | User Story Relacionada (ID) |
 | :--- | :--- | :--- | :--- |
@@ -19,6 +31,241 @@ Esta metodología permite definir el comportamiento del sistema desde la perspec
 | **TS-PRF-07** | `profile_edition.feature` | Profiles Microservice | US07: Editar perfil de aprendiz |
 | **TS-PRF-08** | `profile_discovery.feature` | Profiles Microservice | US08: Ver perfil de otro usuario |
 | **TS-PRF-09** | `profile_avatar.feature` | Profiles Microservice | US09: Subir foto de perfil |
+
+---
+
+### 5.1.2 Pattern Based Backend Application(s)
+
+El backend modular y la subsiguiente arquitectura de microservicios de Glottia han sido desarrollados aplicando patrones de diseño de software y patrones arquitectónicos avanzados basados en **Domain-Driven Design (DDD)** y **Clean Architecture**. La validación mediante pruebas automatizadas en esta sección se estructura bajo estos patrones para garantizar la escalabilidad, la mantenibilidad y el aislamiento de fallas en el ecosistema:
+
+* **Repository Pattern (Patrón Repositorio):** Se implementa para encapsular por completo la lógica de acceso, consulta y persistencia de datos (utilizando ORMs como TypeORM / Prisma) en clases especializadas. Esto desacopla la base de datos relacional de la lógica de negocio pura de los casos de uso. Las pruebas de integración aseguran que las consultas se ejecuten correctamente sin comprometer la integridad referencial.
+* **Data Transfer Object - DTO (Objeto de Transferencia de Datos):** Patrón utilizado de manera obligatoria en las capas de entrada para moldear, filtrar y estandarizar los payloads que viajan a través de la red de microservicios. Evita la exposición directa de las entidades de la base de datos hacia los clientes de la API, y las suites de pruebas auditan que los validadores de los DTOs rechacen estructuras maliciosas o incompletas con códigos HTTP 400.
+* **Dependency Injection (Inyección de Dependencias):** Utilizado de forma nativa para desacoplar las clases de la capa de infraestructura de las capas de aplicación y dominio. Permite que, durante la ejecución de los Testing Suites, se puedan inyectar dobles de prueba (*Mocks* o *Stubs*) de componentes de infraestructura complejos, permitiendo probar la lógica de las historias de usuario de forma aislada.
+* **API Gateway Pattern:** Actúa como punto único de entrada para el cliente móvil (Flutter). Las pruebas orientadas a este patrón validan el correcto enrutamiento perimetral, la agregación de solicitudes hacia los microservicios internos de IAM y Profiles, y el manejo centralizado de políticas de Cross-Origin Resource Sharing (CORS).
+
+---
+
+### 5.1.3 Pattern Based Custom Software Library
+
+Para resolver necesidades transversales dentro del ecosistema de Glottia (*Cross-Cutting Concerns*) y evitar la duplicidad de código (*Don't Repeat Yourself - DRY*), el equipo diseñó y aisló librerías de software personalizadas internas. Estas librerías se rigen estrictamente por los principios **SOLID** y cuentan con especificaciones de prueba aisladas para garantizar su reutilización segura:
+
+* **Custom JWT Authentication Security Library:** Módulo personalizado encargado de la generación, firma asimétrica y validación criptográfica de tokens JSON Web Tokens (JWT). Las pruebas en esta librería aseguran la correcta decodificación de *claims* de usuario (tales como ID y roles) y la detección inmediata de firmas expiradas o alteradas.
+* **Crypto Guard Engine (BCrypt Wrapper):** Componente dedicado a la seguridad adaptativa de datos sensibles mediante algoritmos de hash unidireccionales de alto costo computacional. Se utiliza para el cifrado seguro (*salting* y *hashing*) de contraseñas durante el registro e inicio de sesión, impidiendo el almacenamiento de texto plano en la base de datos.
+* **Custom Cloud Storage & Media Curation Library:** Utilizada de manera transversal por el microservicio de perfiles para interactuar de forma segura con APIs de almacenamiento de objetos en la nube (ej. Amazon S3 o Cloudinary). Esta librería procesa flujos de datos *multipart/form-data*, valida las restricciones de peso (máximo 5MB) y dimensiones, y realiza la curación de imágenes de los avatares de usuario. Sus pruebas de aceptación validan el rechazo de extensiones de archivos no permitidas (ej. ejecutables maliciosos).
+
+---
+
+### 5.1.4 Framework Pattern Driven Refactoring Report
+
+## 5.2 Software Configuration Management
+
+Software Configuration Management (SCM) —o Gestión de la Configuración de Software— es una disciplina de la ingeniería de software que se encarga de rastrear, controlar y organizar todos los cambios que ocurren en el ciclo de vida de un proyecto.
+
+Su objetivo principal es asegurar que, sin importar cuántas personas estén trabajando en el proyecto o cuántas funciones nuevas se agreguen, el software se mantenga estable, consistente y libre de caos. (GeeksforGeeks, 2025)
+---
+### 5.2.1 Software Development Environment Configuration
+
+#### **Project Requirements Management**
+ 
+**Jira:** 
+Herramienta de gestión de proyectos, diseñada principalmente para que equipos de software ágiles.. Fundamental para planificación, seguimientos , gestión de tareas y supervisar el flujo de trabajo en tiempo real para el sprint a desarrollar.
+
+**Link de referencia:**
+[Acceder a Jira](https://www.atlassian.com/es/software/jira)
+
+#### **Product UX/UI Design**
+
+**Figma:**
+Herramienta de diseño gráfico y de edición de vectores basada en la nube, utilizada principalmente para crear y prototipar interfaces de usuario (UI) y experiencias de usuario (UX) para sitios web y aplicaciones móviles. Principal herramienta para nuestros diseños y prototipos Mobiles y Web.
+
+**Link de referencia**
+[Acceder a Figma](https://www.figma.com)
+
+**PLantUML:**
+Herramienta de código abierto que permite crear diagramas UML y otros esquemas técnicos mediante la escritura de texto plano y sencillo. Vital para el desarrollo de los diagrama de clase de nuestro proyecto.
+
+**Link de referencia**
+[Acceder a PlantUML](https://plantuml.com)
+
+#### **Software Development**
+
+**Visual Studio Code:**
+Editor de código fuente gratuito, de código abierto y multiplataforma. Es una de las herramientas más populares entre programadores a nivel mundial gracias a su velocidad, flexibilidad y amplio soporte para múltiples lenguajes de programación. Este IDE permitió integrar de manera efectiva la colaboración de nuestro equipo para desarrollar las aplicaciones 
+
+**Link de referencia:**
+[Acceder a VS Code](https://code.visualstudio.com)
+
+#### **Software Deployment**
+
+**Postman:**
+Plataforma de software utilizada por desarrolladores y evaluadores de software (QA) para construir, probar, documentar y modificar APIs. Esencial para validar los endpoints de nuestro proyecto Backend.
+
+**Link de referencia**
+[Acceder a Postman](https://www.postman.com)
+
+**Render:**
+Render actúa como una plataforma como servicio (PaaS) que toma el código desde repositorios (GitHub/GitLab), lo compila y lo pone en línea, facilitando la gestión de servidores y la configuración compleja. Util para publicar aplicaciones web, sitios estáticos o bases de datos en la nube de forma automatizada. 
+
+**Link de referencia**
+[Acceder a Render](https://render.com)
+
+**Git:**
+Sistema de control de versiones distribuido, de código abierto, diseñado para rastrear cambios en el código fuente durante el desarrollo de software. Facilita el registro de versiones sobre el código y documentación de nuestro proyecto para un seguimiento más ágil.
+
+**Link de referencia**
+[Acceder a Git](https://git-scm.com/)
+
+#### **Software Documentation and Project Management**
+
+**Github:**
+Plataforma en la nube diseñada para el desarrollo colaborativo de software, permitiendo alojar, gestionar y compartir repositorios de código utilizando el sistema de control de versiones Git. Plataforma principal donde se alojará nuestro proyecto (código y documentación) y permitir la colaboración en tiempo real.
+
+**Link de referencia**
+[Acceder a Github](https://github.com/)
+
+---
+
+### 5.2.2 Source Code Management
+
+### Repositorio de GitHub:
+
+- Enlace para acceder al [Repositorio del Documento](https://github.com/Hampcoders-Fundamentos/project-document)
+- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)
+- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices)
+
+![Gitflow Graphic](assets/img/cap5/Gitflow-Graphic.jpeg)
+
+**Gitflow** es un modelo de ramificación para Git que se centra en la organización de las ramas de un proyecto de software, definiendo una serie de ramas estándar y reglas para su uso que facilitan la colaboración y la gestión del código en un equipo de desarrollo. En Glottia, utilizamos el modelo de Gitflow para organizar y gestionar las ramas de nuestros repositorios de microservicios, lo que nos permite trabajar de forma eficiente y colaborativa en el desarrollo y migración de la plataforma.
+
+La rama **main** es la rama principal de nuestro proyecto, que contiene las versiones estables, operativas y listas para desplegar de cada microservicio de Glottia. Estas versiones han sido previamente evaluadas y se ha verificado su total funcionalidad antes de ser integradas. Empleamos etiquetas para identificar cada versión estable desplegada, lo que nos permite tener un seguimiento preciso del historial de releases y simplificar la administración de futuras actualizaciones en producción.
+
+La rama **develop** es la rama de desarrollo de nuestro proyecto, que contiene la versión en desarrollo de cada servicio de Glottia con todas las características completadas hasta ese momento del sprint, aunque aún pendientes de pruebas finales. Este canal se emplea para integrar el trabajo de los distintos miembros del equipo y llevar a cabo validaciones antes de la publicación en la rama main.
+
+La rama **feature** agrupa las ramas de características de nuestro proyecto, cada una dedicada a una funcionalidad o tarea específica del sprint. Cada nueva historia de usuario o tarea técnica se desarrolla en una rama feature/ separada siguiendo la convención feature/nombre-descriptivo, lo que permite a los miembros del equipo trabajar de forma independiente en diferentes bounded contexts y facilita la integración progresiva del trabajo en la rama develop mediante Pull Requests.
+
+### 5.2.3 Source Code Style Guide & Conventions
+
+#### Frontend Code Style Guide
+
+#### Backend Code Style Guide (Monolith)
+
+#### 1. Arquitectura del Sistema
+El repositorio sigue un patrón de **Monolito Modular** basado en los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**.
+
+#### Organización de Carpetas
+La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentro de `src/`:
+
+* **`src/api/`**: Capa de entrada. Contiene los controladores, rutas de Express y middlewares de validación de HTTP.
+* **`src/[contexto]/`**: Cada módulo funcional (ej. `users`, `courses`) se divide en:
+    * **`domain/`**: El corazón del negocio. Contiene Entidades, Value Objects e interfaces de Repositorios (Ports). **No tiene dependencias externas**.
+    * **`application/`**: Casos de uso que orquestan la lógica de negocio.
+    * **`infrastructure/`**: Implementaciones técnicas (TypeORM, adaptadores de terceros, persistencia).
+* **`src/shared/`**: Lógica transversal, utilitarios y clases base reutilizables por múltiples contextos.
+
+#### 2. Convenciones de Nomenclatura
+
+#### Clases y Tipos
+* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su capa.
+    * *Controladores:* `UserGetController`
+    * *Casos de Uso:* `CreateCourseUseCase`
+    * *Repositorios:* `SqliteUserRepository`
+* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `UserRepository` en lugar de `IUserRepository`).
+
+#### 3. Archivos
+* **Formato**: Se utiliza `kebab-case`.
+* **Sufijos de archivo**: El nombre del archivo debe reflejar su propósito:
+    * `user.entity.java`
+    * `user-repository.java`
+    * `create-user-use-case.java`
+    * `user-post-controller.java`
+
+#### 4. Variables y Funciones
+* **Formato**: Se utiliza `camelCase`.
+* **Claridad**: Los nombres deben ser descriptivos. Evitar abreviaturas crípticas (usar `userRepository` en lugar de `uRepo`).
+
+#### 5. Estándares de Codificación
+
+Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
+
+#### 6. Lógica de Negocio
+* **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
+* **Regla de Dependencia**: Las capas internas (Domain) nunca deben depender de las capas externas (Infrastructure).
+* **Manejo de Errores**: Se utilizan excepciones de dominio específicas que luego son transformadas en códigos HTTP en la capa de API.
+
+#### Backend Code Style Guide (Microservices)
+
+#### 1. Arquitectura de Microservicios
+El sistema se descompone en servicios autónomos que se comunican de forma asíncrona (vía eventos) o síncrona (vía API REST/gRPC).
+
+#### Estructura de la Solución
+Cada microservicio dentro de la carpeta `services/` (o repositorios independientes) mantiene su propia autonomía técnica:
+
+* **`src/`**: Raíz del código fuente del microservicio.
+    * **`infrastructure/`**: Implementaciones de frameworks, bases de datos y clientes de mensajería (ej. RabbitMQ, Kafka).
+    * **`application/`**: Casos de uso específicos del dominio del microservicio.
+    * **`domain/`**: Lógica de negocio pura y entidades del subdominio.
+* **`events/` o `messages/`**: Definiciones de eventos de integración para comunicación entre servicios.
+* **`api-gateway/`**: Punto de entrada único que orquestas las peticiones hacia los microservicios internos.
+
+#### 2. Convenciones de Nomenclatura
+
+#### Naming de Microservicios
+* **Repositorios/Carpetas**: Se utiliza `kebab-case` con el sufijo `-service`.
+    * Ejemplo: `identity-service`, `catalog-service`, `ordering-service`.
+
+#### Clases y Archivos
+Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+* **Event Handlers**: Clases que procesan mensajes entrantes. Nombradas como `[EventName]Handler` (ej. `UserCreatedHandler`).
+* **Publishers**: Interfaces para enviar mensajes. Nombradas como `[Entity]Publisher` (ej. `OrderEventPublisher`).
+* **Suffixes**:
+    * `*.controller.java`: Entrada HTTP.
+    * `*.subscriber.java`: Suscriptor a eventos de bus.
+    * `*.dto.java`: Objetos de transferencia de datos para la red.
+
+#### 3. Estándares de Comunicación
+
+#### Event-Driven Design
+
+* **Eventos**: Se deben definir en `PascalCase` y representar hechos pasados (ej. `UserRegistered`, `PaymentProcessed`).
+* **Idempotencia**: Todos los servicios que consumen eventos deben implementar lógica de idempotencia para evitar duplicados.
+
+#### API & DTOs
+
+* **Contratos**: Los DTOs son obligatorios para la comunicación entre servicios. No se comparten entidades de dominio a través de la red.
+* **Versionamiento**: Las rutas de API deben incluir la versión (ej. `/api/v1/identity/...`).
+
+#### 4. Diferencias Clave con el Monolito
+1.  **Shared Kernel**: Se evita el código compartido pesado. Si se necesita compartir lógica, se hace mediante librerías privadas o duplicación controlada para mantener el desacoplamiento.
+2.  **Persistencia Políglota**: Cada microservicio puede (y suele) tener su propia base de datos, prohibiendo el acceso directo a la base de datos de otro servicio.
+
+### 5.2.4 Software Deployment Configuration
+
+## 5.3 Microservices Implementation
+
+### 5.2.1 Sprint 1
+
+El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (IAM, Profiles y Encounters, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
+
+### Sprint Goal
+
+"Nuestro enfoque está en migrar IAM, Profiles y Encounters a microservicios independientes y habilitar los flujos base de autenticación, gestión de perfil y check-in en encuentros.
+Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia funcional de punta a punta al equipo de desarrollo y a los primeros aprendices.
+Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
+
+#### 5.2.1.1 Sprint Backlog 1
+
+\
+![Sprint Backlog 1](assets/img/cap5/Glottia-SprintBacklog-1.jpeg)
+\
+[Ver Sprint Backlog 1 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiOGU3YWU0ZDBkN2NjNGQ2MDkxMGQxZjk4ZjUwYWFmNTAiLCJwIjoiaiJ9)
+
+
+#### 5.2.1.2 Development Evidence for Sprint Review
+#### 5.2.1.3 Testing Suite Evidence for Sprint Review
+
+En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
+
+Esta metodología permite definir el comportamiento del sistema desde la perspectiva del usuario mediante escenarios estructurados (*Given-When-Then*), facilitando la verificación técnica de los Web Services y asegurando que cada microservicio cumpla estrictamente con las reglas del negocio digital antes de su despliegue.
 
 ---
 
@@ -337,221 +584,6 @@ Feature: Profile Avatar Management
 
 
 
----
-
-### 5.1.1 Backend Application Core Testing Suite
-
-### 5.1.2 Pattern Based Backend Application(s)
-
-### 5.1.3 Pattern Based Custom Software Library
-
-### 5.1.4 Framework Pattern Driven Refactoring Report
-
-## 5.2 Software Configuration Management
-
-Software Configuration Management (SCM) —o Gestión de la Configuración de Software— es una disciplina de la ingeniería de software que se encarga de rastrear, controlar y organizar todos los cambios que ocurren en el ciclo de vida de un proyecto.
-
-Su objetivo principal es asegurar que, sin importar cuántas personas estén trabajando en el proyecto o cuántas funciones nuevas se agreguen, el software se mantenga estable, consistente y libre de caos. (GeeksforGeeks, 2025)
----
-### 5.2.1 Software Development Environment Configuration
-
-#### **Project Requirements Management**
- 
-**Jira:** 
-Herramienta de gestión de proyectos, diseñada principalmente para que equipos de software ágiles.. Fundamental para planificación, seguimientos , gestión de tareas y supervisar el flujo de trabajo en tiempo real para el sprint a desarrollar.
-
-**Link de referencia:**
-[Acceder a Jira](https://www.atlassian.com/es/software/jira)
-
-#### **Product UX/UI Design**
-
-**Figma:**
-Herramienta de diseño gráfico y de edición de vectores basada en la nube, utilizada principalmente para crear y prototipar interfaces de usuario (UI) y experiencias de usuario (UX) para sitios web y aplicaciones móviles. Principal herramienta para nuestros diseños y prototipos Mobiles y Web.
-
-**Link de referencia**
-[Acceder a Figma](https://www.figma.com)
-
-**PLantUML:**
-Herramienta de código abierto que permite crear diagramas UML y otros esquemas técnicos mediante la escritura de texto plano y sencillo. Vital para el desarrollo de los diagrama de clase de nuestro proyecto.
-
-**Link de referencia**
-[Acceder a PlantUML](https://plantuml.com)
-
-#### **Software Development**
-
-**Visual Studio Code:**
-Editor de código fuente gratuito, de código abierto y multiplataforma. Es una de las herramientas más populares entre programadores a nivel mundial gracias a su velocidad, flexibilidad y amplio soporte para múltiples lenguajes de programación. Este IDE permitió integrar de manera efectiva la colaboración de nuestro equipo para desarrollar las aplicaciones 
-
-**Link de referencia:**
-[Acceder a VS Code](https://code.visualstudio.com)
-
-#### **Software Deployment**
-
-**Postman:**
-Plataforma de software utilizada por desarrolladores y evaluadores de software (QA) para construir, probar, documentar y modificar APIs. Esencial para validar los endpoints de nuestro proyecto Backend.
-
-**Link de referencia**
-[Acceder a Postman](https://www.postman.com)
-
-**Render:**
-Render actúa como una plataforma como servicio (PaaS) que toma el código desde repositorios (GitHub/GitLab), lo compila y lo pone en línea, facilitando la gestión de servidores y la configuración compleja. Util para publicar aplicaciones web, sitios estáticos o bases de datos en la nube de forma automatizada. 
-
-**Link de referencia**
-[Acceder a Render](https://render.com)
-
-**Git:**
-Sistema de control de versiones distribuido, de código abierto, diseñado para rastrear cambios en el código fuente durante el desarrollo de software. Facilita el registro de versiones sobre el código y documentación de nuestro proyecto para un seguimiento más ágil.
-
-**Link de referencia**
-[Acceder a Git](https://git-scm.com/)
-
-#### **Software Documentation and Project Management**
-
-**Github:**
-Plataforma en la nube diseñada para el desarrollo colaborativo de software, permitiendo alojar, gestionar y compartir repositorios de código utilizando el sistema de control de versiones Git. Plataforma principal donde se alojará nuestro proyecto (código y documentación) y permitir la colaboración en tiempo real.
-
-**Link de referencia**
-[Acceder a Github](https://github.com/)
-
----
-
-### 5.2.2 Source Code Management
-
-### Repositorio de GitHub:
-
-- Enlace para acceder al [Repositorio del Documento](https://github.com/Hampcoders-Fundamentos/project-document)
-- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)
-- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices)
-
-![Gitflow Graphic](assets/img/cap5/Gitflow-Graphic.jpeg)
-
-**Gitflow** es un modelo de ramificación para Git que se centra en la organización de las ramas de un proyecto de software, definiendo una serie de ramas estándar y reglas para su uso que facilitan la colaboración y la gestión del código en un equipo de desarrollo. En Glottia, utilizamos el modelo de Gitflow para organizar y gestionar las ramas de nuestros repositorios de microservicios, lo que nos permite trabajar de forma eficiente y colaborativa en el desarrollo y migración de la plataforma.
-
-La rama **main** es la rama principal de nuestro proyecto, que contiene las versiones estables, operativas y listas para desplegar de cada microservicio de Glottia. Estas versiones han sido previamente evaluadas y se ha verificado su total funcionalidad antes de ser integradas. Empleamos etiquetas para identificar cada versión estable desplegada, lo que nos permite tener un seguimiento preciso del historial de releases y simplificar la administración de futuras actualizaciones en producción.
-
-La rama **develop** es la rama de desarrollo de nuestro proyecto, que contiene la versión en desarrollo de cada servicio de Glottia con todas las características completadas hasta ese momento del sprint, aunque aún pendientes de pruebas finales. Este canal se emplea para integrar el trabajo de los distintos miembros del equipo y llevar a cabo validaciones antes de la publicación en la rama main.
-
-La rama **feature** agrupa las ramas de características de nuestro proyecto, cada una dedicada a una funcionalidad o tarea específica del sprint. Cada nueva historia de usuario o tarea técnica se desarrolla en una rama feature/ separada siguiendo la convención feature/nombre-descriptivo, lo que permite a los miembros del equipo trabajar de forma independiente en diferentes bounded contexts y facilita la integración progresiva del trabajo en la rama develop mediante Pull Requests.
-
-### 5.2.3 Source Code Style Guide & Conventions
-
-#### Frontend Code Style Guide
-
-#### Backend Code Style Guide (Monolith)
-
-#### 1. Arquitectura del Sistema
-El repositorio sigue un patrón de **Monolito Modular** basado en los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**.
-
-#### Organización de Carpetas
-La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentro de `src/`:
-
-* **`src/api/`**: Capa de entrada. Contiene los controladores, rutas de Express y middlewares de validación de HTTP.
-* **`src/[contexto]/`**: Cada módulo funcional (ej. `users`, `courses`) se divide en:
-    * **`domain/`**: El corazón del negocio. Contiene Entidades, Value Objects e interfaces de Repositorios (Ports). **No tiene dependencias externas**.
-    * **`application/`**: Casos de uso que orquestan la lógica de negocio.
-    * **`infrastructure/`**: Implementaciones técnicas (TypeORM, adaptadores de terceros, persistencia).
-* **`src/shared/`**: Lógica transversal, utilitarios y clases base reutilizables por múltiples contextos.
-
-#### 2. Convenciones de Nomenclatura
-
-#### Clases y Tipos
-* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su capa.
-    * *Controladores:* `UserGetController`
-    * *Casos de Uso:* `CreateCourseUseCase`
-    * *Repositorios:* `SqliteUserRepository`
-* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `UserRepository` en lugar de `IUserRepository`).
-
-#### 3. Archivos
-* **Formato**: Se utiliza `kebab-case`.
-* **Sufijos de archivo**: El nombre del archivo debe reflejar su propósito:
-    * `user.entity.java`
-    * `user-repository.java`
-    * `create-user-use-case.java`
-    * `user-post-controller.java`
-
-#### 4. Variables y Funciones
-* **Formato**: Se utiliza `camelCase`.
-* **Claridad**: Los nombres deben ser descriptivos. Evitar abreviaturas crípticas (usar `userRepository` en lugar de `uRepo`).
-
-#### 5. Estándares de Codificación
-
-Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
-
-#### 6. Lógica de Negocio
-* **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
-* **Regla de Dependencia**: Las capas internas (Domain) nunca deben depender de las capas externas (Infrastructure).
-* **Manejo de Errores**: Se utilizan excepciones de dominio específicas que luego son transformadas en códigos HTTP en la capa de API.
-
-#### Backend Code Style Guide (Microservices)
-
-#### 1. Arquitectura de Microservicios
-El sistema se descompone en servicios autónomos que se comunican de forma asíncrona (vía eventos) o síncrona (vía API REST/gRPC).
-
-#### Estructura de la Solución
-Cada microservicio dentro de la carpeta `services/` (o repositorios independientes) mantiene su propia autonomía técnica:
-
-* **`src/`**: Raíz del código fuente del microservicio.
-    * **`infrastructure/`**: Implementaciones de frameworks, bases de datos y clientes de mensajería (ej. RabbitMQ, Kafka).
-    * **`application/`**: Casos de uso específicos del dominio del microservicio.
-    * **`domain/`**: Lógica de negocio pura y entidades del subdominio.
-* **`events/` o `messages/`**: Definiciones de eventos de integración para comunicación entre servicios.
-* **`api-gateway/`**: Punto de entrada único que orquestas las peticiones hacia los microservicios internos.
-
-#### 2. Convenciones de Nomenclatura
-
-#### Naming de Microservicios
-* **Repositorios/Carpetas**: Se utiliza `kebab-case` con el sufijo `-service`.
-    * Ejemplo: `identity-service`, `catalog-service`, `ordering-service`.
-
-#### Clases y Archivos
-Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
-* **Event Handlers**: Clases que procesan mensajes entrantes. Nombradas como `[EventName]Handler` (ej. `UserCreatedHandler`).
-* **Publishers**: Interfaces para enviar mensajes. Nombradas como `[Entity]Publisher` (ej. `OrderEventPublisher`).
-* **Suffixes**:
-    * `*.controller.java`: Entrada HTTP.
-    * `*.subscriber.java`: Suscriptor a eventos de bus.
-    * `*.dto.java`: Objetos de transferencia de datos para la red.
-
-#### 3. Estándares de Comunicación
-
-#### Event-Driven Design
-
-* **Eventos**: Se deben definir en `PascalCase` y representar hechos pasados (ej. `UserRegistered`, `PaymentProcessed`).
-* **Idempotencia**: Todos los servicios que consumen eventos deben implementar lógica de idempotencia para evitar duplicados.
-
-#### API & DTOs
-
-* **Contratos**: Los DTOs son obligatorios para la comunicación entre servicios. No se comparten entidades de dominio a través de la red.
-* **Versionamiento**: Las rutas de API deben incluir la versión (ej. `/api/v1/identity/...`).
-
-#### 4. Diferencias Clave con el Monolito
-1.  **Shared Kernel**: Se evita el código compartido pesado. Si se necesita compartir lógica, se hace mediante librerías privadas o duplicación controlada para mantener el desacoplamiento.
-2.  **Persistencia Políglota**: Cada microservicio puede (y suele) tener su propia base de datos, prohibiendo el acceso directo a la base de datos de otro servicio.
-
-### 5.2.4 Software Deployment Configuration
-
-## 5.3 Microservices Implementation
-
-### 5.2.1 Sprint 1
-
-El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (IAM, Profiles y Encounters, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
-
-### Sprint Goal
-
-"Nuestro enfoque está en migrar IAM, Profiles y Encounters a microservicios independientes y habilitar los flujos base de autenticación, gestión de perfil y check-in en encuentros.
-Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia funcional de punta a punta al equipo de desarrollo y a los primeros aprendices.
-Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
-
-#### 5.2.1.1 Sprint Backlog 1
-
-\
-![Sprint Backlog 1](assets/img/cap5/Glottia-SprintBacklog-1.jpeg)
-\
-[Ver Sprint Backlog 1 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiOGU3YWU0ZDBkN2NjNGQ2MDkxMGQxZjk4ZjUwYWFmNTAiLCJwIjoiaiJ9)
-
-
-#### 5.2.1.2 Development Evidence for Sprint Review
-#### 5.2.1.3 Testing Suite Evidence for Sprint Review
 #### 5.2.1.4 Execution Evidence for Sprint Review
 
 El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Hampcoders, tuvo como objetivo principal iniciar la migración del backend de una arquitectura monolito modular hacia microservicios independientes, abarcando los bounded contexts de IAM, Profiles y Encounters, al mismo tiempo que se implementaban las funcionalidades base de la plataforma y se atendían mejoras y correcciones en la aplicación móvil Flutter. En cuanto a la migración, se logró extraer y dockerizar el servicio de IAM con su propia base de datos, se avanzó en la separación del servicio de Encounters con la configuración de su schema independiente y sus integraciones hacia Venues y Profiles, y se inició la configuración del API Gateway como punto de entrada único para todos los microservicios. En el frente funcional, se completaron las historias de usuario correspondientes al ciclo de autenticación completo (registro de aprendiz y partner, inicio y cierre de sesión), el perfil base del aprendiz, y el flujo de check-in en encuentros. En paralelo, el equipo de mobile resolvió los bugs críticos de crash en el registro y persistencia de sesión, además de entregar el rediseño de la pantalla home. Como trabajo pendiente para el siguiente sprint quedan la separación completa de Profiles y Encounters como microservicios autónomos, la historia US05 recuperación de contraseña y un bugfix en el cierre de sesión.
