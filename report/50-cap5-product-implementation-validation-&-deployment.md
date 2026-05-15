@@ -2,6 +2,343 @@
 
 ## 5.1 Testing Suites & General Patterns
 
+En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
+
+Esta metodología permite definir el comportamiento del sistema desde la perspectiva del usuario mediante escenarios estructurados (*Given-When-Then*), facilitando la verificación técnica de los Web Services y asegurando que cada microservicio cumpla estrictamente con las reglas del negocio digital antes de su despliegue.
+
+### Relación de Tests Diseñados por User Story
+
+| Código del Test | Nombre del Archivo .feature | Componente / Microservicio | User Story Relacionada (ID) |
+| :--- | :--- | :--- | :--- |
+| **TS-IAM-01** | `auth_register_learner.feature` | IAM Microservice | US01: Registro de nuevo aprendiz |
+| **TS-IAM-02** | `auth_register_partner.feature` | IAM Microservice | US02: Registro de nuevo local |
+| **TS-IAM-03** | `auth_login.feature` | IAM Microservice | US03: Inicio de sesión general |
+| **TS-IAM-04** | `auth_logout.feature` | IAM Microservice | US04: Cierre de sesión |
+| **TS-IAM-05** | `auth_password_recovery.feature` | IAM Microservice | US05: Recuperación de contraseña |
+| **TS-PRF-06** | `profile_onboarding.feature` | Profiles Microservice | US06: Completar perfil de aprendiz |
+| **TS-PRF-07** | `profile_edition.feature` | Profiles Microservice | US07: Editar perfil de aprendiz |
+| **TS-PRF-08** | `profile_discovery.feature` | Profiles Microservice | US08: Ver perfil de otro usuario |
+| **TS-PRF-09** | `profile_avatar.feature` | Profiles Microservice | US09: Subir foto de perfil |
+
+---
+
+### IAM Microservice Testing Suite
+
+A continuación, se presentan las especificaciones en código Gherkin encargadas de validar los procesos de soporte críticos de autenticación, autorización y registro en el contexto de IAM.
+
+#### `auth_register_learner.feature` (Relacionado con US01)
+
+\
+gherkin
+Feature: Learner Registration Management
+  As a person interested in practicing languages
+  I want to register an account in Glottia using my email and password
+  So that I can access the community and language encounters
+
+  Background:
+    Given the registration API endpoint "/api/v1/auth/register" is available
+
+  Scenario: Successful Learner Registration (Escenario #1)
+    When I send a POST request with a valid "email" as "italo@upc.edu.pe", a strong "password" as "Glottia2026!", and accept terms
+    Then the system should return a status code 201
+    And the response body should contain a success message, a unique user "id", and status "PENDING_CONFIRMATION"
+
+  Scenario: Registration Failed due to Duplicate Email (Escenario #2)
+    Given a user with email "italo@upc.edu.pe" already exists in the system
+    When I send a POST request with email "italo@upc.edu.pe" and password "Glottia2026!"
+    Then the system should return a status code 400
+    And the response body should contain the error message "Este correo ya está registrado"
+
+  Scenario: Registration Failed due to Weak Password (Escenario #3)
+    When I send a POST request with email "newuser@upc.edu.pe" and a weak "password" as "123"
+    Then the system should return a status code 400
+    And the response body should detail the missing security requirements
+
+  Scenario: Email Activation Validation Link Expiration (Escenario #4)
+    Given a user completed registration more than 24 hours ago
+    And the user has not clicked the confirmation link
+    When the automatic validation routine executes
+    Then the user account status should be set to "DEACTIVATED".
+    
+
+
+#### `auth_register_partner.feature` (Relacionado con US02)
+
+\
+gherkin
+Feature: Partner and Business Registration
+  As a business owner
+  I want to register my business in the platform
+  So that I can offer my space for encounters and gain visibility
+
+  Background:
+    Given the partner registration gateway is active
+
+  Scenario: Successful Partner and Venue Registration (Escenario #1)
+    When I submit account details with email "partner@cafe.com", password "CafePass2026!" and business details name "Glottia Cafe", address "Av. Salaverry 123"
+    Then the system should return a status code 201
+    And the account type should be "Partner"
+    And the venue status should be set to "PENDING_APPROVAL"
+
+  Scenario: Address Validation via Google Maps API (Escenario #2)
+    When a partner submits an address as "Calle Falsa 123456789, Lima"
+    Then the system should validate the location with the Maps Service
+    And return a suggestion or prompt for manual correction
+
+  Scenario: Missing Critical Business Information (Escenario #3)
+    When I try to register a business omitting the "capacity" or "operatingHours"
+    Then the system should return a status code 400
+    And the response should block registration indicating the mandatory missing fields
+
+  Scenario: Manual Administrative Approval (Escenario #4)
+    Given a partner registration is complete with status "PENDING_APPROVAL"
+    When an administrator reviews and approves the business data
+    Then the venue status should transition to "ACTIVE"
+    And it should become visible on the public platform
+
+---
+
+#### `auth_login.feature` (Relacionado con US03)
+
+\
+gherkin
+Feature: General User Authentication
+  As a registered user (learner or partner)
+  I want to sign in with my credentials
+  So that I can access my personalized dashboard and features
+
+  Background:
+    Given the authentication endpoint "/api/v1/auth/login" is active
+
+  Scenario: Successful Login and Token Generation (Escenario #1)
+    Given a registered user with email "italo@upc.edu.pe" and password "Glottia2026!" exists
+    When I send a POST request with the correct email and password
+    Then the system should return a status code 200
+    And the response must include a secure JWT token, user "id", and role "LEARNER"
+
+  Scenario: Login Failed due to Invalid Credentials (Escenario #2)
+    When I send a POST request with an invalid email or wrong password
+    Then the system should return a status code 401
+    And the response message must be generically "Email o contraseña inválidos" for security tracking
+
+  Scenario: Login Blocked due to Unconfirmed Email (Escenario #3)
+    Given a user account with status "PENDING_CONFIRMATION"
+    When I attempt to log in with valid credentials
+    Then the system should return a status code 403
+    And provide an option to resend the confirmation email
+
+  Scenario: Login Blocked due to Suspended Account (Escenario #4)
+    Given a user account with status "SUSPENDED"
+    When I attempt to log in
+    Then the system should return a status code 403
+    And the message should state "Tu cuenta ha sido suspendida. Contacta con soporte"
+
+  Scenario: Account Lockout after Multiple Failed Attempts (Escenario #5)
+    Given a user has failed their login attempt 5 consecutive times
+    When they execute a 6th login attempt
+    Then the system should temporarily lock the account for 30 minutes
+
+  Scenario: Token Expiration forcing Re-authentication (Escenario #6)
+    Given a user session token was issued more than 30 days ago
+    When the user executes any secure API request
+    Then the server should return a status code 401 Unauthorized
+    And redirect the client application to the login prompt
+
+
+---
+
+#### `auth_logout.feature` (Relacionado con US04)
+
+\
+gherkin
+Feature: User Session Invalidation
+  As an authenticated user
+  I want to log out of my session
+  So that I can protect my account privacy on shared devices
+
+  Scenario: Successful Logout (Escenario #1)
+    Given a user is authenticated with a valid JWT token
+    When they send a POST request to "/api/v1/auth/logout"
+    Then the system should return a status code 200
+    And the token should be added to the blacklist
+    And local session cookies must be cleared
+
+  Scenario: Automatic Inactivity Logout (Escenario #2)
+    Given a user has been completely inactive for more than 30 minutes
+    When they attempt to perform any state-changing action
+    Then the system should automatically invalidate the session and respond with 401
+
+  Scenario: Global Device Logout (Escenario #3)
+    Given a user has multiple active sessions across different devices
+    When they trigger the "Cerrar sesión en todos los dispositivos" command
+    Then the system should revoke all active tokens associated with that user ID
+
+---
+
+
+#### `auth_password_recovery.feature` (Relacionado con US05)
+
+\
+gherkin
+Feature: Password Recovery Protocol
+  As a registered user
+  I want to request a password reset link
+  So that I can regain access to my account if forgotten
+
+  Scenario: Successful Recovery Request Trigger (Escenario #1)
+    Given a user with email "italo@upc.edu.pe" exists
+    When I request a reset link for this email
+    Then the system should return a status code 200
+    And an email containing a token valid for 1 hour must be sent
+
+  Scenario: Non-existent Email Handling (Escenario #2)
+    When I request a reset link for an email not registered in the database
+    Then the system should return a status code 200
+    And the response message must say "Si esta cuenta existe, recibirá un email" to prevent user enumeration
+
+  Scenario: Expired Reset Link Usage (Escenario #3)
+    Given a reset token was generated more than 1 hour ago
+    When I attempt to access the reset form using that token
+    Then the system should reject it with the message "Este link ha expirado"
+
+  Scenario: Persisting New Password (Escenario #4)
+    Given a valid and active password reset token
+    When I submit a new compliant password
+    Then the system should update the credentials in the database
+    And return a status code 200 success
+
+  Scenario: Rate Limiting on Recovery Generation (Escenario #5)
+    Given a user has requested 3 reset links within the last 10 minutes
+    When they attempt to request a 4th link
+    Then the system should rate limit the request and enforce a 10-minute cooldown
+
+
+---
+
+#### Profiles Microservice Testing Suite
+
+A continuación, se detallan las especificaciones Gherkin enfocadas en validar las reglas de la gestión de perfiles e idiomas dentro del microservicio Profiles.
+
+#### `profile_onboarding.feature` (Relacionado con US06)
+
+\
+gherkin
+Feature: Learner Profile Onboarding
+  As a newly registered learner
+  I want to complete my profile with my native language and target languages
+  So that other users can know me and the system can recommend relevant encounters
+
+  Background:
+    Given a registered user has an uncompleted profile entity at "/api/v1/profiles"
+
+  Scenario: Successful First-Time Profile Onboarding (Escenario #1)
+    When I send a POST request specifying nativeLanguage "Spanish", practiceLanguages "[English]", and level "B2"
+    Then the profile status should be updated to "COMPLETED"
+    And the recommendations engine should trigger matching events for the dashboard
+
+  Scenario: Missing Target Practice Languages (Escenario #2)
+    When I attempt to save a profile with an empty list of practice languages
+    Then the server should return a status code 400
+    And the response JSON should indicate "Selecciona al menos 1 idioma para practicar"
+
+  Scenario: Handling Multiple Native Languages and Distinct Levels (Escenario #3)
+    When I submit a profile with nativeLanguages "['Spanish', 'Quechua']" and practiceLanguages "[{'languageId': 'English', 'level': 'C1'}]"
+    Then the database should store all mapped language entities correctly
+
+  Scenario: Dynamic Filtering Validation (Escenario #4)
+    Given a learner has "English B2" configured as their primary interest
+    When they load their dashboard recommendations
+    Then the response array should only stream encounters tagged with English language parameters
+
+
+---
+
+#### `profile_edition.feature` (Relacionado con US07)
+
+\
+gherkin
+Feature: Learner Profile Edition
+  As an active learner
+  I want to edit my profile details at any time
+  So that my information remains updated across the ecosystem
+
+  Scenario: Update Language Fluency Level (Escenario #1)
+    Given a profile with ID 500 has "English B1"
+    When I send a PUT request to "/api/v1/profiles/500" changing level to "B2"
+    Then the database should update the row immediately
+    And future recommendation queries should adapt to the B2 threshold
+
+  Scenario: Archiving Encounters on Language Removal (Escenario #2)
+    Given a learner is registered to future English encounters
+    When the learner removes "English" from their practice language collection
+    Then those specific active reservations should be safely flagged as "archived" but not dropped completely
+
+  Scenario: Real-Time Cache Invalidation for Other Users (Escenario #3)
+    When a learner modifies their public display name
+    Then any other user fetching encounter details where this learner is an attendee must instantly see the updated name
+
+
+---
+
+#### `profile_discovery.feature` (Relacionado con US08)
+
+\
+gherkin
+Feature: Public Profile Discovery
+  As a learner
+  I want to view the public profile of other attendees
+  So that I can learn about their language interests and connect with them
+
+  Scenario: Standard Public Profile View (Escenario #1)
+    Given I am inspecting the attendees list of an encounter
+    When I execute a GET request to "/api/v1/profiles/750"
+    Then the response should mask sensitive fields and return "firstName", "avatarUrl", "nativeLanguages", and "practiceLanguages"
+
+  Scenario: Contact Request Action Trigger (Escenario #2)
+    When I click "Enviar solicitud de contacto" on user 750's public card
+    Then a networking record should be initialized in the database with status "PENDING"
+
+  Scenario: Privacy Restrictions Enforcement (Escenario #3)
+    Given user 750 has configured their profile privacy settings to "HIGH"
+    When another user requests their profile data
+    Then the server must hide their email and exact fluency metrics, exposing only name and photo placeholder
+
+
+---
+
+#### `profile_avatar.feature` (Relacionado con US09)
+
+\
+gherkin
+Feature: Profile Avatar Management
+  As a platform user
+  I want to upload a profile picture
+  So that my account is personalized and recognizable
+
+  Scenario: Successful Image Curation and Upload (Escenario #1)
+    Given a valid image asset "me.png" of size 2MB
+    When I dispatch a multipart/form-data POST request to the storage endpoint
+    Then the asset should be processed, cropped to square proportions, and the public CDN URL bound to the profile row
+
+  Scenario: Image Rejection due to Large File Size (Escenario #2)
+    Given a heavy image file of size 10MB
+    When I attempt to upload it as my avatar
+    Then the system must reject the payload with status code 413
+    And return the localized message "Archivo demasiado grande. Máximo 5MB"
+
+  Scenario: Automatic Avatar Replacement (Escenario #3)
+    Given a user already has an active avatar URL in their profile database record
+    When they upload a new valid image file
+    Then the system should overwrite or delete the older object reference and map the new CDN location
+
+  Scenario: Resetting to Default Avatar (Escenario #4)
+    When I issue a DELETE command on my profile photo path
+    Then the image path field in the database should revert to the default system placeholder avatar string
+
+
+
+---
+
 ### 5.1.1 Backend Application Core Testing Suite
 
 ### 5.1.2 Pattern Based Backend Application(s)
