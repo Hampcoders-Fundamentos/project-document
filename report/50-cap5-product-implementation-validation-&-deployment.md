@@ -68,6 +68,14 @@ Sistema de control de versiones distribuido, de código abierto, diseñado para 
 **Link de referencia**
 [Acceder a Git](https://git-scm.com/)
 
+#### **Software Documentation and Project Management**
+
+**Github:**
+Plataforma en la nube diseñada para el desarrollo colaborativo de software, permitiendo alojar, gestionar y compartir repositorios de código utilizando el sistema de control de versiones Git. Plataforma principal donde se alojará nuestro proyecto (código y documentación) y permitir la colaboración en tiempo real.
+
+**Link de referencia**
+[Acceder a Github](https://github.com/)
+
 ---
 
 ### 5.2.2 Source Code Management
