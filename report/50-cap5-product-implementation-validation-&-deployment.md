@@ -48,6 +48,26 @@ Editor de código fuente gratuito, de código abierto y multiplataforma. Es una 
 **Link de referencia:**
 [Acceder a VS Code](https://code.visualstudio.com)
 
+#### **Software Deployment**
+
+**Postman:**
+Plataforma de software utilizada por desarrolladores y evaluadores de software (QA) para construir, probar, documentar y modificar APIs. Esencial para validar los endpoints de nuestro proyecto Backend.
+
+**Link de referencia**
+[Acceder a Postman](https://www.postman.com)
+
+**Render:**
+Render actúa como una plataforma como servicio (PaaS) que toma el código desde repositorios (GitHub/GitLab), lo compila y lo pone en línea, facilitando la gestión de servidores y la configuración compleja. Util para publicar aplicaciones web, sitios estáticos o bases de datos en la nube de forma automatizada. 
+
+**Link de referencia**
+[Acceder a Render](https://render.com)
+
+**Git:**
+Sistema de control de versiones distribuido, de código abierto, diseñado para rastrear cambios en el código fuente durante el desarrollo de software. Facilita el registro de versiones sobre el código y documentación de nuestro proyecto para un seguimiento más ágil.
+
+**Link de referencia**
+[Acceder a Git](https://git-scm.com/)
+
 ---
 
 ### 5.2.2 Source Code Management
