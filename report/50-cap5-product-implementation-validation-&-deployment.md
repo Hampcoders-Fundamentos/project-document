@@ -26,6 +26,19 @@ Herramienta de gestión de proyectos, diseñada principalmente para que equipos 
 **Link de referencia:**
 [Acceder a Jira](https://www.atlassian.com/es/software/jira)
 
+#### **Product UX/UI Design**
+
+**Figma:**
+Herramienta de diseño gráfico y de edición de vectores basada en la nube, utilizada principalmente para crear y prototipar interfaces de usuario (UI) y experiencias de usuario (UX) para sitios web y aplicaciones móviles. Principal herramienta para nuestros diseños y prototipos Mobiles y Web.
+
+**Link de referencia**
+[Acceder a Figma](https://www.figma.com)
+
+**PLantUML:**
+Herramienta de código abierto que permite crear diagramas UML y otros esquemas técnicos mediante la escritura de texto plano y sencillo. Vital para el desarrollo de los diagrama de clase de nuestro proyecto.
+
+**Link de referencia**
+[Acceder a PlantUML](https://plantuml.com)
 
 ---
 
