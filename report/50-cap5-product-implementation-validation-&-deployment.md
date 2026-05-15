@@ -46,8 +46,25 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 
 El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Hampcoders, tuvo como objetivo principal iniciar la migración del backend de una arquitectura monolito modular hacia microservicios independientes, abarcando los bounded contexts de IAM, Profiles y Encounters, al mismo tiempo que se implementaban las funcionalidades base de la plataforma y se atendían mejoras y correcciones en la aplicación móvil Flutter. En cuanto a la migración, se logró extraer y dockerizar el servicio de IAM con su propia base de datos, se avanzó en la separación del servicio de Encounters con la configuración de su schema independiente y sus integraciones hacia Venues y Profiles, y se inició la configuración del API Gateway como punto de entrada único para todos los microservicios. En el frente funcional, se completaron las historias de usuario correspondientes al ciclo de autenticación completo (registro de aprendiz y partner, inicio y cierre de sesión), el perfil base del aprendiz, y el flujo de check-in en encuentros. En paralelo, el equipo de mobile resolvió los bugs críticos de crash en el registro y persistencia de sesión, además de entregar el rediseño de la pantalla home. Como trabajo pendiente para el siguiente sprint quedan la separación completa de Profiles y Encounters como microservicios autónomos, la historia US05 recuperación de contraseña y un bugfix en el cierre de sesión.
 
+### Web UI Evidence
+![Dashboard](assets/img/cap5/Web-UI-Execution-Evidence1.png)
+
+\
+
+![Promotions](assets/img/cap5/Web-UI-Evidence-2.png)
+
+\
+
+![Analytics](assets/img/cap5/Web-UI-Evidence-3.png)
+
+### Mobile UI Fixes Evidence
+
+### Endpoints Execution Evidence
+
 #### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
+
 #### 5.2.1.6 Software Deployment Evidence for Sprint Review
+
 #### 5.2.1.7 Team Collaboration Insights during Sprint
 #### 5.2.1.8 Kanban Board --> TP1
 
