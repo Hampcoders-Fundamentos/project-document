@@ -66,6 +66,20 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 ### Endpoints Execution Evidence
 
+![](assets/img/cap5/Postman1.jpeg)
+\
+![](assets/img/cap5/Postman2.jpeg)
+\
+![](assets/img/cap5/Postman3.jpeg)
+\
+![](assets/img/cap5/Postman4.jpeg)
+\
+![](assets/img/cap5/Postman5.jpeg)
+\
+![](assets/img/cap5/Postman6.jpeg)
+\
+![](assets/img/cap5/Postman7.jpeg)
+
 #### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
 
 En este Sprint se implementó y documentó la primera versión de los microservicios correspondientes a los Bounded Contexts de IAM, Profiles y Encounters de la plataforma Glottia.
@@ -224,18 +238,16 @@ La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspond
 #### 5.2.1.6 Software Deployment Evidence for Sprint Review
 
 **Software Deployment Evidence for Sprint Review**
-Durante el Sprint 1 se llevaron a cabo las actividades iniciales de despliegue de la plataforma Glottia en la nube, marcando el primer hito en la transición de la arquitectura monolito modular hacia microservicios independientes. Las actividades de despliegue abarcaron la creación de cuenta en Render como proveedor cloud, la configuración de los proyectos de despliegue para los primeros servicios extraídos del monolito, y el despliegue manual de tres Web Services: el monolito existente, el microservicio de IAM y el microservicio de Profiles.
+Durante el Sprint 1 se llevaron a cabo las actividades iniciales de despliegue de la plataforma Glottia en la nube, marcando el primer hito en la transición de la arquitectura monolito modular hacia microservicios independientes. Las actividades de despliegue abarcaron la creación de cuenta en Render como proveedor cloud, la configuración de los proyectos de despliegue para los primeros servicios extraídos del monolito, y el despliegue manual de dos Web Services: el monolito existente y el microservicio de IAM.
 
 **Creación de cuenta en Render**
 Se creó una cuenta en Render (render.com) como proveedor cloud principal para el alojamiento de los Web Services de la plataforma. Render fue seleccionado por su soporte nativo a contenedores Docker, su facilidad de configuración para proyectos Spring Boot y su plan gratuito adecuado para entornos de desarrollo y validación de sprint.
+
 
 **Configuración y despliegue del monolito**
 Se configuró el proyecto del monolito modular existente en Render como Web Service, utilizando Docker como mecanismo de empaquetado y despliegue. Se definieron las variables de entorno correspondientes a la conexión de base de datos y configuración de seguridad. Este servicio representa la versión base del sistema previo al proceso de migración a microservicios.
 Configuración y despliegue del microservicio IAM
 Se configuró el microservicio de IAM como un Web Service independiente en Render. El servicio fue contenerizado mediante Docker con su propio Dockerfile, separado completamente del monolito, con su propia base de datos MySQL y sus variables de entorno de configuración definidas de forma autónoma. El despliegue fue realizado de forma manual conectando el repositorio correspondiente al proyecto en Render.
-
-**Configuración y despliegue del microservicio Profiles**
-De forma análoga al servicio IAM, el microservicio de Profiles fue configurado y desplegado como un Web Service independiente en Render, con su propio Dockerfile, base de datos MySQL y configuración de variables de entorno. Se verificó la comunicación entre Profiles e IAM a través de la ACL Facade correspondiente una vez ambos servicios estuvieron en línea.
 
 **Pendiente**
 Las URLs públicas de los tres servicios desplegados estarán disponibles para la siguiente iteración del informe una vez que los servicios completen su proceso de inicialización en Render. Se adjuntarán capturas de pantalla del dashboard de Render, la configuración de cada Web Service y las evidencias de los despliegues exitosos en cuanto estén disponibles.
