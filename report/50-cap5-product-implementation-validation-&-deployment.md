@@ -58,6 +58,11 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 ![Analytics](assets/img/cap5/Web-UI-Evidence-3.png)
 
 ### Mobile UI Fixes Evidence
+![Learner Homepage](assets/img/cap5/Learner-Homepage.jpeg)
+
+\
+
+![Partners Section Update](assets/img/cap5/Partners-Section-Update.jpeg)
 
 ### Endpoints Execution Evidence
 
