@@ -12,7 +12,71 @@
 
 ## 5.2 Software Configuration Management
 
+Software Configuration Management (SCM) —o Gestión de la Configuración de Software— es una disciplina de la ingeniería de software que se encarga de rastrear, controlar y organizar todos los cambios que ocurren en el ciclo de vida de un proyecto.
+
+Su objetivo principal es asegurar que, sin importar cuántas personas estén trabajando en el proyecto o cuántas funciones nuevas se agreguen, el software se mantenga estable, consistente y libre de caos. (GeeksforGeeks, 2025)
+---
 ### 5.2.1 Software Development Environment Configuration
+
+#### **Project Requirements Management**
+ 
+**Jira:** 
+Herramienta de gestión de proyectos, diseñada principalmente para que equipos de software ágiles.. Fundamental para planificación, seguimientos , gestión de tareas y supervisar el flujo de trabajo en tiempo real para el sprint a desarrollar.
+
+**Link de referencia:**
+[Acceder a Jira](https://www.atlassian.com/es/software/jira)
+
+#### **Product UX/UI Design**
+
+**Figma:**
+Herramienta de diseño gráfico y de edición de vectores basada en la nube, utilizada principalmente para crear y prototipar interfaces de usuario (UI) y experiencias de usuario (UX) para sitios web y aplicaciones móviles. Principal herramienta para nuestros diseños y prototipos Mobiles y Web.
+
+**Link de referencia**
+[Acceder a Figma](https://www.figma.com)
+
+**PLantUML:**
+Herramienta de código abierto que permite crear diagramas UML y otros esquemas técnicos mediante la escritura de texto plano y sencillo. Vital para el desarrollo de los diagrama de clase de nuestro proyecto.
+
+**Link de referencia**
+[Acceder a PlantUML](https://plantuml.com)
+
+#### **Software Development**
+
+**Visual Studio Code:**
+Editor de código fuente gratuito, de código abierto y multiplataforma. Es una de las herramientas más populares entre programadores a nivel mundial gracias a su velocidad, flexibilidad y amplio soporte para múltiples lenguajes de programación. Este IDE permitió integrar de manera efectiva la colaboración de nuestro equipo para desarrollar las aplicaciones 
+
+**Link de referencia:**
+[Acceder a VS Code](https://code.visualstudio.com)
+
+#### **Software Deployment**
+
+**Postman:**
+Plataforma de software utilizada por desarrolladores y evaluadores de software (QA) para construir, probar, documentar y modificar APIs. Esencial para validar los endpoints de nuestro proyecto Backend.
+
+**Link de referencia**
+[Acceder a Postman](https://www.postman.com)
+
+**Render:**
+Render actúa como una plataforma como servicio (PaaS) que toma el código desde repositorios (GitHub/GitLab), lo compila y lo pone en línea, facilitando la gestión de servidores y la configuración compleja. Util para publicar aplicaciones web, sitios estáticos o bases de datos en la nube de forma automatizada. 
+
+**Link de referencia**
+[Acceder a Render](https://render.com)
+
+**Git:**
+Sistema de control de versiones distribuido, de código abierto, diseñado para rastrear cambios en el código fuente durante el desarrollo de software. Facilita el registro de versiones sobre el código y documentación de nuestro proyecto para un seguimiento más ágil.
+
+**Link de referencia**
+[Acceder a Git](https://git-scm.com/)
+
+#### **Software Documentation and Project Management**
+
+**Github:**
+Plataforma en la nube diseñada para el desarrollo colaborativo de software, permitiendo alojar, gestionar y compartir repositorios de código utilizando el sistema de control de versiones Git. Plataforma principal donde se alojará nuestro proyecto (código y documentación) y permitir la colaboración en tiempo real.
+
+**Link de referencia**
+[Acceder a Github](https://github.com/)
+
+---
 
 ### 5.2.2 Source Code Management
 
