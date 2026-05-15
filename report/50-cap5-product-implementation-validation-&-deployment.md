@@ -18,6 +18,99 @@
 
 ### 5.2.3 Source Code Style Guide & Conventions
 
+#### Frontend Code Style Guide
+
+#### Backend Code Style Guide (Monolith)
+
+##### 1. Arquitectura del Sistema
+El repositorio sigue un patrón de **Monolito Modular** basado en los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**.
+
+##### Organización de Carpetas
+La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentro de `src/`:
+
+* **`src/api/`**: Capa de entrada. Contiene los controladores, rutas de Express y middlewares de validación de HTTP.
+* **`src/[contexto]/`**: Cada módulo funcional (ej. `users`, `courses`) se divide en:
+    * **`domain/`**: El corazón del negocio. Contiene Entidades, Value Objects e interfaces de Repositorios (Ports). **No tiene dependencias externas**.
+    * **`application/`**: Casos de uso que orquestan la lógica de negocio.
+    * **`infrastructure/`**: Implementaciones técnicas (TypeORM, adaptadores de terceros, persistencia).
+* **`src/shared/`**: Lógica transversal, utilitarios y clases base reutilizables por múltiples contextos.
+
+##### 2. Convenciones de Nomenclatura
+
+###### Clases y Tipos
+* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su capa.
+    * *Controladores:* `UserGetController`
+    * *Casos de Uso:* `CreateCourseUseCase`
+    * *Repositorios:* `SqliteUserRepository`
+* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `UserRepository` en lugar de `IUserRepository`).
+
+##### 3. Archivos
+* **Formato**: Se utiliza `kebab-case`.
+* **Sufijos de archivo**: El nombre del archivo debe reflejar su propósito:
+    * `user.entity.ts`
+    * `user-repository.ts`
+    * `create-user-use-case.ts`
+    * `user-post-controller.ts`
+
+##### 4. Variables y Funciones
+* **Formato**: Se utiliza `camelCase`.
+* **Claridad**: Los nombres deben ser descriptivos. Evitar abreviaturas crípticas (usar `userRepository` en lugar de `uRepo`).
+
+##### 5. Estándares de Codificación
+
+Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
+
+##### 6. Lógica de Negocio
+* **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
+* **Regla de Dependencia**: Las capas internas (Domain) nunca deben depender de las capas externas (Infrastructure).
+* **Manejo de Errores**: Se utilizan excepciones de dominio específicas que luego son transformadas en códigos HTTP en la capa de API.
+
+#### Backend Code Style Guide (Microservices)
+
+##### 1. Arquitectura de Microservicios
+El sistema se descompone en servicios autónomos que se comunican de forma asíncrona (vía eventos) o síncrona (vía API REST/gRPC).
+
+##### Estructura de la Solución
+Cada microservicio dentro de la carpeta `services/` (o repositorios independientes) mantiene su propia autonomía técnica:
+
+* **`src/`**: Raíz del código fuente del microservicio.
+    * **`infrastructure/`**: Implementaciones de frameworks, bases de datos y clientes de mensajería (ej. RabbitMQ, Kafka).
+    * **`application/`**: Casos de uso específicos del dominio del microservicio.
+    * **`domain/`**: Lógica de negocio pura y entidades del subdominio.
+* **`events/` o `messages/`**: Definiciones de eventos de integración para comunicación entre servicios.
+* **`api-gateway/`**: Punto de entrada único que orquestas las peticiones hacia los microservicios internos.
+
+##### 2. Convenciones de Nomenclatura
+
+###### Naming de Microservicios
+* **Repositorios/Carpetas**: Se utiliza `kebab-case` con el sufijo `-service`.
+    * Ejemplo: `identity-service`, `catalog-service`, `ordering-service`.
+
+###### Clases y Archivos
+Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+* **Event Handlers**: Clases que procesan mensajes entrantes. Nombradas como `[EventName]Handler` (ej. `UserCreatedHandler`).
+* **Publishers**: Interfaces para enviar mensajes. Nombradas como `[Entity]Publisher` (ej. `OrderEventPublisher`).
+* **Suffixes**:
+    * `*.controller.ts`: Entrada HTTP.
+    * `*.subscriber.ts`: Suscriptor a eventos de bus.
+    * `*.dto.ts`: Objetos de transferencia de datos para la red.
+
+##### 3. Estándares de Comunicación
+
+- Event-Driven Design
+
+* **Eventos**: Se deben definir en `PascalCase` y representar hechos pasados (ej. `UserRegistered`, `PaymentProcessed`).
+* **Idempotencia**: Todos los servicios que consumen eventos deben implementar lógica de idempotencia para evitar duplicados.
+
+- API & DTOs
+
+* **Contratos**: Los DTOs son obligatorios para la comunicación entre servicios. No se comparten entidades de dominio a través de la red.
+* **Versionamiento**: Las rutas de API deben incluir la versión (ej. `/api/v1/identity/...`).
+
+##### 4. Diferencias Clave con el Monolito
+1.  **Shared Kernel**: Se evita el código compartido pesado. Si se necesita compartir lógica, se hace mediante librerías privadas o duplicación controlada para mantener el desacoplamiento.
+2.  **Persistencia Políglota**: Cada microservicio puede (y suele) tener su propia base de datos, prohibiendo el acceso directo a la base de datos de otro servicio.
+
 ### 5.2.4 Software Deployment Configuration
 
 ## 5.3 Microservices Implementation
