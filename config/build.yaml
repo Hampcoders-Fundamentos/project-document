@@ -7,9 +7,9 @@ input-files:
   - report/20-cap2-requirements-analysis.md
   - report/30-cap3-requirements-spec.md
   - report/40-cap4-product-architecture-design.md
+  - report/50-cap5-product-implementation-validation-&-deployment.md
   - report/90-conclusiones.md
   - report/91-bibliografia.md
-  #- report/99-anexos.md
 
 output-file: dist/glottia-report.pdf
 
@@ -26,12 +26,13 @@ resource-path:
   - "assets/img/cap2"
   - "assets/img/cap3"
   - "assets/img/cap4"
+  - "assets/img/cap5"
   - "assets/img/general"
 
 variables:
-  geometry: [margin=1in]
+  geometry: [left=0.8in, right=0.8in, top=1in, bottom=1in]
   mainfont: "Arial"
-  fontsize: 11pt
+  fontsize: 10pt
   colorlinks: true
   linkcolor: "blue"
   lang: "es"
@@ -40,9 +41,23 @@ variables:
   titlepage-color: "FFFFFF"
   header-includes:
     - \usepackage{graphicx}
+    - \usepackage{float}
+    - \usepackage{seqsplit}
+    - \usepackage{needspace}
+    - \usepackage{enumitem}
+    - \usepackage[table,xcdraw]{xcolor}
+    - \makeatletter
+    - \def\fps@figure{H}
+    - \def\fps@table{H}
+    - \makeatother
+    - \setkeys{Gin}{width=\linewidth,height=0.45\textheight,keepaspectratio}
     - \usepackage{longtable}
     - \usepackage{array}
     - \usepackage{booktabs}
     - \usepackage{tabularx}
-    - \renewcommand{\arraystretch}{1.3}
-    
+    - \usepackage{etoolbox}
+    - \setlength{\tabcolsep}{6pt}
+    - \renewcommand{\arraystretch}{1.5}
+    - \AtBeginEnvironment{tabular}{\small}
+    - \AtBeginEnvironment{tabularx}{\small}
+    - \AtBeginEnvironment{longtable}{\small}
