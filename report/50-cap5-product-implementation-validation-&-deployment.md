@@ -261,6 +261,30 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 
 
 #### 5.2.1.2 Development Evidence for Sprint Review
+
+Durante el Sprint 1, se logró un avance parcial en el despliegue de la landing page.
+[Link del landing Page](https://glottia-landing-page-master.vercel.app/) 
+Actualmente, el sitio ya cuenta con diversas secciones operativas que ofrecen información clave sobre los servicios y el equipo de Glottia. Las evidencias de este progreso se detallan a continuación:
+
+ - **Sección Hero (Inicio):** El usuario visualiza la propuesta de valor principal centrada en la práctica de idiomas cara a cara. La sección destaca beneficios clave como conversaciones   reales, la posibilidad de conocer gente nueva y el acceso a espacios seguros.
+ (assets/img/cap5/hero-section.png)
+
+ - **Sección ¿Cómo funciona?:** El usuario puede visualizar el proceso de funcionamiento de la plataforma dividido en dos perfiles: Aprendices y Locales. Para los aprendices, se detallan tres pasos que incluyen el registro de perfil, la búsqueda de encuentros temáticos y la asistencia a las sesiones. Para los locales, se explica el flujo para convertir su negocio en un "hub cultural" mediante el registro del establecimiento, la definición de horarios disponibles y la recepción de los practicantes de idiomas.
+ (assets/img/cap5/how-it-works.png)
+
+ - **Sección Nuestra Solución:** El usuario obtiene una visión detallada del ecosistema de la plataforma, destacando pilares como conversaciones reales, una comunidad activa, soporte para múltiples idiomas y un enfoque en el progreso garantizado.
+ (assets/img/cap5/our-solution.png)
+
+ - **Sección Ve Glottia en Acción:** El usuario puede visualizar una demostración práctica de la plataforma a través de un video interactivo que muestra la interfaz de la aplicación en funcionamiento.
+ (assets/img/cap5/glottia-in-action.png)
+
+ - **Sección Beneficios para todos:** El usuario puede explorar las ventajas competitivas de la plataforma segmentadas para Aprendices y Locales. Para los estudiantes, se resaltan beneficios como la ganancia de fluidez en situaciones reales, el networking cultural, el ahorro frente a academias tradicionales y la flexibilidad de horarios. 
+ (assets/img/cap5/benefits.png)
+
+ - **Sección Sobre Nosotros:** El usuario puede conocer la identidad corporativa de la plataforma a través de su Misión, enfocada en facilitar la práctica oral mediante experiencias reales y seguras, y su Visión, que aspira a convertir a Glottia en la comunidad global de referencia para el intercambio cultural.. 
+ (assets/img/cap5/about-us.png)
+---
+
 #### 5.2.1.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
