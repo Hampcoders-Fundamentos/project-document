@@ -63,9 +63,164 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 #### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
 
+En este Sprint se implementó y documentó la primera versión de los microservicios correspondientes a los Bounded Contexts de IAM, Profiles y Encounters de la plataforma Glottia.
+
+Durante el Sprint 1 del proyecto Glottia se implementaron y documentaron los primeros microservicios correspondientes a los Bounded Contexts de IAM, Profiles y Encounters.  
+El objetivo principal de este Sprint fue establecer la arquitectura base orientada a microservicios, habilitando la autenticación de usuarios, la gestión de perfiles de aprendizaje y la administración de encuentros conversacionales.
+
+La documentación de los Web Services fue desarrollada utilizando OpenAPI/Swagger, permitiendo definir formalmente los endpoints REST, parámetros de entrada, estructuras de request/response y códigos HTTP soportados.
+
+Entre los principales logros alcanzados en este Sprint destacan:
+
+- Separación de los Bounded Contexts como microservicios independientes.
+- Implementación de autenticación y gestión de sesión mediante JWT.
+- Implementación de APIs para perfiles de learners.
+- Implementación de APIs para creación y gestión de encounters.
+- Configuración inicial del API Gateway.
+- Documentación interactiva mediante Swagger/OpenAPI.
+- Validación de endpoints utilizando datos de prueba.
+
+---
+
+### IAM Microservice Documentation
+
+El microservicio IAM (Identity and Access Management) es responsable de la autenticación, autorización y gestión de sesiones de los usuarios de Glottia.
+
+#### Implemented Endpoints
+
+| Endpoint | HTTP Method | Description |
+|---|---|---|
+| `/api/v1/auth/register` | POST | Registro de nuevos usuarios |
+| `/api/v1/auth/login` | POST | Inicio de sesión |
+| `/api/v1/auth/refresh-token` | POST | Renovación de token JWT |
+| `/api/v1/auth/logout` | POST | Cierre de sesión |
+
+#### Swagger Evidence — IAM
+
+La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio IAM.
+
+
+![](assets/img/cap5/iam.jpeg)
+
+*Figura 18. Vista general de la especificación de los endpoints del módulo de users bajo el estándar OpenAPI.*
+
+![](assets/img/cap5/Authentication.jpeg)
+
+*Figura 19. Vista general de la especificación de los endpoints del módulo de Autenticación bajo el estándar OpenAPI.*
+
+---
+
+#### Swagger Documentation — IAM Microservice.
+
+---
+
+![](assets/img/cap5/Documentacion-iam.png)
+
+*Figura 20. Interfaz de Swagger UI para el endpoint de registro de usuarios, detallando el esquema del Request Body requerido del sing-up.*
+
+![IAM-Documentation-sing-in](assets/img/cap5/IAM-sing-in.png)
+
+*Figura 21. Evidencia de interacción con el endpoint `/api/v1/auth/login` utilizando datos de muestra (`username: "test_user"`). Se observa la respuesta exitosa con código HTTP 200 (OK) y la generación del respectivo token de autenticación (JWT).*
+
+--- 
+
+### Encounters Microservice Documentation
+
+El microservicio Encounters administra la creación, búsqueda, reserva y seguimiento de encuentros conversacionales dentro de Glottia.
+
+#### Implemented Endpoints
+
+| Endpoint | HTTP Method | Description |
+|---|---|---|
+| `/api/v1/encounters` | POST | Crear encounter |
+| `/api/v1/encounters/search` | GET | Buscar encounters |
+| `/api/v1/encounters/search-simple` | GET | Búsqueda simplificada |
+| `/api/v1/encounters/{encounterId}` | GET | Obtener encounter |
+| `/api/v1/encounters/{encounterId}/start` | POST | Iniciar encounter |
+| `/api/v1/encounters/{encounterId}/complete` | POST | Completar encounter |
+| `/api/v1/encounters/{encounterId}/attendances` | POST | Registrar asistencia |
+| `/api/v1/encounters/{encounterId}/attendances/check-in` | POST | Realizar check-in |
+| `/api/v1/encounters/{encounterId}/attendances/me` | DELETE | Cancelar asistencia |
+| `/api/v1/encounters/{encounterId}` | DELETE | Cancelar encounter |
+
+#### Swagger Evidence — Encounters
+
+La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Encounters.
+
+![](assets/img/cap5/Encounters.png)
+
+*Figura 21. Panel general de Swagger UI para el microservicio de Encounters, listando los controladores REST encargados de la gestión del ciclo de vida de las sesiones conversacionales.*
+
+--- 
+
+#### Swagger Documentation — Encounters Microservice.
+
+---
+
+![](assets/img/cap5/post-encounters.png)
+
+*Figura 22. Interfaz interactiva para el endpoint POST /api/v1/encounters. Se observa la estructura requerida del Request Body para dar de alta un nuevo encuentro de práctica lingüística y los esquemas de validación de datos.*
+
+![](assets/img/cap5/Encounters-id.png)
+
+*Figura 23. Prueba de ejecución con datos de muestra para el endpoint GET /api/v1/encounters/{encounterId} e inicio del flujo. La documentación detalla la inyección*
+
+![](assets/img/cap5/EncounterId-complete.png)
+
+*Figura 24. Evidencia del endpoint de finalización del ciclo conversacional (POST /.../complete). Muestra la estructura de respuesta exitosa del servidor tras procesar el cambio de estado de la sesión utilizando una ID de muestra.*
+
+---
+
+### Profiles Microservice Documentation
+
+El microservicio Profiles gestiona la información pública y académica de los learners y partners dentro de Glottia.
+
+#### Implemented Endpoints
+
+| Endpoint | HTTP Method | Description |
+|---|---|---|
+| `/api/v1/profiles` | GET | Obtener todos los perfiles |
+| `/api/v1/profiles/{id}` | GET | Obtener perfil por ID |
+| `/api/v1/profiles` | POST | Crear nuevo perfil |
+| `/api/v1/profiles/{id}` | PUT | Actualizar perfil |
+| `/api/v1/profiles/{id}` | DELETE | Eliminar perfil |
+| `/api/v1/profiles/search` | GET | Buscar perfil por email |
+| `/api/v1/profiles/{profileId}/learner/languages` | POST | Agregar idioma |
+| `/api/v1/profiles/{profileId}/learner/languages/{languageId}` | PUT | Actualizar idioma |
+| `/api/v1/profiles/{id}/learner/languages/{languageId}` | DELETE | Eliminar idioma |
+
+
+#### Swagger Evidence — Profiles
+
+La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Profiles.
+
+![](assets/img/cap5/Profiles.png)
+
+*Figura 25. Interfaz principal de Swagger UI para el microservicio de Profiles, exhibiendo los endpoints necesarios para la administración de datos personales y configuración de idiomas.*
+
+--- 
+
+#### Swagger Documentation — Profiles Microservice.
+
+---
+
+![](assets/img/cap5/ProfilesId-put.png)
+
+*Figura 26. Detalle de especificación para el endpoint PUT /api/v1/profiles/{id}. La interfaz muestra los parámetros requeridos en la ruta y el esquema JSON necesario para la actualización parcial o total del perfil.*
+
+![](assets/img/cap5/Post-Profiles-id.jpeg)
+
+*Figura 27. Interacción simulada con el endpoint POST /api/v1/profiles utilizando datos de muestra. Se valida la respuesta exitosa del servidor junto con los códigos de estado HTTP ante el envío de estructuras de perfil correctas.*
+
+![](assets/img/cap5/Get-Profiles.png)
+
+*Figura 28. Ejecución exitosa de una consulta masiva mediante el endpoint GET /api/v1/profiles. Swagger UI despliega la respuesta simulada con código 200 (OK) exponiendo la estructura en formato de arreglo JSON de los perfiles guardados en el sistema.*
+
 #### 5.2.1.6 Software Deployment Evidence for Sprint Review
 
+
 #### 5.2.1.7 Team Collaboration Insights during Sprint
+
 #### 5.2.1.8 Kanban Board --> TP1
 
 \
