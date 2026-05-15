@@ -40,6 +40,14 @@ Herramienta de código abierto que permite crear diagramas UML y otros esquemas 
 **Link de referencia**
 [Acceder a PlantUML](https://plantuml.com)
 
+#### **Software Development**
+
+**Visual Studio Code:**
+Editor de código fuente gratuito, de código abierto y multiplataforma. Es una de las herramientas más populares entre programadores a nivel mundial gracias a su velocidad, flexibilidad y amplio soporte para múltiples lenguajes de programación. Este IDE permitió integrar de manera efectiva la colaboración de nuestro equipo para desarrollar las aplicaciones 
+
+**Link de referencia:**
+[Acceder a VS Code](https://code.visualstudio.com)
+
 ---
 
 ### 5.2.2 Source Code Management
