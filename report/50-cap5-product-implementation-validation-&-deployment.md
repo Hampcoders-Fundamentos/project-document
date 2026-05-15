@@ -12,7 +12,22 @@
 
 ## 5.2 Software Configuration Management
 
+Software Configuration Management (SCM) —o Gestión de la Configuración de Software— es una disciplina de la ingeniería de software que se encarga de rastrear, controlar y organizar todos los cambios que ocurren en el ciclo de vida de un proyecto.
+
+Su objetivo principal es asegurar que, sin importar cuántas personas estén trabajando en el proyecto o cuántas funciones nuevas se agreguen, el software se mantenga estable, consistente y libre de caos. (GeeksforGeeks, 2025)
+---
 ### 5.2.1 Software Development Environment Configuration
+
+#### **Project Requirements Management**
+ 
+**Jira:** 
+Herramienta de gestión de proyectos, diseñada principalmente para que equipos de software ágiles.. Fundamental para planificación, seguimientos , gestión de tareas y supervisar el flujo de trabajo en tiempo real para el sprint a desarrollar.
+
+**Link de referencia:**
+[Acceder a Jira](https://www.atlassian.com/es/software/jira)
+
+
+---
 
 ### 5.2.2 Source Code Management
 
@@ -256,13 +271,6 @@ Se configuró el microservicio de IAM como un Web Service independiente en Rende
 Las URLs públicas de los tres servicios desplegados estarán disponibles para la siguiente iteración del informe una vez que los servicios completen su proceso de inicialización en Render. Se adjuntarán capturas de pantalla del dashboard de Render, la configuración de cada Web Service y las evidencias de los despliegues exitosos en cuanto estén disponibles.
 
 #### 5.2.1.7 Team Collaboration Insights during Sprint
-
-Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el control de versiones mediante GitHub, adoptando GitFlow como estrategia de branching. Esto implicó el uso de ramas main y develop como ramas base, y la creación de ramas de tipo feature/ para cada tarea del sprint, asegurando que ningún cambio fuera integrado directamente a las ramas principales sin pasar por un proceso de Pull Request y revisión de código por parte de otro miembro del equipo. Las capturas de los analíticos de commits y la participación de cada integrante en los repositorios de los Web Services se presentan a continuación.
-
-\
-![Gitflow](assets/img/cap5/Gitflow.jpeg)
-\
-![Contributors](assets/img/cap5/Contributors.jpeg)
 
 #### 5.2.1.8 Kanban Board --> TP1
 
