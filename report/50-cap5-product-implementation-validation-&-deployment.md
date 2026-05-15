@@ -257,6 +257,8 @@ Las URLs públicas de los tres servicios desplegados estarán disponibles para l
 
 #### 5.2.1.7 Team Collaboration Insights during Sprint
 
+Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el control de versiones mediante GitHub, adoptando GitFlow como estrategia de branching. Esto implicó el uso de ramas main y develop como ramas base, y la creación de ramas de tipo feature/ para cada tarea del sprint, asegurando que ningún cambio fuera integrado directamente a las ramas principales sin pasar por un proceso de Pull Request y revisión de código por parte de otro miembro del equipo. Las capturas de los analíticos de commits y la participación de cada integrante en los repositorios de los Web Services se presentan a continuación.
+
 #### 5.2.1.8 Kanban Board --> TP1
 
 \
