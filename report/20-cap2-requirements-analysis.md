@@ -1,5 +1,5 @@
 # Capítulo II: Requirements & Analysis
-En este capítulo, el equipo recopila a información y requerimientos para realizar analisis y proyectar la solución frente a los competidores directos.
+En este capítulo, el equipo recopila a información y requerimientos para realizar análisis y proyectar la solución frente a los competidores directos.
 
 ## 2.1 Competidores
 En esta sección se identifican y describen los principales competidores de Glottia, considerando tanto competidores directos (plataformas de intercambio de idiomas) como indirectos (plataformas de eventos sociales).
@@ -8,7 +8,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 **Competitive Analysis Landscape**
 
 | **Categoría** | **Subcategoría** | **Glottia (Startup)** | **HelloTalk (Competidor 1)** | **Tandem (Competidor 2)** | **Meetup (Competidor 3)** |
-|--------------|----------------|----------------------|------------------------------|---------------------------|----------------------------|
+|:---|:---|:---|:---|:---|:---|
 | **Objetivo del análisis** | ¿Por qué llevar a cabo este análisis? | Identificar oportunidades de diferenciación mediante experiencias presenciales y virtuales para la práctica de idiomas | Comprender su enfoque digital en aprendizaje | Analizar su comunidad global | Evaluar su modelo de eventos sociales |
 | **Perfil Overview** | Descripción | Plataforma que conecta personas para practicar idiomas en espacios físicos y virtuales | App de intercambio de idiomas con chat y correcciones | Plataforma de intercambio con hablantes nativos | Plataforma de organización de eventos sociales |
 | **Ventaja competitiva** | Valor ofrecido | Experiencia híbrida (presencial + digital) y conexión cultural | Corrección en tiempo real y herramientas integradas | Conexión global con hablantes nativos | Amplia red de eventos y usuarios |
@@ -275,9 +275,9 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
 
 
-**Entrevista N°2: Yamilie Francia**
+**Entrevista N°2: Yamile Francia**
 
-- Sexo: Femenimo
+- Sexo: Femenino
 - Edad: 26 años
 - Link: <https://www.youtube.com/watch?v=Y0F_L92XEGc>
 - Inicia en: 0:06
@@ -301,7 +301,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 
 **Entrevista N°3: Mercedes Gonzalez**
-- Sexo: Femenimo
+- Sexo: Femenino
 - Edad: 42 años
 - Link: <https://youtu.be/RdPUO-An214>
 - Inicia en: 0:08
@@ -313,7 +313,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 - **Contexto del establecimiento:** Mercedes González es una emprendedora que recientemente abrió su propia cafetería, donde ofrece productos como brownies, croissants y diversos tipos de café. Los horarios de mayor afluencia son por la mañana, de **8:30 a.m. a 10:00 a.m.**, y por la noche, de **6:00 p.m. a 8:00 p.m.**. Presenta horas de baja demanda entre las **2:00 p.m. y las 4:00 p.m.**, lo que representa una oportunidad para atraer nuevos clientes.
 
-- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de llamadas y WhatsApp, solicitando estas con un día de anticipación para grupos de **cuatro personas a más**. Para asegurar la reserva, solicita el **pago adelantado del 50%** del consumo estimado. Ante inasistencias, mantiene un margen de espera de **15 a 20 minutos** antes de liberar el espacio. Además, menciona que el ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer en tranquilidad.
+- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de llamadas y WhatsApp, solicitándolas con un día de anticipación para grupos de **cuatro o más personas**. Para asegurar la reserva, solicita un **pago adelantado parcial** del consumo estimado. Ante inasistencias, mantiene un margen de espera de **15 a 20 minutos** antes de liberar el espacio. Además, menciona que el ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer en tranquilidad.
 
 - **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros de idiomas. Considera que el ambiente es ideal para este tipo de actividades y valora positivamente que el negocio aparezca en una plataforma para organizar encuentros, viéndolo como una excelente herramienta de **marketing y posicionamiento** para su marca.
 
@@ -327,78 +327,88 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 En este apartado se realiza un análisis de las entrevistas realizadas a los segmentos objetivo, identificando patrones, insights y oportunidades clave para el diseño de la solución.
 
-#### Segmento 1: Usuarios aprendices de idiomas (Análisis Estadístico)
+#### Segmento 1: Usuarios aprendices de idiomas
 
 Total de entrevistas: 3
 
-A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han extraído métricas contundentes sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis estadístico respaldado visualmente:
+A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han identificado *insights* y *patrones de comportamiento* sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis cualitativo:
 
 **1. Principales obstáculos en el aprendizaje**
 
-![Principales obstáculos en el aprendizaje](assets/img/cap2/analisis-entrevista-1.png)
-
-**Conclusión:** La *falta de espacios para práctica oral* representa una barrera absoluta (100%) para los entrevistados. Sumado a la falta de tiempo (66%) y la inseguridad (33%), esto corrobora la premisa de Glottia: existe una necesidad urgente de proveer entornos físicos accesibles, cercanos y amigables estructurados exclusivamente para la expresión oral.
+- Se repite la *falta de práctica oral* como dolor principal: los usuarios consumen contenido y estudian de forma individual, pero no logran sostener conversaciones con fluidez.
+- Aparece una tensión constante entre intención y ejecución: aunque existe motivación, el ritmo académico/laboral reduce constancia y continuidad.
+- Se observa inseguridad al hablar (miedo a equivocarse o a ser juzgado), lo cual aumenta el valor de un entorno controlado y predecible para practicar.
+- Implicancia para la solución: se requiere una experiencia presencial organizada (lugar, dinámica, cupos y reglas claras) para transformar “querer practicar” en “asistir y conversar”.
 
 **2. Preferencias de nivel del compañero de conversación**
 
-![Preferencias de nivel del compañero de conversación](assets/img/cap2/analisis-entrevista-2.png)
-
-**Conclusión:** El 66% de los usuarios prefiere conversar con pares de su mismo nivel para generar mayor confianza y disminuir la presión al hablar (temor a ser juzgados), mientras que el 34% prefiere interactuar con nativos o usuarios nivel avanzado. Esto evidencia que el sistema de búsqueda o match de Glottia debe tener como prioridad el filtro por niveles de fluidez.
+- Predomina la preferencia por practicar con pares de nivel similar para reducir presión, aumentar participación y sostener conversaciones sin bloquearse.
+- Existe interés complementario por interacción con nativos/avanzados, pero como objetivo progresivo, no como condición inicial.
+- Implicancia para la solución: la búsqueda y/o emparejamiento debe considerar nivel (p. ej., CEFR) como criterio central de agrupación, con reglas de cupos que eviten desbalance de niveles.
 
 **3. Factores de confianza exigidos a la plataforma**
 
-![Factores de confianza exigidos a la plataforma](assets/img/cap2/analisis-entrevista-3.png)
-
-**Conclusión:** Para atreverse a llevar la aplicación al plano presencial (reunirse), el requerimiento máximo (100%) es la *seguridad y verificación de perfiles*. Características como un sistema de reseñas y ver el nivel del compañero representan un factor importante para el 66% de la muestra. Esto indica arquitectónicamente que el *Core* inicial del diseño de software debe integrar fuertes validaciones de identidad (Identity Management).
+- La decisión de asistir a un encuentro presencial depende de señales de confianza: verificación de perfil, reputación (reseñas) y claridad sobre nivel/objetivo de práctica.
+- La confianza no solo es seguridad personal; también es “calidad del encuentro”: saber qué esperar, con quién se compartirá la mesa y bajo qué reglas.
+- Implicancia para la solución: la plataforma debe habilitar verificación de perfiles, permisos por tipo de usuario (p. ej., aprendiz, partner) y un sistema de reputación/valoraciones para mejorar la confianza y la calidad percibida de los encuentros.
 
 **4. Opinión y Nivel de Acuerdo con la Aplicación Glottia**
 
-![Opinión y Nivel de Acuerdo con la Aplicación Glottia](assets/img/cap2/analisis-entrevista-4.png)
-
-**Conclusión:** Existe una total validación del concepto. El 100% de la muestra lo consideró una excelente iniciativa y declaró estar completamente de acuerdo en que la plataforma aliviaría sus mayores frustraciones cotidianas de aprendizaje, lo cual avala contundentemente la viabilidad del mercado y la deseabilidad del producto.
+- La propuesta de valor “practicar en espacios reales con estructura” se percibe como una solución directa a frustraciones actuales.
+- Se valora que la plataforma reduzca fricción: descubrir un encuentro, reservar, asistir con reglas claras y obtener continuidad.
+- Implicancia para priorización: las capacidades iniciales deben enfocarse en descubrimiento, reserva, seguridad y control del encuentro (antes de features avanzadas).
 
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
-Total de entrevistas: 3
-
-A partir de las entrevistas realizadas a los administradores de establecimientos, se han extraído métricas clave sobre su disposición, expectativas y condiciones para colaborar con una plataforma como Glottia. A continuación, se presenta el análisis estadístico respaldado visualmente:
+A partir de las entrevistas realizadas a los administradores de establecimientos, se han identificado *insights* y *patrones de comportamiento* sobre su disposición, expectativas y condiciones para colaborar con una plataforma como Glottia. A continuación, se presenta el análisis cualitativo respaldado visualmente:
 
 **1. Disposición a ofrecer su establecimiento como punto de encuentro**
 
-![Disposición a ofrecer su establecimiento como punto de encuentro](assets/img/cap2/analisis-entrevista-5.png)
-
-**Conclusión:** El 100% de los administradores muestra una disposición total para afiliarse a Glottia y prestar sus locales. Ven en la plataforma una iniciativa altamente viable que les permite atraer a un público joven y utilizar productivamente sus "horas muertas", confirmando la deseabilidad del modelo de negocio desde la perspectiva de la oferta (Supply-side).
+- Se evidencia alta apertura a participar si la plataforma incrementa visibilidad y convierte horas valle en consumo.
+- La disposición está condicionada a no afectar la operación regular del local (ruido, aforo, rotación de mesas).
+- Implicancia para la solución: la plataforma debe ofrecer control operativo (cupos, confirmaciones, reglas) y valor comercial (visibilidad, gestión de promociones).
 
 **2. Expectativas de consumo durante los encuentros**
 
-![Expectativas de consumo durante los encuentros](assets/img/cap2/analisis-entrevista-6.png)
-
-**Conclusión:** Existe un consenso (100%) en exigir un consumo mínimo garantizado (al menos una bebida por asistente) para justificar la ocupación de las mesas, con un especial interés en lograr la venta de alimentos o "combos grupales". Esto indica que Glottia debe establecer políticas claras de consumo mínimo dentro de los términos y condiciones de las reservas generadas desde la app.
+- Los locales esperan un consumo mínimo por asistente y valoran mecanismos que aumenten ticket promedio (combos, promociones, horarios específicos).
+- El objetivo no es “prestar el espacio”, sino habilitar un intercambio que sea rentable y ordenado.
+- Implicancia para la solución: se requieren políticas explícitas en la reserva (condiciones, cupos) y mecanismos de promoción/cupones gestionables por el local.
 
 **3. Preferencia en la gestión de promociones e incentivos**
 
-![Preferencia en la gestión de promociones e incentivos](assets/img/cap2/analisis-entrevista-7.png)
-
-**Conclusión:** La totalidad de los entrevistados (100%) requiere tener autonomía absoluta para definir, configurar y activar sus propias promociones, rechazando que la aplicación genere descuentos automáticos sin su control. Arquitectónicamente, esto revalida la necesidad fundamental de desarrollar un **Panel Gestor (Dashboard B2B)** donde los aliados manejen directamente todo su inventario y cupones.
+- Los administradores requieren control directo sobre promociones: definición, vigencia, condiciones y disponibilidad.
+- Se valora recibir sugerencias basadas en comportamiento, pero sin perder autonomía ni que el sistema “imponga” descuentos.
+- Implicancia para la solución: se requiere un espacio de gestión para partners, con acceso por rol, que permita definir, actualizar y administrar promociones (vigencia, condiciones y disponibilidad) de forma autónoma.
 
 **4. Expectativas estructurales de la aplicación para su negocio**
 
-![Expectativas estructurales de la aplicación para su negocio](assets/img/cap2/analisis-entrevista-8.png)
-
-**Conclusión:** Para mitigar su frustración actual relacionada a anulaciones y mesas bloqueadas innecesariamente, el 100% exige un sistema de reservas preciso con control estricto de aforo. Este requerimiento consolida la validación 100% digital (ej. **Check-in mediante código QR**) como una de las funciones *Core* indispensables a programar para garantizar el compromiso de los asistentes.
+- Se necesita reducir no-shows y desorden operativo: confirmaciones claras, reglas de cancelación y control de cupos.
+- El control de aforo es el núcleo del valor para el local: saber cuántas personas llegarán y cuándo.
+- Implicancia para la solución: se requiere un flujo de reserva con estados claros (p. ej., reservada, confirmada, cancelada, asistida), control de cupos y un mecanismo de validación presencial (código QR) para cerrar el ciclo de compromiso.
 
 ## 2.3 Needfinding
+
+En esta sección se sintetizan los hallazgos obtenidos a partir de la investigación previa, incluyendo las entrevistas realizadas a los segmentos objetivo y el análisis de competidores. Se presentan los User Personas, el User Task Matrix y los Empathy Maps que guiarán el diseño de la solución.
+
 ### 2.3.1 User Personas
 
 En la presente sección se presentan las fichas de User Persona elaboradas teniendo en cuenta las entrevistas realizadas y analizadas previamente y la revisión de soluciones existentes en el mercado. En cada arquetipo se presentan las características demográficas, de personalidad, los objetivos, las motivaciones, frustraciones y preferencias de los usuarios clave de cada segmento. La construcción de estos User Persona se basa en resultados y análisis obtenidos durante la investigación previa con el objetivo de tomar decisiones de diseño y desarrollo adecuadas para resolver los problemas identificados.
 
 #### Segmento 1:
 
-![](assets/img/cap2/user-person-1.png)
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-1.png}
+\end{center}
+
+*Descripción:* Ficha resumida de la persona (demografía, metas, motivaciones y canales preferidos).
 
 #### Segmento 2:
 
-![](assets/img/cap2/user-person-2.png)
+\begin{center}
+\includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-2.png}
+\end{center}
+
+*Descripción:* Ficha resumida de la persona (perfil del dueño de local: background, objetivos y frustraciones).
 
 ### 2.3.2 User Task Matrix
 
@@ -434,30 +444,34 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la solución y la priorización del *Product Backlog* en futuras iteraciones:
 
 1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante QR es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
-2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
+2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **Gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
 3. **Roles Complementarios (Oferta y Demanda):** Se observa una clara separación de tareas en la fase de descubrimiento. Sofía tiene un rol activo de búsqueda y reserva, mientras que Enzo asume un rol asíncrono de configuración de disponibilidad. Esta asimetría indica que los flujos de experiencia de usuario serán completamente distintos, justificando la creación de interfaces o módulos separados.
+
+\clearpage
 
 ### 2.3.3 Empathy Maps
 
-#### Empathy Map para los dueños de cafeterias.
+#### Empathy Map para los dueños de cafeterías.
 
-Mapa de Empatia de Enzo Fernandez
-\
-![](assets/img/cap2/empathy-map-enzo-fernandez.png)
+\begin{center}
+\includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-enzo-fernandez.png}
+\end{center}
+
+En este Empathy Map se presenta una representación visual de las emociones, pensamientos, necesidades y frustraciones de Enzo Fernandez, un dueño de cafetería que busca maximizar sus horas muertas con control y rentabilidad. Se destacan sus motivaciones para participar en la plataforma Glottia, así como los desafíos que enfrenta en la gestión de su negocio y cómo la solución propuesta puede ayudarlo a superar esos obstáculos.
 
 ---
 
 #### Empathy Map para los aprendices.
 
-Mapa de Empatia de Sofia Ramirez
-\
-![](assets/img/cap2/empathy-map-sofia-ramirez.png)
+\begin{center}
+\includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-sofia-ramirez.png}
+\end{center}
+
+Respecto al Empathy Map de Sofía Ramírez, sus pensamientos y emociones giran en torno a su deseo de mejorar su fluidez en idiomas y encontrar una comunidad de práctica. Sin embargo, enfrenta frustraciones relacionadas con la falta de espacios organizados para practicar, la inseguridad al interactuar con desconocidos y la dificultad para mantener la constancia en su aprendizaje.
 
 ### 2.3.4 As-is Scenario Mapping
 
-As-is Scenario de Sofia 
-\
-![](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
+![As-is Scenario de Sofia](assets/img/cap2/as-is-scenario-mapping-Sofia.PNG)
 
 #### Áreas Negativas
 

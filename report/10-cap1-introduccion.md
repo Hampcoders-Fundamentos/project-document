@@ -96,7 +96,7 @@ Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 
 
 ## 1.2. Solution Profile 
 
-En esta sección el equipo describe el perfil de la solución, inluyendo el análisis mediante la metodología Lean UX
+En esta sección el equipo describe el perfil de la solución, incluyendo el análisis mediante la metodología Lean UX
 
 ### 1.2.1 Nombre del producto
 
@@ -145,7 +145,7 @@ Para detallar los antecedentes de la solución y describir la problemática de m
 
 ### 1.2.3 Lean UX Process
 
-En esta sección el equipo aplica la metodología Lean UX para definir el problema, las suposiciones y las hipotesis.
+En esta sección el equipo aplica la metodología Lean UX para definir el problema, las suposiciones y las hipótesis.
 
 #### 1.2.3.1 Lean UX Problem Statement
 
@@ -163,13 +163,13 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 **Estas necesidades se pueden resolver mediante el** desarrollo de una plataforma que facilite la reserva y organización de espacios en cafeterías para encuentros grupales de prácticas de idiomas. Para las cafeterías, esta plataforma debe contar con funcionalidades que automaticen y simplifiquen la gestión de los espacios y para los aprendices, la plataforma debe ofrecer herramientas qu faciliten la búsqueda de encuentros.
 
-**Nuestros clientes iniciales son** dueños de cafeterias que buscan mejorar sus ingresos y clientes concurrentes, a su vez, aprendices de idiomas que desean una experiencia más real, dínamica y efectiva para alcanzar sus objetivos.
+**Nuestros clientes iniciales son** dueños de cafeterias que buscan mejorar sus ingresos y clientes concurrentes, a su vez, aprendices de idiomas que desean una experiencia más real, dinámica y efectiva para alcanzar sus objetivos.
 
 **El valor #1 que los clientes quiere de nuestro servicio es** reservar espacios en cafeterías para iniciar conversaciones grupales donde pueda practicar y aprender. Los dueños de cafetería buscan impulsar sus ventas y volverse un local mas concurrente, confiable y amigable.
 
-**El cliente también puede obtener estos beneficios adicionales** como descuentos y promociones en las cafaterías afiliadas, incentivando particiación y generando fidelización. Por parte de las cafeterías, obtendrán un incremento del flujo de clientes y tendrán mayor consumo en horarios de baja demanda.
+**El cliente también puede obtener estos beneficios adicionales** como descuentos y promociones en las cafeterías afiliadas, incentivando participación y generando fidelización. Por parte de las cafeterías, obtendrán un incremento del flujo de clientes y tendrán mayor consumo en horarios de baja demanda.
 
-**Vamos a adquirir la mayoría de los clientes a través de** afiliaciones a cafeterías potenciales que deseen promover sus espacios para la práctica de idiomas grupales. Promover la práctica de idiomas cara a cara siendo promocionadas en centros de estudios de idiomas para generar interración en nuestro público objetivo.
+**Vamos a adquirir la mayoría de los clientes a través de** afiliaciones a cafeterías potenciales que deseen promover sus espacios para la práctica de idiomas grupales. Promover la práctica de idiomas cara a cara siendo promocionadas en centros de estudios de idiomas para generar interacción en nuestro público objetivo.
 
 **Haremos dinero a través de** un modelo de suscripciones y afiliaciones adaptado a la necesidad del segmento objetivo y ofreciendo funcionalidades especiales.
 
@@ -212,13 +212,13 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 #### 1.2.3.3 Lean UX Hypothesis
 
-**Creemos que** los aprendices estarán interesados en utilizar Glottia porque les permite mejorar sus habilidades lingüisticas al tener reuniones presenciales grupales. 
+**Creemos que** los aprendices estarán interesados en utilizar Glottia porque les permite mejorar sus habilidades lingüísticas al tener reuniones presenciales grupales. 
 
 **Sabremos que** los aprendices encontrarán valor en la plataforma **cuando veamos** que el 50% de los aprendices comiencen a realizar reuniones en un nivel avanzado o nativo dentro de la aplicación.
 
-**Cremos que** incluir examenés o pruebas simuladas dentro de la aplicación fomentará un dominio en su idioma preferido 
+**Creemos que** incluir exámenes o pruebas simuladas dentro de la aplicación fomentará un dominio en su idioma preferido 
 
-**Sabremos que** los aprendices estarán mejorando sus habilidades **cuando veamos** que el 40% de los aprendices se encuentran rindiendo pruebas o examenes dentro de la aplicación además de cumplir con sus reuniones grupales.
+**Sabremos que** los aprendices estarán mejorando sus habilidades **cuando veamos** que el 40% de los aprendices se encuentran rindiendo pruebas o exámenes dentro de la aplicación además de cumplir con sus reuniones grupales.
 
 **Creemos que** los dueños de cafeterías de Lima estarán interesados en Glottia porque les permite aumentar las ganancias en horarios de baja demanda.
 
@@ -230,7 +230,9 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 #### 1.2.3.4 Lean UX Canvas
 
-![](assets/img/cap1/canvas/lean-ux-canvas-Glottia.jpg)
+Imagen del Lean UX Canvas
+\
+![Lean UX Canvas](assets/img/cap1/canvas/lean-ux-canvas-Glottia.jpg)
 
 ## 1.3 Segmentos objetivo
 

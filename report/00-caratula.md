@@ -4,7 +4,7 @@
 
 \vspace{1cm}
 
-{\LARGE \textbf{Univerisdad Peruana de Ciencias Aplicadas}}\\
+{\LARGE \textbf{Universidad Peruana de Ciencias Aplicadas}}\\
 
 \vspace{1cm}
 
@@ -56,7 +56,7 @@ Cesar Arostegui Alzamora\\
 
 \vspace{1cm}
 
-Noviembre 2025
+Mayo 2026
 
 \end{center}
 
