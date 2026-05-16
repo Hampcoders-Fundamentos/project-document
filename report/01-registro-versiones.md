@@ -40,7 +40,26 @@
 | **AV2** | 2/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de descripciones de los User Stories y Product Backlog |
 | **AV2** | 27/04/2026 | **Cesar Augusto Arostegui Alzamora** | Definición de architectural drivers y quality attribute scenarios |
 | **AV2** | 25/04/2026 | **Cesar Augusto Arostegui Alzamora** | Elaboración de diagramas de base de datos relacional y no relacional |
-| **TB1** | 8/05/2026 | **Cesar Augusto Arostegui Alzamora** | Correcciones de ortografía y gramática, y mejoras en la redacción con exportación correcta de las tablas del reporte |
-| **TB1** | 9/05/2026 | **Cesar Augusto Arostegui Alzamora** | Agregar escenarios a los user stories, manteniendo una linealidad de (3-6) por user story |
-
+| **TP1** | 12/04/2026 | **Ivo Marcelo Machado Bracamonte** | Elaboración y estructuración de las preguntas base para las entrevistas a usuarios |
+| **TP1** | 12/04/2026 | **Italo Ludwing Sánchez Manrique** | Definición y desarrollo del User Persona correspondiente al Segmento 2 |
+| **TP1** | 13/04/2026 | **Cesar Augusto Arostegui Alzamora** | Mapeo de escenarios futuros y diagramación del To-Be Scenario Mapping |
+| **TP1** | 14/04/2026 | **Ethan Matías Aliaga Aguirre** | Redacción inicial y análisis de requerimientos del Capítulo II |
+| **TP1** | 15/04/2026 | **Ivo Marcelo Machado Bracamonte** | Consolidación y corrección de formato en la especificación de requerimientos del Capítulo II |
+| **TP1** | 15/04/2026 | **Italo Ludwing Sánchez Manrique** | Redacción y estructuración de User Stories para la Landing Page |
+| **TP1** | 15/04/2026 | **Contreras López, Leandro Saul** | Ajustes y validación de la especificación de requerimientos del Capítulo III |
+| **TP1** | 22/04/2026 | **Contreras López, Leandro Saul** | Diseño preliminar y estructuración de la arquitectura del producto para el Capítulo IV |
+| **TP1** | 25/04/2026 | **Cesar Augusto Arostegui Alzamora** | Desarrollo del entregable Avance 2 (AV2) y consolidación de diagramas |
+| **TP1** | 27/04/2026 | **Cesar Augusto Arostegui Alzamora** | Implementación de soporte para Windows en la generación de PDFs y optimización de documentación |
+| **TP1** | 01/05/2026 | **Cesar Augusto Arostegui Alzamora** | Incorporación final de soporte Windows para PDFs y estandarización de tablas Markdown |
+| **TP1** | 13/05/2026 | **Contreras López, Leandro Saul** | Validación del entorno de desarrollo y despliegue del Capítulo V |
+| **TP1** | 13/05/2026 | **Contreras López, Leandro Saul** | Creación y estructuración de los archivos markdown base para el Capítulo V |
+| **TP1** | 14/05/2026 | **Ethan Matías Aliaga Aguirre** | Actualización de la configuración y dependencias de Pandoc para compilación del reporte |
+| **TP1** | 14/05/2026 | **Ivo Marcelo Machado Bracamonte** | Elaboración, estimación y estructuración del Sprint Backlog 1 |
+| **TP1** | 14/05/2026 | **Italo Ludwing Sánchez Manrique** | Configuración, asignación de tareas e inicialización del Sprint 1 Kanban Board |
+| **TP1** | 14/05/2026 | **Ethan Matías Aliaga Aguirre** | Redacción de las secciones de validación de implementación de producto para el Capítulo V |
+| **TP1** | 15/05/2026 | **Ivo Marcelo Machado Bracamonte** | Integración del entorno de trabajo y fusión de cambios en la rama principal Develop |
+| **TP1** | 15/05/2026 | **Italo Ludwing Sánchez Manrique** | Redacción y análisis de los Team Collaboration Insights en el contexto del Sprint |
+| **TP1** | 15/05/2026 | **Ethan Matías Aliaga Aguirre** | Ajustes de estabilidad en la rama Develop y control de versiones de la documentación |
+| **TP1** | 15/05/2026 | **Ivo Marcelo Machado Bracamonte** | Definición de los estándares de Gitflow y guía de contribuidores para el equipo |
+| **TP1** | 15/05/2026 | **Contreras López, Leandro Saul** | Validación final de la implementación, control de calidad del producto y despliegue del Capítulo V |
 \newpage

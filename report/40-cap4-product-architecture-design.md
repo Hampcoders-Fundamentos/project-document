@@ -31,7 +31,7 @@ Estos son los estilos y patrones arquitectónicos que se ha seleccionado para gu
 | Documentación OpenAPI | Documentar las APIs siguiendo el estándar OpenAPI |
 | Seguridad y Protección de información sensible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sensible. |
 
-### 4.1.3 Context Diagram
+### 4.1.3 Sotfware Architecture Context Diagram
 
 Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principales actores, sistemas externos y los límites del sistema. Este diagrama ayuda a visualizar cómo Glottia interactúa con su entorno y define claramente las interfaces entre el sistema y sus usuarios o servicios externos. El software principal se conectará con servicios externos de Gemini AI y Stripe para generación de contenido y procesamiento de pagos, respectivamente.
 \
@@ -39,10 +39,22 @@ Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principale
 
 ### 4.1.4 Approach driven ViewPoints Diagrams
 
-#### Containers Diagram
+A continuación, se desglosa la arquitectura de Glottia descendiendo de manera progresiva a través de los siguientes niveles del enfoque C4, permitiendo mapear desde la distribución lógica de contenedores en infraestructura hasta la organización de responsabilidades por componentes de código.
 
-![Container-Diagram](assets/img/cap4/contenedores.png)
+###  Sotfware Architecture Container Diagram
 
+El Diagrama de Contenedores representa el nivel 2 del Modelo C4 e ilustra la estructura de alto nivel de la arquitectura de software, detallando la distribución de responsabilidades tecnológicas ejecutables dentro del sistema de Glottia. Este diagrama expone cómo se descompone la aplicación en aplicaciones web, servicios backend autónomos y almacenes de datos persistentes, especificando los protocolos de comunicación de red (HTTP/REST, JSON) que permiten la interoperabilidad del ecosistema distribuido.
+
+\
+![Container-Diagram](assets/img/cap4/c4-container.png)
+
+
+###  Sotfware Architecture Component Diagram
+
+El Diagrama de Componentes corresponde al nivel 3 del Modelo C4 y realiza una deconstrucción profunda e interna de un contenedor específico de la aplicación. Su objetivo es mapear cómo se estructuran las clases, controladores, casos de uso y adaptadores de infraestructura para dar soporte a la lógica de negocio, definiendo las interfaces y dependencias internas bajo los lineamientos de **Clean Architecture** y los patrones de diseño adoptados por el equipo.
+
+\
+![Diagrama de Componentes para Glottia](assets/img/cap4/components-diagram.png)
 
 #### Class Diagram
 
@@ -71,96 +83,8 @@ Diagrama de estado sobre el ciclo de vida de Promoción
 
 
 - Diagrama de Clases
-
-#### Identity And Access Management
-
-- Este bounded context se encarga de la Gestión de Acceso e Identidad dentro de la plataforma Glottia.
-
-<div align="center">
-
-![IAM](assets/img/cap4/diagramas/classes/iam.png){ width=80% }
-
-</div>
-
-#### Profiles Management
-
-- Este bounded context se encarga de la Gestión de Perfiles dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Profiles](assets/img/cap4/diagramas/classes/profiles.png){ width=80% }
-
-</div>
-
-#### Venues Management
-
-- Este bounded context se encarga de la Gestión de Locales dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Venues](assets/img/cap4/diagramas/classes/venues.png){ width=80% }
-
-</div>
-
-#### Promotions Management
-
-- Este bounded context se encarga de la gestión de Promociones dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Promotions](assets/img/cap4/diagramas/classes/promotions.png){ width=80% }
-
-</div>
-
-#### Encounters Management
-
-- Este bounded context se encarga de la gestión de encuentros de idiomas dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Encounters](assets/img/cap4/diagramas/classes/encounters.png){ width=80% }
-
-</div>
-
-#### Learning & Feedback
-
-- Este bounded context se encarga de la generación de Quizzes y Feedback para un Aprendiz dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Learning](assets/img/cap4/diagramas/classes/learning.png){ width=80% }
-
-</div>
-
-#### Loyalty & Engagement Management
-
-- Este bounded context se encarga de la gestión de cuentas de lealtad dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Loyalty](assets/img/cap4/diagramas/classes/encounters.png){ width=80% }
-
-</div>
-
-#### Dashboard & Analytics
-
-- Este bounded context se encarga de gestionar las métricas dentro de la plataforma Glottia.
-
-<div align="center">
-
-![Analytics](assets/img/cap4/diagramas/classes/analytics.png){ width=80% }
-
-</div>
-
-#### Diagrama de clases vista general
-
-- Vista general del diagrama de clases de la plataforma Glottia
-
-<div align="center">
-
-![Diagrama de Clases](assets/img/cap4/class_diagram.png){ width=90% }
-
-</div>
+\
+![Diagrama de Clases](assets/img/cap4/class_diagram.png)
 
 ### 4.1.5 Relational/Non Relational Database Diagram
 
