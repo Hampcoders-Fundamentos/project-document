@@ -2,6 +2,8 @@
 
 En este capítulo se detallan los requisitos del proyecto, incluyendo los To-be Scenario Mappings, User Stories, Impact Map y el Product Backlog. Estos elementos son fundamentales para guiar el desarrollo del proyecto y asegurar que se cumplan las necesidades y expectativas de los usuarios finales.
 
+La especificación parte de los hallazgos obtenidos en el Capítulo II, donde las entrevistas y el needfinding permitieron identificar una necesidad clara de práctica oral estructurada para aprendices, así como control operativo, gestión de cupos y valor comercial para los locales aliados. Con base en esa evidencia, los requisitos de este capítulo traducen los dolores, motivaciones y restricciones de ambos segmentos en escenarios y funcionalidades priorizadas.
+
 ## 3.1	To-Be Scenario Mapping
 
 A continuación se presenta el To-Be Scenario Mapping para la aplicación de práctica de idiomas, que ilustra cómo los usuarios interactuarán con el sistema para practicar idiomas en espacios locales. Como tenemos dos segmentos objetivos (practicantes de idiomas y establecimientos aliados), se han desarrollado dos escenarios distintos para cada uno de ellos, con el fin de capturar sus respectivas experiencias y necesidades.

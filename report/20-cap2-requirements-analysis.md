@@ -150,6 +150,8 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
 ## 2.2 Entrevistas
 
+En esta sección se busca comprender, a partir de entrevistas estructuradas, cuáles son las necesidades, dolores, expectativas y condiciones de confianza de los dos segmentos objetivo. La información obtenida permite identificar patrones de comportamiento y sustentar, con evidencia directa, las decisiones de diseño y priorización que se desarrollan posteriormente para los siguientes capítulos.
+
 ### 2.2.1 Diseño de entrevistas
 #### Segmento objetivo #1: Usuarios aprendices de idiomas
 #### Preguntas principales:
@@ -549,3 +551,11 @@ Respecto al Empathy Map de Sofía Ramírez, sus pensamientos y emociones giran e
 Sofía enfrenta múltiples dificultades a lo largo de su proceso de aprendizaje de idiomas, principalmente en la búsqueda de espacios adecuados, la coordinación desorganizada y la falta de entornos estructurados para practicar. Estas limitaciones generan frustración, inseguridad y poca continuidad en su aprendizaje.
 
 Sin embargo, existen momentos clave de motivación y satisfacción cuando logra interactuar exitosamente, lo que evidencia un alto interés en este tipo de experiencias. Esto demuestra la necesidad de una solución como Glottia, que permita centralizar, organizar y facilitar encuentros seguros, accesibles y constantes para la práctica de idiomas, mejorando significativamente la experiencia del usuario.
+
+## Sustento para la Especificación de Requisitos
+
+Los hallazgos de las entrevistas y del needfinding no solo describen el contexto del problema, sino que también definen con claridad las capacidades que la solución debe priorizar. En el segmento de aprendices se identificó una necesidad dominante de práctica oral estructurada, confianza, segmentación por nivel, visibilidad de los participantes y continuidad en el aprendizaje. En el segmento de locales se confirmó la necesidad de control operativo, confirmación de asistencias, gestión de cupos, promociones administrables por el negocio y evidencia del valor comercial generado por la plataforma.
+
+Estos hallazgos se traducen directamente en los requisitos del siguiente capítulo. Por ello, las historias de usuario se orientan primero a resolver descubrimiento de encuentros, registro e inicio de sesión, perfiles, reserva, check-in, reputación y notificaciones; y luego a soportar capacidades de negocio como gestión de locales, analíticas, promociones y administración. En otras palabras, el Capítulo III formaliza en requisitos funcionales lo que las entrevistas revelaron como necesidades reales, riesgos de adopción y expectativas de valor para ambos segmentos.
+
+Así, la transición entre ambos capítulos logra que el Capítulo II identifica el problema, valida las motivaciones y restricciones de cada segmento, y el Capítulo III convierte esos hallazgos en escenarios, *user stories* y prioridades de desarrollo alineadas con la propuesta de valor de Glottia.
