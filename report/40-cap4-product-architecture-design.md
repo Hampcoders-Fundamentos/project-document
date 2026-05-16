@@ -260,16 +260,6 @@ Diagrama de base de datos que representa el modelamiento entidad relación de la
 
 En esta sección, el equipo de Hampcoders describe los principales patrones de diseño utilizados en el sistema. Estos patrones permiten mejorar la calidad de código desacoplando y modularizando.
 
-#### 4.1.6.1 Patrones de Creación
-\
-Aquí se definirán los patrones de creación, aquellos que se enfocan en la forma de instanciar los objetos dentro de sistema. Su objetivo es encapsular la lógica de construcción.
-
-##### Factory Method
-- Cuándo: Se necesita crear entidades de dominio controlando las invariantes.
-- Beneficio: Encapsular la lógica de creación y evita estados inválidos.
-- Aplicación: Métodos estáticos como User.create(...) para construir agregados de forma segura.
-
-
 #### 4.1.6.2 Patrones de Comportamiento
 \
 Los patrones de comportamiento definen el cómo interactúan los objetos y cómo se distribuyen las responsabilidades dentro del sistema.
@@ -279,15 +269,21 @@ Los patrones de comportamiento definen el cómo interactúan los objetos y cómo
 - Beneficio: Desacoplar la invocación de la lógica de ejecución.
 - Aplicación: Clases o Records como SignUpCommand, SignInCommand.
 
+![Command](assets/img/cap4/diagramas/design/command.png){ width=80% }
+
 ##### Strategy
 - Cuándo: Se necesitan múltiples algoritmos intercambiables.
-- Beneficio: Cambiar implementación sin afectar lógica de negocio
-- Aplicación: Clases que representan servicios como HashingService, TokenService
+- Beneficio: Cambiar implementación sin afectar lógica de negocio.
+- Aplicación: Clases que representan servicios como HashingService, TokenService.
+
+![Strategy](assets/img/cap4/diagramas/design/strategy.png){ width=80% }
 
 ##### Observer
-- Cuándo: Se necesita desacoplada entre componentes.
+- Cuándo: Se necesita comunicación desacoplada entre componentes.
 - Beneficio: Permitir reaccionar a eventos sin dependencias directas.
 - Aplicación: Eventos con @EventListener.
+
+![Observer](assets/img/cap4/diagramas/design/observer.png){ width=80% }
 
 
 #### 4.1.6.3 Patrones de Estructura
@@ -299,6 +295,9 @@ Los patrones estructurales se centran en la organización de objetos, facilitand
 - Beneficio: Reducir acoplamiento entre bounded contexts.
 - Aplicación: Clases como IamContextFacade.
 
+![Facade](assets/img/cap4/diagramas/design/facade.png){ width=80% }
+
+
 #### 4.1.6.4 Patrones Empresariales
 \
 Los patrones empresariales están orientados a resolver problemas comunes en aplicaciones empresariales, específicamente en el manejo de lógica, persistencia y comunicación entre capas.
@@ -308,49 +307,68 @@ Los patrones empresariales están orientados a resolver problemas comunes en apl
 - Beneficio: Separar dominio de infraestructura.
 - Aplicación: Clases como UserCommandService.
 
+![Service Layer](assets/img/cap4/diagramas/design/servicelayer.png){ width=80% }
+
 ##### Repository Pattern
-- Cuándo: Se necesita acceso a persistencia
+- Cuándo: Se necesita acceso a persistencia.
 - Beneficio: Desacoplar base de datos del dominio.
 - Aplicación: Clases como UserRepository.
+
+![Repository](assets/img/cap4/diagramas/design/repository.png){ width=80% }
 
 ##### Data Transfer Object (DTO)
 - Cuándo: Se necesita transferencia de datos entre capas.
 - Beneficio: Evitar exponer el dominio directamente.
 - Aplicación: Clases como UserResource, SignInResource.
 
+![DTO](assets/img/cap4/diagramas/design/dtos.png){ width=80% }
+
 ##### Mapper / Assembler
 - Cuándo: Se necesita transformar entre DTO y entidades.
 - Beneficio: Mantener separación entre capas.
 - Aplicación: Clases como UserResourceFromEntityAssembler.
 
+![Mapper](assets/img/cap4/diagramas/design/mapper.png){ width=80% }
+
 ##### Unit of Work
-- Cuándo: Se necesita manejar de transacciones.
+- Cuándo: Se necesita manejo de transacciones.
 - Beneficio: Garantizar consistencia de datos.
 - Aplicación: Clases gestionadas por JPA/Hibernate.
+
+![Unit Of Work](assets/img/cap4/diagramas/design/uow.png){ width=80% }
 
 ##### Gateway
 - Cuándo: Se necesita integración con otros contextos o servicios.
 - Beneficio: Encapsular dependencias externas.
-- Aplicación: Clases ProfilesContextFacade.
+- Aplicación: Clases como ProfilesContextFacade.
+
+![Gateway](assets/img/cap4/diagramas/design/gateway.png){ width=80% }
+
 
 #### 4.1.6.5 Patrones Arquitectónicos
 \
-Los patrones arquitectónicos definen la estructura desde un punto de vista de alto nivel del sistema, permitiendo organizar los components en capas o con responsabilidades definidas.vv
+Los patrones arquitectónicos definen la estructura desde un punto de vista de alto nivel del sistema, permitiendo organizar los components en capas o con responsabilidades definidas.
 
 ##### CQRS
 - Cuándo: Se necesita separar lectura y escritura.
 - Beneficio: Mejorar claridad y escalabilidad.
 - Aplicación: Clases CommandService vs QueryService.
 
+![CQRS](assets/img/cap4/diagramas/design/cqrs.png){ width=80% }
+
 ##### Layered Architecture
 - Cuándo: Se necesita organizar el sistema por capas.
 - Beneficio: Separar responsabilidades.
 - Aplicación: Domain, Application, Infrastructure, Interfaces.
 
+![Layered Architecture](assets/img/cap4/diagramas/design/factorymethod.png){ width=80% }
+
 ##### MVC
 - Cuándo: Se necesita estructurar la capa de presentación.
 - Beneficio: Separar entre vista, lógica y datos.
 - Aplicación: Controllers + Resources.
+
+![MVC](assets/img/cap4/diagramas/design/mvc.png){ width=80% }
 
 
 ### 4.1.7 Tactics
