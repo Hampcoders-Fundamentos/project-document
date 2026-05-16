@@ -39,6 +39,11 @@ Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principale
 
 ### 4.1.4 Approach driven ViewPoints Diagrams
 
+### 4.1.3 Containers Diagram
+
+![Container-Diagram](assets/img/cap4/c4-container.png)
+
+
 #### Class Diagram
 
 - Diagramas de Estados
