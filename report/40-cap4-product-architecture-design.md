@@ -53,8 +53,86 @@ El Diagrama de Contenedores representa el nivel 2 del Modelo C4 e ilustra la est
 
 El Diagrama de Componentes corresponde al nivel 3 del Modelo C4 y realiza una deconstrucción profunda e interna de un contenedor específico de la aplicación. Su objetivo es mapear cómo se estructuran las clases, controladores, casos de uso y adaptadores de infraestructura para dar soporte a la lógica de negocio, definiendo las interfaces y dependencias internas bajo los lineamientos de **Clean Architecture** y los patrones de diseño adoptados por el equipo.
 
-\
-![Diagrama de Componentes para Glottia](assets/img/cap4/components-diagram.png)
+#### Identity And Access Management
+
+- Este bounded context se encarga de la Gestión de Acceso e Identidad dentro de la plataforma Glottia.
+
+<div align="center">
+
+![IAM](assets/img/cap4/diagramas/components/iam.png){ width=80% }
+
+</div>
+
+#### Profiles Management
+
+- Este bounded context se encarga de la Gestión de Perfiles dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Profiles](assets/img/cap4/diagramas/components/profiles.png){ width=80% }
+
+</div>
+
+#### Venues Management
+
+- Este bounded context se encarga de la Gestión de Locales dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Venues](assets/img/cap4/diagramas/components/venues.png){ width=80% }
+
+</div>
+
+#### Promotions Management
+
+- Este bounded context se encarga de la gestión de Promociones dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Promotions](assets/img/cap4/diagramas/components/promotions.png){ width=80% }
+
+</div>
+
+#### Encounters Management
+
+- Este bounded context se encarga de la gestión de encuentros de idiomas dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Encounters](assets/img/cap4/diagramas/components/encounters.png){ width=80% }
+
+</div>
+
+#### Learning & Feedback
+
+- Este bounded context se encarga de la generación de Quizzes y Feedback para un Aprendiz dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Learning](assets/img/cap4/diagramas/components/learning.png){ width=80% }
+
+</div>
+
+#### Loyalty & Engagement Management
+
+- Este bounded context se encarga de la gestión de cuentas de lealtad dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Loyalty](assets/img/cap4/diagramas/components/encounters.png){ width=80% }
+
+</div>
+
+#### Dashboard & Analytics
+
+- Este bounded context se encarga de gestionar las métricas dentro de la plataforma Glottia.
+
+<div align="center">
+
+![Analytics](assets/img/cap4/diagramas/components/analytics.png){ width=80% }
+
+</div>
+
 
 #### Class Diagram
 
