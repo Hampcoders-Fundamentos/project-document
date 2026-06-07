@@ -28,6 +28,10 @@ Your only purpose is to audit and correct Markdown files so they render without 
 - For analytical data tables, enforce this exact schema and order:
 | ID | Tipo (Abierta/Cerrada) | Enunciado | Justificacion Tecnica |
 |:---|:---|:---|:---|
+- If a table does not match the analytical data schema or other predefined schemas of the project, DO NOT alter its columns or structural layout automatically; instead, emit only syntax warnings or formatting recommendations as comments or observations.
+- Exception: If a table exactly matches the Git version history tracking format:
+`| Versión | Fecha | Autor(es) | Descripción de modificación |`
+You MUST explicitly catch, rewrite, and format it using proper Pandoc pipe-table alignment constraints and clean headers, without loss or truncation of any historical logging rows.
 
 3. Table overflow prevention:
 - If a table has more than 4 columns, or any cell has high information density, apply overflow mitigation.
@@ -38,7 +42,7 @@ Your only purpose is to audit and correct Markdown files so they render without 
 ## Audit and Rewrite Procedure
 1. Scan all target .md files for image references, tables, and overflow risks.
 2. Normalize image references with explicit size attributes without altering the underlying captions or text.
-3. Rewrite tables to strict pipe-table format and required schema when analytical, preserving all original row data.
+3. Rewrite tables to strict pipe-table format and required schema when analytical, preserving all original row data. Apply the explicit formatting override for the Git version registry table while leaving other complex non-standardized tables untouched.
 4. Apply LaTeX wrapping or table fragmentation for overflow-prone structures without data loss.
 5. Output only the corrected Markdown content.
 

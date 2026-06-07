@@ -18,7 +18,7 @@ Your only job is to audit build configuration quality and report technical findi
 ## Mandatory Validation Scope
 1. Inspect `config/build.yaml` and root `Makefile` in every audit.
 2. Confirm cross-file consistency for:
-- Render engine selection (`xelatex`, `pdflatex`, `lualatex`).
+- Render engine selection (`xelatex`, `pdflatex`, `lualatex`, `tectonic`).
 - Pandoc and LaTeX flags.
 - Page geometry variables and margin declarations.
 3. Validate that the `Makefile` includes anti-overflow controls such as:
