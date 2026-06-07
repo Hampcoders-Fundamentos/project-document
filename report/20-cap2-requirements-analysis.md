@@ -153,43 +153,102 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 En esta sección se busca comprender, a partir de entrevistas estructuradas, cuáles son las necesidades, dolores, expectativas y condiciones de confianza de los dos segmentos objetivo. La información obtenida permite identificar patrones de comportamiento y sustentar, con evidencia directa, las decisiones de diseño y priorización que se desarrollan posteriormente para los siguientes capítulos.
 
 ### 2.2.1 Diseño de entrevistas
-#### Segmento objetivo #1: Usuarios aprendices de idiomas
-#### Preguntas principales:
-- ¿Qué métodos usas actualmente para practicar un idioma (apps, clases, grupos, amigos)?
-- ¿Qué limitaciones encuentras al practicar un idioma en tu día a día?
-- ¿Qué tan cómodo te resulta hablar en otro idioma en público o con desconocidos?
-- ¿En qué tipo de entornos prefieres practicar un idioma (formal, informal, académico, social)?
-- ¿Qué valor tendría para ti contar con un espacio físico donde practicar idiomas con otras personas?
-- ¿Qué te motivaría más: mejorar tu fluidez para fines académicos/profesionales o para socializar/viajar?
-- ¿Con qué frecuencia estarías dispuesto a asistir a reuniones presenciales de práctica de idiomas?
-- ¿Qué tipo de locales te parecerían más adecuados para reunirte (cafeterías, bares, coworkings, parques, etc.)?
-- ¿Qué esperas de una aplicación que organice encuentros presenciales para practicar idiomas?
-- ¿Qué factores te harían confiar en una app de este tipo (seguridad, calidad de participantes, facilidad de uso, precio)?
 
-#### Preguntas complementarias:
-- ¿Qué experiencias negativas has tenido al intentar practicar idiomas antes?
-- ¿Te motiva más practicar con nativos o con personas en tu mismo nivel?
-- ¿Qué rol sueles tomar en una conversación en otro idioma: hablar mucho, escuchar más, participar poco?
+#### 2.2.1.1 Plan de entrevistas
 
-#### Segmento objetivo #2: Administradores que ofrecen su establecimiento como punto de reunión
-#### Preguntas principales:
-- ¿En qué horarios tienes mayor y menor afluencia de clientes?
-- ¿Actualmente permites reservas de mesas o espacios para grupos? ¿Cómo las gestionas?
-- ¿Qué información necesitas para aceptar una reserva?
-- ¿Cómo manejas cancelaciones o clientes que no asisten?
-- ¿Qué dificultades has tenido al atender grupos grandes o reuniones?
-- ¿Qué opinas de usar cafeterías como espacios para practicar idiomas?
-- ¿Estarías dispuesto a ofrecer tu cafetería como punto de encuentro? ¿En qué condiciones?
-- ¿Qué tipo de consumo esperarías de los asistentes?
-- ¿Qué valor tendría para ti que tu cafetería aparezca en una app para organizar encuentros?
-- ¿Qué tendría que ofrecer la app para que realmente decidas usarla?
+- **Objetivo de la sesión:** Comprender necesidades, motivaciones, fricciones y condiciones de confianza para asistir a encuentros presenciales de práctica de idiomas.
+- **Perfil buscado:** Segmento 1 — aprendices de idiomas (estudiantes universitarios, principiantes y usuarios intermedios); Segmento 2 — administradores/propietarios de locales (cafeterías, panaderías, cafeterías-espacio).
+- **Criterios de selección:** Edad 18–40 (Segmento 1), disponibilidad para asistir a encuentros presenciales, interés declarado en practicar idiomas; para Segmento 2: local operativo con aforo público, disposición a participar en horas valle.
+- **Modalidad:** Presencial o remota según disponibilidad del entrevistado; preferir presencial cuando la logística lo permita para observar dinámicas contextuales.
+- **Duración estimada:** 5-10 minutos por entrevista (principal), 1-2 minutos para cierre y anotaciones.
+- **Roles del equipo durante la entrevista:**
+  - **Entrevistador principal:** conduce la sesión y hace preguntas abiertas.
+  - **Observador / Co-investigador:** registra citas textuales, toma notas de comportamiento y prueba triangulación de observaciones.
+  - **Responsable de grabación/transcripción:** verifica calidad de audio/video y administra enlaces de registro.
 
-#### Preguntas complementarias:
-- ¿Estarías dispuesto a ofrecer descuentos a clientes frecuentes que asistan a estos encuentros?
-- ¿Qué tipo de incentivo te resultaría más atractivo ofrecer?
-(descuentos, combos, promociones por grupo, etc.)
-- ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio?
-- ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
+#### 2.2.1.2 Guion de entrevista — Segmento 1: Usuarios (aprendices de idiomas)
+Cada pregunta va acompañada de una breve justificación metodológica.
+
+- **Contexto y métodos actuales**
+  - ¿Qué métodos usas actualmente para practicar un idioma (apps, clases, grupos, amigos)?
+    - Justificación: Establece el punto de partida y los recursos de aprendizaje ya adoptados.
+  - ¿Con qué frecuencia y en qué contextos practicas oralmente?
+    - Justificación: Identifica hábitos reales y disponibilidad temporal.
+
+- **Fricciones y limitaciones**
+  - ¿Qué limitaciones encuentras al practicar un idioma en tu día a día?
+    - Justificación: Detecta barreras concretas que el producto debe mitigar.
+  - ¿Qué experiencias negativas has tenido al intentar practicar idiomas antes? (p. ej., vergüenza, falta de interlocutores)
+    - Justificación: Recolecta evidencia cualitativa para diseñar intervenciones de confianza.
+
+- **Comodidad y preferencias sociales**
+  - ¿Qué tan cómodo te resulta hablar en otro idioma en público o con desconocidos?
+    - Justificación: Mide tolerancia al riesgo social y necesidad de entornos controlados.
+  - ¿En qué tipo de entornos prefieres practicar un idioma (formal, informal, académico, social)?
+    - Justificación: Informa selección y diseño de locales aliados.
+
+- **Motivaciones y objetivos**
+  - ¿Qué te motivaría más: mejorar tu fluidez para fines académicos/profesionales o para socializar/viajar?
+    - Justificación: Prioriza funcionalidades por motivación de usuario.
+
+- **Expectativas respecto a la plataforma**
+  - ¿Qué valor tendría para ti contar con un espacio físico donde practicar idiomas con otras personas?
+    - Justificación: Valida la propuesta de valor presencial.
+  - ¿Qué esperas de una aplicación que organice encuentros presenciales para practicar idiomas? (funciones, filtros, costos)
+    - Justificación: Recoge requerimientos funcionales iniciales.
+  - ¿Qué factores te harían confiar en una app de este tipo (seguridad, calidad de participantes, facilidad de uso, precio)?
+    - Justificación: Determina señales de confianza prioritarias para diseño de onboarding y reputación.
+
+- **Logística y compromiso**
+  - ¿Con qué frecuencia estarías dispuesto a asistir a reuniones presenciales de práctica de idiomas?
+    - Justificación: Informa estrategias de retención y cadencia de eventos.
+  - ¿Qué tipo de locales te parecerían más adecuados para reunirte (cafeterías, bares, coworkings, parques, etc.)?
+    - Justificación: Ayuda a priorizar partners y tipos de espacios.
+
+- **Preguntas complementarias (opcional)**
+  - ¿Te motiva más practicar con nativos o con personas en tu mismo nivel?
+    - Justificación: Informa criterios de emparejamiento y segmentación.
+  - ¿Qué rol sueles tomar en una conversación en otro idioma: hablar mucho, escuchar más, participar poco?
+    - Justificación: Ayuda a diseñar dinámicas de encuentro que fomenten participación equilibrada.
+
+#### 2.2.1.3 Guion de entrevista — Segmento 2: Administradores / Locales aliados
+Cada pregunta va acompañada de su justificación.
+
+- **Contexto operativo**
+  - ¿En qué horarios tienes mayor y menor afluencia de clientes?
+    - Justificación: Identifica ventanas útiles para programar encuentros y optimizar horas valle.
+  - ¿Actualmente permites reservas de mesas o espacios para grupos? ¿Cómo las gestionas?
+    - Justificación: Evalúa madurez operativa y puntos de integración para la app.
+
+- **Condiciones para colaborar**
+  - ¿Qué información necesitas para aceptar una reserva? (número de asistentes, pago anticipado, tipo de actividad)
+    - Justificación: Define campos obligatorios en el flujo de reservas.
+  - ¿Cómo manejas cancelaciones o clientes que no asisten?
+    - Justificación: Sirve para diseñar políticas de no-show y mecanismos de compromiso.
+
+- **Impacto comercial y expectativas**
+  - ¿Qué tipo de consumo esperarías de los asistentes?
+    - Justificación: Permite estimar ticket promedio y beneficios para el local.
+  - ¿Qué valor tendría para ti que tu local aparezca en una app para organizar encuentros?
+    - Justificación: Comprueba incentivos de adopción por parte del socio.
+
+- **Operación y control**
+  - ¿Qué dificultades has tenido al atender grupos grandes o reuniones? ¿Qué medidas aplicas para minimizar molestias a otros clientes?
+    - Justificación: Informa límites de aforo, rotación y reglas del local.
+  - ¿Estarías dispuesto a ofrecer tu local como punto de encuentro? ¿En qué condiciones? (horarios, promociones, límite de asistentes)
+    - Justificación: Captura términos comerciales y restricciones prácticas.
+
+- **Promociones y autonomía de gestión**
+  - ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
+    - Justificación: Determina el nivel de control que se debe ofrecer en el panel de partners.
+  - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio? (código QR, verificación en app, pago adelantado)
+    - Justificación: Informa mecanismos técnicos y operativos para canje de incentivos.
+
+- **Preguntas complementarias (opcional)**
+  - ¿Estarías dispuesto a ofrecer descuentos a clientes frecuentes que asistan a estos encuentros?
+    - Justificación: Explora disposición a programas de fidelización.
+  - ¿Qué tipo de incentivo te resultaría más atractivo ofrecer? (descuentos, combos, promociones por grupo, etc.)
+    - Justificación: Ayuda a diseñar ofertas que sean atractivas para el socio y rentables para el negocio.
 
 ### 2.2.2 Registro de entrevistas
 
