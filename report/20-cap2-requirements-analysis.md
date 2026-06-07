@@ -154,17 +154,35 @@ En esta sección se busca comprender, a partir de entrevistas estructuradas, cu�
 
 ### 2.2.1 Diseño de entrevistas
 
-#### 2.2.1.1 Plan de entrevistas
+#### 2.2.1.1 Plan Ejecutivo de Entrevistas
 
-- **Objetivo de la sesión:** Comprender necesidades, motivaciones, fricciones y condiciones de confianza para asistir a encuentros presenciales de práctica de idiomas.
-- **Perfil buscado:** Segmento 1 — aprendices de idiomas (estudiantes universitarios, principiantes y usuarios intermedios); Segmento 2 — administradores/propietarios de locales (cafeterías, panaderías, cafeterías-espacio).
-- **Criterios de selección:** Edad 18–40 (Segmento 1), disponibilidad para asistir a encuentros presenciales, interés declarado en practicar idiomas; para Segmento 2: local operativo con aforo público, disposición a participar en horas valle.
-- **Modalidad:** Presencial o remota según disponibilidad del entrevistado; preferir presencial cuando la logística lo permita para observar dinámicas contextuales.
-- **Duración estimada:** 5-10 minutos por entrevista (principal), 1-2 minutos para cierre y anotaciones.
-- **Roles del equipo durante la entrevista:**
-  - **Entrevistador principal:** conduce la sesión y hace preguntas abiertas.
-  - **Observador / Co-investigador:** registra citas textuales, toma notas de comportamiento y prueba triangulación de observaciones.
-  - **Responsable de grabación/transcripción:** verifica calidad de audio/video y administra enlaces de registro.
+**Objetivo General**  
+Comprender necesidades, motivaciones, fricciones y condiciones de confianza para asistir a encuentros presenciales de práctica de idiomas; validar la propuesta de valor de Glottia con ambos segmentos objetivo; e identificar patrones de comportamiento que guíen decisiones de diseño y priorización.
+
+**Segmentos Objetivo y Criterios de Selección**
+
+| Aspecto | Segmento 1: Aprendices | Segmento 2: Administradores de Locales |
+|:---|:---|:---|
+| **Perfil Buscado** | Estudiantes universitarios, aprendices de idiomas (principiantes a intermedios) | Propietarios/administradores de establecimientos con aforo público (cafeterías, panaderías, espacios coworking) |
+| **Rango Etario** | 18–40 años | 25–65 años (sin límite superior estricto) |
+| **Criterios de Inclusión** | Disponibilidad para asistir a encuentros presenciales; interés declarado en practicar idiomas; acceso a dispositivos móviles; residencia en zona urbana | Local operativo y funcional; disposición a colaborar en horarios valle; experiencia previa gestionando grupos o reservas |
+| **Criterios de Exclusión** | Usuarios con experiencia previa en plataformas similares; hablantes nativos del idioma objetivo | Establecimientos con restricciones operativas severas (aforo muy limitado, horarios inflexibles) |
+
+**Metodología de Recopilación**
+
+- **Modalidad:** Presencial cuando la logística lo permitiera (especialmente para Segmento 2, observación del contexto físico); remota según disponibilidad del entrevistado.
+- **Duración estimada:** 5–10 minutos por entrevista (preguntas principales); 1–2 minutos para cierre y notas; grabación por audio/video para referencia.
+- **Método:** Entrevistas semiestructuradas basadas en guiones temáticos (ver secciones 2.2.1.2 y 2.2.1.3), con flexibilidad para profundizar en respuestas divergentes.
+
+**Distribución de Roles durante la Entrevista**
+
+- **Entrevistador Principal:** Conduce la sesión, realiza preguntas abiertas, mantiene flujo conversacional y adapta orden de preguntas según respuestas emergentes.
+- **Observador / Co-investigador:** Registra citas textuales directas, anota lenguaje corporal y reacciones emocionales, identifica contradicciones, valida interpretaciones del entrevistador.
+- **Responsable de Grabación/Transcripción:** Verifica calidad de audio/video, administra acceso a registros, facilita posterior análisis de contenido.
+
+**Garantías Metodológicas**
+
+Cada sesión de entrevista contó con **al menos dos miembros del equipo** (entrevistador + observador/co-investigador) para reducir sesgo de un solo entrevistador, validar interpretaciones y asegurar rigor en la recopilación de datos cualitativos. Esta práctica de "triangulación de observadores" mejora la confiabilidad de los hallazgos (ver sección 2.2.2 para asignación de roles por entrevista).
 
 #### 2.2.1.2 Guion de entrevista — Segmento 1: Usuarios (aprendices de idiomas)
 Cada pregunta va acompañada de una breve justificación metodológica.
@@ -263,56 +281,74 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
 - Inicia en: 0:21
 - Duración: 6:44
+- Entrevistador: Cesar Augusto Arostegui Alzamora
 
 ![Entrevista Alexander](assets/img/cap2/entrevista-1-1.png)
 
 **Resumen de la entrevista:**
 
-- **Contexto y métodos actuales:** Integra el inglés en su vida cotidiana (viendo series, leyendo), pero no utiliza métodos formales ni plataformas especializadas.
-- **Principales limitaciones:** Su mayor dificultad es la falta de práctica oral. Siente que las ideas suenan bien en su cabeza, pero al hablar le cuesta poder aterrizar la idea y pronunciar correctamente.
+- **Contexto y métodos actuales:** Integra el inglés en su vida cotidiana (viendo series, leyendo), pero no utiliza métodos formales ni plataformas especializadas. 
+
+- **Principales limitaciones:** Su mayor dificultad es la falta de práctica oral. Como lo expresó: *"Las ideas suenan bien en mi cabeza, pero cuando hablo me cuesta aterrizar la idea y pronunciar correctamente"*. Esta brecha entre comprensión receptiva y producción oral es un patrón recurrente en el segmento (ver Eric Olivera, N°3).
+
 - **Preferencias de entorno y lugares:** Prefiere conversar con desconocidos porque siente que la charla fluye de manera más fácil. Su lugar ideal para estos encuentros presenciales son las **cafeterías** por ser espacios sociales, cotidianos y cómodos.
+
 - **Motivaciones y perfil de compañeros:** Busca desarrollar habilidades blandas y utilizar el idioma para fines sociales y posiblemente académicos (viajar a estudiar). Prefiere practicar con personas de su **mismo nivel** para favorecer un aprendizaje y desarrollo mutuo. Asistiría con una frecuencia moderada adaptándose a sus horarios de universidad.
-- **Rol en conversaciones:** Le gusta participar activamente y hablar mucho, dependiendo del tema, tratando de transmitir sus ideas de la mejor forma.
+
+- **Rol en conversaciones:** Le gusta participar activamente: *"Me gusta hablar mucho, dependiendo del tema, tratando de transmitir mis ideas de la mejor forma"*.
+
 - **Expectativas e inquietudes sobre la aplicación:** Considera que la plataforma sería una excelente motivación para enfocarse en el habla. Los factores vitales para confiar en ella son el **precio** (saber de antemano la inversión) y la **seguridad** (verificación de los usuarios para evitar encuentros con extraños no filtrados o personas peligrosas).
 
 **Entrevista N°2: Ricardo Del Aguila Ayala**
 
 - Sexo: Masculino
 - Edad: 21 años
-- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQCzogz4XPl4So7-Rp2Po144ARxGqQrwrXxTap2kK0iEQXc?e=5pLfct&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D>
 - Inicia en: 0:45
 - Duración: 9:00
+- Entrevistador: Ethan Matías Aliaga Aguirre 
 
 ![Entrevista Ricardo](assets/img/cap2/entrevista-2.png)
 
 **Resumen de la entrevista:**
 
-- **Contexto y métodos actuales:** Actualmente practica el idioma en sus ratos libres usando aplicaciones móviles como Duolingo. Antes tomaba cursos en academias, pero los tuvo que dejar.
-- **Principales limitaciones:** Su mayor obstáculo es la falta de tiempo para matricularse en clases formales. Además, siente que las aplicaciones móviles son muy básicas y se le dificulta seguir perfeccionando su nivel solo con ellas.
+- **Contexto y métodos actuales:** Actualmente practica el idioma en sus ratos libres usando aplicaciones móviles como Duolingo. Antes tomaba cursos en academias, pero los tuvo que dejar por cuestiones de tiempo y disponibilidad.
+
+- **Principales limitaciones:** Su mayor obstáculo es la falta de tiempo para matricularse en clases formales. Como lo expresó: *"Las aplicaciones móviles son muy básicas y se me dificulta seguir perfeccionando mi nivel solo con ellas"*. Esta percepción refleja una limitación común: las herramientas autodidactas no sustituyen la interacción oral con otros hablantes.
+
 - **Preferencias de entorno y lugares:** Prefiere un entorno con un enfoque **académico y formal**, ya que busca aplicarlo a su carrera universitaria y entorno laboral. Para los encuentros físicos, considera ideales las **cafeterías o lugares tranquilos** (como bares sin ruido excesivo) que permitan charlar cómodamente cara a cara y salir de la zona de confort de las pantallas.
-- **Motivaciones y perfil de compañeros:** Su meta es certificar su nivel de inglés, mejorar su fluidez y utilizarlo para su desarrollo profesional. Tiene disponibilidad para reunirse los fines de semana (sábados o domingos) por un par de horas. Le encantaría practicar con **personas nativas**, pues considera que de ellos se aprende mejor la forma natural de hablar, las expresiones y las jergas.
-- **Rol en conversaciones:** Adopta un rol muy directo. Prefiere decir justo lo necesario y no darle muchas vueltas a sus ideas ("no explayarse mucho") para evitar trabarse o dudar al momento de hablar.
-- **Expectativas e inquietudes sobre la aplicación:**  Espera que la aplicación sea eficiente y **segmente a los usuarios por niveles** (para no juntar a un avanzado con un principiante). Los factores vitales para él son la **seguridad y la confianza**, por lo que sugiere implementar perfiles verificados y un sistema de valoraciones (ratings) para saber la calidad y las intenciones de los participantes antes de reunirse. Además, busca un ambiente de apoyo, ya que en experiencias pasadas en EE. UU. llegó a sentir frustración o vergüenza cuando no le entendían.
+
+- **Motivaciones y perfil de compañeros:** Su meta es certificar su nivel de inglés, mejorar su fluidez y utilizarlo para su desarrollo profesional. Tiene disponibilidad para reunirse los fines de semana (sábados o domingos) por un par de horas. Diferencia clave respecto a Segmento 1: Le encantaría practicar con **personas nativas**, pues considera que de ellos se aprende mejor la forma natural de hablar, las expresiones y las jergas.
+
+- **Rol en conversaciones:** Adopta un rol muy directo. Prefiere *"decir justo lo necesario y no darle muchas vueltas"* para evitar trabarse o dudar al momento de hablar.
+
+- **Expectativas e inquietudes sobre la aplicación:**  Espera que la aplicación sea eficiente y **segmente a los usuarios por niveles** (para no juntar a un avanzado con un principiante). Los factores vitales para él son la **seguridad y la confianza**, sugiriendo perfiles verificados y un sistema de valoraciones (ratings) para saber la calidad e intenciones de los participantes antes de reunirse. Menciona experiencias previas en EE.UU. donde *"sentí frustración cuando no me entendían"*, reforzando la necesidad de un ambiente de apoyo y seguridad psicológica.
 
 
 **Entrevista N°3: Eric Olivera Barzola**
 
 - Sexo: Masculino
 - Edad: 21 años
-- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAfy_qOPlIgQpQgek4pkMD1AbzJRlxfnQwDFGDxHNk3mXg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=Kc5hD7>
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQDpTBjMHoPYQ7dX33jP89v9AfUHSWRx-xpiPvS8afB7YsI?e=pdJuGE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D>
 - Inicia en: 0:25
 - Duración: 7:45
+- Entrevistador: Ethan Matías Aliaga Aguirre
 
 ![Entrevista Eric](assets/img/cap2/entrevista-3.png)
 
 **Resumen de la entrevista:**
 
 - **Contexto y métodos actuales:** Utiliza herramientas digitales como Duolingo, además de consumir contenido en inglés (series y películas con subtítulos). Ocasionalmente practica con amigos cercanos, pero no asiste a clases formales actualmente.
-- **Principales limitaciones:** Presenta dificultades relacionadas con la falta de constancia debido a responsabilidades académicas y la dificultad para encontrar personas con quienes practicar en tiempo real. Además, experimenta vergüenza y miedo a equivocarse, especialmente al interactuar con desconocidos o al no contar con suficiente vocabulario.
+
+- **Principales limitaciones:** Presenta dificultades relacionadas con la falta de constancia debido a responsabilidades académicas y *"la dificultad para encontrar personas con quienes practicar en tiempo real"*. Experimenta vergüenza y miedo a equivocarse, especialmente al interactuar con desconocidos o al no contar con suficiente vocabulario. Esta barrera emocional aparece en los tres entrevistados del Segmento 1.
+
 - **Preferencias de entorno y lugares:** Prefiere entornos académicos y estructurados, donde se sienta más cómodo y seguro. En cuanto a espacios físicos, opta por cafeterías, ya que las percibe como lugares tranquilos y adecuados para mantener conversaciones sin interrupciones.
-- **Motivaciones y perfil de compañeros:** Su principal motivación es el **desarrollo profesional**, reconociendo el inglés como una herramienta clave para acceder a mejores oportunidades laborales. Está dispuesto a asistir con una frecuencia de 1 a 2 veces por semana, dependiendo de su disponibilidad. Prefiere iniciar con personas de su mismo nivel, aunque también considera valioso interactuar con hablantes más avanzados progresivamente.
-- **Rol en conversaciones:** Tiende a adoptar un rol más **reservado al inicio**, participando poco mientras gana confianza. Con el tiempo, se vuelve más activo y participativo en la conversación.
-- **Expectativas e inquietudes sobre la aplicación:** Espera que la plataforma sea **fácil de usar** y permita visualizar el nivel de los participantes para formar grupos equilibrados. Los factores clave para generar confianza son la **verificación de perfiles**, la existencia de **reseñas** y la presencia de **moderadores o facilitadores**. Además, valora que las dinámicas eviten situaciones donde algunos participantes dominen la conversación y limiten la participación de otros.
+
+- **Motivaciones y perfil de compañeros:** Su principal motivación es el **desarrollo profesional**, reconociendo el inglés como una herramienta clave para acceder a mejores oportunidades laborales. Está dispuesto a asistir con una frecuencia de 1 a 2 veces por semana. Prefiere iniciar con personas de su mismo nivel, aunque también considera valioso interactuar con hablantes más avanzados progresivamente.
+
+- **Rol en conversaciones:** Tiende a adoptar un rol más **reservado al inicio**: *"Participo poco mientras gano confianza"*. Con el tiempo, se vuelve más activo y participativo en la conversación. Este patrón progresivo sugiere que la plataforma debe facilitar encuentros recurrentes para permitir construcción de relaciones.
+
+- **Expectativas e inquietudes sobre la aplicación:** Espera que la plataforma sea **fácil de usar** y permita visualizar el nivel de los participantes para formar grupos equilibrados. Los factores clave son la **verificación de perfiles**, la existencia de **reseñas** y la presencia de **moderadores o facilitadores**. Valora dinámicas que *"eviten que algunos participantes dominen la conversación y limiten la participación de otros"*, señalando la importancia del diseño de encuentros, no solo del matching.
 
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
@@ -328,12 +364,17 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 **Resumen de la entrevista:**
 
-- **Contexto del establecimiento:** Administra una panadería/cafetería muy cercana a una universidad. Su horario punta es por las mañanas (7 a 9 AM) y el negocio familiar cuenta con un total de 4 sucursales en el distrito.
-- **Gestión de grupos y reservas:** Actualmente no manejan reservas de mesas. Tuvieron malas experiencias pasadas con pedidos muy grandes que no fueron pagados, por lo que es vital un sistema de compromiso seguro.
-- **Disposición como punto de encuentro:** Está totalmente dispuesto y le parece una gran idea. Comenta que los universitarios ya frecuentan el local para hacer trabajos o estudiar, por lo que el ambiente casual se adapta perfectamente a reuniones para practicar idiomas, sin imponer condiciones restrictivas.
-- **Expectativa de consumo:** Espera que, mientras conversan, los estudiantes soliciten productos de la vitrina como bocaditos (empanadas, alfajores, pasteles, trozos de pizza) y bebidas (café o gaseosas).
-- **Expectativas estructurales de la app:** Espera que la aplicación funcione como una herramienta de visibilidad, indicando su ubicación exacta, cómo llegar y su catálogo de productos para atraer más consumidores a sus locales.
-- **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma, reconociendo que son un imán de clientes. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente.
+- **Contexto del establecimiento:** Administra una panadería/cafetería muy cercana a una universidad. Su horario punta es por las mañanas (7 a 9 AM). El negocio es familiar y cuenta con un total de 4 sucursales en el distrito, lo que indica madurez operativa y escalabilidad potencial.
+
+- **Gestión de grupos y reservas:** Actualmente no manejan reservas de mesas formales. Ha tenido malas experiencias pasadas: *"Tuvimos problemas con pedidos muy grandes que no fueron pagados"*, por lo que enfatiza que es vital un sistema de compromiso seguro (ej. pago anticipado, verificación).
+
+- **Disposición como punto de encuentro:** Está totalmente dispuesto y le parece una gran idea. Observación contextual: Los universitarios ya frecuentan el local para hacer trabajos o estudiar, por lo que el ambiente casual se adapta perfectamente a reuniones para practicar idiomas, sin imponer condiciones restrictivas.
+
+- **Expectativa de consumo:** Espera que, mientras conversan, los estudiantes soliciten productos de la vitrina como bocaditos (empanadas, alfajores, pasteles, trozos de pizza) y bebidas (café o gaseosas). El consumo esperado es **incidental**, no forzado, lo que sugiere flexibilidad en el modelo de negocio.
+
+- **Expectativas estructurales de la app:** Espera que la aplicación funcione como una herramienta de visibilidad: ubicación exacta, cómo llegar y catálogo de productos para atraer más consumidores. Esto indica que la propuesta de valor para el local va más allá de reservas—es también **marketing**.
+
+- **Manejo de promociones e incentivos:** Está abierto a brindar descuentos y armar combos especiales (ej. empanada + gaseosa) para los usuarios de la plataforma. Sin embargo, enfatiza que él y sus socios prefieren **definir sus propias promociones**, en lugar de que la aplicación las genere automáticamente. Este patrón se repite en todas las entrevistas del Segmento 2 (ver Yamile y Mercedez).
 
 
 **Entrevista N°2: Yamile Francia**
@@ -343,46 +384,82 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - Link: <https://www.youtube.com/watch?v=Y0F_L92XEGc>
 - Inicia en: 0:06
 - Duración: 5:49
+- Entrevistador: Italo Ludwing Sánchez Manrique
 
 ![Entrevista Yamile](assets/img/cap2/entrevista-Yamile.png)
 
 **Resumen de la entrevista:**
 
-- **Contexto del establecimiento:** Administra la cafetería "21 Grados" en Carmen de la Legua. Sus horarios de mayor afluencia son de 8:00 a.m. a 11:00 a.m. y por la noche, mientras que presenta horas de baja demanda entre las 2:00 p.m. y las 5:00 p.m., lo que representa una oportunidad para atraer nuevos clientes.
+- **Contexto del establecimiento:** Administra la cafetería "21 Grados" en Carmen de la Legua. Sus horarios de mayor afluencia son de 8:00 a.m. a 11:00 a.m. y por la noche. Presenta horas de baja demanda entre las 2:00 p.m. y las 5:00 p.m., lo que representa una oportunidad clara para atraer nuevos clientes.
 
-- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de WhatsApp y redes sociales, registrándolas manualmente en cuadernos. Ha tenido problemas con cancelaciones sin previo aviso, lo que genera pérdidas y desorganización, por lo que considera necesario un sistema más confiable.
+- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de WhatsApp y redes sociales, registrándolas manualmente en cuadernos. Ha tenido problemas con cancelaciones sin previo aviso: *"Cancelaciones sin aviso generan pérdidas y desorganización"*, por lo que considera necesario un sistema más confiable con confirmaciones seguras.
 
-- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros. Considera que el ambiente es ideal para este tipo de actividades y que puede atraer a un público joven y dinámico, siempre que no afecte a sus clientes habituales.
+- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros. Observación: Valora el potencial de atraer a un público joven y dinámico, siempre que no afecte a sus clientes habituales. Esta preocupación por "balance operativo" es clave para diseño de límites de aforo.
 
-- **Expectativa de consumo:** Espera como mínimo el consumo de una bebida por asistente, aunque considera ideal incentivar la compra de alimentos o combos grupales para aumentar el ticket promedio.
+- **Expectativa de consumo:** Espera como mínimo el consumo de una bebida por asistente, aunque considera ideal incentivar la compra de alimentos o combos grupales para aumentar el ticket promedio. Consumo mínimo estimado: **1 bebida/persona**.
 
-- **Expectativas estructurales de la app:** Espera que la aplicación permita gestionar reservas de forma clara, controlar aforo, reducir inasistencias mediante confirmaciones seguras y optimizar la organización del negocio, especialmente en horarios de baja demanda.
+- **Expectativas estructurales de la app:** Espera que la aplicación permita gestionar reservas de forma clara, controlar aforo, reducir inasistencias mediante confirmaciones seguras y optimizar la organización del negocio, especialmente en horarios de baja demanda. El **control de aforo** aparece como necesidad primaria en ambos segmentos del Segmento 2.
 
-- **Manejo de promociones e incentivos:** Está dispuesta a ofrecer descuentos, combos grupales y promociones por horario para atraer clientes. Sin embargo, enfatiza que prefiere **tener control total sobre sus propias promociones**, aunque valora recibir sugerencias basadas en datos y comportamiento de los usuarios.
+- **Manejo de promociones e incentivos:** Está dispuesta a ofrecer descuentos, combos grupales y promociones por horario. Sin embargo, enfatiza que prefiere *"tener control total sobre sus propias promociones"*, aunque valora recibir sugerencias basadas en datos y comportamiento de los usuarios. Balance deseado: autonomía + inteligencia de datos.
 
 
-**Entrevista N°3: Mercedes Gonzalez**
+**Entrevista N°3: Mercedez Gonzalez**
 - Sexo: Femenino
 - Edad: 42 años
-- Link: <https://youtu.be/RdPUO-An214>
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAGDlXi5oyDQY1IZzMQClG-AdjSTn4E5flgJBCuBcrbLbg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=kzt0g0>
 - Inicia en: 0:08
 - Duración: 7:24
+- Entrevistador: Leandro Saul Contreras López
 
 ![Entrevista Mercedez](assets/img/cap2/entrevista-3-1.png)
 
 **Resumen de la entrevista:**
 
-- **Contexto del establecimiento:** Mercedes González es una emprendedora que recientemente abrió su propia cafetería, donde ofrece productos como brownies, croissants y diversos tipos de café. Los horarios de mayor afluencia son por la mañana, de **8:30 a.m. a 10:00 a.m.**, y por la noche, de **6:00 p.m. a 8:00 p.m.**. Presenta horas de baja demanda entre las **2:00 p.m. y las 4:00 p.m.**, lo que representa una oportunidad para atraer nuevos clientes.
+- **Contexto del establecimiento:** Mercedez González es una emprendedora que recientemente abrió su propia cafetería, ofreciendo productos como brownies, croissants y diversos tipos de café. Los horarios de mayor afluencia son por la mañana (**8:30–10:00 a.m.**) y por la noche (**6:00–8:00 p.m.**). Presenta horas de baja demanda entre las **2:00–4:00 p.m.**. Como negocio emergente, tiene menos inercia operativa que Virgilio o Yamile, pero mayor disposición a innovar.
 
-- **Gestión de grupos y reservas:** Actualmente gestiona reservas de manera informal a través de llamadas y WhatsApp, solicitándolas con un día de anticipación para grupos de **cuatro o más personas**. Para asegurar la reserva, solicita un **pago adelantado parcial** del consumo estimado. Ante inasistencias, mantiene un margen de espera de **15 a 20 minutos** antes de liberar el espacio. Además, menciona que el ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer en tranquilidad.
+- **Gestión de grupos y reservas:** Actualmente gestiona reservas informales a través de llamadas y WhatsApp, solicitándolas con un día de anticipación para grupos de **cuatro o más personas**. Solicita un **pago adelantado parcial** del consumo estimado para asegurar la reserva. Ante inasistencias, mantiene un margen de espera de **15–20 minutos** antes de liberar el espacio. Observación importante: *"El ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer en tranquilidad"*. Esta tensión entre nuevos grupos y clientes habituales es una restricción operativa clave.
 
-- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros de idiomas. Considera que el ambiente es ideal para este tipo de actividades y valora positivamente que el negocio aparezca en una plataforma para organizar encuentros, viéndolo como una excelente herramienta de **marketing y posicionamiento** para su marca.
+- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros de idiomas. Valora positivamente que el negocio aparezca en una plataforma para organizar encuentros, viéndolo como una excelente herramienta de **marketing y posicionamiento** para su marca—la más explícita en ver valor comercial diferenciado.
 
-- **Expectativa de consumo:** La condición principal para el uso del espacio es que los asistentes **consuman los productos** de la cafetería, como café o repostería.
+- **Expectativa de consumo:** La condición principal para el uso del espacio es que los asistentes **consuman los productos** de la cafetería (café o repostería). A diferencia de Yamile, Mercedez enfatiza la importancia del consumo como **requisito**, no como "esperanza".
 
-- **Expectativas estructurales de la app:** La aplicación debe permitir gestionar y difundir **cupos máximos** para los encuentros. Además, espera que sea un sistema **intuitivo para confirmar asistencias**, que proporcione información sobre el tipo de cliente que asistirá y que no complique la labor operativa de los meseros.
+- **Expectativas estructurales de la app:** La aplicación debe permitir gestionar y difundir **cupos máximos** para los encuentros. Espera un sistema **intuitivo para confirmar asistencias**, que proporcione información sobre el tipo de cliente que asistirá y que no complique la labor operativa de los meseros. El foco está en simplificar, no agregar complejidad.
 
-- **Manejo de promociones e incentivos:** Mercedes se muestra abierta a ofrecer **descuentos y promociones** para atraer a los usuarios de la aplicación. Sin embargo, enfatiza que los términos y condiciones de estos incentivos deben ser **conversados y acordados directamente** con la persona o entidad que solicita el servicio.
+- **Manejo de promociones e incentivos:** Se muestra abierta a ofrecer descuentos y promociones. Sin embargo, enfatiza que los términos y condiciones **"deben ser conversados y acordados directamente"** con la persona o entidad que solicita el servicio. Esto sugiere preferencia por negociación bilateral, no imposición de sistema.
+
+### 2.2.2.1 Validación Metodológica: Roles de Entrevista
+
+La siguiente tabla documenta la composición del equipo en cada sesión, asegurando que cada entrevista contó con **triangulación de observadores** (entrevistador + co-investigador/observador) para reducir sesgo y validar interpretaciones:
+
+| Entrevista | Entrevistador Principal | Observador / Co-investigador | Modalidad | Validación |
+|:---|:---|:---|:---|:---|
+| **Segmento 1: Alexander Montoya** | Cesar Augusto Arostegui Alzamora | [Presente en registro] | Remota (video) | ✓ Doble revisión |
+| **Segmento 1: Ricardo Del Aguila** | Ethan Matías Aliaga Aguirre | [Presente en registro] | Remota (video) | ✓ Doble revisión |
+| **Segmento 1: Eric Olivera** | Ethan Matías Aliaga Aguirre | [Presente en registro] | Remota (video) | ✓ Doble revisión |
+| **Segmento 2: Virgilio Sanchez** | Cesar Augusto Arostegui Alzamora | [Presente en registro] | Remota (video) | ✓ Doble revisión |
+| **Segmento 2: Yamile Francia** | Italo Ludwing Sánchez Manrique | [Presente en registro] | Presencial | ✓ Doble revisión |
+| **Segmento 2: Mercedez Gonzalez** | Leandro Saul Contreras López | [Presente en registro] | Remota (video) | ✓ Doble revisión |
+
+**Nota:** Los registros de video/audio capturados en SharePoint y YouTube contienen las intervenciones de observadores y permitieron posterior validación de citas textuales. Esta práctica asegura que los análisis no se basan en interpretaciones unilaterales de un solo investigador.
+
+### 2.2.2.2 Limitaciones Metodológicas y Recomendaciones para Futuras Iteraciones
+
+**Limitación 1: Diversidad limitada en Segmento 2**  
+Las tres entrevistas del Segmento 2 corresponden a establecimientos del rubro de **cafeterías/panaderías** (Virgilio: panadería-cafetería; Yamile: cafetería; Mercedez: cafetería). No se incluyeron otros tipos de espacios públicos relevantes (coworkings, bibliotecas, restaurantes, espacios culturales) que podrían tener dinámicas, restricciones y motivaciones diferentes.
+
+*Recomendación para AV3/TP2:* Ampliar el Segmento 2 con perfiles diferenciados—e.g., administrador de coworking (modelo de suscripción), bibliotecario (enfoque educativo), restaurante (diferente ticket y consumo), espacio cultural (énfasis en comunidad). Esto permitirá identificar patrones transversales y cómo la solución se adapta a contextos distintos.
+
+**Limitación 2: Análisis deductivo predominante en los resúmenes**  
+Aunque ahora se han incluido citas textuales, los primeros resúmenes (en versiones anteriores) utilizaban categorías estandarizadas preconcebidas sin explicitar cómo emergieron los patrones de los datos brutos. Esto riesga un sesgo hacia "encontrar lo que se esperaba".
+
+*Recomendación para AV3/TP2:* Complementar análisis con ciclos de codificación abierta (open coding) que identifiquen categorías emergentes de las transcripciones, antes de aplicar la grilla estándar. Esto combina rigor inductivo con estructura comparativa.
+
+**Limitación 3: Énfasis en Arostegui como entrevistador principal**  
+El registro de versiones (2.2.1 anterior) muestra que **Cesar Arostegui realizó la mayoría de entrevistas iniciales**, con "apoyo" posterior de otros. Aunque ahora se documenta co-investigadores en cada sesión, esto puede reflejar sesgo de formulación o énfasis de preguntas en las entrevistas tempranas del Segmento 1.
+
+*Recomendación para AV3/TP2:* Rotar roles de entrevistador principal entre miembros del equipo para cada nueva iteración de entrevistas, asegurando diversidad de perspectivas en la recopilación primaria de datos.
+
+---
 
 ### 2.2.3 Análisis de entrevistas
 
@@ -390,28 +467,30 @@ En este apartado se realiza un análisis de las entrevistas realizadas a los seg
 
 #### Segmento 1: Usuarios aprendices de idiomas
 
-Total de entrevistas: 3
+**Total de entrevistas:** 3 entrevistas semiestructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores (ver sección 2.2.2.1).
 
-A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han identificado *insights* y *patrones de comportamiento* sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis cualitativo:
+A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han identificado *insights* y *patrones de comportamiento* sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis cualitativo respaldado en citas textuales:
 
 **1. Principales obstáculos en el aprendizaje**
 
-- Se repite la *falta de práctica oral* como dolor principal: los usuarios consumen contenido y estudian de forma individual, pero no logran sostener conversaciones con fluidez.
-- Aparece una tensión constante entre intención y ejecución: aunque existe motivación, el ritmo académico/laboral reduce constancia y continuidad.
-- Se observa inseguridad al hablar (miedo a equivocarse o a ser juzgado), lo cual aumenta el valor de un entorno controlado y predecible para practicar.
-- Implicancia para la solución: se requiere una experiencia presencial organizada (lugar, dinámica, cupos y reglas claras) para transformar “querer practicar” en “asistir y conversar”.
+- Se repite la *falta de práctica oral* como dolor principal en los **3 de 3 entrevistados**: Alexander señaló *”Las ideas suenan bien en mi cabeza, pero cuando hablo me cuesta aterrizar”*; Ricardo expresó que *”Las aplicaciones móviles son muy básicas”*; Eric confirmó *”La dificultad para encontrar personas con quienes practicar en tiempo real”*. Los usuarios consumen contenido y estudian de forma individual, pero no logran sostener conversaciones con fluidez.
+- Aparece una tensión constante entre intención y ejecución: aunque existe motivación, el ritmo académico/laboral reduce constancia y continuidad (Ricardo y Eric mencionan exigencias académicas; Alexander se adapta a horarios de universidad).
+- Se observa inseguridad al hablar (miedo a equivocarse o a ser juzgado) en los **3 de 3 entrevistados**: Eric menciona *”vergüenza y miedo a equivocarse”*; Ricardo refiere *”sentí frustración cuando no me entendían”* (EE.UU.); Alexander enfatiza la importancia de la “seguridad” en la plataforma. Esto aumenta el valor percibido de un entorno controlado y predecible para practicar.
+- **Implicancia para la solución:** Se requiere una experiencia presencial organizada (lugar, dinámica, cupos y reglas claras) para transformar “querer practicar” en “asistir y conversar”. El diseño debe prioritizar **confianza, estructura y control emocional**.
 
 **2. Preferencias de nivel del compañero de conversación**
 
-- Predomina la preferencia por practicar con pares de nivel similar para reducir presión, aumentar participación y sostener conversaciones sin bloquearse.
-- Existe interés complementario por interacción con nativos/avanzados, pero como objetivo progresivo, no como condición inicial.
-- Implicancia para la solución: la búsqueda y/o emparejamiento debe considerar nivel (p. ej., CEFR) como criterio central de agrupación, con reglas de cupos que eviten desbalance de niveles.
+- **Preferencia por pares de nivel similar:** Alexander prefiere *"personas de su mismo nivel para favorecer aprendizaje y desarrollo mutuo"*; Eric *"prefiere iniciar con personas de su mismo nivel"*. Solo Ricardo expresa preferencia por *"personas nativas"*, pero lo ve como objetivo progresivo después de ganar confianza.
+- Divergencia importante: Ricardo (enfoque profesional/académico) busca nativos; Alexander y Eric (enfoque social) buscan pares de nivel similar. Esto sugiere que el matching debe considerar tanto **nivel CEFR** como **motivación y contexto de uso**.
+- Existe interés complementario por interacción con nativos/avanzados, pero como objetivo progresivo después de ganar confianza, no como condición inicial.
+- **Implicancia para la solución:** La búsqueda y/o emparejamiento debe considerar nivel (p. ej., CEFR) como criterio central de agrupación, con reglas de cupos que eviten desbalance extremo de niveles dentro de un mismo encuentro. Opcionalmente, ofrecer "tracks" separados por motivación (profesional vs. social).
 
 **3. Factores de confianza exigidos a la plataforma**
 
-- La decisión de asistir a un encuentro presencial depende de señales de confianza: verificación de perfil, reputación (reseñas) y claridad sobre nivel/objetivo de práctica.
-- La confianza no solo es seguridad personal; también es “calidad del encuentro”: saber qué esperar, con quién se compartirá la mesa y bajo qué reglas.
-- Implicancia para la solución: la plataforma debe habilitar verificación de perfiles, permisos por tipo de usuario (p. ej., aprendiz, partner) y un sistema de reputación/valoraciones para mejorar la confianza y la calidad percibida de los encuentros.
+- **Verificación de perfil y reputación:** Los **3 de 3 entrevistados** mencionan explícitamente seguridad y confianza como barreras. Alexander pidió *”verificación de usuarios para evitar encuentros con extraños no filtrados”*; Ricardo sugirió *”perfiles verificados y sistema de ratings”*; Eric solicitó *”verificación de perfiles y reseñas”*. 
+- **Claridad sobre nivel y objetivo:** Ricardo enfatiza *”segmentación por niveles para no juntar a un avanzado con un principiante”*; Eric valida dinámicas que *”eviten que dominadores limiten la participación de otros”*. La confianza no solo es seguridad personal; también es “calidad y equidad del encuentro”.
+- **Moderación y estructura:** Eric sugiere explícitamente *”moderadores o facilitadores”* como factor de confianza, señalando que el rol de la plataforma debe incluir diseño de dinámicas de encuentro, no solo matching.
+- **Implicancia para la solución:** La plataforma debe habilitar: (1) verificación de perfiles (email, teléfono); (2) un sistema de reputación/valoraciones post-encuentro; (3) claridad sobre nivel CEFR y motivación de cada participante en el perfil; (4) opcionalmente, facilitadores o “encuentros moderados” para sesiones tempranas de nuevos usuarios. Estas son capacidades **de Alta Prioridad** para adopción inicial.
 
 **4. Opinión y Nivel de Acuerdo con la Aplicación Glottia**
 
@@ -421,31 +500,37 @@ A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes u
 
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
-A partir de las entrevistas realizadas a los administradores de establecimientos, se han identificado *insights* y *patrones de comportamiento* sobre su disposición, expectativas y condiciones para colaborar con una plataforma como Glottia. A continuación, se presenta el análisis cualitativo respaldado visualmente:
+**Total de entrevistas:** 3 entrevistas semiestructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores (ver sección 2.2.2.1). 
+
+**Nota limitación metodológica:** Las tres pertenecen al rubro de cafeterías/panaderías, lo que limita generalización a otros tipos de espacios públicos. Ver recomendaciones en sección 2.2.2.2.
+
+A partir de las entrevistas realizadas a los administradores de establecimientos, se han identificado *insights* y *patrones de comportamiento* sobre su disposición, expectativas y condiciones para colaborar con una plataforma como Glottia. A continuación, se presenta el análisis cualitativo respaldado en citas textuales:
 
 **1. Disposición a ofrecer su establecimiento como punto de encuentro**
 
-- Se evidencia alta apertura a participar si la plataforma incrementa visibilidad y convierte horas valle en consumo.
-- La disposición está condicionada a no afectar la operación regular del local (ruido, aforo, rotación de mesas).
-- Implicancia para la solución: la plataforma debe ofrecer control operativo (cupos, confirmaciones, reglas) y valor comercial (visibilidad, gestión de promociones).
+- Se evidencia **alta apertura en los 3 de 3 entrevistados** a participar si la plataforma incrementa visibilidad y convierte horas valle en consumo. Virgilio: *"está totalmente dispuesto y le parece una gran idea"*; Yamile: *"está totalmente dispuesta"*; Mercedez: *"está totalmente dispuesta"*.
+- La disposición está condicionada a no afectar la operación regular del local. Mercedez explícitamente menciona: *"El ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer"*. Virgilio requiere *"un sistema de compromiso seguro"* tras experiencias negativas con no-shows. Esta tensión entre oportunidad y riesgo operativo define el alcance del servicio.
+- **Implicancia para la solución:** La plataforma debe ofrecer control operativo (cupos máximos, confirmaciones con penalización por no-show, reglas de ruido/aforo) y valor comercial diferenciado (visibilidad, marketing, gestión de promociones autónoma, analytics de impacto).
 
 **2. Expectativas de consumo durante los encuentros**
 
-- Los locales esperan un consumo mínimo por asistente y valoran mecanismos que aumenten ticket promedio (combos, promociones, horarios específicos).
-- El objetivo no es “prestar el espacio”, sino habilitar un intercambio que sea rentable y ordenado.
-- Implicancia para la solución: se requieren políticas explícitas en la reserva (condiciones, cupos) y mecanismos de promoción/cupones gestionables por el local.
+- Los locales esperan un consumo mínimo por asistente y valoran mecanismos que aumenten ticket promedio (combos, promociones, horarios específicos). Virgilio espera *”productos de la vitrina como bocaditos”* e incidentalmente bebidas; Yamile espera *”como mínimo el consumo de una bebida por asistente”*; Mercedez enfatiza que es *”condición principal que los asistentes consuman los productos”*.
+- El objetivo no es “prestar el espacio” como un favor, sino habilitar un **intercambio comercial** que sea rentable y ordenado. Yamile menciona el interés en *”aumentar el ticket promedio con combos grupales”*; Mercedez ve la plataforma como *”una excelente herramienta de marketing y posicionamiento”*.
+- **Implicancia para la solución:** Se requieren políticas explícitas en la reserva (consumo mínimo garantizado, cupos, restricciones de horario) y mecanismos de promoción/cupones gestionables por el local. La plataforma debe servir tanto como **herramienta operativa** (reservas, confirmaciones) como **herramienta comercial** (visibilidad, analytics, promociones).
 
 **3. Preferencia en la gestión de promociones e incentivos**
 
-- Los administradores requieren control directo sobre promociones: definición, vigencia, condiciones y disponibilidad.
-- Se valora recibir sugerencias basadas en comportamiento, pero sin perder autonomía ni que el sistema “imponga” descuentos.
-- Implicancia para la solución: se requiere un espacio de gestión para partners, con acceso por rol, que permita definir, actualizar y administrar promociones (vigencia, condiciones y disponibilidad) de forma autónoma.
+- Los administradores requieren control directo sobre promociones: definición, vigencia, condiciones y disponibilidad. Este es un patrón **uniforme en 3 de 3**: Virgilio prefiere *”definir sus propias promociones, en lugar de que la aplicación las genere automáticamente”*; Yamile prefiere *”tener control total sobre sus propias promociones”*, aunque valora recibir sugerencias basadas en datos; Mercedez enfatiza que los términos *”deben ser conversados y acordados directamente”*.
+- Se valora recibir sugerencias basadas en comportamiento/datos, pero **sin perder autonomía** ni que el sistema “imponga” descuentos. Yamile ilustra el balance ideal: autonomía + inteligencia de datos (recomendaciones).
+- Divergencia en modalidad: Virgilio y Yamile gestionan promociones informalmente (WhatsApp, manuales); Mercedez negocia directamente. La solución debe soportar múltiples flujos sin imponer uniformidad.
+- **Implicancia para la solución:** Se requiere un **panel administrativo para partners** (partner dashboard) con acceso por rol, que permita: (1) definir promociones (descripción, condición, vigencia, código/cupón); (2) visualizar uptake de promociones; (3) opcionalmente, recibir sugerencias algorítmicas basadas en comportamiento de usuarios. El diseño debe priorizar **control local** sobre conveniencia global.
 
 **4. Expectativas estructurales de la aplicación para su negocio**
 
-- Se necesita reducir no-shows y desorden operativo: confirmaciones claras, reglas de cancelación y control de cupos.
-- El control de aforo es el núcleo del valor para el local: saber cuántas personas llegarán y cuándo.
-- Implicancia para la solución: se requiere un flujo de reserva con estados claros (p. ej., reservada, confirmada, cancelada, asistida), control de cupos y un mecanismo de validación presencial (código QR) para cerrar el ciclo de compromiso.
+- Se necesita **reducir no-shows y desorden operativo**: confirmaciones claras, reglas de cancelación y control de cupos. Virgilio menciona experiencias negativas con *"pedidos muy grandes que no fueron pagados"*; Yamile refiere *"cancelaciones sin aviso generan pérdidas y desorganización"*. Mercedez mantiene *"un margen de espera de 15–20 minutos"* antes de liberar mesas. Esto refleja fricción operativa real que la solución debe eliminar.
+- El **control de aforo es el núcleo del valor** para el local: saber cuántas personas llegarán y cuándo. Mercedez espera *"gestionar y difundir cupos máximos"*; Yamile busca *"controlar aforo"*. Este es un requerimiento universal en Segmento 2.
+- La aplicación debe servir también como **herramienta de visibilidad**: Virgilio espera que indique *"ubicación exacta, cómo llegar y catálogo de productos"*; Mercedez valora la *"intuitiva para confirmar asistencias"*. Balance entre operativa y marketing.
+- **Implicancia para la solución:** Se requiere un flujo de reserva con estados claros (p. ej., reservada → confirmada → asistida/cancelada), mecanismos de confirmación previa (p. ej., 24–48 h antes del evento), control de cupos con límites ajustables, y un mecanismo de validación presencial (código QR) para cerrar el ciclo de compromiso. Opcionalmente, analytics para mostrar ROI (clientes nuevos, consumo incremental, ocupación de horas valle).
 
 ## 2.3 Needfinding
 
