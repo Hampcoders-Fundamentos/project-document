@@ -1,6 +1,5 @@
 # Registro de Versiones del Informe
 
-
 | Versión | Fecha | Autor(es) | Descripción de modificación |
 |:---|:---|:---|:---|
 | **AV1** | 06/04/2026 | **Ethan Matías Aliaga Aguirre** | Establecer estructura principal para el informe del proyecto |
@@ -30,10 +29,10 @@
 | **AV2** | 28/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar los patrones de diseño que serán utilizados |
 | **AV2** | 26/04/2026 | **Sánchez Manrique, Italo Ludwing** | Desarrollo de tácticas arquitectónicas orientadas a atributos de calidad |
 | **AV2** | 28/04/2026 | **Sánchez Manrique, Italo Ludwing** | Aplicación del método ADD y desarrollo de iteraciones arquitectónicas |
-| **AV2** | 26/04/2026 | **Ivo Machado Bracamonte** | Desarrollo de diagramas C4 y UML para representar la arquitectura|
+| **AV2** | 26/04/2026 | **Ivo Machado Bracamonte** | Desarrollo de diagramas C4 y UML para representar la arquitectura |
 | **AV2** | 29/04/2026 | **Ivo Machado Bracamonte** | Construcción del backlog arquitectónico y alineación con requerimientos |
 | **AV2** | 26/04/2026 | **Contreras López, Leandro Saul** | Definición de constraints y architectural concerns del sistema |
-| **AV2** | 28/04/2026 | **Contreras López, Leandro Saul** |  Definición del propósito de diseño y funcionalidades principales (user stories)  |
+| **AV2** | 28/04/2026 | **Contreras López, Leandro Saul** | Definición del propósito de diseño y funcionalidades principales (user stories) |
 | **AV2** | 18/04/2026 | **Contreras López, Leandro Saul** | Creación y priorización del Product Backlog basado en valor de negocio |
 | **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Redactar escenarios de atributos de calidad y sus respectivos drivers |
 | **AV2** | 1/05/2026 | **Cesar Augusto Arostegui Alzamora** | Mejorar la redacción de la sección de Tácticas Arquitectónicas |
