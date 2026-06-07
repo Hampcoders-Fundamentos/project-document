@@ -31,7 +31,7 @@ Estos son los estilos y patrones arquitectónicos que se ha seleccionado para gu
 | Documentación OpenAPI | Documentar las APIs siguiendo el estándar OpenAPI |
 | Seguridad y Protección de información sensible | Gestión de acceso y autorización centralizada para garantizar el correcto tratamiento y protección de información sensible. |
 
-### 4.1.3 Sotfware Architecture Context Diagram
+### 4.1.3 Software Architecture Context Diagram
 
 Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principales actores, sistemas externos y los límites del sistema. Este diagrama ayuda a visualizar cómo Glottia interactúa con su entorno y define claramente las interfaces entre el sistema y sus usuarios o servicios externos. El software principal se conectará con servicios externos de Gemini AI y Stripe para generación de contenido y procesamiento de pagos, respectivamente.
 \
@@ -41,7 +41,7 @@ Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principale
 
 A continuación, se desglosa la arquitectura de Glottia descendiendo de manera progresiva a través de los siguientes niveles del enfoque C4, permitiendo mapear desde la distribución lógica de contenedores en infraestructura hasta la organización de responsabilidades por componentes de código.
 
-###  Sotfware Architecture Container Diagram
+### Software Architecture Container Diagram
 
 El Diagrama de Contenedores representa el nivel 2 del Modelo C4 e ilustra la estructura de alto nivel de la arquitectura de software, detallando la distribución de responsabilidades tecnológicas ejecutables dentro del sistema de Glottia. Este diagrama expone cómo se descompone la aplicación en aplicaciones web, servicios backend autónomos y almacenes de datos persistentes, especificando los protocolos de comunicación de red (HTTP/REST, JSON) que permiten la interoperabilidad del ecosistema distribuido.
 
@@ -49,7 +49,7 @@ El Diagrama de Contenedores representa el nivel 2 del Modelo C4 e ilustra la est
 ![Container-Diagram](assets/img/cap4/c4-container.png)
 
 
-###  Sotfware Architecture Component Diagram
+### Software Architecture Component Diagram
 
 El Diagrama de Componentes corresponde al nivel 3 del Modelo C4 y realiza una deconstrucción profunda e interna de un contenedor específico de la aplicación. Su objetivo es mapear cómo se estructuran las clases, controladores, casos de uso y adaptadores de infraestructura para dar soporte a la lógica de negocio, definiendo las interfaces y dependencias internas bajo los lineamientos de **Clean Architecture** y los patrones de diseño adoptados por el equipo.
 
