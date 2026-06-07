@@ -9,7 +9,7 @@
 | **AV1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar Solution Profile |
 | **AV1** | 07/04/2026 | **Ethan Matías Aliaga Aguirre** | Redactar tabla base para colocar nombres de los integrantes |
 | **AV1** | 13/04/2026 | **Ethan Matías Aliaga Aguirre** | Ajustar segmentos objetivos |
-| **AV1** | 13/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadió To-Be Scenario Mapping y realización de entrevistas |
+| **AV1** | 19/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadió To-Be Scenario Mapping y realización de entrevistas |
 | **AV1** | 12/04/2026 | **Ivo Machado Bracamonte** | Apoyo en la definición del Lean UX Assumptions e Hipótesis |
 | **AV1** | 15/04/2026 | **Ethan Matías Aliaga Aguirre** | Corregir el formato del documento |
 | **AV1** | 15/04/2026 | **Cesar Augusto Arostegui Alzamora** | Realiza el User Task Matrix y su respectivo análisis |
@@ -18,7 +18,7 @@
 | **AV1** | 18/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadir el registro de entrevistas para los 2 segmentos objetivos y análisis de las entrevistas |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Elaboración del Impact Map para definir objetivos de negocio y alineación de funcionalidades |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Análisis de competidores para identificar oportunidades y diferenciación del producto |
-| **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Desarrollo del Customer Journey Map (As-Is) para identificar problemas actuales del usuario |
+| **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Desarrollo del As-Is Scenario Map (As-Is) para identificar problemas actuales del usuario |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Apoyo en la realización y análisis de entrevistas a usuarios |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Creación y priorización del Product Backlog basado en valor de negocio |
 | **AV1** | 18/04/2026 | **Contreras López, Leandro Saul** | Elaboración del Impact Map para definir objetivos de negocio y alineación de funcionalidades |
@@ -42,15 +42,13 @@
 | **AV2** | 25/04/2026 | **Cesar Augusto Arostegui Alzamora** | Elaboración de diagramas de base de datos relacional y no relacional |
 | **TP1** | 12/04/2026 | **Ivo Marcelo Machado Bracamonte** | Elaboración y estructuración de las preguntas base para las entrevistas a usuarios |
 | **TP1** | 12/04/2026 | **Italo Ludwing Sánchez Manrique** | Definición y desarrollo del User Persona correspondiente al Segmento 2 |
-| **TP1** | 13/04/2026 | **Cesar Augusto Arostegui Alzamora** | Mapeo de escenarios futuros y diagramación del To-Be Scenario Mapping |
+| **TP1** | 19/04/2026 | **Cesar Augusto Arostegui Alzamora** | Mapeo de escenarios futuros y diagramación del To-Be Scenario Mapping |
 | **TP1** | 14/04/2026 | **Ethan Matías Aliaga Aguirre** | Redacción inicial y análisis de requerimientos del Capítulo II |
 | **TP1** | 15/04/2026 | **Ivo Marcelo Machado Bracamonte** | Consolidación y corrección de formato en la especificación de requerimientos del Capítulo II |
 | **TP1** | 15/04/2026 | **Italo Ludwing Sánchez Manrique** | Redacción y estructuración de User Stories para la Landing Page |
 | **TP1** | 15/04/2026 | **Contreras López, Leandro Saul** | Ajustes y validación de la especificación de requerimientos del Capítulo III |
 | **TP1** | 22/04/2026 | **Contreras López, Leandro Saul** | Diseño preliminar y estructuración de la arquitectura del producto para el Capítulo IV |
 | **TP1** | 25/04/2026 | **Cesar Augusto Arostegui Alzamora** | Desarrollo del entregable Avance 2 (AV2) y consolidación de diagramas |
-| **TP1** | 27/04/2026 | **Cesar Augusto Arostegui Alzamora** | Implementación de soporte para Windows en la generación de PDFs y optimización de documentación |
-| **TP1** | 01/05/2026 | **Cesar Augusto Arostegui Alzamora** | Incorporación final de soporte Windows para PDFs y estandarización de tablas Markdown |
 | **TP1** | 13/05/2026 | **Contreras López, Leandro Saul** | Validación del entorno de desarrollo y despliegue del Capítulo V |
 | **TP1** | 13/05/2026 | **Contreras López, Leandro Saul** | Creación y estructuración de los archivos markdown base para el Capítulo V |
 | **TP1** | 14/05/2026 | **Ethan Matías Aliaga Aguirre** | Actualización de la configuración y dependencias de Pandoc para compilación del reporte |
