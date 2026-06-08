@@ -359,6 +359,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 - Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQBEM5B_aIDCSLpXh7So9i2xAZHFPevkYbwJ9FiRhPvnYc4?e=3lSEOG&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D>
 - Inicia en: 0:36
 - Duración: 5:56
+- Entrevistador: Cesar Augusto Arostegui Alzamora
 
 ![Entrevista Virgilio](assets/img/cap2/entrevista-2-1.png)
 
@@ -381,7 +382,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 - Sexo: Femenino
 - Edad: 26 años
-- Link: <https://www.youtube.com/watch?v=Y0F_L92XEGc>
+- Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQBo7e7gA8E8R6JokL59WroZAW0-yTtKuFC4aiCo18XZTmQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=dGRYo4>
 - Inicia en: 0:06
 - Duración: 5:49
 - Entrevistador: Italo Ludwing Sánchez Manrique
