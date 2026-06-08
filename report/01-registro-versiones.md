@@ -13,6 +13,10 @@
 | **AV1** | 18/04/2026 | **Cesar Augusto Arostegui Alzamora** | Realiza el User Task Matrix y su respectivo análisis (Cap II) |
 | **AV1** | 18/04/2026 | **Ivo Machado Bracamonte** | Apoyo en la definición del User Persona (Cap II) |
 | **AV1** | 18/04/2026 | **Ivo Machado Bracamonte** | Creación y priorización del Product Backlog basado en valor de negocio (Cap II) |
+| **AV1** | 18/04/2026 | **Cesar Augusto Arostegui Alzamora** | Conducir entrevista N°1 (Alexander Montoya) - Segmento 1 |
+| **AV1** | 18/04/2026 | **Ethan Matías Aliaga Aguirre** | Conducir entrevistas N°2 y N°3 (Ricardo Del Aguila, Eric Olivera) - Segmento 1 |
+| **AV1** | 18/04/2026 | **Italo Ludwing Sánchez Manrique** | Conducir entrevista N°2 (Yamile Francia) - Segmento 2 |
+| **AV1** | 18/04/2026 | **Leandro Saul Contreras López** | Conducir entrevista N°3 (Mercedez Gonzalez) - Segmento 2 |
 | **AV1** | 18/04/2026 | **Cesar Augusto Arostegui Alzamora** | Añadir el registro de entrevistas para los 2 segmentos objetivos y análisis (Cap II) |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Elaboración del Impact Map para definir objetivos de negocio (Cap II) |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | Análisis de competidores para identificar oportunidades (Cap II) |
