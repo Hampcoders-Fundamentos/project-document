@@ -172,7 +172,7 @@ Comprender necesidades, motivaciones, fricciones y condiciones de confianza para
 
 - **Modalidad:** Presencial cuando la logística lo permitiera (especialmente para Segmento 2, observación del contexto físico); remota según disponibilidad del entrevistado.
 - **Duración estimada:** 5–10 minutos por entrevista (preguntas principales); 1–2 minutos para cierre y notas; grabación por audio/video para referencia.
-- **Método:** Entrevistas semiestructuradas basadas en guiones temáticos (ver secciones 2.2.1.2 y 2.2.1.3), con flexibilidad para profundizar en respuestas divergentes.
+- **Método:** Entrevistas semiestructuradas basadas en guiones temáticos, con flexibilidad para profundizar en respuestas divergentes.
 
 **Distribución de Roles durante la Entrevista**
 
@@ -182,7 +182,7 @@ Comprender necesidades, motivaciones, fricciones y condiciones de confianza para
 
 **Garantías Metodológicas**
 
-Cada sesión de entrevista contó con **al menos dos miembros del equipo** (entrevistador + observador/co-investigador) para reducir sesgo de un solo entrevistador, validar interpretaciones y asegurar rigor en la recopilación de datos cualitativos. Esta práctica de "triangulación de observadores" mejora la confiabilidad de los hallazgos (ver sección 2.2.2 para asignación de roles por entrevista).
+Cada sesión de entrevista contó con **al menos dos miembros del equipo** (entrevistador + observador/co-investigador) para reducir sesgo de un solo entrevistador, validar interpretaciones y asegurar rigor en la recopilación de datos cualitativos. Esta práctica de "triangulación de observadores" mejora la confiabilidad de los hallazgos.
 
 #### 2.2.1.2 Guion de entrevista — Segmento 1: Usuarios (aprendices de idiomas)
 Cada pregunta va acompañada de una breve justificación metodológica.
@@ -289,7 +289,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 - **Contexto y métodos actuales:** Integra el inglés en su vida cotidiana (viendo series, leyendo), pero no utiliza métodos formales ni plataformas especializadas. 
 
-- **Principales limitaciones:** Su mayor dificultad es la falta de práctica oral. Como lo expresó: *"Las ideas suenan bien en mi cabeza, pero cuando hablo me cuesta aterrizar la idea y pronunciar correctamente"*. Esta brecha entre comprensión receptiva y producción oral es un patrón recurrente en el segmento (ver Eric Olivera, N°3).
+- **Principales limitaciones:** Su mayor dificultad es la falta de práctica oral. Como lo expresó: *"Las ideas suenan bien en mi cabeza, pero cuando hablo me cuesta aterrizar la idea y pronunciar correctamente"*. Esta brecha entre comprensión receptiva y producción oral es un patrón recurrente en el segmento.
 
 - **Preferencias de entorno y lugares:** Prefiere conversar con desconocidos porque siente que la charla fluye de manera más fácil. Su lugar ideal para estos encuentros presenciales son las **cafeterías** por ser espacios sociales, cotidianos y cómodos.
 
@@ -419,45 +419,13 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 - **Gestión de grupos y reservas:** Actualmente gestiona reservas informales a través de llamadas y WhatsApp, solicitándolas con un día de anticipación para grupos de **cuatro o más personas**. Solicita un **pago adelantado parcial** del consumo estimado para asegurar la reserva. Ante inasistencias, mantiene un margen de espera de **15–20 minutos** antes de liberar el espacio. Observación importante: *"El ruido de los grupos grandes puede ser una dificultad, ya que incomoda a clientes que buscan trabajar o leer en tranquilidad"*. Esta tensión entre nuevos grupos y clientes habituales es una restricción operativa clave.
 
-- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros de idiomas. Valora positivamente que el negocio aparezca en una plataforma para organizar encuentros, viéndolo como una excelente herramienta de **marketing y posicionamiento** para su marca—la más explícita en ver valor comercial diferenciado.
+- **Disposición como punto de encuentro:** Está totalmente dispuesta a ofrecer su cafetería como espacio para encuentros de idiomas. Valora positivamente que el negocio aparezca en una plataforma para organizar encuentros, viéndolo como una excelente herramienta de **marketing y posicionamiento** para su marca, la más explícita en ver valor comercial diferenciado.
 
 - **Expectativa de consumo:** La condición principal para el uso del espacio es que los asistentes **consuman los productos** de la cafetería (café o repostería). A diferencia de Yamile, Mercedez enfatiza la importancia del consumo como **requisito**, no como "esperanza".
 
 - **Expectativas estructurales de la app:** La aplicación debe permitir gestionar y difundir **cupos máximos** para los encuentros. Espera un sistema **intuitivo para confirmar asistencias**, que proporcione información sobre el tipo de cliente que asistirá y que no complique la labor operativa de los meseros. El foco está en simplificar, no agregar complejidad.
 
 - **Manejo de promociones e incentivos:** Se muestra abierta a ofrecer descuentos y promociones. Sin embargo, enfatiza que los términos y condiciones **"deben ser conversados y acordados directamente"** con la persona o entidad que solicita el servicio. Esto sugiere preferencia por negociación bilateral, no imposición de sistema.
-
-### 2.2.2.1 Validación Metodológica: Roles de Entrevista
-
-La siguiente tabla documenta la composición del equipo en cada sesión, asegurando que cada entrevista contó con **triangulación de observadores** (entrevistador + co-investigador/observador) para reducir sesgo y validar interpretaciones:
-
-| Entrevista | Entrevistador Principal | Observador / Co-investigador | Modalidad | Validación |
-|:---|:---|:---|:---|:---|
-| **Segmento 1: Alexander Montoya** | Cesar Augusto Arostegui Alzamora | [Presente en registro] | Remota (video) | ✓ Doble revisión |
-| **Segmento 1: Ricardo Del Aguila** | Ethan Matías Aliaga Aguirre | [Presente en registro] | Remota (video) | ✓ Doble revisión |
-| **Segmento 1: Eric Olivera** | Ethan Matías Aliaga Aguirre | [Presente en registro] | Remota (video) | ✓ Doble revisión |
-| **Segmento 2: Virgilio Sanchez** | Cesar Augusto Arostegui Alzamora | [Presente en registro] | Remota (video) | ✓ Doble revisión |
-| **Segmento 2: Yamile Francia** | Italo Ludwing Sánchez Manrique | [Presente en registro] | Presencial | ✓ Doble revisión |
-| **Segmento 2: Mercedez Gonzalez** | Leandro Saul Contreras López | [Presente en registro] | Remota (video) | ✓ Doble revisión |
-
-**Nota:** Los registros de video/audio capturados en SharePoint y YouTube contienen las intervenciones de observadores y permitieron posterior validación de citas textuales. Esta práctica asegura que los análisis no se basan en interpretaciones unilaterales de un solo investigador.
-
-### 2.2.2.2 Limitaciones Metodológicas y Recomendaciones para Futuras Iteraciones
-
-**Limitación 1: Diversidad limitada en Segmento 2**  
-Las tres entrevistas del Segmento 2 corresponden a establecimientos del rubro de **cafeterías/panaderías** (Virgilio: panadería-cafetería; Yamile: cafetería; Mercedez: cafetería). No se incluyeron otros tipos de espacios públicos relevantes (coworkings, bibliotecas, restaurantes, espacios culturales) que podrían tener dinámicas, restricciones y motivaciones diferentes.
-
-*Recomendación para AV3/TP2:* Ampliar el Segmento 2 con perfiles diferenciados—e.g., administrador de coworking (modelo de suscripción), bibliotecario (enfoque educativo), restaurante (diferente ticket y consumo), espacio cultural (énfasis en comunidad). Esto permitirá identificar patrones transversales y cómo la solución se adapta a contextos distintos.
-
-**Limitación 2: Análisis deductivo predominante en los resúmenes**  
-Aunque ahora se han incluido citas textuales, los primeros resúmenes (en versiones anteriores) utilizaban categorías estandarizadas preconcebidas sin explicitar cómo emergieron los patrones de los datos brutos. Esto riesga un sesgo hacia "encontrar lo que se esperaba".
-
-*Recomendación para AV3/TP2:* Complementar análisis con ciclos de codificación abierta (open coding) que identifiquen categorías emergentes de las transcripciones, antes de aplicar la grilla estándar. Esto combina rigor inductivo con estructura comparativa.
-
-**Limitación 3: Énfasis en Arostegui como entrevistador principal**  
-El registro de versiones (2.2.1 anterior) muestra que **Cesar Arostegui realizó la mayoría de entrevistas iniciales**, con "apoyo" posterior de otros. Aunque ahora se documenta co-investigadores en cada sesión, esto puede reflejar sesgo de formulación o énfasis de preguntas en las entrevistas tempranas del Segmento 1.
-
-*Recomendación para AV3/TP2:* Rotar roles de entrevistador principal entre miembros del equipo para cada nueva iteración de entrevistas, asegurando diversidad de perspectivas en la recopilación primaria de datos.
 
 ---
 
@@ -467,7 +435,7 @@ En este apartado se realiza un análisis de las entrevistas realizadas a los seg
 
 #### Segmento 1: Usuarios aprendices de idiomas
 
-**Total de entrevistas:** 3 entrevistas semiestructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores (ver sección 2.2.2.1).
+**Total de entrevistas:** 3 entrevistas semiestructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores.
 
 A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han identificado *insights* y *patrones de comportamiento* sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis cualitativo respaldado en citas textuales:
 
@@ -500,7 +468,7 @@ A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes u
 
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
-**Total de entrevistas:** 3 entrevistas semiestructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores (ver sección 2.2.2.1). 
+**Total de entrevistas:** 3 entrevistas semiestructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores. 
 
 **Nota limitación metodológica:** Las tres pertenecen al rubro de cafeterías/panaderías, lo que limita generalización a otros tipos de espacios públicos. Ver recomendaciones en sección 2.2.2.2.
 
