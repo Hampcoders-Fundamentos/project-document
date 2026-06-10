@@ -21,7 +21,7 @@ Visión: Ser el motor tecnológico detrás de la próxima generación de emprend
 \begin{minipage}{0.65\textwidth}
 
 \textbf{Ethan Matias Aliaga Aguirre} \\
-Código: U202318323  
+\textbf{Código:} U202318323  
 
 Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Software en la UPC, sede San Miguel. Me caracterizo por mi compromiso, responsabilidad, habilidad para trabajar en equipo y comunicación. Mis conocimientos incluyen arquitectura de software y desarrollo de APIs. Además, tengo experiencia en el uso de herramientas como Photoshop, Filmora y Vegas Studio, lo que me permite aportar con soluciones creativas y técnicas en mis proyectos. Estoy comprometido con mi crecimiento personal y profesional, siempre buscando aprender y mejorar en cada oportunidad que se presente.
 \end{minipage}
@@ -38,7 +38,7 @@ Soy Ethan Matias Aliaga Aguirre, estudiante de 7mo ciclo de Ingeniería de Softw
 \begin{minipage}{0.65\textwidth}
 
 \textbf{Leandro Saúl Contreras López} \\
-**Código:** U20231E215
+\textbf{Código:} U20231E215
 
 Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de Software en la UPC, sede San Miguel. Tengo 19 años y estoy cursando el sexto ciclo académico. Me considero una persona adaptativa, perseverante y comprometida con lo que me propongo. En este proyecto tengo como objetivo buscar múltiples soluciones que beneficien a todo el grupo. Por experiencia propia, suelo trabajar de manera colaborativa y eficaz. Al terminar la carrera de ingeniería, me gustaría estudiar una segunda carrera: Gastronomía y Gestión Culinaria.
 \end{minipage}
@@ -54,7 +54,7 @@ Mucho gusto, soy Leandro Contreras, estudiante de la carrera de Ingeniería de S
 \begin{minipage}{0.65\textwidth}
 
 \textbf{Ivo Marcelo Machado Bracamonte} \\
-**Código:** U20231C368
+\textbf{Código:} U20231C368
 
 Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ingeniería de Software en la UPC. Me caracterizo por mi mentalidad resiliente, ya que no me rindo con facilidad y no le tengo miedo al error. Tengo empatía con los demás, disfruto resolver problemas y busco mejorar constantemente en lo que hago. Poseo conocimientos en lenguajes de programación como C++, Java y Python, así como en HTML, CSS y JavaScript. Además, domino el inglés y tengo conocimientos de portugués.
 \end{minipage}
@@ -71,7 +71,7 @@ Mi nombre es Ivo Machado, tengo 19 años y soy estudiante del sexto ciclo de Ing
 \begin{minipage}{0.65\textwidth}
 
 \textbf{Italo Ludwing Sanchez Manrique} \\
-Código: U202316967  
+\textbf{Código:} U202316967  
 
 Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de Software en la UPC. Tengo 19 años y actualmente curso el sexto ciclo académico. Destaco por mi perseverancia, tolerancia y compromiso con mis metas. En este proyecto, mi objetivo es buscar soluciones que beneficien al grupo, ya que tengo experiencia trabajando de forma proactiva y colaborativa. Además, poseo sólidos conocimientos en lenguajes de programación como Java y C++.
 \end{minipage}
@@ -87,7 +87,7 @@ Mi nombre es Italo Ludwing Sanchez Manrique, soy estudiante de Ingeniería de So
 \begin{minipage}{0.65\textwidth}
 
 \textbf{César Augusto Arostegui Alzamora} \\
-**Código:** U202114548
+\textbf{Código:} U202114548
 
 Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 años. Mi lenguaje de programación más utilizado y favorito es TypeScript. Actualmente me encuentro desarrollando habilidades en áreas como DevOps y frameworks de desarrollo móvil.
 \end{minipage}
@@ -228,11 +228,11 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 **Sabremos que** los descuentos agregados son efectivos **cuando veamos** que la tasa de usuarios recurrentes y de participación en encuentros aumente en un 20% en 6 semanas.
 
+\newpage
+
 #### 1.2.3.4 Lean UX Canvas
 
-Imagen del Lean UX Canvas
-\
-![Lean UX Canvas](assets/img/cap1/canvas/lean-ux-canvas-Glottia.jpg){ width=80% }
+![Imagen del Lean UX Canvas](assets/img/cap1/canvas/lean-ux-canvas-Glottia.jpg)
 
 ## 1.3 Segmentos objetivo
 
