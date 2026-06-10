@@ -3,3 +3,5 @@ Makefile
 ._*
 .DS_Store
 .vscode
+
+tectonic.exe

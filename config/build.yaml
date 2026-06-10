@@ -13,7 +13,7 @@ input-files:
 
 output-file: dist/upc-pre-202610-si657-7944-hampcoders-report-tp1.pdf
 
-pdf-engine: lualatex
+pdf-engine: tectonic.exe
 toc: false
 toc-depth: 4
 number-sections: false
@@ -29,6 +29,8 @@ resource-path:
   - "assets/img/cap5"
   - "assets/img/general"
 
+include-in-header: config/header.tex
+
 variables:
   geometry: [left=0.8in, right=0.8in, top=1in, bottom=1in]
   mainfont: "Arial"
@@ -39,25 +41,6 @@ variables:
   logo: "assets/img/general/upc-logo.png"
   titlepage: true
   titlepage-color: "FFFFFF"
-  header-includes:
-    - \usepackage{graphicx}
-    - \usepackage{float}
-    - \usepackage{seqsplit}
-    - \usepackage{needspace}
-    - \usepackage{enumitem}
-    - \usepackage[table,xcdraw]{xcolor}
-    - \makeatletter
-    - \def\fps@figure{H}
-    - \def\fps@table{H}
-    - \makeatother
-    - \setkeys{Gin}{width=\linewidth,height=0.45\textheight,keepaspectratio}
-    - \usepackage{longtable}
-    - \usepackage{array}
-    - \usepackage{booktabs}
-    - \usepackage{tabularx}
-    - \usepackage{etoolbox}
-    - \setlength{\tabcolsep}{6pt}
-    - \renewcommand{\arraystretch}{1.5}
-    - \AtBeginEnvironment{tabular}{\small}
-    - \AtBeginEnvironment{tabularx}{\small}
-    - \AtBeginEnvironment{longtable}{\small}
+  classoption: 
+    - table
+    - xcdraw

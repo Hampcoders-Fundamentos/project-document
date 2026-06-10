@@ -6,7 +6,7 @@ Para el desarrollo de Glottia, la fase de validación se fundamenta en la automa
 
 Las pruebas se redactan en lenguaje **Gherkin**, un lenguaje específico de dominio estructurado mediante la semántica intuitiva *Given-When-Then* (Dado-Cuando-Entonces). Esta estructura permite documentar de forma viva los requisitos del sistema y convertirlos en scripts ejecutables que auditan los contratos de las APIs (códigos de estado HTTP, payloads de respuesta, persistencia en base de datos y flujos excepcionales de seguridad) de manera continua en nuestro pipeline de Integración Continua (CI).
 
----
+***
 
 ### 5.1.1 Backend Application Core Testing Suite
 
@@ -32,7 +32,7 @@ Esta suite de pruebas agrupa los escenarios de prueba funcionales, unitarios y d
 | **TS-PRF-08** | `profile_discovery.feature` | Profiles Microservice | US08: Ver perfil de otro usuario |
 | **TS-PRF-09** | `profile_avatar.feature` | Profiles Microservice | US09: Subir foto de perfil |
 
----
+***
 
 ### 5.1.2 Pattern Based Backend Application(s)
 
@@ -43,7 +43,7 @@ El backend modular y la subsiguiente arquitectura de microservicios de Glottia h
 * **Dependency Injection (Inyección de Dependencias):** Utilizado de forma nativa para desacoplar las clases de la capa de infraestructura de las capas de aplicación y dominio. Permite que, durante la ejecución de los Testing Suites, se puedan inyectar dobles de prueba (*Mocks* o *Stubs*) de componentes de infraestructura complejos, permitiendo probar la lógica de las historias de usuario de forma aislada.
 * **API Gateway Pattern:** Actúa como punto único de entrada para el cliente móvil (Flutter). Las pruebas orientadas a este patrón validan el correcto enrutamiento perimetral, la agregación de solicitudes hacia los microservicios internos de IAM y Profiles, y el manejo centralizado de políticas de Cross-Origin Resource Sharing (CORS).
 
----
+***
 
 ### 5.1.3 Pattern Based Custom Software Library
 
@@ -53,7 +53,7 @@ Para resolver necesidades transversales dentro del ecosistema de Glottia (*Cross
 * **Crypto Guard Engine (BCrypt Wrapper):** Componente dedicado a la seguridad adaptativa de datos sensibles mediante algoritmos de hash unidireccionales de alto costo computacional. Se utiliza para el cifrado seguro (*salting* y *hashing*) de contraseñas durante el registro e inicio de sesión, impidiendo el almacenamiento de texto plano en la base de datos.
 * **Custom Cloud Storage & Media Curation Library:** Utilizada de manera transversal por el microservicio de perfiles para interactuar de forma segura con APIs de almacenamiento de objetos en la nube (ej. Amazon S3 o Cloudinary). Esta librería procesa flujos de datos *multipart/form-data*, valida las restricciones de peso (máximo 5MB) y dimensiones, y realiza la curación de imágenes de los avatares de usuario. Sus pruebas de aceptación validan el rechazo de extensiones de archivos no permitidas (ej. ejecutables maliciosos).
 
----
+***
 
 ### 5.1.4 Framework Pattern Driven Refactoring Report
 
@@ -62,7 +62,7 @@ Para resolver necesidades transversales dentro del ecosistema de Glottia (*Cross
 Software Configuration Management (SCM) —o Gestión de la Configuración de Software— es una disciplina de la ingeniería de software que se encarga de rastrear, controlar y organizar todos los cambios que ocurren en el ciclo de vida de un proyecto. 
 Su objetivo principal es asegurar que, sin importar cuántas personas estén trabajando en el proyecto o cuántas funciones nuevas se agreguen, el software se mantenga estable, consistente y libre de caos. (GeeksforGeeks, 2025)
 
----
+***
 ### 5.2.1 Software Development Environment Configuration
 
 #### **Project Requirements Management**
@@ -123,7 +123,7 @@ Plataforma en la nube diseñada para el desarrollo colaborativo de software, per
 **Link de referencia**
 [Acceder a Github](https://github.com/)
 
----
+***
 
 ### 5.2.2 Source Code Management
 
@@ -283,7 +283,7 @@ Actualmente, el sitio ya cuenta con diversas secciones operativas que ofrecen in
 
  - **Sección Sobre Nosotros:** El usuario puede conocer la identidad corporativa de la plataforma a través de su Misión, enfocada en facilitar la práctica oral mediante experiencias reales y seguras, y su Visión, que aspira a convertir a Glottia en la comunidad global de referencia para el intercambio cultural.. 
  (assets/img/cap5/about-us.png)
----
+***
 
 #### 5.2.1.3 Testing Suite Evidence for Sprint Review
 
@@ -291,7 +291,7 @@ En esta sección se detalla el conjunto de pruebas de integración y aceptación
 
 Esta metodología permite definir el comportamiento del sistema desde la perspectiva del usuario mediante escenarios estructurados (*Given-When-Then*), facilitando la verificación técnica de los Web Services y asegurando que cada microservicio cumpla estrictamente con las reglas del negocio digital antes de su despliegue.
 
----
+***
 
 ### IAM Microservice Testing Suite
 
@@ -367,7 +367,7 @@ Feature: Partner and Business Registration
     Then the venue status should transition to "ACTIVE"
     And it should become visible on the public platform
 
----
+***
 
 #### `auth_login.feature` (Relacionado con US03)
 
@@ -416,7 +416,7 @@ Feature: General User Authentication
     And redirect the client application to the login prompt
 
 
----
+***
 
 #### `auth_logout.feature` (Relacionado con US04)
 
@@ -444,7 +444,7 @@ Feature: User Session Invalidation
     When they trigger the "Cerrar sesión en todos los dispositivos" command
     Then the system should revoke all active tokens associated with that user ID
 
----
+***
 
 
 #### `auth_password_recovery.feature` (Relacionado con US05)
@@ -675,14 +675,14 @@ El microservicio IAM (Identity and Access Management) es responsable de la auten
 
 | Endpoint | HTTP Method | Description |
 |---|---|---|
-| `/api/v1/auth/register` | POST | Registro de nuevos usuarios |
-| `/api/v1/auth/login` | POST | Inicio de sesión |
-| `/api/v1/auth/refresh-token` | POST | Renovación de token JWT |
-| `/api/v1/auth/logout` | POST | Cierre de sesión |
+| \seqsplit{`/api/v1/auth/register`} | POST | Registro de nuevos usuarios |
+| \seqsplit{`/api/v1/auth/login`} | POST | Inicio de sesión |
+| \seqsplit{`/api/v1/auth/refresh-token`} | POST | Renovación de token JWT |
+| \seqsplit{`/api/v1/auth/logout`} | POST | Cierre de sesión |
 
 #### Swagger Evidence — IAM
 
-La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio IAM.
+La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio IAM.
 
 
 ![](assets/img/cap5/iam.jpeg)
@@ -717,20 +717,20 @@ El microservicio Encounters administra la creación, búsqueda, reserva y seguim
 
 | Endpoint | HTTP Method | Description |
 |---|---|---|
-| `/api/v1/encounters` | POST | Crear encounter |
-| `/api/v1/encounters/search` | GET | Buscar encounters |
-| `/api/v1/encounters/search-simple` | GET | Búsqueda simplificada |
-| `/api/v1/encounters/{encounterId}` | GET | Obtener encounter |
-| `/api/v1/encounters/{encounterId}/start` | POST | Iniciar encounter |
-| `/api/v1/encounters/{encounterId}/complete` | POST | Completar encounter |
-| `/api/v1/encounters/{encounterId}/attendances` | POST | Registrar asistencia |
-| `/api/v1/encounters/{encounterId}/attendances/check-in` | POST | Realizar check-in |
-| `/api/v1/encounters/{encounterId}/attendances/me` | DELETE | Cancelar asistencia |
-| `/api/v1/encounters/{encounterId}` | DELETE | Cancelar encounter |
+| \seqsplit{`/api/v1/encounters`} | POST | Crear encounter |
+| \seqsplit{`/api/v1/encounters/search`} | GET | Buscar encounters |
+| \seqsplit{`/api/v1/encounters/search-simple`} | GET | Búsqueda simplificada |
+| \seqsplit{`/api/v1/encounters/{encounterId}`} | GET | Obtener encounter |
+| \seqsplit{`/api/v1/encounters/{encounterId}/start`} | POST | Iniciar encounter |
+| \seqsplit{`/api/v1/encounters/{encounterId}/complete`} | POST | Completar encounter |
+| \seqsplit{`/api/v1/encounters/{encounterId}/attendances`} | POST | Registrar asistencia |
+| \seqsplit{`/api/v1/encounters/{encounterId}/attendances/check-in`} | POST | Realizar check-in |
+| \seqsplit{`/api/v1/encounters/{encounterId}/attendances/me`} | DELETE | Cancelar asistencia |
+| \seqsplit{`/api/v1/encounters/{encounterId}`} | DELETE | Cancelar encounter |
 
 #### Swagger Evidence — Encounters
 
-La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Encounters.
+La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Encounters.
 
 ![](assets/img/cap5/Encounters.png)
 
@@ -764,20 +764,20 @@ El microservicio Profiles gestiona la información pública y académica de los 
 
 | Endpoint | HTTP Method | Description |
 |---|---|---|
-| `/api/v1/profiles` | GET | Obtener todos los perfiles |
-| `/api/v1/profiles/{id}` | GET | Obtener perfil por ID |
-| `/api/v1/profiles` | POST | Crear nuevo perfil |
-| `/api/v1/profiles/{id}` | PUT | Actualizar perfil |
-| `/api/v1/profiles/{id}` | DELETE | Eliminar perfil |
-| `/api/v1/profiles/search` | GET | Buscar perfil por email |
-| `/api/v1/profiles/{profileId}/learner/languages` | POST | Agregar idioma |
-| `/api/v1/profiles/{profileId}/learner/languages/{languageId}` | PUT | Actualizar idioma |
-| `/api/v1/profiles/{id}/learner/languages/{languageId}` | DELETE | Eliminar idioma |
+| \seqsplit{`/api/v1/profiles`} | GET | Obtener todos los perfiles |
+| \seqsplit{`/api/v1/profiles/{id}`} | GET | Obtener perfil por ID |
+| \seqsplit{`/api/v1/profiles`} | POST | Crear nuevo perfil |
+| \seqsplit{`/api/v1/profiles/{id}`} | PUT | Actualizar perfil |
+| \seqsplit{`/api/v1/profiles/{id}`} | DELETE | Eliminar perfil |
+| \seqsplit{`/api/v1/profiles/search`} | GET | Buscar perfil por email |
+| \seqsplit{`/api/v1/profiles/{profileId}/learner/languages`} | POST | Agregar idioma |
+| \seqsplit{`/api/v1/profiles/{profileId}/learner/languages/{languageId}`} | PUT | Actualizar idioma |
+| \seqsplit{`/api/v1/profiles/{id}/learner/languages/{languageId}`} | DELETE | Eliminar idioma |
 
 
 #### Swagger Evidence — Profiles
 
-La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Profiles.
+La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Profiles.
 
 ![](assets/img/cap5/Profiles.png)
 
