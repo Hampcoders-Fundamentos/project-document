@@ -405,6 +405,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 
 **Entrevista N°3: Mercedez Gonzalez**
+
 - Sexo: Femenino
 - Edad: 42 años
 - Link: <https://upcedupe-my.sharepoint.com/:v:/g/personal/u202318323_upc_edu_pe/IQAGDlXi5oyDQY1IZzMQClG-AdjSTn4E5flgJBCuBcrbLbg?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D&e=kzt0g0>
