@@ -14,6 +14,7 @@ input-files:
 output-file: dist/upc-pre-202610-si657-7944-hampcoders-report-tp1.pdf
 
 pdf-engine: tectonic.exe
+listings: true
 toc: false
 toc-depth: 4
 number-sections: false

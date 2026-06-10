@@ -34,3 +34,63 @@
 \definecolor{emojiyellow}{HTML}{FFD700}
 \newfontfamily{\emojifont}{Segoe UI Emoji}[Renderer=HarfBuzz,Color=FFD700]
 \newunicodechar{⭐}{{\emojifont\textcolor{emojiyellow}{⭐}}}
+
+% Soporte nativo a Gherkin (Cucumber)
+\usepackage{listings}
+\usepackage{xcolor}
+% Definición de la paleta de colores para el código Gherkin
+\definecolor{gherkinKeyword}{HTML}{000080}   % Azul oscuro para palabras clave
+\definecolor{gherkinString}{HTML}{008000}    % Verde para cadenas de texto/variables
+\definecolor{gherkinComment}{HTML}{808080}   % Gris para comentarios
+\definecolor{gherkinText}{HTML}{000000}      % Negro para texto plano
+\definecolor{gherkinBg}{HTML}{F8F8F8}        % Gris muy claro para el fondo
+\lstdefinelanguage{Gherkin}{
+  keywords={Feature, Background, Scenario, Scenario Outline, Given, When, Then, And, But, Examples, Functional Requirement, Business Need, Requirement, Scenario Template, Scenarios},
+  sensitive=true,
+  comment=[l]{\#},
+  morestring=[b]",
+  morestring=[b]'
+}
+\lstset{
+  language=Gherkin,
+  backgroundcolor=\color{gherkinBg},
+  basicstyle=\small\ttfamily\color{gherkinText},
+  keywordstyle=\bfseries\color{gherkinKeyword},
+  stringstyle=\color{gherkinString},
+  commentstyle=\itshape\color{gherkinComment},
+  numbers=left,
+  numberstyle=\tiny\color{gherkinComment},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=2,
+  frame=single,
+  rulecolor=\color{gherkinComment!40},
+  captionpos=b,
+  keepspaces=true
+}
+
+% Forzar el centrado automático de todas las figuras del documento
+\usepackage[justification=centering]{caption}
+\AtBeginEnvironment{figure}{\centering}
+
+% Forzar el centrado automático de todas las tablas del documento
+\makeatletter
+% Reemplaza el entorno de figuras flotantes por un bloque estricto de texto
+\renewenvironment{figure}[1][]{%
+  \gdef\@captype{figure}% Permite que el comando \caption funcione fuera de un float
+  \par\medskip\centering
+}{%
+  \par\medskip
+}
+
+% Reemplaza el entorno de tablas flotantes por un bloque estricto de texto
+\renewenvironment{table}[1][]{%
+  \gdef\@captype{table}% Permite que el comando \caption funcione fuera de un float
+  \par\medskip\centering
+}{%
+  \par\medskip
+}
+\makeatother
