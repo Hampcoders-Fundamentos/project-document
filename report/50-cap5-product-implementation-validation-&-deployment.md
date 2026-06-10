@@ -675,14 +675,14 @@ El microservicio IAM (Identity and Access Management) es responsable de la auten
 
 | Endpoint | HTTP Method | Description |
 |---|---|---|
-| `/api/v1/auth/register` | POST | Registro de nuevos usuarios |
-| `/api/v1/auth/login` | POST | Inicio de sesión |
-| `/api/v1/auth/refresh-token` | POST | Renovación de token JWT |
-| `/api/v1/auth/logout` | POST | Cierre de sesión |
+| \seqsplit{`/api/v1/auth/register`} | POST | Registro de nuevos usuarios |
+| \seqsplit{`/api/v1/auth/login`} | POST | Inicio de sesión |
+| \seqsplit{`/api/v1/auth/refresh-token`} | POST | Renovación de token JWT |
+| \seqsplit{`/api/v1/auth/logout`} | POST | Cierre de sesión |
 
 #### Swagger Evidence — IAM
 
-La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio IAM.
+La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio IAM.
 
 
 ![](assets/img/cap5/iam.jpeg)
@@ -717,20 +717,20 @@ El microservicio Encounters administra la creación, búsqueda, reserva y seguim
 
 | Endpoint | HTTP Method | Description |
 |---|---|---|
-| `/api/v1/encounters` | POST | Crear encounter |
-| `/api/v1/encounters/search` | GET | Buscar encounters |
-| `/api/v1/encounters/search-simple` | GET | Búsqueda simplificada |
-| `/api/v1/encounters/{encounterId}` | GET | Obtener encounter |
-| `/api/v1/encounters/{encounterId}/start` | POST | Iniciar encounter |
-| `/api/v1/encounters/{encounterId}/complete` | POST | Completar encounter |
-| `/api/v1/encounters/{encounterId}/attendances` | POST | Registrar asistencia |
-| `/api/v1/encounters/{encounterId}/attendances/check-in` | POST | Realizar check-in |
-| `/api/v1/encounters/{encounterId}/attendances/me` | DELETE | Cancelar asistencia |
-| `/api/v1/encounters/{encounterId}` | DELETE | Cancelar encounter |
+| \seqsplit{`/api/v1/encounters`} | POST | Crear encounter |
+| \seqsplit{`/api/v1/encounters/search`} | GET | Buscar encounters |
+| \seqsplit{`/api/v1/encounters/search-simple`} | GET | Búsqueda simplificada |
+| \seqsplit{`/api/v1/encounters/{encounterId}`} | GET | Obtener encounter |
+| \seqsplit{`/api/v1/encounters/{encounterId}/start`} | POST | Iniciar encounter |
+| \seqsplit{`/api/v1/encounters/{encounterId}/complete`} | POST | Completar encounter |
+| \seqsplit{`/api/v1/encounters/{encounterId}/attendances`} | POST | Registrar asistencia |
+| \seqsplit{`/api/v1/encounters/{encounterId}/attendances/check-in`} | POST | Realizar check-in |
+| \seqsplit{`/api/v1/encounters/{encounterId}/attendances/me`} | DELETE | Cancelar asistencia |
+| \seqsplit{`/api/v1/encounters/{encounterId}`} | DELETE | Cancelar encounter |
 
 #### Swagger Evidence — Encounters
 
-La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Encounters.
+La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Encounters.
 
 ![](assets/img/cap5/Encounters.png)
 
@@ -764,20 +764,20 @@ El microservicio Profiles gestiona la información pública y académica de los 
 
 | Endpoint | HTTP Method | Description |
 |---|---|---|
-| `/api/v1/profiles` | GET | Obtener todos los perfiles |
-| `/api/v1/profiles/{id}` | GET | Obtener perfil por ID |
-| `/api/v1/profiles` | POST | Crear nuevo perfil |
-| `/api/v1/profiles/{id}` | PUT | Actualizar perfil |
-| `/api/v1/profiles/{id}` | DELETE | Eliminar perfil |
-| `/api/v1/profiles/search` | GET | Buscar perfil por email |
-| `/api/v1/profiles/{profileId}/learner/languages` | POST | Agregar idioma |
-| `/api/v1/profiles/{profileId}/learner/languages/{languageId}` | PUT | Actualizar idioma |
-| `/api/v1/profiles/{id}/learner/languages/{languageId}` | DELETE | Eliminar idioma |
+| \seqsplit{`/api/v1/profiles`} | GET | Obtener todos los perfiles |
+| \seqsplit{`/api/v1/profiles/{id}`} | GET | Obtener perfil por ID |
+| \seqsplit{`/api/v1/profiles`} | POST | Crear nuevo perfil |
+| \seqsplit{`/api/v1/profiles/{id}`} | PUT | Actualizar perfil |
+| \seqsplit{`/api/v1/profiles/{id}`} | DELETE | Eliminar perfil |
+| \seqsplit{`/api/v1/profiles/search`} | GET | Buscar perfil por email |
+| \seqsplit{`/api/v1/profiles/{profileId}/learner/languages`} | POST | Agregar idioma |
+| \seqsplit{`/api/v1/profiles/{profileId}/learner/languages/{languageId}`} | PUT | Actualizar idioma |
+| \seqsplit{`/api/v1/profiles/{id}/learner/languages/{languageId}`} | DELETE | Eliminar idioma |
 
 
 #### Swagger Evidence — Profiles
 
-La imagenes a continuacion muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Profiles.
+La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Profiles.
 
 ![](assets/img/cap5/Profiles.png)
 
