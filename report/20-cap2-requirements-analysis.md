@@ -172,7 +172,7 @@ Comprender necesidades, motivaciones, fricciones y condiciones de confianza para
 
 - **Modalidad:** Presencial cuando la logística lo permitiera (especialmente para Segmento 2, observación del contexto físico); remota según disponibilidad del entrevistado.
 - **Duración estimada:** 5–10 minutos por entrevista (preguntas principales); 1–2 minutos para cierre y notas; grabación por audio/video para referencia.
-- **Método:** Entrevistas semiestructuradas basadas en guiones temáticos, con flexibilidad para profundizar en respuestas divergentes.
+- **Método:** Entrevistas estructuradas basadas en guiones temáticos, con flexibilidad para profundizar en respuestas divergentes.
 
 **Distribución de Roles durante la Entrevista**
 
@@ -436,7 +436,7 @@ En este apartado se realiza un análisis de las entrevistas realizadas a los seg
 
 #### Segmento 1: Usuarios aprendices de idiomas
 
-**Total de entrevistas:** 3 entrevistas semiestructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores.
+**Total de entrevistas:** 3 entrevistas estructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores.
 
 A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes universitarios aprendices de idiomas), se han identificado *insights* y *patrones de comportamiento* sobre sus percepciones, hábitos y dolores. A continuación, se presenta el análisis cualitativo respaldado en citas textuales:
 
@@ -445,7 +445,7 @@ A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes u
 - Se repite la *falta de práctica oral* como dolor principal en los **3 de 3 entrevistados**: Alexander señaló *”Las ideas suenan bien en mi cabeza, pero cuando hablo me cuesta aterrizar”*; Ricardo expresó que *”Las aplicaciones móviles son muy básicas”*; Eric confirmó *”La dificultad para encontrar personas con quienes practicar en tiempo real”*. Los usuarios consumen contenido y estudian de forma individual, pero no logran sostener conversaciones con fluidez.
 - Aparece una tensión constante entre intención y ejecución: aunque existe motivación, el ritmo académico/laboral reduce constancia y continuidad (Ricardo y Eric mencionan exigencias académicas; Alexander se adapta a horarios de universidad).
 - Se observa inseguridad al hablar (miedo a equivocarse o a ser juzgado) en los **3 de 3 entrevistados**: Eric menciona *”vergüenza y miedo a equivocarse”*; Ricardo refiere *”sentí frustración cuando no me entendían”* (EE.UU.); Alexander enfatiza la importancia de la “seguridad” en la plataforma. Esto aumenta el valor percibido de un entorno controlado y predecible para practicar.
-- **Implicancia para la solución:** Se requiere una experiencia presencial organizada (lugar, dinámica, cupos y reglas claras) para transformar “querer practicar” en “asistir y conversar”. El diseño debe prioritizar **confianza, estructura y control emocional**.
+- **Implicancia para la solución:** Se requiere una experiencia presencial organizada (lugar, dinámica, cupos y reglas claras) para transformar “querer practicar” en “asistir y conversar”. El diseño debe priorizar **confianza, estructura y control emocional**.
 
 **2. Preferencias de nivel del compañero de conversación**
 
@@ -469,7 +469,7 @@ A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes u
 
 #### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
 
-**Total de entrevistas:** 3 entrevistas semiestructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores. 
+**Total de entrevistas:** 3 entrevistas estructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores. 
 
 **Nota limitación metodológica:** Las tres pertenecen al rubro de cafeterías/panaderías, lo que limita generalización a otros tipos de espacios públicos. Ver recomendaciones en sección 2.2.2.2.
 
@@ -667,7 +667,7 @@ Sin embargo, existen momentos clave de motivación y satisfacción cuando logra 
 
 ## Sustento para la Especificación de Requisitos
 
-Los hallazgos de las entrevistas y del needfinding no solo describen el contexto del problema, sino que también definen con claridad las capacidades que la solución debe priorizar. En el segmento de aprendices se identificó una necesidad dominante de práctica oral estructurada, confianza, segmentación por nivel, visibilidad de los participantes y continuidad en el aprendizaje. En el segmento de locales se confirmó la necesidad de control operativo, confirmación de asistencias, gestión de cupos, promociones administrables por el negocio y evidencia del valor comercial generado por la plataforma.
+Los hallazgos de las entrevistas y del Needfinding no solo describen el contexto del problema, sino que también definen con claridad las capacidades que la solución debe priorizar. En el segmento de aprendices se identificó una necesidad dominante de práctica oral estructurada, confianza, segmentación por nivel, visibilidad de los participantes y continuidad en el aprendizaje. En el segmento de locales se confirmó la necesidad de control operativo, confirmación de asistencias, gestión de cupos, promociones administrables por el negocio y evidencia del valor comercial generado por la plataforma.
 
 Estos hallazgos se traducen directamente en los requisitos del siguiente capítulo. Por ello, las historias de usuario se orientan primero a resolver descubrimiento de encuentros, registro e inicio de sesión, perfiles, reserva, check-in, reputación y notificaciones; y luego a soportar capacidades de negocio como gestión de locales, analíticas, promociones y administración. En otras palabras, el Capítulo III formaliza en requisitos funcionales lo que las entrevistas revelaron como necesidades reales, riesgos de adopción y expectativas de valor para ambos segmentos.
 
