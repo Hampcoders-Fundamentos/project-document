@@ -26,3 +26,11 @@
 \AtBeginEnvironment{tabular}{\footnotesize}
 \AtBeginEnvironment{tabularx}{\footnotesize}
 \AtBeginEnvironment{longtable}{\footnotesize}
+
+% Soporte de color y fuentes avanzadas para renderizado de emojis
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{newunicodechar}
+\definecolor{emojiyellow}{HTML}{FFD700}
+\newfontfamily{\emojifont}{Segoe UI Emoji}[Renderer=HarfBuzz,Color=FFD700]
+\newunicodechar{⭐}{{\emojifont\textcolor{emojiyellow}{⭐}}}
