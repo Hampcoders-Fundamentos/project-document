@@ -11,7 +11,7 @@ input-files:
   - report/90-conclusiones.md
   - report/91-bibliografia.md
 
-output-file: dist/upc-pre-202610-si657-7944-hampcoders-report-tp1.pdf
+output-file: dist/upc-pre-202610-si657-7944-hampcoders-report-tb3.pdf
 
 pdf-engine: tectonic.exe
 listings: true

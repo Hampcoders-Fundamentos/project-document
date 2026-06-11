@@ -1,7 +1,7 @@
 # =============================================================================
 # Uso: make pdf | make clean | make watch | make help
 # =============================================================================
-PDF_OUTPUT = dist/glottia-report.pdf
+PDF_OUTPUT = dist/upc-pre-202610-si657-7944-hampcoders-report-tb3.pdf
 CONFIG     = config/build.yaml
 PYTHON     ?= python
 
