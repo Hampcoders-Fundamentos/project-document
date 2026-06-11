@@ -1484,26 +1484,6 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-### Postman Execution Evidence
-
-A continuación, se presentan las capturas de la ejecución de pruebas manuales mediante Postman para validar los endpoints críticos de cada microservicio.
-
-![](assets/img/cap5/postman-venues.png)
-
-*Figura A. Ejecución de prueba en Postman para el endpoint POST /api/v1/venues — creación exitosa de un nuevo local.*
-
-![](assets/img/cap5/postman-promotions.png)
-
-*Figura B. Ejecución de prueba en Postman para el endpoint POST /api/v1/promotions/{promotionId}/redeem — canje exitoso de una promoción.*
-
-![](assets/img/cap5/postman-feedback.png)
-
-*Figura C. Ejecución de prueba en Postman para el endpoint POST /api/v1/feedback/quiz/{quizId}/answer — envío exitoso de respuestas de quiz.*
-
-![](assets/img/cap5/postman-engagement.png)
-
-*Figura D. Ejecución de prueba en Postman para el endpoint GET /api/v1/loyalty-accounts/{learnerId} — consulta exitosa de cuenta de lealtad.*
-
 #### 5.2.2.4 Execution Evidence for Sprint Review
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
