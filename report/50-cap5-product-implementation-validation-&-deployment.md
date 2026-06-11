@@ -22,15 +22,15 @@ Esta suite de pruebas agrupa los escenarios de prueba funcionales, unitarios y d
 
 | Código del Test | Nombre del Archivo .feature | Componente / Microservicio | User Story Relacionada (ID) |
 | :--- | :--- | :--- | :--- |
-| **TS-IAM-01** | `auth_register_learner.feature` | IAM Microservice | US01: Registro de nuevo aprendiz |
-| **TS-IAM-02** | `auth_register_partner.feature` | IAM Microservice | US02: Registro de nuevo local |
-| **TS-IAM-03** | `auth_login.feature` | IAM Microservice | US03: Inicio de sesión general |
-| **TS-IAM-04** | `auth_logout.feature` | IAM Microservice | US04: Cierre de sesión |
-| **TS-IAM-05** | `auth_password_recovery.feature` | IAM Microservice | US05: Recuperación de contraseña |
-| **TS-PRF-06** | `profile_onboarding.feature` | Profiles Microservice | US06: Completar perfil de aprendiz |
-| **TS-PRF-07** | `profile_edition.feature` | Profiles Microservice | US07: Editar perfil de aprendiz |
-| **TS-PRF-08** | `profile_discovery.feature` | Profiles Microservice | US08: Ver perfil de otro usuario |
-| **TS-PRF-09** | `profile_avatar.feature` | Profiles Microservice | US09: Subir foto de perfil |
+| **TS-IAM-01** | \seqsplit{`auth_register_learner.feature`} | IAM Microservice | US01: Registro de nuevo aprendiz |
+| **TS-IAM-02** | \seqsplit{`auth_register_partner.feature`} | IAM Microservice | US02: Registro de nuevo local |
+| **TS-IAM-03** | \seqsplit{`auth_login.feature`} | IAM Microservice | US03: Inicio de sesión general |
+| **TS-IAM-04** | \seqsplit{`auth_logout.feature`} | IAM Microservice | US04: Cierre de sesión |
+| **TS-IAM-05** | \seqsplit{`auth_password_recovery.feature`} | IAM Microservice | US05: Recuperación de contraseña |
+| **TS-PRF-06** | \seqsplit{`profile_onboarding.feature`} | Profiles Microservice | US06: Completar perfil de aprendiz |
+| **TS-PRF-07** | \seqsplit{`profile_edition.feature`} | Profiles Microservice | US07: Editar perfil de aprendiz |
+| **TS-PRF-08** | \seqsplit{`profile_discovery.feature`} | Profiles Microservice | US08: Ver perfil de otro usuario |
+| **TS-PRF-09** | \seqsplit{`profile_avatar.feature`} | Profiles Microservice | US09: Subir foto de perfil |
 
 ***
 
@@ -185,7 +185,7 @@ La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentr
 
 #### 5. Estándares de Codificación
 
-Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
+- Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
 
 #### 6. Lógica de Negocio
 * **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
@@ -214,7 +214,9 @@ Cada microservicio dentro de la carpeta `services/` (o repositorios independient
     * Ejemplo: `identity-service`, `catalog-service`, `ordering-service`.
 
 #### Clases y Archivos
-Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+
+- Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+
 * **Event Handlers**: Clases que procesan mensajes entrantes. Nombradas como `[EventName]Handler` (ej. `UserCreatedHandler`).
 * **Publishers**: Interfaces para enviar mensajes. Nombradas como `[Entity]Publisher` (ej. `OrderEventPublisher`).
 * **Suffixes**:
@@ -630,19 +632,19 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 ### Endpoints Execution Evidence
 
-![Postman1](assets/img/cap5/Postman1.jpeg){width=50%}
+![Captura 1 de la ejecución de Postman](assets/img/cap5/Postman1.jpeg){width=50%}
 
-![Postman2](assets/img/cap5/Postman2.jpeg){width=50%}
+![Captura 2 de la ejecución de Postman](assets/img/cap5/Postman2.jpeg){width=50%}
 
-![Postman3](assets/img/cap5/Postman3.jpeg){width=50%}
+![Captura 3 de la ejecución de Postman](assets/img/cap5/Postman3.jpeg){width=50%}
 
-![Postman4](assets/img/cap5/Postman4.jpeg){width=50%}
+![Captura 4 de la ejecución de Postman](assets/img/cap5/Postman4.jpeg){width=50%}
 
-![Postman5](assets/img/cap5/Postman5.jpeg){width=50%}
+![Captura 5 de la ejecución de Postman](assets/img/cap5/Postman5.jpeg){width=50%}
 
-![Postman6](assets/img/cap5/Postman6.jpeg){width=50%}
+![Captura 6 de la ejecución de Postman](assets/img/cap5/Postman6.jpeg){width=50%}
 
-![Postman7](assets/img/cap5/Postman7.jpeg){width=50%}
+![Captura 7 de la ejecución de Postman](assets/img/cap5/Postman7.jpeg){width=50%}
 
 #### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
 
@@ -837,6 +839,13 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 
 ### 5.2.2 Sprint 2
 #### 5.2.2.1 Sprint Backlog 2
+\
+![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part1.png)
+\
+![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part2.png)
+\
+[Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
+
 #### 5.2.2.2 Development Evidence for Sprint Review
 #### 5.2.2.3 Testing Suite Evidence for Sprint Review
 #### 5.2.2.4 Execution Evidence for Sprint Review
@@ -844,3 +853,13 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part1.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part2.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part3.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part4.png)
+\
+[Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiZmQ3NjkyODgyMzNkNDA1OTk1N2RlZjU5MDYyOWQyMWYiLCJwIjoiaiJ9)
