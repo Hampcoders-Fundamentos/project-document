@@ -7,6 +7,9 @@
 \usepackage{fvextra}
 \usepackage{makecell}
 
+% Configuración para evitar que los guiones bajos en los nombres de archivos se rompan en varias líneas
+\usepackage[strings]{underscore}
+
 \makeatletter
 \def\fps@figure{H}
 \def\fps@table{H}
@@ -37,7 +40,7 @@
 
 % Soporte nativo a Gherkin (Cucumber)
 \usepackage{listings}
-\usepackage{xcolor}
+
 % Definición de la paleta de colores para el código Gherkin
 \definecolor{gherkinKeyword}{HTML}{000080}   % Azul oscuro para palabras clave
 \definecolor{gherkinString}{HTML}{008000}    % Verde para cadenas de texto/variables
