@@ -22,15 +22,15 @@ Esta suite de pruebas agrupa los escenarios de prueba funcionales, unitarios y d
 
 | Código del Test | Nombre del Archivo .feature | Componente / Microservicio | User Story Relacionada (ID) |
 | :--- | :--- | :--- | :--- |
-| **TS-IAM-01** | `auth_register_learner.feature` | IAM Microservice | US01: Registro de nuevo aprendiz |
-| **TS-IAM-02** | `auth_register_partner.feature` | IAM Microservice | US02: Registro de nuevo local |
-| **TS-IAM-03** | `auth_login.feature` | IAM Microservice | US03: Inicio de sesión general |
-| **TS-IAM-04** | `auth_logout.feature` | IAM Microservice | US04: Cierre de sesión |
-| **TS-IAM-05** | `auth_password_recovery.feature` | IAM Microservice | US05: Recuperación de contraseña |
-| **TS-PRF-06** | `profile_onboarding.feature` | Profiles Microservice | US06: Completar perfil de aprendiz |
-| **TS-PRF-07** | `profile_edition.feature` | Profiles Microservice | US07: Editar perfil de aprendiz |
-| **TS-PRF-08** | `profile_discovery.feature` | Profiles Microservice | US08: Ver perfil de otro usuario |
-| **TS-PRF-09** | `profile_avatar.feature` | Profiles Microservice | US09: Subir foto de perfil |
+| **TS-IAM-01** | \seqsplit{`auth_register_learner.feature`} | IAM Microservice | US01: Registro de nuevo aprendiz |
+| **TS-IAM-02** | \seqsplit{`auth_register_partner.feature`} | IAM Microservice | US02: Registro de nuevo local |
+| **TS-IAM-03** | \seqsplit{`auth_login.feature`} | IAM Microservice | US03: Inicio de sesión general |
+| **TS-IAM-04** | \seqsplit{`auth_logout.feature`} | IAM Microservice | US04: Cierre de sesión |
+| **TS-IAM-05** | \seqsplit{`auth_password_recovery.feature`} | IAM Microservice | US05: Recuperación de contraseña |
+| **TS-PRF-06** | \seqsplit{`profile_onboarding.feature`} | Profiles Microservice | US06: Completar perfil de aprendiz |
+| **TS-PRF-07** | \seqsplit{`profile_edition.feature`} | Profiles Microservice | US07: Editar perfil de aprendiz |
+| **TS-PRF-08** | \seqsplit{`profile_discovery.feature`} | Profiles Microservice | US08: Ver perfil de otro usuario |
+| **TS-PRF-09** | \seqsplit{`profile_avatar.feature`} | Profiles Microservice | US09: Subir foto de perfil |
 
 ***
 
@@ -185,7 +185,7 @@ La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentr
 
 #### 5. Estándares de Codificación
 
-Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
+- Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
 
 #### 6. Lógica de Negocio
 * **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
@@ -214,7 +214,9 @@ Cada microservicio dentro de la carpeta `services/` (o repositorios independient
     * Ejemplo: `identity-service`, `catalog-service`, `ordering-service`.
 
 #### Clases y Archivos
-Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+
+- Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+
 * **Event Handlers**: Clases que procesan mensajes entrantes. Nombradas como `[EventName]Handler` (ej. `UserCreatedHandler`).
 * **Publishers**: Interfaces para enviar mensajes. Nombradas como `[Entity]Publisher` (ej. `OrderEventPublisher`).
 * **Suffixes**:
@@ -300,7 +302,7 @@ A continuación, se presentan las especificaciones en código Gherkin encargadas
 #### `auth_register_learner.feature` (Relacionado con US01)
 
 \
-gherkin
+```gherkin
 Feature: Learner Registration Management
   As a person interested in practicing languages
   I want to register an account in Glottia using my email and password
@@ -330,13 +332,13 @@ Feature: Learner Registration Management
     And the user has not clicked the confirmation link
     When the automatic validation routine executes
     Then the user account status should be set to "DEACTIVATED".
-    
+```
 
 
 #### `auth_register_partner.feature` (Relacionado con US02)
 
 \
-gherkin
+```gherkin
 Feature: Partner and Business Registration
   As a business owner
   I want to register my business in the platform
@@ -366,13 +368,14 @@ Feature: Partner and Business Registration
     When an administrator reviews and approves the business data
     Then the venue status should transition to "ACTIVE"
     And it should become visible on the public platform
+```
 
 ***
 
 #### `auth_login.feature` (Relacionado con US03)
 
 \
-gherkin
+```gherkin
 Feature: General User Authentication
   As a registered user (learner or partner)
   I want to sign in with my credentials
@@ -414,14 +417,14 @@ Feature: General User Authentication
     When the user executes any secure API request
     Then the server should return a status code 401 Unauthorized
     And redirect the client application to the login prompt
-
+```
 
 ***
 
 #### `auth_logout.feature` (Relacionado con US04)
 
 \
-gherkin
+```gherkin
 Feature: User Session Invalidation
   As an authenticated user
   I want to log out of my session
@@ -443,6 +446,7 @@ Feature: User Session Invalidation
     Given a user has multiple active sessions across different devices
     When they trigger the "Cerrar sesión en todos los dispositivos" command
     Then the system should revoke all active tokens associated with that user ID
+```
 
 ***
 
@@ -450,7 +454,7 @@ Feature: User Session Invalidation
 #### `auth_password_recovery.feature` (Relacionado con US05)
 
 \
-gherkin
+```gherkin
 Feature: Password Recovery Protocol
   As a registered user
   I want to request a password reset link
@@ -482,7 +486,7 @@ Feature: Password Recovery Protocol
     Given a user has requested 3 reset links within the last 10 minutes
     When they attempt to request a 4th link
     Then the system should rate limit the request and enforce a 10-minute cooldown
-
+```
 
 ---
 
@@ -493,7 +497,7 @@ A continuación, se detallan las especificaciones Gherkin enfocadas en validar l
 #### `profile_onboarding.feature` (Relacionado con US06)
 
 \
-gherkin
+```gherkin
 Feature: Learner Profile Onboarding
   As a newly registered learner
   I want to complete my profile with my native language and target languages
@@ -520,14 +524,14 @@ Feature: Learner Profile Onboarding
     Given a learner has "English B2" configured as their primary interest
     When they load their dashboard recommendations
     Then the response array should only stream encounters tagged with English language parameters
-
+```
 
 ---
 
 #### `profile_edition.feature` (Relacionado con US07)
 
 \
-gherkin
+```gherkin
 Feature: Learner Profile Edition
   As an active learner
   I want to edit my profile details at any time
@@ -547,14 +551,14 @@ Feature: Learner Profile Edition
   Scenario: Real-Time Cache Invalidation for Other Users (Escenario #3)
     When a learner modifies their public display name
     Then any other user fetching encounter details where this learner is an attendee must instantly see the updated name
-
+```
 
 ---
 
 #### `profile_discovery.feature` (Relacionado con US08)
 
 \
-gherkin
+```gherkin
 Feature: Public Profile Discovery
   As a learner
   I want to view the public profile of other attendees
@@ -573,14 +577,14 @@ Feature: Public Profile Discovery
     Given user 750 has configured their profile privacy settings to "HIGH"
     When another user requests their profile data
     Then the server must hide their email and exact fluency metrics, exposing only name and photo placeholder
-
+```
 
 ---
 
 #### `profile_avatar.feature` (Relacionado con US09)
 
 \
-gherkin
+```gherkin
 Feature: Profile Avatar Management
   As a platform user
   I want to upload a profile picture
@@ -605,46 +609,42 @@ Feature: Profile Avatar Management
   Scenario: Resetting to Default Avatar (Escenario #4)
     When I issue a DELETE command on my profile photo path
     Then the image path field in the database should revert to the default system placeholder avatar string
-
-
+```
 
 #### 5.2.1.4 Execution Evidence for Sprint Review
 
 El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Hampcoders, tuvo como objetivo principal iniciar la migración del backend de una arquitectura monolito modular hacia microservicios independientes, abarcando los bounded contexts de IAM, Profiles y Encounters, al mismo tiempo que se implementaban las funcionalidades base de la plataforma y se atendían mejoras y correcciones en la aplicación móvil Flutter. En cuanto a la migración, se logró extraer y dockerizar el servicio de IAM con su propia base de datos, se avanzó en la separación del servicio de Encounters con la configuración de su schema independiente y sus integraciones hacia Venues y Profiles, y se inició la configuración del API Gateway como punto de entrada único para todos los microservicios. En el frente funcional, se completaron las historias de usuario correspondientes al ciclo de autenticación completo (registro de aprendiz y partner, inicio y cierre de sesión), el perfil base del aprendiz, y el flujo de check-in en encuentros. En paralelo, el equipo de mobile resolvió los bugs críticos de crash en el registro y persistencia de sesión, además de entregar el rediseño de la pantalla home. Como trabajo pendiente para el siguiente sprint quedan la separación completa de Profiles y Encounters como microservicios autónomos, la historia US05 recuperación de contraseña y un bugfix en el cierre de sesión.
 
 ### Web UI Evidence
-![Dashboard](assets/img/cap5/Web-UI-Execution-Evidence1.png)
 
-\
+![Dashboard](assets/img/cap5/Web-UI-Execution-Evidence1.png){width=70%}
 
-![Promotions](assets/img/cap5/Web-UI-Evidence-2.png)
+![Promotions](assets/img/cap5/Web-UI-Evidence-2.png){width=70%}
 
-\
 
-![Analytics](assets/img/cap5/Web-UI-Evidence-3.png)
+![Analytics](assets/img/cap5/Web-UI-Evidence-3.png){width=70%}
 
 ### Mobile UI Fixes Evidence
-![Learner Homepage](assets/img/cap5/Learner-Homepage.jpeg)
 
-\
+![Learner Homepage](assets/img/cap5/Learner-Homepage.jpeg){width=70%}
 
-![Partners Section Update](assets/img/cap5/Partners-Section-Update.jpeg)
+![Partners Section Update](assets/img/cap5/Partners-Section-Update.jpeg){width=70%}
 
 ### Endpoints Execution Evidence
 
-![Postman1](assets/img/cap5/Postman1.jpeg)
-\
-![Postman2](assets/img/cap5/Postman2.jpeg)
-\
-![Postman3](assets/img/cap5/Postman3.jpeg)
-\
-![Postman4](assets/img/cap5/Postman4.jpeg)
-\
-![Postman5](assets/img/cap5/Postman5.jpeg)
-\
-![Postman6](assets/img/cap5/Postman6.jpeg)
-\
-![Postman7](assets/img/cap5/Postman7.jpeg)
+![Captura 1 de la ejecución de Postman](assets/img/cap5/Postman1.jpeg){width=50%}
+
+![Captura 2 de la ejecución de Postman](assets/img/cap5/Postman2.jpeg){width=50%}
+
+![Captura 3 de la ejecución de Postman](assets/img/cap5/Postman3.jpeg){width=50%}
+
+![Captura 4 de la ejecución de Postman](assets/img/cap5/Postman4.jpeg){width=50%}
+
+![Captura 5 de la ejecución de Postman](assets/img/cap5/Postman5.jpeg){width=50%}
+
+![Captura 6 de la ejecución de Postman](assets/img/cap5/Postman6.jpeg){width=50%}
+
+![Captura 7 de la ejecución de Postman](assets/img/cap5/Postman7.jpeg){width=50%}
 
 #### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
 
@@ -839,6 +839,13 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 
 ### 5.2.2 Sprint 2
 #### 5.2.2.1 Sprint Backlog 2
+\
+![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part1.png)
+\
+![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part2.png)
+\
+[Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
+
 #### 5.2.2.2 Development Evidence for Sprint Review
 #### 5.2.2.3 Testing Suite Evidence for Sprint Review
 #### 5.2.2.4 Execution Evidence for Sprint Review
@@ -846,3 +853,13 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part1.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part2.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part3.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part4.png)
+\
+[Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiZmQ3NjkyODgyMzNkNDA1OTk1N2RlZjU5MDYyOWQyMWYiLCJwIjoiaiJ9)
