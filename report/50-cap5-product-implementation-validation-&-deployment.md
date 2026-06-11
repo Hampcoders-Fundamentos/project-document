@@ -1469,8 +1469,32 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
+
+En el Deployment de los microservicios del Sprint 2, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
+
+Aquí las capturas de ejecución de la consola ejecutando los scripts de Terraform para el despliegue de la infraestructura en AWS, evidenciando la creación de recursos como instancias EC2, RDS para PostgreSQL y configuración de RabbitMQ.
+
+![Terraform Deployment Captura 1](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-1.png)
+
+![Terraform Deployment Captura 2](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-2.png)
+
+![Terraform Deployment Captura 3](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-3.png)
+
+Ahora las capturas de evidencia de despliegue exitoso de cada microservicio en AWS.
+
+Repositorios en Amazon Elastic Container Registry (ECR) con las imágenes Docker de cada microservicio:
+
+![ECR Repositories](assets/img/cap5/sprint2/deploy-evidences/ecr-repositories.png)
+
+Base de datos compartida en Amazon RDS para PostgreSQL, que van a usar por el momento los microservicios:
+
+![RDS PostgreSQL](assets/img/cap5/sprint2/deploy-evidences/rds-postgresql.png)
+
+VPC configurada con subredes públicas y privadas, grupos de seguridad y balanceador de carga para el acceso a los microservicios:
+
+![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
+
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
 \
