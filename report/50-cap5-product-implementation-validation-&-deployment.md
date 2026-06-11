@@ -1434,7 +1434,23 @@ Feature: Attendance Streak Management
 
 #### 5.2.2.4 Execution Evidence for Sprint Review
 
+En esta sección el equipo presenta la evidencia de ejecución de la aplicación móvil.
 
+#### Home
+
+![](assets/img/cap5/spb2/home.png)
+
+#### Social
+
+![](assets/img/cap5/spb2/social.png)
+
+#### Practise
+
+![](assets/img/cap5/spb2/practise.png)
+
+#### Profiles
+
+![](assets/img/cap5/spb2/profiles.png)
 
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 ### Swagger/OpenAPI Documentation Evidence
