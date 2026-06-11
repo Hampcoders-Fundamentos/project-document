@@ -185,7 +185,7 @@ La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentr
 
 #### 5. Estándares de Codificación
 
-Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
+- Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
 
 #### 6. Lógica de Negocio
 * **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
@@ -214,7 +214,9 @@ Cada microservicio dentro de la carpeta `services/` (o repositorios independient
     * Ejemplo: `identity-service`, `catalog-service`, `ordering-service`.
 
 #### Clases y Archivos
-Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+
+- Se mantienen las convenciones de Clean Architecture del monolito, pero con énfasis en la comunicación externa:
+
 * **Event Handlers**: Clases que procesan mensajes entrantes. Nombradas como `[EventName]Handler` (ej. `UserCreatedHandler`).
 * **Publishers**: Interfaces para enviar mensajes. Nombradas como `[Entity]Publisher` (ej. `OrderEventPublisher`).
 * **Suffixes**:
