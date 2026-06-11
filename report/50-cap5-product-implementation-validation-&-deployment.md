@@ -854,6 +854,12 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
 \
-![Sprint 2 Kanban Board](assets/img/cap5/Glottia-Sprint1-KanbanBoard.jpeg)
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part1.png)
 \
-[Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiMDFiMTg2M2NkNTA3NDJjZDllZTQ3ZTlhNDU5MmNjMjUiLCJwIjoiaiJ9)
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part2.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part3.png)
+\
+![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part4.png)
+\
+[Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiZmQ3NjkyODgyMzNkNDA1OTk1N2RlZjU5MDYyOWQyMWYiLCJwIjoiaiJ9)
