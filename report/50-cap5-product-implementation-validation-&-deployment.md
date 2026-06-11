@@ -630,19 +630,19 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 ### Endpoints Execution Evidence
 
-![Postman1](assets/img/cap5/Postman1.jpeg){width=50%}
+![Captura 1 de la ejecución de Postman](assets/img/cap5/Postman1.jpeg){width=50%}
 
-![Postman2](assets/img/cap5/Postman2.jpeg){width=50%}
+![Captura 2 de la ejecución de Postman](assets/img/cap5/Postman2.jpeg){width=50%}
 
-![Postman3](assets/img/cap5/Postman3.jpeg){width=50%}
+![Captura 3 de la ejecución de Postman](assets/img/cap5/Postman3.jpeg){width=50%}
 
-![Postman4](assets/img/cap5/Postman4.jpeg){width=50%}
+![Captura 4 de la ejecución de Postman](assets/img/cap5/Postman4.jpeg){width=50%}
 
-![Postman5](assets/img/cap5/Postman5.jpeg){width=50%}
+![Captura 5 de la ejecución de Postman](assets/img/cap5/Postman5.jpeg){width=50%}
 
-![Postman6](assets/img/cap5/Postman6.jpeg){width=50%}
+![Captura 6 de la ejecución de Postman](assets/img/cap5/Postman6.jpeg){width=50%}
 
-![Postman7](assets/img/cap5/Postman7.jpeg){width=50%}
+![Captura 7 de la ejecución de Postman](assets/img/cap5/Postman7.jpeg){width=50%}
 
 #### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
 
