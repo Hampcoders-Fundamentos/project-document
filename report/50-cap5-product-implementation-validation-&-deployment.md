@@ -22,15 +22,15 @@ Esta suite de pruebas agrupa los escenarios de prueba funcionales, unitarios y d
 
 | Código del Test | Nombre del Archivo .feature | Componente / Microservicio | User Story Relacionada (ID) |
 | :--- | :--- | :--- | :--- |
-| **TS-IAM-01** | `auth_register_learner.feature` | IAM Microservice | US01: Registro de nuevo aprendiz |
-| **TS-IAM-02** | `auth_register_partner.feature` | IAM Microservice | US02: Registro de nuevo local |
-| **TS-IAM-03** | `auth_login.feature` | IAM Microservice | US03: Inicio de sesión general |
-| **TS-IAM-04** | `auth_logout.feature` | IAM Microservice | US04: Cierre de sesión |
-| **TS-IAM-05** | `auth_password_recovery.feature` | IAM Microservice | US05: Recuperación de contraseña |
-| **TS-PRF-06** | `profile_onboarding.feature` | Profiles Microservice | US06: Completar perfil de aprendiz |
-| **TS-PRF-07** | `profile_edition.feature` | Profiles Microservice | US07: Editar perfil de aprendiz |
-| **TS-PRF-08** | `profile_discovery.feature` | Profiles Microservice | US08: Ver perfil de otro usuario |
-| **TS-PRF-09** | `profile_avatar.feature` | Profiles Microservice | US09: Subir foto de perfil |
+| **TS-IAM-01** | \seqsplit{`auth_register_learner.feature`} | IAM Microservice | US01: Registro de nuevo aprendiz |
+| **TS-IAM-02** | \seqsplit{`auth_register_partner.feature`} | IAM Microservice | US02: Registro de nuevo local |
+| **TS-IAM-03** | \seqsplit{`auth_login.feature`} | IAM Microservice | US03: Inicio de sesión general |
+| **TS-IAM-04** | \seqsplit{`auth_logout.feature`} | IAM Microservice | US04: Cierre de sesión |
+| **TS-IAM-05** | \seqsplit{`auth_password_recovery.feature`} | IAM Microservice | US05: Recuperación de contraseña |
+| **TS-PRF-06** | \seqsplit{`profile_onboarding.feature`} | Profiles Microservice | US06: Completar perfil de aprendiz |
+| **TS-PRF-07** | \seqsplit{`profile_edition.feature`} | Profiles Microservice | US07: Editar perfil de aprendiz |
+| **TS-PRF-08** | \seqsplit{`profile_discovery.feature`} | Profiles Microservice | US08: Ver perfil de otro usuario |
+| **TS-PRF-09** | \seqsplit{`profile_avatar.feature`} | Profiles Microservice | US09: Subir foto de perfil |
 
 ***
 
