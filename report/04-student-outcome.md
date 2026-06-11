@@ -20,11 +20,6 @@ Finalmente, se presentan las evidencias auditables del sistema de control de ver
 \textbf{Criterio específico} & \textbf{Acciones realizadas} & \textbf{Conclusiones} \\ \hline
 \endfirsthead
 
-\hline
-\rowcolor[HTML]{EFEFEF} 
-\textbf{Criterio específico} & \textbf{Acciones realizadas} & \textbf{Conclusiones} \\ \hline
-\endhead
-
 Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de software. & 
 \textbf{Integrante 1: Ethan Aliaga Aguirre} \newline ────────────────────── \newline 
 - AV1: En esta entrega pude actualizar conceptos relacionados a la metodología Lean UX para realizar la definición del Problem Statement, alcances y límites de nuestro proyecto. \newline 

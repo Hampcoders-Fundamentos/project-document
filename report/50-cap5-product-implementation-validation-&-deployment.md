@@ -1495,7 +1495,22 @@ VPC configurada con subredes públicas y privadas, grupos de seguridad y balance
 
 ![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
 
+
 #### 5.2.2.7 Team Collaboration Insights during Sprint
+
+Durante el Sprint 2, el equipo de desarrollo de Glottia enfocó sus esfuerzos en la migración de la arquitectura del sistema desde un monolito modular hacia una arquitectura basada en microservicios. Esta transición tuvo como objetivo mejorar la escalabilidad, mantenibilidad y flexibilidad de la plataforma.
+
+Las principales actividades incluyeron la separación de los dominios de negocio en microservicios independientes, la contenerización de los servicios mediante Docker, la implementación de mecanismos de autenticación y autorización con JWT, y la integración de RabbitMQ para la comunicación asíncrona entre servicios. Asimismo, se realizaron ajustes de integración, corrección de errores derivados de la migración y tareas de despliegue e infraestructura.
+
+\
+![Sprint 2-Commits-IAM](assets/img/cap5/feat-iam.PNG)
+\
+![Sprint 2-Commits-feedback](assets/img/cap5/feat-feedback.PNG)
+\
+![Sprint 2-Commits-promotions](assets/img/cap5/feat-promotions.PNG)
+\
+![Sprint 2-Commits-venues](assets/img/cap5/feat-venues.PNG)
+
 #### 5.2.2.8 Kanban Board --> (Avance 3)
 \
 ![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part1.png)
