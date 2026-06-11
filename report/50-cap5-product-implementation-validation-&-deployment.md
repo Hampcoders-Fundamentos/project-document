@@ -1434,8 +1434,11 @@ Feature: Attendance Streak Management
     And grant +50 bonus points
 ```
 
-***
+#### 5.2.2.4 Execution Evidence for Sprint Review
 
+
+
+#### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 ### Swagger/OpenAPI Documentation Evidence
 
 La documentación de los Web Services para los microservicios del Sprint 2 fue desarrollada utilizando **OpenAPI/Swagger** mediante **SpringDoc**, permitiendo definir formalmente los endpoints REST, parámetros de entrada, estructuras de request/response y códigos HTTP soportados.
@@ -1484,8 +1487,7 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-#### 5.2.2.4 Execution Evidence for Sprint Review
-#### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
+
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
