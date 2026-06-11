@@ -863,7 +863,6 @@ A continuación, se presentan las especificaciones en código Gherkin encargadas
 
 #### `venue_management.feature` (Relacionado con US10)
 
-\
 ```gherkin
 Feature: Venue Registration and Management
   As a business owner (Partner)
@@ -904,7 +903,6 @@ Feature: Venue Registration and Management
 
 #### `venue_edition.feature` (Relacionado con US11)
 
-\
 ```gherkin
 Feature: Venue Information Edition
   As a Partner
@@ -939,7 +937,6 @@ Feature: Venue Information Edition
 
 #### `venue_photos.feature` (Relacionado con US12)
 
-\
 ```gherkin
 Feature: Venue Photo Gallery Management
   As a Partner
@@ -973,7 +970,6 @@ Feature: Venue Photo Gallery Management
 
 #### `venue_minimum_consumption.feature` (Relacionado con US13)
 
-\
 ```gherkin
 Feature: Minimum Consumption Configuration
   As a Partner
@@ -1004,7 +1000,6 @@ Feature: Minimum Consumption Configuration
 
 #### `partner_venue_registry.feature` (Relacionado con US10 — Registro de Partner)
 
-\
 ```gherkin
 Feature: Partner Venue Registry Management
   As a Partner
@@ -1038,7 +1033,6 @@ Feature: Partner Venue Registry Management
 
 #### `venue_dashboard.feature` (Relacionado con US14)
 
-\
 ```gherkin
 Feature: Partner Venue Dashboard
   As a Partner
@@ -1072,7 +1066,6 @@ A continuación, se detallan las especificaciones Gherkin enfocadas en validar l
 
 #### `promotion_management.feature` (Relacionado con US34)
 
-\
 ```gherkin
 Feature: Promotion Management
   As a platform administrator
@@ -1110,7 +1103,6 @@ Feature: Promotion Management
 
 #### `promotion_redemption.feature` (Relacionado con US34)
 
-\
 ```gherkin
 Feature: Promotion Redemption
   As a loyal learner
@@ -1142,7 +1134,6 @@ Feature: Promotion Redemption
 
 #### `venue_promotion_link.feature` (Relacionado con US34)
 
-\
 ```gherkin
 Feature: Venue Promotion Association
   As a platform administrator
@@ -1187,7 +1178,6 @@ A continuación, se presentan las especificaciones Gherkin orientadas a validar 
 
 #### `self_assessment.feature` (Relacionado con US25)
 
-\
 ```gherkin
 Feature: Self-Assessment Submission
   As a learner who attended an encounter
@@ -1216,7 +1206,6 @@ Feature: Self-Assessment Submission
 
 #### `peer_feedback.feature` (Relacionado con US25)
 
-\
 ```gherkin
 Feature: Peer Feedback Submission
   As a learner who attended an encounter
@@ -1245,7 +1234,6 @@ Feature: Peer Feedback Submission
 
 #### `quiz_management.feature` (Relacionado con US25 — Engagement Quiz)
 
-\
 ```gherkin
 Feature: Quiz Generation and Answering
   As a learner
@@ -1290,7 +1278,6 @@ A continuación, se detallan las especificaciones Gherkin diseñadas para valida
 
 #### `loyalty_points.feature` (Relacionado con US29 y US30)
 
-\
 ```gherkin
 Feature: Loyalty Points Accumulation and Tracking
   As a learner
@@ -1330,7 +1317,6 @@ Feature: Loyalty Points Accumulation and Tracking
 
 #### `badges_unlock.feature` (Relacionado con US31 y US32)
 
-\
 ```gherkin
 Feature: Badge Unlocking and Display
   As a learner
@@ -1367,7 +1353,6 @@ Feature: Badge Unlocking and Display
 
 #### `leaderboard.feature` (Relacionado con US33)
 
-\
 ```gherkin
 Feature: Learner Leaderboard
   As a learner
@@ -1401,7 +1386,6 @@ Feature: Learner Leaderboard
 
 #### `loyalty_streak.feature` (Relacionado con US35)
 
-\
 ```gherkin
 Feature: Attendance Streak Management
   As a learner
@@ -1501,8 +1485,32 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
+
+En el Deployment de los microservicios del Sprint 2, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
+
+Aquí las capturas de ejecución de la consola ejecutando los scripts de Terraform para el despliegue de la infraestructura en AWS, evidenciando la creación de recursos como instancias EC2, RDS para PostgreSQL y configuración de RabbitMQ.
+
+![Terraform Deployment Captura 1](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-1.png)
+
+![Terraform Deployment Captura 2](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-2.png)
+
+![Terraform Deployment Captura 3](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-3.png)
+
+Ahora las capturas de evidencia de despliegue exitoso de cada microservicio en AWS.
+
+Repositorios en Amazon Elastic Container Registry (ECR) con las imágenes Docker de cada microservicio:
+
+![ECR Repositories](assets/img/cap5/sprint2/deploy-evidences/ecr-repositories.png)
+
+Base de datos compartida en Amazon RDS para PostgreSQL, que van a usar por el momento los microservicios:
+
+![RDS PostgreSQL](assets/img/cap5/sprint2/deploy-evidences/rds-postgresql.png)
+
+VPC configurada con subredes públicas y privadas, grupos de seguridad y balanceador de carga para el acceso a los microservicios:
+
+![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
+
 
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 
