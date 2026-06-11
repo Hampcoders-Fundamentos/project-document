@@ -838,7 +838,6 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 [Ver Sprint 1 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiMDFiMTg2M2NkNTA3NDJjZDllZTQ3ZTlhNDU5MmNjMjUiLCJwIjoiaiJ9)
 
 ### 5.2.2 Sprint 2
-\
 #### 5.2.2.1 Sprint Backlog 2
 \
 ![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part1.png)
@@ -848,7 +847,6 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 [Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
 
 #### 5.2.2.2 Development Evidence for Sprint Review
-
 #### 5.2.2.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia correspondiente al Sprint 2. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**.
@@ -1436,25 +1434,7 @@ Feature: Attendance Streak Management
 
 #### 5.2.2.4 Execution Evidence for Sprint Review
 
-En esta sección, el equipo comprueba la execución de su aplicación móvil.
 
-#### Mobile UI Application
-
-#### Home
-
-![](assets/img/cap5/spb2/home.png)
-
-#### Social
-
-![](assets/img/cap5/spb2/social.png)
-
-#### Practise
-
-![](assets/img/cap5/spb2/practise.png)
-
-#### Social
-
-![](assets/img/cap5/spb2/profile.png)
 
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 ### Swagger/OpenAPI Documentation Evidence
@@ -1505,10 +1485,8 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
+
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
-
-
-
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
 \
