@@ -848,6 +848,175 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 
 #### 5.2.2.2 Development Evidence for Sprint Review
 #### 5.2.2.3 Testing Suite Evidence for Sprint Review
+
+### Venues Microservice Testing Suite
+
+### `venue_registration.feature` (Relacionado con US10, US12)
+
+```gherkin
+Feature: Venue Detail Registration
+  As a Partner
+  I want to add the details and photos of my venue
+  So that it appears on the platform as an available location
+
+  Background:
+    Given a partner account is authenticated
+
+  Scenario: Register Venue Details (Escenario #1)
+    When I submit a POST request to "/api/v1/venues" with name "Glottia Cafe", capacity 20, and operating hours
+    Then the system should return a status code 201
+    And the response should contain the venue "id" with status "PENDING_APPROVAL"
+
+  Scenario: Add Venue Photos (Escenario #2)
+    Given a venue with ID 101 exists
+    When I upload a valid image payload to the venue gallery endpoint
+    Then the system should return a status code 200
+    And the image CDN URL must be appended to the venue's photo collection
+```
+
+---
+
+### `venue_policy.feature` (Relacionado con US11, US13)
+
+```gherkin
+Feature: Venue Policy Management
+  As a Partner
+  I want to define policies and edit details for my venue
+  So that information is accurate and profitable
+
+  Scenario: Define Minimum Consumption (Escenario #1)
+    Given a venue with ID 101
+    When I send a PUT request updating "minimumConsumption" to "15.00 PEN"
+    Then the database should reflect the new policy
+    And the venue profile should display the suggested consumption to learners
+
+  Scenario: Edit Operating Hours (Escenario #2)
+    Given a venue with existing hours
+    When I submit a PATCH request modifying the closing time to "22:00"
+    Then the system should return a status code 200
+    And future encounter scheduling must validate against the updated timeframe
+```
+
+### Encounters Microservice Testing Suite
+
+### `encounter_discovery.feature` (Relacionado con US15, US16)
+
+```gherkin
+Feature: Encounter Discovery
+  As a Learner
+  I want to search and view encounters
+  So that I can find a practice session
+
+  Scenario: Search Encounters by Filters (Escenario #1)
+    When I send a GET request to "/api/v1/encounters" with query parameters "city=Lima" and "language=English"
+    Then the system should return a status code 200
+    And the response array should only contain matching scheduled encounters
+
+  Scenario: View Encounter Details (Escenario #2)
+    Given an encounter with ID 205 exists
+    When I request the encounter details
+    Then the system should return comprehensive data including topic, language, venue address, time, and attendee list
+```
+
+### `encounter_reservation.feature` (Relacionado con US17, US23, US26)
+
+```gherkin
+Feature: Encounter Reservation Management
+  As a Learner
+  I want to manage my attendance to encounters
+  So that I secure or release my slot
+
+  Scenario: Successful Booking (Escenario #1)
+    Given encounter 205 has available capacity
+    When I send a POST request to book a slot
+    Then the system should return status 201
+    And the available capacity must decrement by 1
+    And my reservation status should be "CONFIRMED"
+
+  Scenario: Join Waitlist on Full Encounter (Escenario #2)
+    Given encounter 205 has 0 available slots
+    When I request to book a slot
+    Then the system should place my user ID in the waitlist queue
+    And return a status code 202 Accepted with message "Añadido a lista de espera"
+
+  Scenario: Cancel Confirmed Reservation (Escenario #3)
+    Given I hold a "CONFIRMED" reservation for an encounter
+    When I send a DELETE request to my reservation endpoint
+    Then the system should change my status to "CANCELLED"
+    And increment the encounter's available capacity by 1
+    And trigger a notification event for the first user in the waitlist
+```
+
+### Engagement Microservice Testing Suite
+
+### `gamification_loyalty.feature` (Relacionado con US20, US29, US35)
+
+```gherkin
+Feature: Gamification and Loyalty Points
+  As a Learner
+  I want my attendance to be rewarded
+  So that I stay motivated to practice
+
+  Scenario: QR Check-in and Points Award (Escenario #1)
+    Given I have a confirmed reservation for a current encounter
+    When I submit a valid QR scan payload to the attendance endpoint
+    Then the system should register my check-in
+    And credit 50 loyalty points to my profile balance
+
+  Scenario: Maintain Weekly Streak (Escenario #2)
+    Given I completed an encounter in the previous calendar week
+    When I successfully check-in to a new encounter this week
+    Then the streak counter must increment by 1
+    And the system should evaluate for milestone badge unlock conditions
+```
+
+### `networking_chat.feature` (Relacionado con US41, US42, US44)
+
+```gherkin
+Feature: Learner Networking
+  As a Learner
+  I want to connect with other attendees
+  So that we can practice later
+
+  Scenario: Send Contact Request (Escenario #1)
+    When I send a connection request to user ID 750
+    Then a record is created with status "PENDING"
+    And user 750 receives a notification
+
+  Scenario: Accept Contact Request (Escenario #2)
+    Given a pending connection request from user ID 400
+    When I accept the request
+    Then the relationship status changes to "ACCEPTED"
+    And a direct messaging channel is provisioned between both users
+```
+
+### Analytics Microservice Testing Suite
+
+### `partner_dashboard.feature` (Relacionado con US36, US38, US39)
+
+```gherkin
+Feature: Partner Analytics Dashboard
+  As a Partner
+  I want to view data insights about my venue
+  So that I can measure impact and optimize operations
+
+  Scenario: Monthly Attendance Aggregation (Escenario #1)
+    Given historical check-in data exists for venue 101
+    When I request the monthly attendance report
+    Then the system should aggregate check-ins grouped by month
+    And return a structured dataset suitable for charting
+
+  Scenario: Peak Hours Calculation (Escenario #2)
+    When I query the peak hours endpoint for my venue
+    Then the service should analyze encounter start times and attendee volumes
+    And return the top 3 highest-traffic time windows
+
+  Scenario: Customer Retention Metrics (Escenario #3)
+    When I request the new vs returning customers metric
+    Then the system should count unique user IDs with 1 check-in versus multiple check-ins
+    And return the percentage distribution
+```
+
 #### 5.2.2.4 Execution Evidence for Sprint Review
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
