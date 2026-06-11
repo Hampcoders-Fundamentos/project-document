@@ -1436,7 +1436,25 @@ Feature: Attendance Streak Management
 
 #### 5.2.2.4 Execution Evidence for Sprint Review
 
+En esta sección, el equipo comprueba la execución de su aplicación móvil.
 
+#### Mobile UI Application
+
+#### Home
+
+![](assets/img/cap5/spb2/home.png)
+
+#### Social
+
+![](assets/img/cap5/spb2/social.png)
+
+#### Practise
+
+![](assets/img/cap5/spb2/practise.png)
+
+#### Social
+
+![](assets/img/cap5/spb2/profile.png)
 
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 ### Swagger/OpenAPI Documentation Evidence
@@ -1487,8 +1505,10 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
+
+
+
 #### 5.2.2.7 Team Collaboration Insights during Sprint
 #### 5.2.2.8 Kanban Board --> (Avance 3)
 \
