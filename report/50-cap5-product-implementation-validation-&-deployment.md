@@ -838,6 +838,7 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 [Ver Sprint 1 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiMDFiMTg2M2NkNTA3NDJjZDllZTQ3ZTlhNDU5MmNjMjUiLCJwIjoiaiJ9)
 
 ### 5.2.2 Sprint 2
+\
 #### 5.2.2.1 Sprint Backlog 2
 \
 ![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part1.png)
@@ -847,7 +848,662 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 [Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
 
 #### 5.2.2.2 Development Evidence for Sprint Review
+
 #### 5.2.2.3 Testing Suite Evidence for Sprint Review
+
+En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia correspondiente al Sprint 2. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**.
+
+Esta metodología permite definir el comportamiento del sistema desde la perspectiva del usuario mediante escenarios estructurados (*Given-When-Then*), facilitando la verificación técnica de los Web Services y asegurando que cada microservicio —Venues, Promotions, Learning Feedback y Engagement— cumpla estrictamente con las reglas del negocio digital antes de su despliegue.
+
+Durante el Sprint 2 se implementaron los Bounded Contexts de Venues, Promotions, Learning Feedback y Engagement, cubriendo las funcionalidades de gestión de locales comerciales, promociones y ofertas por lealtad, retroalimentación de encuentros mediante autoevaluación y quizzes, y el sistema de gamificación con puntos, insignias, leaderboard y rachas de asistencia.
+
+***
+
+### Venues Microservice Testing Suite
+
+A continuación, se presentan las especificaciones en código Gherkin encargadas de validar los procesos de gestión de locales comerciales (venues), sus mesas, disponibilidad, galería de fotos y registro de partners en el contexto de Venues.
+
+#### `venue_management.feature` (Relacionado con US10)
+
+\
+```gherkin
+Feature: Venue Registration and Management
+  As a business owner (Partner)
+  I want to register my venue in the platform
+  So that I can offer my space for language encounters and gain visibility
+
+  Background:
+    Given the venues API endpoint "/api/v1/venues" is available
+
+  Scenario: Successful Venue Registration (Escenario #1)
+    When I send a POST request with valid "name" as "Glottia Cafe", "address" as "Av. Salaverry 123, Lima", validated via Google Maps, "capacity" as 30, and "operatingHours" specifying different schedules per day
+    Then the system should return a status code 201
+    And the venue should be created with status "PENDING_APPROVAL"
+    And the partner should be associated as the owner
+
+  Scenario: Address Validation via Google Maps API (Escenario #2)
+    When a partner submits an address as "Calle Falsa 123456789, Lima"
+    Then the system should validate the location with the Maps Service
+    And return a suggestion for manual correction
+
+  Scenario: Registration with Missing Critical Information (Escenario #3)
+    When I try to register a venue omitting the "capacity" or "operatingHours"
+    Then the system should return a status code 400
+    And the response should block registration indicating the mandatory missing fields
+
+  Scenario: Administrative Approval (Escenario #4)
+    Given a venue registration is complete with status "PENDING_APPROVAL"
+    When an administrator reviews and approves the business data
+    Then the venue status should transition to "ACTIVE"
+    And it should become visible on the public platform
+
+  Scenario: Duplicate Venue Name for Same Partner (Escenario #5)
+    Given a partner already has a venue named "Glottia Cafe"
+    When they attempt to register another venue with the same name
+    Then the system should return a status code 409
+    And the response should contain the error message "Ya tienes un local registrado con este nombre"
+```
+
+#### `venue_edition.feature` (Relacionado con US11)
+
+\
+```gherkin
+Feature: Venue Information Edition
+  As a Partner
+  I want to edit the details of my registered venue
+  So that I can keep the information up to date
+
+  Background:
+    Given a venue with ID "venue-123" exists and is in "ACTIVE" status
+
+  Scenario: Successful Operating Hours Update (Escenario #1)
+    When I send a PUT request to "/api/v1/venues/venue-123" updating the operating hours to "Mon-Fri 8AM-10PM, Sat 9AM-11PM"
+    Then the system should return a status code 200
+    And the new hours should be reflected immediately in the platform
+
+  Scenario: Capacity Increase (Escenario #2)
+    Given the venue expanded its physical space
+    When I update the capacity from 30 to 50
+    Then the system should return a status code 200
+    And the new capacity applies to upcoming encounters without affecting already confirmed reservations
+
+  Scenario: Address Change Requiring Revalidation (Escenario #3)
+    When I attempt to change the venue address
+    Then the system should return a status code 200
+    And the venue status should revert to "PENDING_APPROVAL"
+    And an administrator must revalidate the new address
+
+  Scenario: Audit Trail on Edition (Escenario #4)
+    Given a venue was edited by a partner
+    When an administrator reviews the audit log
+    Then they can see who changed what field and when
+```
+
+#### `venue_photos.feature` (Relacionado con US12)
+
+\
+```gherkin
+Feature: Venue Photo Gallery Management
+  As a Partner
+  I want to upload multiple photos of my venue
+  So that I can make it more attractive to learners
+
+  Background:
+    Given a venue with ID "venue-123" exists and is active
+
+  Scenario: Successful Photo Gallery Upload (Escenario #1)
+    When I send a multipart/form-data POST request to "/api/v1/venues/venue-123/photos" with a set of valid JPG/PNG images (max 10 files, 5MB each)
+    Then the system should return a status code 201
+    And the photos should be associated to the venue
+    And they should be displayed in a carousel on the venue detail page
+
+  Scenario: Photo Reorder and Cover Selection (Escenario #2)
+    Given the venue already has uploaded photos
+    When I send a PUT request to "/api/v1/venues/venue-123/photos/order" specifying the photo order
+    Then the first photo in the list should be set as the cover image
+
+  Scenario: Photo Deletion (Escenario #3)
+    When I send a DELETE request to "/api/v1/venues/venue-123/photos/photo-456"
+    Then the system should return a status code 200
+    And the photo should be removed from the gallery
+
+  Scenario: Oversized File Rejection (Escenario #4)
+    When I attempt to upload an image of size 10MB
+    Then the system should reject the payload with status code 413
+    And return the localized message "Archivo demasiado grande. Máximo 5MB"
+```
+
+#### `venue_minimum_consumption.feature` (Relacionado con US13)
+
+\
+```gherkin
+Feature: Minimum Consumption Configuration
+  As a Partner
+  I want to optionally define a suggested minimum consumption for attendees
+  So that I can ensure economic return from encounters held at my venue
+
+  Background:
+    Given a venue with ID "venue-123" exists and is active
+
+  Scenario: Set Minimum Consumption Successfully (Escenario #1)
+    When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as 10.00
+    Then the system should return a status code 200
+    And the minimum consumption amount should appear on all encounter details for this venue
+
+  Scenario: Learner Visibility of Minimum Consumption (Escenario #2)
+    Given a venue has a minimum consumption of $10
+    When a learner views an encounter scheduled at this venue
+    Then the encounter detail page should display "Consumo mínimo sugerido: $10.00"
+
+  Scenario: Update Minimum Consumption (Escenario #3)
+    When the partner changes the minimum consumption from $10 to $15
+    Then all upcoming encounters should reflect the new value
+
+  Scenario: Disable Minimum Consumption (Escenario #4)
+    When the partner sets "minimumConsumption" to 0 or null
+    Then the encounters at this venue should no longer display a minimum consumption notice
+```
+
+#### `partner_venue_registry.feature` (Relacionado con US10 — Registro de Partner)
+
+\
+```gherkin
+Feature: Partner Venue Registry Management
+  As a Partner
+  I want to manage the association between my account and my venues
+  So that I can control which venues are active on the platform
+
+  Background:
+    Given a registered partner with ID "partner-123"
+
+  Scenario: Register Venue Under Partner (Escenario #1)
+    When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues" with valid venue data
+    Then the system should return a status code 200
+    And the venue should be linked to the partner's registry
+
+  Scenario: List Partner Venues (Escenario #2)
+    When I send a GET request to "/api/v1/partner-venue-registries/partner-123/venues?active=true"
+    Then the system should return a status code 200
+    And the response should contain a list of active venues for that partner
+
+  Scenario: Deactivate Venue from Partner Registry (Escenario #3)
+    When I send a DELETE request to "/api/v1/partner-venue-registries/partner-123/venues/venue-123" with deactivation details
+    Then the system should return a status code 200
+    And the venue should be removed from the partner's active venues list
+
+  Scenario: Reactivate Venue in Partner Registry (Escenario #4)
+    Given a venue was previously deactivated
+    When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues/venue-123/activations"
+    Then the system should return a status code 200
+    And the venue should become active again in the partner's registry
+```
+
+#### `venue_dashboard.feature` (Relacionado con US14)
+
+\
+```gherkin
+Feature: Partner Venue Dashboard
+  As a Partner
+  I want to access a summary of my venue activity
+  So that I can quickly understand how many encounters have taken place and how many people attended
+
+  Background:
+    Given a partner with ID "partner-123" and an active venue "venue-123"
+
+  Scenario: Key Metrics Visualization (Escenario #1)
+    When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
+    Then the system should return a status code 200
+    And the response should contain total encounters, total attendees, and average rating
+
+  Scenario: Trend Analysis (Escenario #2)
+    When I request detailed statistics with parameters "month" as 5, "year" as 2026, and "lastDays" as 30
+    Then the system should return a status code 200
+    And the response should include encounter frequency trends and attendance patterns
+
+  Scenario: Dashboard with No Recent Activity (Escenario #3)
+    Given the venue has no encounters in the requested period
+    When I request encounter statistics
+    Then the response should indicate zero activity with appropriate empty state
+```
+
+***
+
+### Promotions Microservice Testing Suite
+
+A continuación, se detallan las especificaciones Gherkin enfocadas en validar la gestión de promociones y ofertas especiales para aprendices según su nivel de lealtad dentro del microservicio Promotions.
+
+#### `promotion_management.feature` (Relacionado con US34)
+
+\
+```gherkin
+Feature: Promotion Management
+  As a platform administrator
+  I want to create and manage promotions
+  So that partners can offer special deals to loyal learners
+
+  Background:
+    Given the promotions API endpoint "/api/v1/promotions" is available
+
+  Scenario: Create Promotion Successfully (Escenario #1)
+    When I send a POST request with valid promotion data including "title" as "15% Off Drinks", "description", "discountPercentage" as 15, "validFrom" and "validUntil" dates
+    Then the system should return a status code 201
+    And the promotion should be created with status "ACTIVE"
+
+  Scenario: List Active Promotions (Escenario #2)
+    When I send a GET request to "/api/v1/promotions?active=true"
+    Then the system should return a status code 200
+    And the response should contain only currently active promotions
+
+  Scenario: Get Promotion by ID (Escenario #3)
+    When I send a GET request to "/api/v1/promotions/promo-123"
+    Then the system should return a status code 200
+    And the response should contain the full promotion details
+
+  Scenario: Update Promotion Details (Escenario #4)
+    When I send a PATCH request to "/api/v1/promotions/promo-123" updating the "discountPercentage" to 20
+    Then the system should return a status code 200
+    And the promotion should reflect the new discount value
+
+  Scenario: Deactivate Promotion (Escenario #5)
+    When I send a PATCH request to "/api/v1/promotions/promo-123/deactivation"
+    Then the system should return a status code 204
+    And the promotion should no longer be available for redemption
+```
+
+#### `promotion_redemption.feature` (Relacionado con US34)
+
+\
+```gherkin
+Feature: Promotion Redemption
+  As a loyal learner
+  I want to redeem promotions at partner venues
+  So that I can receive rewards for my participation
+
+  Background:
+    Given a learner with ID "learner-123" has reached loyalty level "ORO"
+    And a promotion "promo-123" exists and is active
+
+  Scenario: Successful Promotion Redemption (Escenario #1)
+    When I send a POST request to "/api/v1/promotions/promo-123/redeem?venueId=venue-123"
+    Then the system should return a status code 200
+    And the response should contain a unique redemption code
+    And the redemption should be logged in the promotion history
+
+  Scenario: Redemption of Expired Promotion (Escenario #2)
+    Given the promotion "promo-123" has passed its "validUntil" date
+    When I attempt to redeem it
+    Then the system should return a status code 400
+    And the response should indicate that the promotion has expired
+
+  Scenario: Redemption at Non-Associated Venue (Escenario #3)
+    Given the promotion "promo-123" is only associated with "venue-123"
+    When I attempt to redeem it at "venue-456"
+    Then the system should return a status code 400
+    And the response should indicate that the promotion is not valid at that venue
+```
+
+#### `venue_promotion_link.feature` (Relacionado con US34)
+
+\
+```gherkin
+Feature: Venue Promotion Association
+  As a platform administrator
+  I want to associate promotions to specific venues
+  So that learners can redeem offers at participating locations
+
+  Background:
+    Given a venue with ID "venue-123" exists and is active
+    And a promotion with ID "promo-123" exists and is active
+
+  Scenario: Associate Promotion to Venue (Escenario #1)
+    When I send a POST request to "/api/v1/venues/venue-123/promotions" with valid association data
+    Then the system should return a status code 201
+    And the promotion should be linked to the venue
+
+  Scenario: List Venue Promotions (Escenario #2)
+    When I send a GET request to "/api/v1/venues/venue-123/promotions?active=true&expired=false"
+    Then the system should return a status code 200
+    And the response should contain promotions associated with that venue
+
+  Scenario: List Redeemable Promotions for Venue (Escenario #3)
+    When I send a GET request to "/api/v1/venues/venue-123/promotions/redeemable"
+    Then the system should return a status code 200
+    And the response should contain promotions currently available for redemption at that venue
+
+  Scenario: Disassociate Promotion from Venue (Escenario #4)
+    When I send a DELETE request to "/api/v1/venues/venue-123/promotions/vpromo-456"
+    Then the system should return a status code 204
+    And the promotion should no longer be available at that venue
+
+  Scenario: Toggle Promotion Activation at Venue (Escenario #5)
+    When I send a PATCH request to "/api/v1/venues/venue-123/promotions/vpromo-456" with toggle data
+    Then the system should return a status code 200
+    And the promotion activation status at that venue should be toggled
+```
+
+***
+
+### Learning Feedback Microservice Testing Suite
+
+A continuación, se presentan las especificaciones Gherkin orientadas a validar el flujo de feedback de encuentros, incluyendo autoevaluación, coevaluación y quizzes generados por IA dentro del microservicio Learning Feedback.
+
+#### `self_assessment.feature` (Relacionado con US25)
+
+\
+```gherkin
+Feature: Self-Assessment Submission
+  As a learner who attended an encounter
+  I want to submit a self-assessment of my fluency
+  So that I can track my language progress over time
+
+  Background:
+    Given the feedback API endpoint "/api/v1/feedback/self-assessment" is available
+    And a learner with ID "learner-123" exists
+
+  Scenario: Successful Self-Assessment Submission (Escenario #1)
+    When I send a POST request with valid self-assessment data including "encounterId", "learnerId", and "fluencyScore" dimensions
+    Then the system should return a status code 201
+    And the response should contain the updated fluency score for the learner
+
+  Scenario: Get Fluency Score (Escenario #2)
+    When I send a GET request to "/api/v1/feedback/fluency-score/learner-123"
+    Then the system should return a status code 200
+    And the response should contain the learner's current fluency score and historical progression
+
+  Scenario: List Self-Assessments by Learner (Escenario #3)
+    When I send a GET request to "/api/v1/feedback/self-assessments/learner-123"
+    Then the system should return a status code 200
+    And the response should contain a list of all self-assessments submitted by that learner
+```
+
+#### `peer_feedback.feature` (Relacionado con US25)
+
+\
+```gherkin
+Feature: Peer Feedback Submission
+  As a learner who attended an encounter
+  I want to submit feedback about my conversation partner
+  So that the community can maintain quality interactions
+
+  Background:
+    Given the feedback API endpoint "/api/v1/feedback/peer" is available
+
+  Scenario: Successful Peer Feedback Submission (Escenario #1)
+    When I send a POST request with valid peer feedback data including "encounterId", "reviewerId", "targetLearnerId", and rating
+    Then the system should return a status code 201
+    And the feedback should be recorded for the target learner
+
+  Scenario: Duplicate Peer Feedback Prevention (Escenario #2)
+    Given I have already submitted feedback for learner "learner-456" on encounter "encounter-789"
+    When I attempt to submit another feedback for the same learner and encounter
+    Then the system should return a status code 409
+    And the response should indicate that feedback was already submitted
+
+  Scenario: Self-Feedback Prevention (Escenario #3)
+    When I attempt to submit feedback targeting myself
+    Then the system should return a status code 400
+    And the response should indicate that self-feedback is not allowed via this endpoint
+```
+
+#### `quiz_management.feature` (Relacionado con US25 — Engagement Quiz)
+
+\
+```gherkin
+Feature: Quiz Generation and Answering
+  As a learner
+  I want to receive and answer engagement quizzes after encounters
+  So that I can reinforce my language learning
+
+  Background:
+    Given the quiz endpoint "/api/v1/feedback/quiz" is available
+
+  Scenario: Get Quiz by ID (Escenario #1)
+    When I send a GET request to "/api/v1/feedback/quiz/quiz-123"
+    Then the system should return a status code 200
+    And the response should contain the quiz questions and options
+
+  Scenario: Get Quiz for Encounter and Learner (Escenario #2)
+    When I send a GET request to "/api/v1/feedback/encounters/encounter-789/learners/learner-123/quiz"
+    Then the system should return a status code 200
+    And the response should contain a quiz generated specifically for that encounter and learner
+
+  Scenario: Submit Quiz Answers Successfully (Escenario #3)
+    When I send a POST request to "/api/v1/feedback/quiz/quiz-123/answer" with my selected answers
+    Then the system should return a status code 200
+    And the response should contain the quiz result including score and correct answers
+
+  Scenario: Get Pending Quizzes for Learner (Escenario #4)
+    When I send a GET request to "/api/v1/feedback/quiz/pending/learner-123"
+    Then the system should return a status code 200
+    And the response should contain a list of quizzes pending completion for that learner
+
+  Scenario: Re-answering Prevention (Escenario #5)
+    Given I have already answered quiz "quiz-123"
+    When I attempt to submit answers again
+    Then the system should return a status code 409
+    And the response should indicate that the quiz was already completed
+```
+
+***
+
+### Engagement Microservice Testing Suite
+
+A continuación, se detallan las especificaciones Gherkin diseñadas para validar el sistema de gamificación y lealtad del microservicio Engagement, incluyendo puntos, insignias, leaderboard y rachas.
+
+#### `loyalty_points.feature` (Relacionado con US29 y US30)
+
+\
+```gherkin
+Feature: Loyalty Points Accumulation and Tracking
+  As a learner
+  I want to earn loyalty points for attending encounters and track my balance
+  So that I can be rewarded for my active participation
+
+  Background:
+    Given the loyalty API endpoint "/api/v1/loyalty-accounts" is available
+    And a learner with ID "learner-123" exists
+
+  Scenario: Automatic Points Accumulation on Check-in (Escenario #1)
+    Given a learner completed check-in for an encounter
+    When the system processes the attendance
+    Then the learner's loyalty account should be credited with +10 base points
+    And the transaction should be recorded in the points history
+
+  Scenario: View Points Balance and Level (Escenario #2)
+    When I send a GET request to "/api/v1/loyalty-accounts/learner-123"
+    Then the system should return a status code 200
+    And the response should contain the total points, current level (e.g., "ORO"), and progress to next level
+
+  Scenario: View Points History (Escenario #3)
+    When I send a GET request to "/api/v1/loyalty-accounts/learner-123/history?page=0&size=20"
+    Then the system should return a status code 200
+    And the response should contain a paginated list of all point transactions
+
+  Scenario: Bonus Points for First Encounter in New Language (Escenario #4)
+    Given a learner attends their first French encounter
+    When the check-in is processed
+    Then the learner should receive base points +5 bonus points for exploring a new language
+
+  Scenario: Referral Points (Escenario #5)
+    Given a new learner registered using referral code of learner "learner-123"
+    When the referred learner completes their first encounter
+    Then both the referrer and the referred learner should receive +15 referral bonus points
+```
+
+#### `badges_unlock.feature` (Relacionado con US31 y US32)
+
+\
+```gherkin
+Feature: Badge Unlocking and Display
+  As a learner
+  I want to unlock badges when I reach certain milestones
+  So that I can feel a sense of achievement and display my progress
+
+  Background:
+    Given the badges endpoint "/api/v1/badges" is available
+    And a learner with ID "learner-123" exists
+
+  Scenario: Automatic Badge Unlock on Milestone (Escenario #1)
+    Given a learner has attended 5 French encounters
+    When the 5th encounter check-in is processed
+    Then the system should detect the milestone
+    And unlock the "Francófilo" badge for the learner
+    And send a celebratory notification
+
+  Scenario: View Unlocked Badges (Escenario #2)
+    When I send a GET request to "/api/v1/badges/learner/learner-123"
+    Then the system should return a status code 200
+    And the response should contain a list of all unlocked badges with name, description, and unlock date
+
+  Scenario: Badges Visible on Public Profile (Escenario #3)
+    Given another learner views the public profile of learner-123
+    When the profile loads
+    Then the unlocked badges section should be visible with tooltip on hover showing description
+
+  Scenario: Monthly Challenge Badge (Escenario #4)
+    Given a new month starts with a challenge "Attend 10 encounters this month"
+    When the learner completes the challenge
+    Then the system should award the monthly badge "Viajero del Mes"
+    And the badge should appear in the learner's collection
+```
+
+#### `leaderboard.feature` (Relacionado con US33)
+
+\
+```gherkin
+Feature: Learner Leaderboard
+  As a learner
+  I want to see my ranking compared to other learners
+  So that I can engage in friendly competition within the community
+
+  Background:
+    Given the leaderboard endpoint "/api/v1/leaderboard" is available
+
+  Scenario: View Global Leaderboard (Escenario #1)
+    When I send a GET request to "/api/v1/leaderboard?limit=10"
+    Then the system should return a status code 200
+    And the response should contain the top 10 learners ranked by total points
+    And my own position should be highlighted if I am in the top 100
+
+  Scenario: Filter Leaderboard by Period (Escenario #2)
+    When I apply a filter for "last month" points
+    Then the leaderboard should recalculate showing only points earned in that period
+    And the ranking should reflect recent activity
+
+  Scenario: Friends-Only Leaderboard (Escenario #3)
+    Given I have contacts in the platform
+    When I activate the "My Contacts" filter
+    Then the leaderboard should display only my connections ranked by points
+
+  Scenario: Top 10 Ranking Badge (Escenario #4)
+    Given a learner reaches the Top 10 position
+    When the leaderboard is updated
+    Then the learner should be awarded the special badge "Top 10 Del Mes"
+```
+
+#### `loyalty_streak.feature` (Relacionado con US35)
+
+\
+```gherkin
+Feature: Attendance Streak Management
+  As a learner
+  I want the system to track my weekly attendance streak
+  So that I stay motivated to participate consistently
+
+  Background:
+    Given a learner with ID "learner-123" has a loyalty account
+
+  Scenario: Streak Counter Visible on Profile (Escenario #1)
+    When I send a GET request to "/api/v1/loyalty-accounts/learner-123"
+    Then the response should include a "streak" field showing "8 encuentros en 8 semanas" with a visual fire indicator
+
+  Scenario: Streak Reset After Missed Week (Escenario #2)
+    Given a learner had an active streak
+    When a full week passes without attending any encounter
+    Then the streak counter should reset to 0
+
+  Scenario: Motivational Notification at Risk (Escenario #3)
+    Given a learner has an active streak of 7 weeks
+    When there are 2 days left in the current week without attendance
+    Then the system should send a push notification: "Tienes racha de 7 semanas - ¡No la rompas! Hay 5 encuentros disponibles"
+
+  Scenario: Streak Milestone Reward (Escenario #4)
+    Given a learner reaches 12 consecutive weeks of attendance
+    When the milestone is detected
+    Then the system should award the badge "Adicto al Aprendizaje"
+    And grant +50 bonus points
+```
+
+***
+
+### Swagger/OpenAPI Documentation Evidence
+
+La documentación de los Web Services para los microservicios del Sprint 2 fue desarrollada utilizando **OpenAPI/Swagger** mediante **SpringDoc**, permitiendo definir formalmente los endpoints REST, parámetros de entrada, estructuras de request/response y códigos HTTP soportados.
+
+A continuación, se presentan las capturas de la interfaz Swagger UI correspondientes a cada microservicio desplegado.
+
+---
+
+#### Swagger Evidence — Venues Microservice
+
+La documentación Swagger/OpenAI para el microservicio Venues expone los controladores responsables de la gestión de locales, mesas, disponibilidad y registros de partner.
+
+![](assets/img/cap5/venues-swagger.png)
+
+*Figura X. Vista general de la especificación OpenAPI del microservicio Venues, mostrando los endpoints para gestión de locales, mesas y registro de partners.*
+
+---
+
+#### Swagger Evidence — Promotions Microservice
+
+La documentación Swagger/OpenAPI para el microservicio Promotions cubre la creación, asociación a venues y canje de promociones.
+
+![](assets/img/cap5/promotions-swagger.png)
+
+*Figura Y. Interfaz Swagger UI del microservicio Promotions, detallando los endpoints para administración de promociones y su vinculación con locales.*
+
+---
+
+#### Swagger Evidence — Learning Feedback Microservice
+
+La documentación Swagger/OpenAPI para el microservicio Learning Feedback expone los endpoints de autoevaluación, coevaluación y quizzes generados por IA.
+
+![](assets/img/cap5/feedback-swagger.png)
+
+*Figura Z. Panel Swagger UI del microservicio Learning Feedback, listando los controladores para gestión de feedback y quizzes.*
+
+---
+
+#### Swagger Evidence — Engagement Microservice
+
+La documentación Swagger/OpenAPI para el microservicio Engagement expone los endpoints de cuentas de lealtad, insignias y leaderboard.
+
+![](assets/img/cap5/engagement-swagger.png)
+
+*Figura W. Interfaz Swagger UI del microservicio Engagement, mostrando los endpoints para el sistema de gamificación y lealtad.*
+
+---
+
+### Postman Execution Evidence
+
+A continuación, se presentan las capturas de la ejecución de pruebas manuales mediante Postman para validar los endpoints críticos de cada microservicio.
+
+![](assets/img/cap5/postman-venues.png)
+
+*Figura A. Ejecución de prueba en Postman para el endpoint POST /api/v1/venues — creación exitosa de un nuevo local.*
+
+![](assets/img/cap5/postman-promotions.png)
+
+*Figura B. Ejecución de prueba en Postman para el endpoint POST /api/v1/promotions/{promotionId}/redeem — canje exitoso de una promoción.*
+
+![](assets/img/cap5/postman-feedback.png)
+
+*Figura C. Ejecución de prueba en Postman para el endpoint POST /api/v1/feedback/quiz/{quizId}/answer — envío exitoso de respuestas de quiz.*
+
+![](assets/img/cap5/postman-engagement.png)
+
+*Figura D. Ejecución de prueba en Postman para el endpoint GET /api/v1/loyalty-accounts/{learnerId} — consulta exitosa de cuenta de lealtad.*
+
 #### 5.2.2.4 Execution Evidence for Sprint Review
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 #### 5.2.2.6 Software Deployment Evidence for Sprint Review
