@@ -53,5 +53,17 @@
 | **TP1** | 15/05/2026 | **Ethan Matías Aliaga Aguirre** | 5.2.2 Source Code Management - Ajustes de estabilidad en rama Develop |
 | **TP1** | 15/05/2026 | **Ivo Marcelo Machado Bracamonte** | 5.2.3 Source Code Style Guide - Definición de estándares Gitflow y guía de contribuidores |
 | **TP1** | 15/05/2026 | **Contreras López, Leandro Saul** | 5.3.1.8 Kanban Board - Validación final, control de calidad y despliegue **(TP1)** |
+| **AV3** | 20/05/2026 | **Cesar Augusto Arostegui Alzamora** | 5.2.2.1 Sprint Backlog 2 - Planificación, priorización y seguimiento de tareas relacionadas con la migración completa hacia microservicios **(Avance 3)** |
+| **AV3** | 21/05/2026 | **Ivo Marcelo Machado Bracamonte** | 5.2.2.1 Sprint Backlog 2 - Elaboración del Sprint Backlog 2 y alineación de tareas con los objetivos de migración a microservicios |
+| **AV3** | 24/05/2026 | **Ethan Matías Aliaga Aguirre** | 5.2.2.2 Development Evidence for Sprint Review - Implementación y validación de la arquitectura de microservicios mediante la migración de bounded contexts y consolidación de evidencias técnicas del Sprint 2 |
+| **AV3** | 25/05/2026 | **Contreras López, Leandro Saul** | 5.2.2.5 Microservices Documentation Evidence - Documentación técnica de bounded contexts migrados y configuración de infraestructura distribuida |
+| **AV3** | 27/05/2026 | **Italo Ludwing Sánchez Manrique** | 5.2.2.3 Testing Suite Evidence for Sprint Review - Validación de integración entre microservicios y evidencia de pruebas sobre bounded contexts migrados |
+| **AV3** | 29/05/2026 | **Contreras López, Leandro Saul** | 5.2.2.4 Execution Evidence for Sprint Review - Evidencia de ejecución de servicios independientes, pruebas funcionales y validación de comunicación entre microservicios |
+| **AV3** | 31/05/2026 | **Ethan Matías Aliaga Aguirre** | 5.2.2.5 Microservices Documentation Evidence - Documentación de contratos OpenAPI y evidencia de integración entre servicios desacoplados |
+| **AV3** | 02/06/2026 | **Ivo Marcelo Machado Bracamonte** | 5.2.2 Source Code Management - Integración de ramas feature relacionadas con microservicios, RabbitMQ y despliegue mediante Gitflow y Pull Requests |
+| **AV3** | 04/06/2026 | **Cesar Augusto Arostegui Alzamora** | 5.2.2.8 Kanban Board - Actualización y control del tablero Kanban para seguimiento del Sprint 2 y estado de despliegue |
+| **AV3** | 06/06/2026 | **Italo Ludwing Sánchez Manrique** | 5.2.2.7 Team Collaboration Insights during Sprint - Elaboración de insights colaborativos y análisis del trabajo distribuido durante la migración arquitectónica |
+| **AV3** | 08/06/2026 | **Ivo Marcelo Machado Bracamonte** | 5.2.2.6 Software Deployment Evidence for Sprint Review - Configuración de despliegue en Render, validación de servicios cloud y documentación de la estrategia de despliegue |
+| **AV3** | 10/06/2026 | **Equipo Hampcoders** | Feature/cap5 product implementation validation \& deployment - Consolidación de migración de IAM, Profiles, Venues, Promotions, Engagement, Feedback y Encounters a arquitectura de microservicios con integración progresiva mediante RabbitMQ **(Avance 3)** |
 
 \newpage
