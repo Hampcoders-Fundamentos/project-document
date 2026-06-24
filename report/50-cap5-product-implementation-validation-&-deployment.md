@@ -1552,3 +1552,6 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 #### 5.2.3.6 Software Deployment Evidence for Sprint Review
 #### 5.2.3.7 Team Collaboration Insights during Sprint
 #### 5.2.3.8 Kanban Board --> (Avance 4)
+\
+![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
+\
