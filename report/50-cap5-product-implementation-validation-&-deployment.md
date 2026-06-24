@@ -1540,6 +1540,11 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 [Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiZmQ3NjkyODgyMzNkNDA1OTk1N2RlZjU5MDYyOWQyMWYiLCJwIjoiaiJ9)
 
 #### 5.2.3.1 Sprint Backlog 3
+\
+![Sprint 3 Backlog](assets/img/cap5/sprint3/BacklogSP3-1.png)
+\
+![Sprint 3 Backlog](assets/img/cap5/sprint3/BacklogSP3-2.png)
+\
 #### 5.2.3.2 Development Evidence for Sprint Review
 #### 5.2.3.3 Testing Suite Evidence for Sprint Review
 #### 5.2.3.4 Execution Evidence for Sprint Review
