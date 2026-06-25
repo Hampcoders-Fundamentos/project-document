@@ -259,7 +259,7 @@ Cada pregunta va acompañada de su justificación.
 - **Promociones y autonomía de gestión**
   - ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
     - Justificación: Determina el nivel de control que se debe ofrecer en el panel de partners.
-  - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio? (código QR, verificación en app, pago adelantado)
+  - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio? (código OTP, verificación en app, pago adelantado)
     - Justificación: Informa mecanismos técnicos y operativos para canje de incentivos.
 
 - **Preguntas complementarias (opcional)**
@@ -500,7 +500,7 @@ A partir de las entrevistas realizadas a los administradores de establecimientos
 - Se necesita **reducir no-shows y desorden operativo**: confirmaciones claras, reglas de cancelación y control de cupos. Virgilio menciona experiencias negativas con *"pedidos muy grandes que no fueron pagados"*; Yamile refiere *"cancelaciones sin aviso generan pérdidas y desorganización"*. Mercedez mantiene *"un margen de espera de 15–20 minutos"* antes de liberar mesas. Esto refleja fricción operativa real que la solución debe eliminar.
 - El **control de aforo es el núcleo del valor** para el local: saber cuántas personas llegarán y cuándo. Mercedez espera *"gestionar y difundir cupos máximos"*; Yamile busca *"controlar aforo"*. Este es un requerimiento universal en Segmento 2.
 - La aplicación debe servir también como **herramienta de visibilidad**: Virgilio espera que indique *"ubicación exacta, cómo llegar y catálogo de productos"*; Mercedez valora la *"intuitiva para confirmar asistencias"*. Balance entre operativa y marketing.
-- **Implicancia para la solución:** Se requiere un flujo de reserva con estados claros (p. ej., reservada → confirmada → asistida/cancelada), mecanismos de confirmación previa (p. ej., 24–48 h antes del evento), control de cupos con límites ajustables, y un mecanismo de validación presencial (código QR) para cerrar el ciclo de compromiso. Opcionalmente, analytics para mostrar ROI (clientes nuevos, consumo incremental, ocupación de horas valle).
+- **Implicancia para la solución:** Se requiere un flujo de reserva con estados claros (p. ej., reservada → confirmada → asistida/cancelada), mecanismos de confirmación previa (p. ej., 24–48 h antes del evento), control de cupos con límites ajustables, y un mecanismo de validación presencial (código OTP) para cerrar el ciclo de compromiso. Opcionalmente, analytics para mostrar ROI (clientes nuevos, consumo incremental, ocupación de horas valle).
 
 ## 2.3 Needfinding
 
@@ -544,7 +544,7 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 | Reservar cupo seguro en una mesa temática para practicar en grupo | Sí | - | Frecuente | Alta |
 | Monitorear y gestionar las reservas activas para controlar el aforo máximo | - | Sí | Frecuente | Alta |
 | **Durante el Encuentro (Dinámica Presencial)** | | | | |
-| Mostrar código QR de reserva para registrar asistencia (Check-in) | Sí | - | Frecuente | Alta |
+| Mostrar código OTP de reserva para registrar asistencia (Check-in) | Sí | - | Frecuente | Alta |
 | Escanear y validar ingresos (Check-in) para mantener el orden y seguridad | - | Sí | Frecuente | Alta |
 | Redimir descuentos y promociones en consumos por pertenecer al encuentro | Sí | - | Frecuente | Alta |
 | **Retención, Análisis & Gamificación** | | | | |
@@ -559,7 +559,7 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 
 El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la solución y la priorización del *Product Backlog* en futuras iteraciones:
 
-1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante QR es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
+1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante OTP es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
 2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **Gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
 3. **Roles Complementarios (Oferta y Demanda):** Se observa una clara separación de tareas en la fase de descubrimiento. Sofía tiene un rol activo de búsqueda y reserva, mientras que Enzo asume un rol asíncrono de configuración de disponibilidad. Esta asimetría indica que los flujos de experiencia de usuario serán completamente distintos, justificando la creación de interfaces o módulos separados.
 
