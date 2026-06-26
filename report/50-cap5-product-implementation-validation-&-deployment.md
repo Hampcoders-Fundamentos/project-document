@@ -921,8 +921,8 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 \
 [Ver Sprint 1 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiMDFiMTg2M2NkNTA3NDJjZDllZTQ3ZTlhNDU5MmNjMjUiLCJwIjoiaiJ9)
 
-### 5.2.2 Sprint 2
-#### 5.2.2.1 Sprint Backlog 2
+### 5.3.2 Sprint 2
+#### 5.3.2.1 Sprint Backlog 2
 El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (Engagement, Venues, Promotions y Learning Feedback, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
 
 ### Sprint Goal
@@ -931,7 +931,7 @@ El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: l
 Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia funcional de punta a punta al equipo de desarrollo y a los primeros aprendices.
 Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
 
-#### 5.2.2.2 Development Evidence for Sprint Review
+#### 5.3.2.2 Development Evidence for Sprint Review
 
 \
 ![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part2.png)
@@ -939,7 +939,7 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 [Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
 
 
-#### 5.2.2.3 Testing Suite Evidence for Sprint Review
+#### 5.3.2.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia correspondiente al Sprint 2. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**.
 
@@ -1740,7 +1740,11 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 \
 [Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiZmQ3NjkyODgyMzNkNDA1OTk1N2RlZjU5MDYyOWQyMWYiLCJwIjoiaiJ9)
 
-#### 5.2.3.1 Sprint Backlog 3
+### 5.3.3 Sprint 3
+
+En este sprint 3, el equipo de desarrollo de Glottia se centró en la consolidación de la arquitectura basada en microservicios mediante la migración de los módulos de Notifications y Verification desde el monolito hacia servicios independientes, cada uno dockerizado y con su propia lógica de negocio desacoplada.
+
+#### 5.3.3.1 Sprint Backlog 3
 
 El Sprint 3 tiene una duración de 2 semanas y se enfoca en la consolidación de la arquitectura basada en microservicios mediante la migración de los módulos de Notifications y Verification desde el monolito hacia servicios independientes, cada uno dockerizado y con su propia lógica de negocio desacoplada.
 
@@ -1750,7 +1754,7 @@ Sprint Goal
 
 “Nuestro enfoque está en migrar los microservicios de Notifications y Verification a servicios independientes e integrarlos mediante mensajería asíncrona con RabbitMQ. Creemos que esto entrega una arquitectura más desacoplada, segura y escalable, y mejora la comunicación del sistema con los usuarios. Esto se confirmará cuando un usuario pueda registrarse, recibir una notificación y completar exitosamente su proceso de verificación utilizando la nueva infraestructura de microservicios.”
 
-#### 5.2.3.2 Development Evidence for Sprint Review
+#### 5.3.3.2 Development Evidence for Sprint Review
 
 \
 ![Sprint 3 Backlog](assets/img/cap5/sprint3/BacklogSP3-1.png)
@@ -1758,7 +1762,7 @@ Sprint Goal
 ![Sprint 3 Backlog](assets/img/cap5/sprint3/BacklogSP3-2.png)
 \
 
-#### 5.2.3.3 Testing Suite Evidence for Sprint Review
+#### 5.3.3.3 Testing Suite Evidence for Sprint Review
 
 A continuación, se presentan las especificaciones en formato Gherkin para validar el correcto funcionamiento de los microservicios de Verification y Notifications, asegurando la cobertura de los escenarios definidos en las historias de usuario del Sprint 3.
 
@@ -2022,7 +2026,7 @@ Feature: Messaging Notifications
     Then it should be stored silently without alert
 ```
 
-#### 5.2.3.4 Execution Evidence for Sprint Review
+#### 5.3.3.4 Execution Evidence for Sprint Review
 
 Durante el Sprint 3 se logró implementar y validar el flujo principal del sistema desde la perspectiva del usuario Partner, cubriendo desde el registro hasta la gestión operativa de locales y encuentros. A continuación, se presenta la evidencia visual que respalda el cumplimiento del Sprint Goal.
 
@@ -2085,7 +2089,7 @@ El sistema permite la trazabilidad de eventos, mostrando información clave para
 ---
 
 
-#### 5.2.3.5 Microservices Documentation Evidence for Sprint Review
+#### 5.3.3.5 Microservices Documentation Evidence for Sprint Review
 
 Durante el Sprint 3, la documentación de los microservicios fue actualizada utilizando SpringDoc OpenAPI, permitiendo visualizar y validar los endpoints implementados.
 
@@ -2118,7 +2122,7 @@ La documentación expone los endpoints para generación y validación de código
 
 --- 
 
-#### 5.2.3.6 Software Deployment Evidence for Sprint Review
+#### 5.3.3.6 Software Deployment Evidence for Sprint Review
 
 En el Deployment de los microservicios del Sprint 3, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
 
@@ -2144,7 +2148,7 @@ VPC configurada con subredes públicas y privadas, grupos de seguridad y balance
 
 ![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
 
-#### 5.2.3.7 Team Collaboration Insights during Sprint
+#### 5.3.3.7 Team Collaboration Insights during Sprint
 
 
 Durante el Sprint 3, el equipo de desarrollo de Glottia centró sus esfuerzos en la implementación de funcionalidades end-to-end desde la perspectiva del usuario Partner, asegurando la correcta interacción entre la interfaz web y la arquitectura de microservicios previamente establecida.
@@ -2162,7 +2166,7 @@ En paralelo, se realizaron tareas de integración entre frontend y backend, vali
 \
 
 
-#### 5.2.3.8 Kanban Board --> (Avance 4)
+#### 5.3.3.8 Kanban Board --> (Avance 4)
 \
 ![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
 \
