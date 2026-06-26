@@ -130,8 +130,8 @@ Plataforma en la nube diseñada para el desarrollo colaborativo de software, per
 **Repositorios de GitHub:**
 
 - Enlace para acceder al [Repositorio del Documento](https://github.com/Hampcoders-Fundamentos/project-document)
-- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)
-- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices)
+- Enlace para acceder al [Repositorio del Backend como Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)
+- Enlace para acceder al [Repositorio del Backend como Microservicios](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices)
 
 ![Gitflow Graphic](assets/img/cap5/Gitflow-Graphic.jpeg)
 
