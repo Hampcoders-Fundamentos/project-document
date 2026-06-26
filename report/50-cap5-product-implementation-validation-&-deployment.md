@@ -1540,15 +1540,323 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 [Ver Sprint 2 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiZmQ3NjkyODgyMzNkNDA1OTk1N2RlZjU5MDYyOWQyMWYiLCJwIjoiaiJ9)
 
 #### 5.2.3.1 Sprint Backlog 3
+
+El Sprint 3 tiene una duración de 2 semanas y se enfoca en la consolidación de la arquitectura basada en microservicios mediante la migración de los módulos de Notifications y Verification desde el monolito hacia servicios independientes, cada uno dockerizado y con su propia lógica de negocio desacoplada.
+
+Este sprint abarca tres frentes principales de trabajo: en primer lugar, la implementación de los microservicios de notificaciones y verificación, incluyendo el envío de mensajes (email/push) y la validación de usuarios mediante códigos OTP; en segundo lugar, la integración de estos servicios con el ecosistema existente de microservicios utilizando RabbitMQ para la comunicación asíncrona basada en eventos; y en tercer lugar, la corrección de errores derivados de la migración, así como la validación del flujo completo de registro, autenticación y verificación de usuarios dentro de la plataforma.
+
+Sprint Goal
+
+“Nuestro enfoque está en migrar los microservicios de Notifications y Verification a servicios independientes e integrarlos mediante mensajería asíncrona con RabbitMQ. Creemos que esto entrega una arquitectura más desacoplada, segura y escalable, y mejora la comunicación del sistema con los usuarios. Esto se confirmará cuando un usuario pueda registrarse, recibir una notificación y completar exitosamente su proceso de verificación utilizando la nueva infraestructura de microservicios.”
+
+#### 5.2.3.2 Development Evidence for Sprint Review
+
 \
 ![Sprint 3 Backlog](assets/img/cap5/sprint3/BacklogSP3-1.png)
 \
 ![Sprint 3 Backlog](assets/img/cap5/sprint3/BacklogSP3-2.png)
 \
-#### 5.2.3.2 Development Evidence for Sprint Review
+
 #### 5.2.3.3 Testing Suite Evidence for Sprint Review
+
+A continuación, se presentan las especificaciones en formato Gherkin para validar el correcto funcionamiento de los microservicios de Verification y Notifications, asegurando la cobertura de los escenarios definidos en las historias de usuario del Sprint 3.
+
+
+### **Verification Microservice Testing Suite**
+
+A continuación, se presentan las especificaciones Gherkin para validar el microservicio de **Verification (IAM)**, incluyendo registro, autenticación, seguridad y recuperación de cuentas.
+
+---
+
+#### `registration.feature` (Relacionado con US01)
+
+```gherkin
+Feature: User Registration and Email Verification
+  As a new user
+  I want to register and verify my account
+  So that I can access the platform securely
+
+  Background:
+    Given the IAM endpoint "/api/v1/auth/register" is available
+
+  Scenario: Successful Registration (Escenario #1)
+    When I send a POST request with valid email and strong password
+    Then the system should return status code 201
+    And the account should be created
+    And a verification email should be sent
+
+  Scenario: Duplicate Email (Escenario #2)
+    Given an email already exists in the system
+    When I attempt to register with that email
+    Then the system should return status code 400
+    And show "Este correo ya está registrado"
+
+  Scenario: Weak Password Validation (Escenario #3)
+    When I submit a password that does not meet requirements
+    Then the system should reject the request
+    And return validation errors
+
+  Scenario: Email Verification Expiration (Escenario #4)
+    Given a user has not verified their email within 24 hours
+    When the verification period expires
+    Then the account should be automatically deactivated
+```
+
+---
+
+#### `authentication.feature` (Relacionado con US03 y US04)
+
+```gherkin
+Feature: User Authentication and Session Management
+  As a registered user
+  I want to securely login and logout
+  So that my session is properly managed
+
+  Background:
+    Given the IAM endpoint "/api/v1/auth" is available
+
+  Scenario: Successful Login (US03 - Escenario #1)
+    Given a verified user exists
+    When I send valid credentials to "/login"
+    Then the system should return status code 200
+    And generate a valid JWT token
+
+  Scenario: Invalid Credentials (US03 - Escenario #2)
+    When I login with incorrect credentials
+    Then the system should return status code 401
+    And show "Email o contraseña inválidos"
+
+  Scenario: Unverified Email Login (US03 - Escenario #3)
+    Given a user has not verified their email
+    When they try to login
+    Then access should be denied
+    And offer resend verification email
+
+  Scenario: Account Lock After Failed Attempts (US03 - Escenario #5)
+    Given 5 consecutive failed attempts
+    When I try again
+    Then the account should be locked for 30 minutes
+
+  Scenario: Successful Logout (US04 - Escenario #1)
+    Given an authenticated user
+    When I request logout
+    Then the system should invalidate the token
+    And clear session data
+
+  Scenario: Automatic Session Expiration (US04 - Escenario #2)
+    Given a user is inactive for 30 minutes
+    When they perform an action
+    Then the system should force reauthentication
+```
+
+---
+
+#### `password_recovery.feature` (Relacionado con US05)
+
+```gherkin
+Feature: Password Recovery and Reset
+  As a user
+  I want to recover my password securely
+  So that I can regain access to my account
+
+  Background:
+    Given the endpoint "/api/v1/auth/recover-password" is available
+
+  Scenario: Password Recovery Request (Escenario #1)
+    When I submit my email
+    Then the system should send a reset link valid for 1 hour
+
+  Scenario: Email Not Found (Escenario #2)
+    When I submit an unregistered email
+    Then the system should respond with generic message
+    And not reveal if the account exists
+
+  Scenario: Expired Reset Link (Escenario #3)
+    Given a reset link older than 1 hour
+    When I try to use it
+    Then the system should reject it
+    And require a new request
+
+  Scenario: Successful Password Reset (Escenario #4)
+    Given a valid reset link
+    When I submit a new valid password
+    Then the password should be updated
+    And login should be enabled
+
+  Scenario: Abuse Prevention (Escenario #5)
+    Given multiple reset requests in short time
+    When exceeding 3 attempts in 10 minutes
+    Then the system should temporarily block new requests
+```
+
+---
+
+### **Notifications Microservice Testing Suite**
+
+A continuación, se detallan las especificaciones Gherkin para validar el microservicio de **Notifications**, incluyendo recordatorios, eventos en tiempo real y mensajería.
+
+---
+
+#### `event_reminders.feature` (Relacionado con US22)
+
+```gherkin
+Feature: Event Reminder Notifications
+  As a learner
+  I want reminders for my upcoming events
+  So that I do not miss them
+
+  Background:
+    Given the notifications endpoint "/api/v1/notifications" is available
+
+  Scenario: 24-Hour Reminder (Escenario #1)
+    Given a user has a reservation
+    When there are 24 hours remaining
+    Then the system should send email and push notification
+
+  Scenario: 2-Hour Reminder (Escenario #2)
+    Given an event is approaching
+    When 2 hours remain
+    Then the system should send push notification
+
+  Scenario: Disable Reminders (Escenario #3)
+    Given a user disabled reminders
+    When the reminder time arrives
+    Then no notification should be sent
+
+  Scenario: Cancelled Event (Escenario #4)
+    Given an event was cancelled
+    When reminder time arrives
+    Then no notification should be triggered
+```
+
+---
+
+#### `waitlist_notifications.feature` (Relacionado con US24)
+
+```gherkin
+Feature: Waitlist Notification System
+  As a learner in waitlist
+  I want to be notified when a spot is available
+  So that I can reserve it quickly
+
+  Background:
+    Given the waitlist notification service is active
+
+  Scenario: Spot Available Notification (Escenario #1)
+    Given a user is in waitlist
+    When a spot is released
+    Then the system should notify immediately
+    And include confirmation link
+
+  Scenario: Confirmation Timeout (Escenario #2)
+    Given user receives notification
+    When 15 minutes pass without confirmation
+    Then the spot should be reassigned
+
+  Scenario: Successful Reservation from Waitlist (Escenario #3)
+    When user confirms quickly
+    Then the reservation should be secured
+
+  Scenario: Multiple Waitlists (Escenario #4)
+    Given a user is in multiple waitlists
+    When spots open
+    Then notifications should be sent independently
+```
+
+---
+
+#### `social_notifications.feature` (Relacionado con US42)
+
+```gherkin
+Feature: Social Interaction Notifications
+  As a learner
+  I want to receive contact request notifications
+  So that I can manage my connections
+
+  Background:
+    Given the social notifications system is active
+
+  Scenario: New Contact Request Notification (Escenario #1)
+    Given a user receives a contact request
+    When the request is created
+    Then the system should notify the user
+
+  Scenario: Manage Requests (Escenario #2)
+    Given pending requests exist
+    When user views them
+    Then they can accept or reject each request
+```
+
+---
+
+#### `message_notifications.feature` (Relacionado con US45)
+
+```gherkin
+Feature: Messaging Notifications
+  As a user
+  I want to receive notifications for new messages
+  So that I can respond on time
+
+  Background:
+    Given the messaging notification system is active
+
+  Scenario: In-App Notification (Escenario #1)
+    Given user is active in app
+    When a message arrives
+    Then an in-app notification should be shown
+
+  Scenario: Push Notification (Escenario #2)
+    Given app is in background
+    When a message arrives
+    Then a push notification should be sent
+
+  Scenario: Silent Conversation (Escenario #3)
+    Given a conversation is muted
+    When messages arrive
+    Then notifications should not be sent
+
+  Scenario: Do Not Disturb Mode (Escenario #4)
+    Given DND is active
+    When a message arrives
+    Then it should be stored silently without alert
+```
+
 #### 5.2.3.4 Execution Evidence for Sprint Review
+
+
 #### 5.2.3.5 Microservices Documentation Evidence for Sprint Review
+
+Durante el Sprint 3, la documentación de los microservicios fue actualizada utilizando SpringDoc OpenAPI, permitiendo visualizar y validar los endpoints implementados.
+
+
+### Swagger Evidence — Notifications Microservice
+
+La documentación expone los endpoints relacionados con el envío de notificaciones y procesamiento de eventos.
+
+\
+![](assets/img/cap5/sprint3/Microservice-Verifications.jpeg)
+
+*Figura X. Interfaz Swagger UI del microservicio Notifications*
+
+\
+![](assets/img/cap5/sprint3/Micro-notifications-pref.jpeg)
+
+
+*Figura X. Interfaz Swagger UI del microservicio Notifications-Preferences*
+
+---
+
+### Swagger Evidence — Verification Microservice
+
+La documentación expone los endpoints para generación y validación de códigos de verificación.
+
+\
+![](assets/img/cap5/sprint3/Microservice-Notidications.jpeg)
+
+*Figura X. Interfaz Swagger UI del microservicio Verification.*
+
+--- 
+
 #### 5.2.3.6 Software Deployment Evidence for Sprint Review
 #### 5.2.3.7 Team Collaboration Insights during Sprint
 #### 5.2.3.8 Kanban Board --> (Avance 4)
