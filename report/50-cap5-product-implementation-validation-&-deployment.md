@@ -271,33 +271,52 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 
 #### 5.3.1.2 Development Evidence for Sprint Review
 
-Durante el Sprint 1, se logró un avance parcial en el despliegue de la landing page.
-[Link del landing Page](https://glottia-landing-page-master.vercel.app/) 
-Actualmente, el sitio ya cuenta con diversas secciones operativas que ofrecen información clave sobre los servicios y el equipo de Glottia. Las evidencias de este progreso se detallan a continuación:
+Durante el Sprint 1, el equipo Hampcoders desarrolló e implementó los microservicios correspondientes a los Bounded Contexts de **IAM**, **Profiles** y **Encounters**, dando inicio a la migración desde la arquitectura monolito modular hacia microservicios independientes. A continuación se detalla el desarrollo realizado por cada microservicio, incluyendo los endpoints implementados, las decisiones arquitectónicas adoptadas y las evidencias de código.
 
- - **Sección Hero (Inicio):** El usuario visualiza la propuesta de valor principal centrada en la práctica de idiomas cara a cara. La sección destaca beneficios clave como conversaciones reales, la posibilidad de conocer gente nueva y el acceso a espacios seguros.
+##### IAM Microservice
 
-![Sección Hero – Landing Page](assets/img/cap5/hero-section.png)
+El microservicio IAM (Identity and Access Management) fue desarrollado como el primer módulo extraído del monolito, con los siguientes entregables:
 
- - **Sección ¿Cómo funciona?:** El usuario puede visualizar el proceso de funcionamiento de la plataforma dividido en dos perfiles: Aprendices y Locales. Para los aprendices, se detallan tres pasos que incluyen el registro de perfil, la búsqueda de encuentros temáticos y la asistencia a las sesiones. Para los locales, se explica el flujo para convertir su negocio en un "hub cultural" mediante el registro del establecimiento, la definición de horarios disponibles y la recepción de los practicantes de idiomas.
+- **Repositorio y configuración inicial:** Se creó un repositorio independiente para el microservicio IAM con Spring Boot 3.x, configuración de conexión a base de datos MySQL propia y empaquetado Docker.
+- **Módulo de Autenticación:** Implementación de flujo completo de registro (`POST /api/v1/auth/register`) e inicio de sesión (`POST /api/v1/auth/login`) con generación de tokens JWT.
+- **Módulo de Usuarios:** Endpoints CRUD para gestión de usuarios (`GET /api/v1/users`, `GET /api/v1/users/{id}`).
+- **Seguridad:** Integración de Spring Security con BCrypt para hashing de contraseñas y filtro JWT para validación de tokens en cada request.
+- **Pruebas de integración:** Se implementaron escenarios BDD para registro de aprendiz, registro de partner, inicio y cierre de sesión (Archivos: `auth_register_learner.feature`, `auth_register_partner.feature`, `auth_login.feature`, `auth_logout.feature`).
 
-![Sección ¿Cómo funciona? – Landing Page](assets/img/cap5/how-it-works.png)
+La documentación Swagger/OpenAPI del microservicio IAM se detalla en la sección 5.3.1.5.
 
- - **Sección Nuestra Solución:** El usuario obtiene una visión detallada del ecosistema de la plataforma, destacando pilares como conversaciones reales, una comunidad activa, soporte para múltiples idiomas y un enfoque en el progreso garantizado.
+##### Profiles Microservice
 
-![Sección Nuestra Solución – Landing Page](assets/img/cap5/our-solution.png)
+El microservicio Profiles fue desarrollado para gestionar la información de perfiles de learners y partners, con los siguientes entregables:
 
- - **Sección Ve Glottia en Acción:** El usuario puede visualizar una demostración práctica de la plataforma a través de un video interactivo que muestra la interfaz de la aplicación en funcionamiento.
+- **Repositorio y configuración inicial:** Se configuró el proyecto con Spring Boot, base de datos independiente y esquema de datos propio.
+- **API de Perfiles:** Endpoints para creación, consulta, actualización y eliminación de perfiles (`GET/POST/PUT/DELETE /api/v1/profiles/{id}`).
+- **Gestión de Idiomas:** Endpoints para que los learners puedan agregar, actualizar y eliminar idiomas de su perfil (`POST/PUT/DELETE /api/v1/profiles/{id}/learner/languages/{languageId}`).
+- **Búsqueda:** Endpoint de búsqueda de perfiles por email (`GET /api/v1/profiles/search`).
+- **Avatar:** Integración con el servicio de almacenamiento en la nube para subida y gestión de fotos de perfil.
+- **Pruebas de integración:** Escenarios BDD para onboarding, edición de perfil, visualización de perfil de otros usuarios y subida de avatar (Archivos: `profile_*.feature`).
 
-![Sección Ve Glottia en Acción – Landing Page](assets/img/cap5/glottia-in-action.png)
+La documentación Swagger/OpenAPI del microservicio Profiles se detalla en la sección 5.3.1.5.
 
- - **Sección Beneficios para todos:** El usuario puede explorar las ventajas competitivas de la plataforma segmentadas para Aprendices y Locales. Para los estudiantes, se resaltan beneficios como la ganancia de fluidez en situaciones reales, el networking cultural, el ahorro frente a academias tradicionales y la flexibilidad de horarios.
+##### Encounters Microservice
 
-![Sección Beneficios – Landing Page](assets/img/cap5/benefits.png)
+El microservicio Encounters fue desarrollado para administrar el ciclo de vida completo de los encuentros conversacionales, con los siguientes entregables:
 
- - **Sección Sobre Nosotros:** El usuario puede conocer la identidad corporativa de la plataforma a través de su Misión, enfocada en facilitar la práctica oral mediante experiencias reales y seguras, y su Visión, que aspira a convertir a Glottia en la comunidad global de referencia para el intercambio cultural.
+- **Repositorio y configuración inicial:** Separación del schema de Encounters con su propia base de datos y configuración de integraciones hacia Venues y Profiles.
+- **API de Encuentros:** Endpoints para creación (`POST /api/v1/encounters`), búsqueda (`GET /api/v1/encounters/search`), consulta por ID (`GET /api/v1/encounters/{encounterId}`) y cancelación (`DELETE /api/v1/encounters/{encounterId}`).
+- **Flujo de Ciclo de Vida:** Endpoints para iniciar (`POST .../start`), completar (`POST .../complete`) encuentros, y gestionar asistencias (`POST .../attendances`, `POST .../check-in`).
+- **Integraciones:** Conexión con el microservicio de Profiles para datos de participantes y con Venues para disponibilidad de locales.
+- **Pruebas de integración:** Escenarios BDD para el flujo completo de búsqueda, registro de asistencia y check-in.
 
-![Sección Sobre Nosotros – Landing Page](assets/img/cap5/about-us.png)
+La documentación Swagger/OpenAPI del microservicio Encounters se detalla en la sección 5.3.1.5.
+
+##### API Gateway
+
+Se inició la configuración del API Gateway como punto de entrada único para todos los microservicios, implementando enrutamiento perimetral hacia IAM, Profiles y Encounters, con políticas centralizadas de CORS y seguridad.
+
+##### Control de Versiones y Colaboración
+
+Todo el desarrollo fue gestionado mediante GitHub siguiendo la estrategia GitFlow, con ramas `main` y `develop` como base, y ramas `feature/` para cada tarea del sprint. Cada integración fue realizada mediante Pull Requests con revisión de código por pares. Las evidencias de commits, contribuciones y flujo de trabajo colaborativo se presentan en la sección 5.3.1.7.
 
 ---
 
