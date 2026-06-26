@@ -1391,14 +1391,12 @@ El microservicio IAM (Identity and Access Management) es responsable de la auten
 
 La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio IAM.
 
+\
+![Vista general de la especificación de los endpoints del módulo de users bajo el estándar OpenAPI](assets/img/cap5/iam.jpeg)
 
-![](assets/img/cap5/iam.jpeg)
+\
+![Vista general de la especificación de los endpoints del módulo de Autenticación bajo el estándar OpenAPI](assets/img/cap5/Authentication.jpeg)
 
-*Figura 18. Vista general de la especificación de los endpoints del módulo de users bajo el estándar OpenAPI.*
-
-![](assets/img/cap5/Authentication.jpeg)
-
-*Figura 19. Vista general de la especificación de los endpoints del módulo de Autenticación bajo el estándar OpenAPI.*
 
 ---
 
@@ -1406,13 +1404,11 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 
 ---
 
-![](assets/img/cap5/Documentacion-iam.png)
+\
+![Interfaz de Swagger UI para el endpoint de registro de usuarios, detallando el esquema del Request Body requerido del sing-up](assets/img/cap5/Documentacion-iam.png)
 
-*Figura 20. Interfaz de Swagger UI para el endpoint de registro de usuarios, detallando el esquema del Request Body requerido del sing-up.*
-
-![IAM-Documentation-sing-in](assets/img/cap5/IAM-sing-in.png)
-
-*Figura 21. Evidencia de interacción con el endpoint `/api/v1/auth/login` utilizando datos de muestra (`username: "test_user"`). Se observa la respuesta exitosa con código HTTP 200 (OK) y la generación del respectivo token de autenticación (JWT).*
+\
+![Evidencia de interacción con el endpoint `/api/v1/auth/login` utilizando datos de muestra (`username: "test_user"`). Se observa la respuesta exitosa con código HTTP 200 (OK) y la generación del respectivo token de autenticación (JWT)](assets/img/cap5/IAM-sing-in.png)
 
 --- 
 
@@ -1439,9 +1435,7 @@ El microservicio Encounters administra la creación, búsqueda, reserva y seguim
 
 La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Encounters.
 
-![](assets/img/cap5/Encounters.png)
-
-*Figura 21. Panel general de Swagger UI para el microservicio de Encounters, listando los controladores REST encargados de la gestión del ciclo de vida de las sesiones conversacionales.*
+![Panel general de Swagger UI para el microservicio de Encounters, listando los controladores REST encargados de la gestión del ciclo de vida de las sesiones conversacionales.](assets/img/cap5/Encounters.png)
 
 --- 
 
@@ -1449,17 +1443,15 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 
 ---
 
-![](assets/img/cap5/post-encounters.png)
+\
+![Interfaz interactiva para el endpoint POST /api/v1/encounters. Se observa la estructura requerida del Request Body para dar de alta un nuevo encuentro de práctica lingüística y los esquemas de validación de datos](assets/img/cap5/post-encounters.png)
 
-*Figura 22. Interfaz interactiva para el endpoint POST /api/v1/encounters. Se observa la estructura requerida del Request Body para dar de alta un nuevo encuentro de práctica lingüística y los esquemas de validación de datos.*
+\
+![Prueba de ejecución con datos de muestra para el endpoint GET /api/v1/encounters/{encounterId} e inicio del flujo. La documentación detalla la inyección](assets/img/cap5/Encounters-id.png)
 
-![](assets/img/cap5/Encounters-id.png)
+\
+![Evidencia del endpoint de finalización del ciclo conversacional (POST /.../complete). Muestra la estructura de respuesta exitosa del servidor tras procesar el cambio de estado de la sesión utilizando una ID de muestra](assets/img/cap5/EncounterId-complete.png)
 
-*Figura 23. Prueba de ejecución con datos de muestra para el endpoint GET /api/v1/encounters/{encounterId} e inicio del flujo. La documentación detalla la inyección*
-
-![](assets/img/cap5/EncounterId-complete.png)
-
-*Figura 24. Evidencia del endpoint de finalización del ciclo conversacional (POST /.../complete). Muestra la estructura de respuesta exitosa del servidor tras procesar el cambio de estado de la sesión utilizando una ID de muestra.*
 
 ---
 
@@ -1486,9 +1478,9 @@ El microservicio Profiles gestiona la información pública y académica de los 
 
 La imágenes a continuación muestran la documentación Swagger/OpenAPI correspondiente a los endpoints del microservicio Profiles.
 
-![](assets/img/cap5/Profiles.png)
+![Interfaz principal de Swagger UI para el microservicio de Profiles, exhibiendo los endpoints necesarios para la administración de datos personales y configuración de idiomas](assets/img/cap5/Profiles.png)
 
-*Figura 25. Interfaz principal de Swagger UI para el microservicio de Profiles, exhibiendo los endpoints necesarios para la administración de datos personales y configuración de idiomas.*
+*Figura 25. .*
 
 --- 
 
@@ -1496,17 +1488,15 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 
 ---
 
-![](assets/img/cap5/ProfilesId-put.png)
+\
+![Detalle de especificación para el endpoint PUT /api/v1/profiles/{id}. La interfaz muestra los parámetros requeridos en la ruta y el esquema JSON necesario para la actualización parcial o total del perfil](assets/img/cap5/ProfilesId-put.png)
 
-*Figura 26. Detalle de especificación para el endpoint PUT /api/v1/profiles/{id}. La interfaz muestra los parámetros requeridos en la ruta y el esquema JSON necesario para la actualización parcial o total del perfil.*
+\
+![Interacción simulada con el endpoint POST /api/v1/profiles utilizando datos de muestra. Se valida la respuesta exitosa del servidor junto con los códigos de estado HTTP ante el envío de estructuras de perfil correctas](assets/img/cap5/Post-Profiles-id.jpeg)
 
-![](assets/img/cap5/Post-Profiles-id.jpeg)
+\
+![Ejecución exitosa de una consulta masiva mediante el endpoint GET /api/v1/profiles. Swagger UI despliega la respuesta simulada con código 200 (OK) exponiendo la estructura en formato de arreglo JSON de los perfiles guardados en el sistema](assets/img/cap5/Get-Profiles.png)
 
-*Figura 27. Interacción simulada con el endpoint POST /api/v1/profiles utilizando datos de muestra. Se valida la respuesta exitosa del servidor junto con los códigos de estado HTTP ante el envío de estructuras de perfil correctas.*
-
-![](assets/img/cap5/Get-Profiles.png)
-
-*Figura 28. Ejecución exitosa de una consulta masiva mediante el endpoint GET /api/v1/profiles. Swagger UI despliega la respuesta simulada con código 200 (OK) exponiendo la estructura en formato de arreglo JSON de los perfiles guardados en el sistema.*
 
 #### 5.3.1.6 Software Deployment Evidence for Sprint Review
 
@@ -2246,19 +2236,19 @@ En esta sección el equipo presenta la evidencia de ejecución de la aplicación
 
 #### Home
 
-![](assets/img/cap5/spb2/home.png)
+![Sección principal](assets/img/cap5/spb2/home.png)
 
 #### Social
 
-![](assets/img/cap5/spb2/social.png)
+![Redes sociales](assets/img/cap5/spb2/social.png)
 
 #### Practise
 
-![](assets/img/cap5/spb2/practise.png)
+![Práctica](assets/img/cap5/spb2/practise.png)
 
 #### Profiles
 
-![](assets/img/cap5/spb2/profiles.png)
+![Perfiles de usuario](assets/img/cap5/spb2/profiles.png)
 
 #### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
 ### Swagger/OpenAPI Documentation Evidence
@@ -2273,9 +2263,7 @@ A continuación, se presentan las capturas de la interfaz Swagger UI correspondi
 
 La documentación Swagger/OpenAI para el microservicio Venues expone los controladores responsables de la gestión de locales, mesas, disponibilidad y registros de partner.
 
-![](assets/img/cap5/venues-swagger.png)
-
-*Figura X. Vista general de la especificación OpenAPI del microservicio Venues, mostrando los endpoints para gestión de locales, mesas y registro de partners.*
+![Vista general de la especificación OpenAPI del microservicio Venues, mostrando los endpoints para gestión de locales, mesas y registro de partners](assets/img/cap5/venues-swagger.png)
 
 ---
 
@@ -2283,9 +2271,7 @@ La documentación Swagger/OpenAI para el microservicio Venues expone los control
 
 La documentación Swagger/OpenAPI para el microservicio Promotions cubre la creación, asociación a venues y canje de promociones.
 
-![](assets/img/cap5/promotions-swagger.png)
-
-*Figura Y. Interfaz Swagger UI del microservicio Promotions, detallando los endpoints para administración de promociones y su vinculación con locales.*
+![Interfaz Swagger UI del microservicio Promotions, detallando los endpoints para administración de promociones y su vinculación con locales.](assets/img/cap5/promotions-swagger.png)
 
 ---
 
@@ -2293,9 +2279,7 @@ La documentación Swagger/OpenAPI para el microservicio Promotions cubre la crea
 
 La documentación Swagger/OpenAPI para el microservicio Learning Feedback expone los endpoints de autoevaluación, coevaluación y quizzes generados por IA.
 
-![](assets/img/cap5/feedback-swagger.png)
-
-*Figura Z. Panel Swagger UI del microservicio Learning Feedback, listando los controladores para gestión de feedback y quizzes.*
+![Panel Swagger UI del microservicio Learning Feedback, listando los controladores para gestión de feedback y quizzes](assets/img/cap5/feedback-swagger.png)
 
 ---
 
@@ -2303,9 +2287,8 @@ La documentación Swagger/OpenAPI para el microservicio Learning Feedback expone
 
 La documentación Swagger/OpenAPI para el microservicio Engagement expone los endpoints de cuentas de lealtad, insignias y leaderboard.
 
-![](assets/img/cap5/engagement-swagger.png)
+![Interfaz Swagger UI del microservicio Engagement, mostrando los endpoints para el sistema de gamificación y lealtad](assets/img/cap5/engagement-swagger.png)
 
-*Figura W. Interfaz Swagger UI del microservicio Engagement, mostrando los endpoints para el sistema de gamificación y lealtad.*
 
 ---
 
@@ -2659,7 +2642,7 @@ Durante el Sprint 3 se logró implementar y validar el flujo principal del siste
 
 Se implementó la interfaz de creación de cuenta, permitiendo a nuevos usuarios registrarse en la plataforma mediante correo electrónico y contraseña.
 \
-![](assets/img/cap5/sprint3/Registro-Usuario.PNG)
+![Registro de Usuario](assets/img/cap5/sprint3/Registro-Usuario.PNG)
 \
 **Resultado:**
 El sistema permite la creación de nuevas cuentas, validando datos de entrada y estableciendo el punto de acceso al sistema.
@@ -2670,7 +2653,7 @@ El sistema permite la creación de nuevas cuentas, validando datos de entrada y 
 
 Luego del registro, el usuario debe completar su perfil con información personal, datos del negocio y datos de contacto.
 \
-![](assets/img/cap5/sprint3/Completar-Perfil.PNG)
+![Completar Perfil](assets/img/cap5/sprint3/Completar-Perfil.PNG)
 \
 **Resultado:**
 Se valida la persistencia de datos del usuario y la correcta estructuración del perfil del partner dentro del sistema.
@@ -2681,7 +2664,7 @@ Se valida la persistencia de datos del usuario y la correcta estructuración del
 
 Se desarrolló el dashboard principal donde el usuario visualiza métricas clave como encuentros, reservas activas, tasa de asistencia y promociones.
 \
-![](assets/img/cap5/sprint3/Dashboard-Principal.PNG)
+![Dashboard Principal](assets/img/cap5/sprint3/Dashboard-Principal.PNG)
 \
 **Resultado:**
 El usuario puede visualizar información resumida y relevante de sus operaciones, confirmando la integración de datos desde múltiples servicios.
@@ -2692,7 +2675,7 @@ El usuario puede visualizar información resumida y relevante de sus operaciones
 
 El sistema permite la visualización y edición de locales registrados, incluyendo información como dirección, capacidad y tipo de establecimiento.
 \
-![](assets/img/cap5/sprint3/Gestion-Locales.PNG)
+![Gestión de Locales](assets/img/cap5/sprint3/Gestion-Locales.PNG)
 \
 **Resultado:**
 Se valida la funcionalidad CRUD de locales, asegurando la correcta gestión de recursos del partner.
@@ -2704,7 +2687,7 @@ Se valida la funcionalidad CRUD de locales, asegurando la correcta gestión de r
 Se implementó la vista de historial de encuentros, donde el usuario puede consultar eventos pasados, estado, asistencia y detalles asociados.
 
 \
-![](assets/img/cap5/sprint3/Historial-Encuentros.PNG)
+![Historial de Encuentros](assets/img/cap5/sprint3/Historial-Encuentros.PNG)
 \
 **Resultado:**
 El sistema permite la trazabilidad de eventos, mostrando información clave para la toma de decisiones del usuario.
@@ -2722,15 +2705,10 @@ Durante el Sprint 3, la documentación de los microservicios fue actualizada uti
 La documentación expone los endpoints relacionados con el envío de notificaciones y procesamiento de eventos.
 
 \
-![](assets/img/cap5/sprint3/Microservice-Verifications.jpeg)
-
-*Figura X. Interfaz Swagger UI del microservicio Notifications*
+![Interfaz Swagger UI del microservicio Notifications](assets/img/cap5/sprint3/Microservice-Verifications.jpeg)
 
 \
-![](assets/img/cap5/sprint3/Micro-notifications-pref.jpeg)
-
-
-*Figura X. Interfaz Swagger UI del microservicio Notifications-Preferences*
+![Interfaz Swagger UI del microservicio Notifications-Preferences](assets/img/cap5/sprint3/Micro-notifications-pref.jpeg)
 
 ---
 
@@ -2739,9 +2717,7 @@ La documentación expone los endpoints relacionados con el envío de notificacio
 La documentación expone los endpoints para generación y validación de códigos de verificación.
 
 \
-![](assets/img/cap5/sprint3/Microservice-Notidications.jpeg)
-
-*Figura X. Interfaz Swagger UI del microservicio Verification.*
+![Interfaz Swagger UI del microservicio Verification](assets/img/cap5/sprint3/Microservice-Notidications.jpeg)
 
 --- 
 
