@@ -839,14 +839,22 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 
 ### 5.2.2 Sprint 2
 #### 5.2.2.1 Sprint Backlog 2
-\
-![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part1.png)
+El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (Engagement, Venues, Promotions y Learning Feedback, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
+
+### Sprint Goal
+
+"Nuestro enfoque está en migrar Engagement, Venues, Promotions y Learning Feedback a microservicios independientes y habilitar los flujos base de autenticación, gestión de perfil y check-in en encuentros.
+Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia funcional de punta a punta al equipo de desarrollo y a los primeros aprendices.
+Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
+
+#### 5.2.2.2 Development Evidence for Sprint Review
+
 \
 ![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part2.png)
 \
 [Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
 
-#### 5.2.2.2 Development Evidence for Sprint Review
+
 #### 5.2.2.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia correspondiente al Sprint 2. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**.
