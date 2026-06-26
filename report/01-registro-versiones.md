@@ -23,7 +23,6 @@
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | 2.3.3 Empathy Maps - Mapas de empatía para ambos segmentos |
 | **AV1** | 18/04/2026 | **Contreras López, Leandro Saul** | 2.3.4 As-is Scenario Mapping - Diagrama de escenario actual |
 | **AV1** | 18/04/2026 | **Arostegui Alzamora, Cesar Augusto** | 3.1 To-Be Scenario Mapping - Escenario futuro deseado |
-| **TP1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | 3.2 User Stories - Especificación de historias de usuario para Landing Page |
 | **AV1** | 18/04/2026 | **Sánchez Manrique, Italo Ludwing** | 3.3 Impact Map - Mapa de impacto de objetivos de negocio |
 | **AV1** | 18/04/2026 | **Machado Bracamonte, Ivo Marcelo** | 3.4 Product Backlog - Creación y priorización basado en valor de negocio **(Avance 1)** |
 | **AV2** | 02/05/2026 | **Contreras López, Leandro Saul** | 3.2 y 3.4 - Mejora de descripciones de User Stories y Product Backlog |
@@ -41,6 +40,7 @@
 | **AV2** | 02/05/2026 | **Arostegui Alzamora, Cesar Augusto** | 4.1.5 ER Diagrams - Diagramas de base de datos relacional y no relacional |
 | **AV2** | 02/05/2026 | **Arostegui Alzamora, Cesar Augusto** | 4.2 Architectural Drivers - Definición de drivers arquitectónicos |
 | **AV2** | 02/05/2026 | **Arostegui Alzamora, Cesar Augusto** | 4.1.10 Quality Attribute Scenarios - Escenarios de atributos de calidad **(Avance 2)** |
+| **TP1** | 15/05/2026 | **Sánchez Manrique, Italo Ludwing** | 3.2 User Stories - Especificación de historias de usuario para Landing Page |
 | **TP1** | 15/05/2026 | **Arostegui Alzamora, Cesar Augusto** | 5.1 Testing Suites - Configuración de entorno de pruebas y herramientas |
 | **TP1** | 15/05/2026 | **Aliaga Aguirre, Ethan Matías** | 5.1 Testing Suites - Configuración de pruebas de integración continua (CI) y pipelines de testing |
 | **TP1** | 15/05/2026 | **Leandro Saul Contreras López** | 5.2.1 Software Development Environment Configuration - Validación del entorno |
