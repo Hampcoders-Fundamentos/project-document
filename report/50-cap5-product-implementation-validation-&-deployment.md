@@ -289,7 +289,7 @@ Cada microservicio se configura mediante variables de entorno inyectadas en tiem
 
 | Variable | Descripción | Ejemplo |
 |---|---|---|
-| `SPRING_DATASOURCE_URL` | URL de conexión a base de datos | `jdbc:postgresql://glottia-db.xxxxx.us-east-2.rds.amazonaws.com:5432/glottia` |
+| `SPRING_DATASOURCE_URL` | URL de conexión a base de datos | `jdbc:postgresql://glottia-db...:5432/glottia` |
 | `SPRING_DATASOURCE_USERNAME` | Usuario de base de datos | `glottia_user` |
 | `SPRING_DATASOURCE_PASSWORD` | Contraseña de base de datos | `****` |
 | `JWT_SECRET` | Clave secreta para firma de tokens JWT | `****` |
