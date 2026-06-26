@@ -152,45 +152,52 @@ La rama **feature** agrupa las ramas de características de nuestro proyecto, ca
 #### 1. Arquitectura del Sistema
 El repositorio sigue un patrón de **Monolito Modular** basado en los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**.
 
-#### Organización de Carpetas
-La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentro de `src/`:
+#### Organización de Paquetes
+La estructura se organiza por **Bounded Contexts** dentro de `src/main/java/com/hampcoders/glottia/platform/api/`:
 
-* **`src/api/`**: Capa de entrada. Contiene los controladores, rutas de Express y middlewares de validación de HTTP.
-* **`src/[contexto]/`**: Cada módulo funcional (ej. `users`, `courses`) se divide en:
-    * **`domain/`**: El corazón del negocio. Contiene Entidades, Value Objects e interfaces de Repositorios (Ports). **No tiene dependencias externas**.
-    * **`application/`**: Casos de uso que orquestan la lógica de negocio.
-    * **`infrastructure/`**: Implementaciones técnicas (TypeORM, adaptadores de terceros, persistencia).
-* **`src/shared/`**: Lógica transversal, utilitarios y clases base reutilizables por múltiples contextos.
+* **`[contexto]/domain/`**: El corazón del negocio. No tiene dependencias externas. Contiene:
+    * `model/aggregates/`: Raíces de agregados.
+    * `model/entities/`: Entidades del dominio.
+    * `model/valueobjects/`: Objetos de valor.
+    * `model/commands/` y `model/queries/`: Comandos y consultas específicos.
+    * `model/events/`: Eventos de dominio.
+    * `services/`: Interfaces de servicios de dominio.
+* **`[contexto]/application/`**: Capa de aplicación que orquesta la lógica de negocio:
+    * `internal/commandservices/` e `internal/queryservices/`: Implementaciones de servicios de comandos y consultas.
+    * `internal/eventhandlers/`: Manejadores de eventos de dominio e integración.
+    * `acl/`: Capa de anticorrupción (Anti-Corruption Layer) para interactuar con otros contextos.
+* **`[contexto]/infrastructure/`**: Implementaciones técnicas, persistencia de datos (JPA/Hibernate), configuraciones de infraestructura y adaptadores de servicios externos (LLM, notificaciones).
+* **`[contexto]/interfaces/`**: Capa de entrada del contexto. Contiene `rest/` con controladores (`Controllers`), recursos de transferencia de datos (`Resources`) y ensambladores (`Transform/Assemblers`).
+* **`shared/`**: Lógica transversal, excepciones globales, utilitarios y clases base reutilizables (como raíces de agregados auditales).
 
 #### 2. Convenciones de Nomenclatura
 
-#### Clases y Tipos
-* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su capa.
-    * *Controladores:* `UserGetController`
-    * *Casos de Uso:* `CreateCourseUseCase`
-    * *Repositorios:* `SqliteUserRepository`
-* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `UserRepository` en lugar de `IUserRepository`).
+#### Clases e Interfaces
+* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su rol arquitectónico.
+    * *Controladores:* `AnalyticsController`
+    * *Servicios de Aplicación:* `EncounterCommandServiceImpl`
+    * *Repositorios JPA:* `EncounterRepository`
+    * *Manejadores de Eventos:* `AssessmentCompletedEventHandler`
+* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `EncounterCommandService` en lugar de `IEncounterCommandService`).
 
 #### 3. Archivos
-* **Formato**: Se utiliza `kebab-case`.
-* **Sufijos de archivo**: El nombre del archivo debe reflejar su propósito:
-    * `user.entity.java`
-    * `user-repository.java`
-    * `create-user-use-case.java`
-    * `user-post-controller.java`
+* **Formato**: Se utiliza `PascalCase` obligatorio para todos los archivos fuente de Java (`.java`), coincidiendo exactamente con el nombre de la clase o interfaz contenida.
+    * `Encounter.java`
+    * `EncounterRepository.java`
+    * `CreateEncounterCommand.java`
+    * `EncountersController.java`
 
 #### 4. Variables y Funciones
-* **Formato**: Se utiliza `camelCase`.
-* **Claridad**: Los nombres deben ser descriptivos. Evitar abreviaturas crípticas (usar `userRepository` en lugar de `uRepo`).
+* **Formato**: Se utiliza `camelCase` para variables locales, atributos de clase y nombres de métodos.
+* **Claridad**: Los nombres deben ser descriptivos en inglés. Evitar abreviaturas crípticas (usar `encounterRepository` en lugar de `encRepo`).
 
 #### 5. Estándares de Codificación
+* El código se rige por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias mediante Spring Framework (`@Service`, `@Repository`, `@RestController`) y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento directo entre contextos bounded independientes, utilizando el `DomainEventPublisher` de Spring para comunicación asíncrona desacoplada o fachadas ACL.
 
-- Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
-
-#### 6. Lógica de Negocio
-* **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
-* **Regla de Dependencia**: Las capas internas (Domain) nunca deben depender de las capas externas (Infrastructure).
-* **Manejo de Errores**: Se utilizan excepciones de dominio específicas que luego son transformadas en códigos HTTP en la capa de API.
+#### 6. Lógica de Negocio y Persistencia
+* **Inyección de Dependencias**: Se utiliza inyección por constructor implícita de Spring para garantizar la inmutabilidad y facilitar las pruebas unitarias.
+* **Regla de Dependencia**: Las capas internas (`Domain`) nunca deben depender de las capas externas (`Infrastructure`, `Interfaces`).
+* **Manejo de Errores**: Se manejan excepciones de dominio específicas o infraestructura que son interceptadas de manera centralizada por un `GlobalExceptionHandler` (`@ControllerAdvice`) para transformarlas en respuestas HTTP estandarizadas.
 
 #### Backend Code Style Guide (Microservices)
 
@@ -268,24 +275,31 @@ Durante el Sprint 1, se logró un avance parcial en el despliegue de la landing 
 [Link del landing Page](https://glottia-landing-page-master.vercel.app/) 
 Actualmente, el sitio ya cuenta con diversas secciones operativas que ofrecen información clave sobre los servicios y el equipo de Glottia. Las evidencias de este progreso se detallan a continuación:
 
- - **Sección Hero (Inicio):** El usuario visualiza la propuesta de valor principal centrada en la práctica de idiomas cara a cara. La sección destaca beneficios clave como conversaciones   reales, la posibilidad de conocer gente nueva y el acceso a espacios seguros.
- (assets/img/cap5/hero-section.png)
+ - **Sección Hero (Inicio):** El usuario visualiza la propuesta de valor principal centrada en la práctica de idiomas cara a cara. La sección destaca beneficios clave como conversaciones reales, la posibilidad de conocer gente nueva y el acceso a espacios seguros.
+
+![Sección Hero – Landing Page](assets/img/cap5/hero-section.png)
 
  - **Sección ¿Cómo funciona?:** El usuario puede visualizar el proceso de funcionamiento de la plataforma dividido en dos perfiles: Aprendices y Locales. Para los aprendices, se detallan tres pasos que incluyen el registro de perfil, la búsqueda de encuentros temáticos y la asistencia a las sesiones. Para los locales, se explica el flujo para convertir su negocio en un "hub cultural" mediante el registro del establecimiento, la definición de horarios disponibles y la recepción de los practicantes de idiomas.
- (assets/img/cap5/how-it-works.png)
+
+![Sección ¿Cómo funciona? – Landing Page](assets/img/cap5/how-it-works.png)
 
  - **Sección Nuestra Solución:** El usuario obtiene una visión detallada del ecosistema de la plataforma, destacando pilares como conversaciones reales, una comunidad activa, soporte para múltiples idiomas y un enfoque en el progreso garantizado.
- (assets/img/cap5/our-solution.png)
+
+![Sección Nuestra Solución – Landing Page](assets/img/cap5/our-solution.png)
 
  - **Sección Ve Glottia en Acción:** El usuario puede visualizar una demostración práctica de la plataforma a través de un video interactivo que muestra la interfaz de la aplicación en funcionamiento.
- (assets/img/cap5/glottia-in-action.png)
 
- - **Sección Beneficios para todos:** El usuario puede explorar las ventajas competitivas de la plataforma segmentadas para Aprendices y Locales. Para los estudiantes, se resaltan beneficios como la ganancia de fluidez en situaciones reales, el networking cultural, el ahorro frente a academias tradicionales y la flexibilidad de horarios. 
- (assets/img/cap5/benefits.png)
+![Sección Ve Glottia en Acción – Landing Page](assets/img/cap5/glottia-in-action.png)
 
- - **Sección Sobre Nosotros:** El usuario puede conocer la identidad corporativa de la plataforma a través de su Misión, enfocada en facilitar la práctica oral mediante experiencias reales y seguras, y su Visión, que aspira a convertir a Glottia en la comunidad global de referencia para el intercambio cultural.. 
- (assets/img/cap5/about-us.png)
-***
+ - **Sección Beneficios para todos:** El usuario puede explorar las ventajas competitivas de la plataforma segmentadas para Aprendices y Locales. Para los estudiantes, se resaltan beneficios como la ganancia de fluidez en situaciones reales, el networking cultural, el ahorro frente a academias tradicionales y la flexibilidad de horarios.
+
+![Sección Beneficios – Landing Page](assets/img/cap5/benefits.png)
+
+ - **Sección Sobre Nosotros:** El usuario puede conocer la identidad corporativa de la plataforma a través de su Misión, enfocada en facilitar la práctica oral mediante experiencias reales y seguras, y su Visión, que aspira a convertir a Glottia en la comunidad global de referencia para el intercambio cultural.
+
+![Sección Sobre Nosotros – Landing Page](assets/img/cap5/about-us.png)
+
+---
 
 #### 5.3.1.3 Testing Suite Evidence for Sprint Review
 
