@@ -1918,7 +1918,49 @@ La documentación expone los endpoints para generación y validación de código
 --- 
 
 #### 5.2.3.6 Software Deployment Evidence for Sprint Review
+
+En el Deployment de los microservicios del Sprint 3, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
+
+Aquí las capturas de ejecución de la consola ejecutando los scripts de Terraform para el despliegue de la infraestructura en AWS, evidenciando la creación de recursos como instancias EC2, RDS para PostgreSQL y configuración de RabbitMQ.
+
+![Terraform Deployment Captura 1](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-1.png)
+
+![Terraform Deployment Captura 2](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-2.png)
+
+![Terraform Deployment Captura 3](assets/img/cap5/sprint2/deploy-evidences/terraform-evidence-3.png)
+
+Ahora las capturas de evidencia de despliegue exitoso de cada microservicio en AWS.
+
+Repositorios en Amazon Elastic Container Registry (ECR) con las imágenes Docker de cada microservicio:
+
+![ECR Repositories](assets/img/cap5/sprint2/deploy-evidences/ecr-repositories.png)
+
+Base de datos compartida en Amazon RDS para PostgreSQL, que van a usar por el momento los microservicios:
+
+![RDS PostgreSQL](assets/img/cap5/sprint2/deploy-evidences/rds-postgresql.png)
+
+VPC configurada con subredes públicas y privadas, grupos de seguridad y balanceador de carga para el acceso a los microservicios:
+
+![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
+
 #### 5.2.3.7 Team Collaboration Insights during Sprint
+
+
+Durante el Sprint 3, el equipo de desarrollo de Glottia centró sus esfuerzos en la implementación de funcionalidades end-to-end desde la perspectiva del usuario Partner, asegurando la correcta interacción entre la interfaz web y la arquitectura de microservicios previamente establecida.
+
+Las principales actividades incluyeron el desarrollo de las interfaces de usuario para el registro e inicio de sesión, la implementación del flujo de onboarding mediante el completado del perfil del partner, y la construcción del dashboard principal con métricas relevantes como encuentros, reservas activas y promociones. Asimismo, se desarrollaron las funcionalidades de gestión de locales (creación, edición y visualización) y la visualización del historial de encuentros, permitiendo al usuario administrar sus operaciones dentro de la plataforma.
+
+En paralelo, se realizaron tareas de integración entre frontend y backend, validación de endpoints mediante pruebas basadas en escenarios Gherkin, así como la corrección de errores y mejoras en la experiencia de usuario. Estas actividades permitieron consolidar un flujo funcional completo desde el registro hasta la gestión operativa, alineado con los objetivos del sprint.
+
+\
+![Sprint 3 - Registro](assets/img/cap5/sprint3/commits-notifications.PNG)
+\
+![Sprint 3 - Registro](assets/img/cap5/sprint3/commits-verifications.PNG)
+\
+![Sprint 3 - Registro](assets/img/cap5/sprint3/commits-web.PNG)
+\
+
+
 #### 5.2.3.8 Kanban Board --> (Avance 4)
 \
 ![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
