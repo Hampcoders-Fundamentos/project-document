@@ -127,7 +127,7 @@ Plataforma en la nube diseñada para el desarrollo colaborativo de software, per
 
 ### 5.2.2 Source Code Management
 
-### Repositorio de GitHub:
+**Repositorios de GitHub:**
 
 - Enlace para acceder al [Repositorio del Documento](https://github.com/Hampcoders-Fundamentos/project-document)
 - Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)

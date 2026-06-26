@@ -1,10 +1,10 @@
 # Capítulo II: Requirements & Analysis
 En este capítulo, el equipo recopila a información y requerimientos para realizar análisis y proyectar la solución frente a los competidores directos.
 
-## 2.1 Competidores
+## 2.1 Competitors
 En esta sección se identifican y describen los principales competidores de Glottia, considerando tanto competidores directos (plataformas de intercambio de idiomas) como indirectos (plataformas de eventos sociales).
 
-### 2.1.1 Análisis Competitivo
+### 2.1.1 Competitive Analysis
 **Competitive Analysis Landscape**
 
 | **Categoría** | **Subcategoría** | **Glottia (Startup)** | **HelloTalk (Competidor 1)** | **Tandem (Competidor 2)** | **Meetup (Competidor 3)** |
@@ -22,7 +22,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 |  | Oportunidades | Crecimiento del aprendizaje social | Expansión digital | Crecimiento global | Más eventos sociales |
 |  | Amenazas | Competidores digitales fuertes | Nuevas plataformas híbridas | Competencia innovadora | Plataformas nicho |
 
-### 2.1.2 Análisis SWOT
+### 2.1.2 SWOT Analysis
 
 #### 2.1.2.1 Glottia
 
@@ -100,9 +100,9 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-### 2.1.3 Estrategias frente a competidores
+### 2.1.3 Strategies for Dealing with Competitors
 
-#### 2.1.3.1 Competidores directos
+#### 2.1.3.1 Direct competitors
 
 Son aquellas plataformas que, al igual que Glottia, buscan conectar personas interesadas en practicar idiomas, ya sea de forma presencial o con posibilidad de interacción social.
 
@@ -114,7 +114,7 @@ Estas plataformas están enfocadas principalmente en el intercambio virtual medi
 
 ---
 
-#### 2.1.3.2 Competidores indirectos
+#### 2.1.3.2 Indirect competitors
 
 Son servicios que no ofrecen exactamente la misma propuesta que Glottia, pero satisfacen la necesidad de practicar idiomas o socializar en contextos similares.
 
@@ -126,7 +126,7 @@ Plataformas como Bumble o grupos de Facebook permiten a los usuarios encontrar p
 
 ---
 
-#### 2.1.3.3 Estrategias frente a competidores
+#### 2.1.3.3 Strategies for Dealing with Competitors
 
 Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la diferenciación y en la creación de valor a través de la experiencia del usuario:
 
@@ -136,7 +136,7 @@ Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la
 
 ---
 
-#### 2.1.3.4 Tácticas de implementación
+#### 2.1.3.4 Implementation Tactics
 
 Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
@@ -148,13 +148,13 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
 ---
 
-## 2.2 Entrevistas
+## 2.2 Interviews
 
 En esta sección se busca comprender, a partir de entrevistas estructuradas, cuáles son las necesidades, dolores, expectativas y condiciones de confianza de los dos segmentos objetivo. La información obtenida permite identificar patrones de comportamiento y sustentar, con evidencia directa, las decisiones de diseño y priorización que se desarrollan posteriormente para los siguientes capítulos.
 
-### 2.2.1 Diseño de entrevistas
+### 2.2.1 Interview Design
 
-#### 2.2.1.1 Plan Ejecutivo de Entrevistas
+#### 2.2.1.1 Executive Interview Plan
 
 **Objetivo General**  
 Comprender necesidades, motivaciones, fricciones y condiciones de confianza para asistir a encuentros presenciales de práctica de idiomas; validar la propuesta de valor de Glottia con ambos segmentos objetivo; e identificar patrones de comportamiento que guíen decisiones de diseño y priorización.
@@ -184,7 +184,8 @@ Comprender necesidades, motivaciones, fricciones y condiciones de confianza para
 
 Cada sesión de entrevista contó con **al menos dos miembros del equipo** (entrevistador + observador/co-investigador) para reducir sesgo de un solo entrevistador, validar interpretaciones y asegurar rigor en la recopilación de datos cualitativos. Esta práctica de "triangulación de observadores" mejora la confiabilidad de los hallazgos.
 
-#### 2.2.1.2 Guion de entrevista — Segmento 1: Usuarios (aprendices de idiomas)
+#### 2.2.1.2 Interview Script — Segment 1: Users (language learners)
+
 Cada pregunta va acompañada de una breve justificación metodológica.
 
 - **Contexto y métodos actuales**
@@ -229,7 +230,8 @@ Cada pregunta va acompañada de una breve justificación metodológica.
   - ¿Qué rol sueles tomar en una conversación en otro idioma: hablar mucho, escuchar más, participar poco?
     - Justificación: Ayuda a diseñar dinámicas de encuentro que fomenten participación equilibrada.
 
-#### 2.2.1.3 Guion de entrevista — Segmento 2: Administradores / Locales aliados
+#### 2.2.1.3 Interview Script — Segment 2: Administrators / Partner Locations
+
 Cada pregunta va acompañada de su justificación.
 
 - **Contexto operativo**
@@ -268,11 +270,11 @@ Cada pregunta va acompañada de su justificación.
   - ¿Qué tipo de incentivo te resultaría más atractivo ofrecer? (descuentos, combos, promociones por grupo, etc.)
     - Justificación: Ayuda a diseñar ofertas que sean atractivas para el socio y rentables para el negocio.
 
-### 2.2.2 Registro de entrevistas
+### 2.2.2 Interview Log
 
 En esta sección se documentan las entrevistas a los segmentos respectivos.
 
-#### Segmento 1: Usuarios aprendices de idiomas
+**Segmento 1: Usuarios aprendices de idiomas**
 
 **Entrevista N°1: Alexander Gabriel Montoya**
 
@@ -350,7 +352,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 - **Expectativas e inquietudes sobre la aplicación:** Espera que la plataforma sea **fácil de usar** y permita visualizar el nivel de los participantes para formar grupos equilibrados. Los factores clave son la **verificación de perfiles**, la existencia de **reseñas** y la presencia de **moderadores o facilitadores**. Valora dinámicas que *"eviten que algunos participantes dominen la conversación y limiten la participación de otros"*, señalando la importancia del diseño de encuentros, no solo del matching.
 
-#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+**Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión**
 
 **Entrevista N°1: Virgilio Sanchez**
 
@@ -431,11 +433,11 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 ---
 
-### 2.2.3 Análisis de entrevistas
+### 2.2.3 Interview Analysis
 
 En este apartado se realiza un análisis de las entrevistas realizadas a los segmentos objetivo, identificando patrones, insights y oportunidades clave para el diseño de la solución.
 
-#### Segmento 1: Usuarios aprendices de idiomas
+**Segmento 1: Usuarios aprendices de idiomas**
 
 **Total de entrevistas:** 3 entrevistas estructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores.
 
@@ -468,7 +470,7 @@ A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes u
 - Se valora que la plataforma reduzca fricción: descubrir un encuentro, reservar, asistir con reglas claras y obtener continuidad.
 - Implicancia para priorización: las capacidades iniciales deben enfocarse en descubrimiento, reserva, seguridad y control del encuentro (antes de features avanzadas).
 
-#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+**Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión**
 
 **Total de entrevistas:** 3 entrevistas estructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores. 
 
@@ -510,7 +512,7 @@ En esta sección se sintetizan los hallazgos obtenidos a partir de la investigac
 
 En la presente sección se presentan las fichas de User Persona elaboradas teniendo en cuenta las entrevistas realizadas y analizadas previamente y la revisión de soluciones existentes en el mercado. En cada arquetipo se presentan las características demográficas, de personalidad, los objetivos, las motivaciones, frustraciones y preferencias de los usuarios clave de cada segmento. La construcción de estos User Persona se basa en resultados y análisis obtenidos durante la investigación previa con el objetivo de tomar decisiones de diseño y desarrollo adecuadas para resolver los problemas identificados.
 
-#### Segmento 1:
+**Segmento 1:**
 
 \begin{center}
 \includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-1.png}
@@ -518,7 +520,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 *Descripción:* Ficha resumida de la persona (demografía, metas, motivaciones y canales preferidos).
 
-#### Segmento 2:
+**Segmento 2:**
 
 \begin{center}
 \includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-2.png}
@@ -567,7 +569,7 @@ El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la s
 
 ### 2.3.3 Empathy Maps
 
-#### Empathy Map para los dueños de cafeterías.
+**Empathy Map para los dueños de cafeterías.**
 
 \begin{center}
 \includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-enzo-fernandez.png}
@@ -577,7 +579,7 @@ En este Empathy Map se presenta una representación visual de las emociones, pen
 
 ---
 
-#### Empathy Map para los aprendices.
+**Empathy Map para los aprendices.**
 
 \begin{center}
 \includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-sofia-ramirez.png}

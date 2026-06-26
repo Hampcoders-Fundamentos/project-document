@@ -41,7 +41,7 @@ Aquí se presenta el diagrama de contexto de Glottia, que ilustra los principale
 
 A continuación, se desglosa la arquitectura de Glottia descendiendo de manera progresiva a través de los siguientes niveles del enfoque C4, permitiendo mapear desde la distribución lógica de contenedores en infraestructura hasta la organización de responsabilidades por componentes de código.
 
-### Software Architecture Container Diagram
+**Software Architecture Container Diagram**
 
 El Diagrama de Contenedores representa el nivel 2 del Modelo C4 e ilustra la estructura de alto nivel de la arquitectura de software, detallando la distribución de responsabilidades tecnológicas ejecutables dentro del sistema de Glottia. Este diagrama expone cómo se descompone la aplicación en aplicaciones web, servicios backend autónomos y almacenes de datos persistentes, especificando los protocolos de comunicación de red (HTTP/REST, JSON) que permiten la interoperabilidad del ecosistema distribuido.
 
@@ -49,7 +49,7 @@ El Diagrama de Contenedores representa el nivel 2 del Modelo C4 e ilustra la est
 ![Container-Diagram](assets/img/cap4/c4-container.png)
 
 
-### Software Architecture Component Diagram
+**Software Architecture Component Diagram**
 
 El Diagrama de Componentes corresponde al nivel 3 del Modelo C4 y realiza una deconstrucción profunda e interna de un contenedor específico de la aplicación. Su objetivo es mapear cómo se estructuran las clases, controladores, casos de uso y adaptadores de infraestructura para dar soporte a la lógica de negocio, definiendo las interfaces y dependencias internas bajo los lineamientos de **Clean Architecture** y los patrones de diseño adoptados por el equipo.
 
@@ -439,7 +439,7 @@ Glottia debe permitir añadir nuevos idiomas o tipos de servicios sin reescribir
 
 En esta sección se describen las iteraciones de diseño arquitectónico que el equipo llevará a cabo para construir la solución Glottia, partiendo desde un monolito modular hasta una arquitectura de microservicios alineada a los Bounded Contexts definidos. Cada iteración se enfocará en aspectos específicos de la arquitectura, abordando los drivers seleccionados y refinando elementos clave del sistema.
 
-### 4.3.1 Iteration 1: Definición del Core Arquitectónico de Glottia
+### 4.3.1 Iteration 1: Definition of Glottia's Architectural Core
 
 Primera iteración enfocada en establecer las bases arquitectónicas de Glottia, definiendo los elementos clave que garantizarán la seguridad, disponibilidad y mantenibilidad del sistema. Se priorizarán los drivers relacionados con la protección de datos, la resiliencia ante fallos y la capacidad de evolución independiente por dominio funcional.
 

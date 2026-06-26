@@ -8,15 +8,15 @@ La especificación parte de los hallazgos obtenidos en el Capítulo II, donde la
 
 A continuación se presenta el To-Be Scenario Mapping para la aplicación de práctica de idiomas, que ilustra cómo los usuarios interactuarán con el sistema para practicar idiomas en espacios locales. Como tenemos dos segmentos objetivos (practicantes de idiomas y establecimientos aliados), se han desarrollado dos escenarios distintos para cada uno de ellos, con el fin de capturar sus respectivas experiencias y necesidades.
 
-### Escenario 1: Experiencia del estudiante de idiomas
+### Sscenario 1: Language Learner's Experience
  
-![to-be-scenario-1](assets/img/cap3/to-be-scenario1.jpg)
+![To Be Scenario 1](assets/img/cap3/to-be-scenario1.jpg)
 
 Este escenario describe el viaje de un usuario que busca practicar un idioma. Abarca desde la búsqueda inicial con filtros personalizados y la reserva de un cupo en una mesa temática, hasta la validación de asistencia mediante código OTP en el establecimiento aliado y el seguimiento de su evolución a través de retroalimentación y recompensas por lealtad. El proceso está diseñado para generar una experiencia de aprendizaje flexible, segura y motivadora que fomente el sentido de comunidad.
 
-### Escenario 2: Experiencia del establecimiento aliado
+### Scenario 2: Partner Institution's Experience
  
-![to-be-scenario-2](assets/img/cap3/to-be-scenario2.jpg)
+![To Be Sscenario 2](assets/img/cap3/to-be-scenario2.jpg)
 
 Este escenario detalla la interacción de los negocios asociados (cafeterías) con la plataforma. Inicia con la configuración del perfil y disponibilidad del local, seguido por la gestión y validación de reservas durante los encuentros. Adicionalmente, incluye el análisis de métricas mediante un panel de control (dashboard) y culmina con la optimización de la oferta a través de promociones basadas en datos. El objetivo principal es maximizar la ocupación en horas valle, incrementar la rentabilidad y fidelizar a una nueva clientela.
 
@@ -37,7 +37,7 @@ A continuación se presentan las User Stories detalladas para cada Epic del proy
 
 Con esta escala, se asignan Story Points a cada User Story para reflejar su complejidad técnica, el riesgo asociado y la complejidad del dominio, lo que facilita la planificación y priorización en el desarrollo del proyecto.
 
-## Tabla de User Stories de Landing Page
+**Tabla de User Stories de Landing Page**
 
 | Story ID | User | Story Points | Epic |
 | :--- | :--- | :--- | :--- |
@@ -99,7 +99,7 @@ Con esta escala, se asignan Story Points a cada User Story para reflejar su comp
 | **Título** | **Visualización del Pie de Página (Footer)** |  |  |
 | **Descripción** | **Como** visitante **Quiero** ver un pie de página organizado con enlaces de interés **para** encontrar información adicional o contactar con la empresa. **Escenario \#1: Footer completo con enlaces legales** \- Dado que un visitante se desplaza hasta el final de la landing page, Cuando llega al pie de página, Entonces ve enlaces a "Términos y Condiciones", "Política de Privacidad", "Contacto" y enlaces a redes sociales (LinkedIn, Instagram, Twitter). **Escenario \#2: Información de contacto directa** \- Dado que un visitante desea contactar, Cuando ve el footer, Entonces encuentra un email de contacto y un formulario rápido de contacto. **Escenario \#3: Links secundarios útiles** \- Dado que un visitante busca más información, Cuando observa el footer, Entonces ve links a "Blog", "Documentación", "Reportar un problema". **Escenario \#4: Footer responsive** \- Dado que un visitante accede desde mobile, Cuando visualiza el footer, Entonces los enlaces se distribuyen en columnas apilables sin perder legibilidad. |  |  |
 
-## Tabla de User Stories por Epic
+**Tabla de User Stories por Epic**
 
 | Story ID | User | Story Points | Epic |
 | :--- | :--- | :--- | :--- |
