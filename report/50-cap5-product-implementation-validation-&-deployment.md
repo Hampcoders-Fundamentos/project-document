@@ -249,6 +249,57 @@ Cada microservicio dentro de la carpeta `services/` (o repositorios independient
 
 ### 5.2.4 Software Deployment Configuration
 
+La plataforma Glottia adopta una estrategia de despliegue basada en contenedores Docker, utilizando **docker-compose** para la orquestación local y **Terraform** como Infrastructure as Code (IaC) para el aprovisionamiento automatizado de la infraestructura en **AWS**. Cada microservicio se empaqueta como una imagen Docker independiente, permitiendo despliegues aislados, escalables y reproducibles.
+
+#### Docker y Contenerización
+
+Cada microservicio (IAM, Profiles, Encounters, Venues, Promotions, Learning Feedback, Engagement) cuenta con su propio `Dockerfile` que define el entorno de ejecución basado en OpenJDK 21 para los servicios Spring Boot. Las imágenes se almacenan en **Amazon Elastic Container Registry (ECR)** y se despliegan en instancias EC2 o servicios administrados de AWS.
+
+#### Orquestación con Docker Compose
+
+Para el entorno de desarrollo y validación local, se utiliza `docker-compose.yml` que orquesta los servicios auxiliares necesarios para la comunicación entre microservicios:
+
+```yaml
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: glottia-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+```
+
+RabbitMQ actúa como bus de mensajería asíncrona, permitiendo la comunicación desacoplada entre microservicios para eventos como notificaciones de encuentros, actualización de puntos de lealtad y procesamiento de badges.
+
+#### Infraestructura como Código con Terraform
+
+La infraestructura en AWS se define y gestiona mediante scripts de Terraform, garantizando que el entorno de producción sea reproducible, versionable y auditable. Los recursos aprovisionados incluyen:
+
+- **AWS VPC** con subredes públicas y privadas, tablas de enrutamiento, grupos de seguridad y balanceador de carga para el acceso seguro a los microservicios.
+- **AWS ECR** para el almacenamiento de imágenes Docker de cada microservicio.
+- **AWS RDS PostgreSQL** como base de datos relacional compartida para los microservicios.
+- **AWS EC2** como plataforma de ejecución para los contenedores de cada servicio.
+
+#### Variables de Entorno
+
+Cada microservicio se configura mediante variables de entorno inyectadas en tiempo de ejecución:
+
+| Variable | Descripción | Ejemplo |
+|---|---|---|
+| `SPRING_DATASOURCE_URL` | URL de conexión a base de datos | `jdbc:postgresql://glottia-db.xxxxx.us-east-2.rds.amazonaws.com:5432/glottia` |
+| `SPRING_DATASOURCE_USERNAME` | Usuario de base de datos | `glottia_user` |
+| `SPRING_DATASOURCE_PASSWORD` | Contraseña de base de datos | `****` |
+| `JWT_SECRET` | Clave secreta para firma de tokens JWT | `****` |
+| `RABBITMQ_HOST` | Host del servidor RabbitMQ | `glottia-rabbitmq` |
+| `RABBITMQ_PORT` | Puerto de conexión RabbitMQ | `5672` |
+
+#### Evidencia de Despliegue
+
+Las evidencias de la ejecución de Terraform, los repositorios ECR, la base de datos RDS, la configuración de VPC y los servicios corriendo se presentan en la sección de despliegue correspondiente a cada sprint (secciones 5.3.1.6 y 5.3.2.6).
+
 ## 5.3 Microservices Implementation
 
 ### 5.3.1 Sprint 1
