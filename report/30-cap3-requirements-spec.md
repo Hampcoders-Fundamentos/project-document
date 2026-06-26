@@ -8,15 +8,15 @@ La especificación parte de los hallazgos obtenidos en el Capítulo II, donde la
 
 A continuación se presenta el To-Be Scenario Mapping para la aplicación de práctica de idiomas, que ilustra cómo los usuarios interactuarán con el sistema para practicar idiomas en espacios locales. Como tenemos dos segmentos objetivos (practicantes de idiomas y establecimientos aliados), se han desarrollado dos escenarios distintos para cada uno de ellos, con el fin de capturar sus respectivas experiencias y necesidades.
 
-### Escenario 1: Experiencia del estudiante de idiomas
+### Sscenario 1: Language Learner's Experience
  
-![to-be-scenario-1](assets/img/cap3/to-be-scenario1.jpg)
+![To Be Scenario 1](assets/img/cap3/to-be-scenario1.jpg)
 
-Este escenario describe el viaje de un usuario que busca practicar un idioma. Abarca desde la búsqueda inicial con filtros personalizados y la reserva de un cupo en una mesa temática, hasta la validación de asistencia mediante código QR en el establecimiento aliado y el seguimiento de su evolución a través de retroalimentación y recompensas por lealtad. El proceso está diseñado para generar una experiencia de aprendizaje flexible, segura y motivadora que fomente el sentido de comunidad.
+Este escenario describe el viaje de un usuario que busca practicar un idioma. Abarca desde la búsqueda inicial con filtros personalizados y la reserva de un cupo en una mesa temática, hasta la validación de asistencia mediante código OTP en el establecimiento aliado y el seguimiento de su evolución a través de retroalimentación y recompensas por lealtad. El proceso está diseñado para generar una experiencia de aprendizaje flexible, segura y motivadora que fomente el sentido de comunidad.
 
-### Escenario 2: Experiencia del establecimiento aliado
+### Scenario 2: Partner Institution's Experience
  
-![to-be-scenario-2](assets/img/cap3/to-be-scenario2.jpg)
+![To Be Sscenario 2](assets/img/cap3/to-be-scenario2.jpg)
 
 Este escenario detalla la interacción de los negocios asociados (cafeterías) con la plataforma. Inicia con la configuración del perfil y disponibilidad del local, seguido por la gestión y validación de reservas durante los encuentros. Adicionalmente, incluye el análisis de métricas mediante un panel de control (dashboard) y culmina con la optimización de la oferta a través de promociones basadas en datos. El objetivo principal es maximizar la ocupación en horas valle, incrementar la rentabilidad y fidelizar a una nueva clientela.
 
@@ -37,7 +37,7 @@ A continuación se presentan las User Stories detalladas para cada Epic del proy
 
 Con esta escala, se asignan Story Points a cada User Story para reflejar su complejidad técnica, el riesgo asociado y la complejidad del dominio, lo que facilita la planificación y priorización en el desarrollo del proyecto.
 
-## Tabla de User Stories de Landing Page
+**Tabla de User Stories de Landing Page**
 
 | Story ID | User | Story Points | Epic |
 | :--- | :--- | :--- | :--- |
@@ -99,7 +99,7 @@ Con esta escala, se asignan Story Points a cada User Story para reflejar su comp
 | **Título** | **Visualización del Pie de Página (Footer)** |  |  |
 | **Descripción** | **Como** visitante **Quiero** ver un pie de página organizado con enlaces de interés **para** encontrar información adicional o contactar con la empresa. **Escenario \#1: Footer completo con enlaces legales** \- Dado que un visitante se desplaza hasta el final de la landing page, Cuando llega al pie de página, Entonces ve enlaces a "Términos y Condiciones", "Política de Privacidad", "Contacto" y enlaces a redes sociales (LinkedIn, Instagram, Twitter). **Escenario \#2: Información de contacto directa** \- Dado que un visitante desea contactar, Cuando ve el footer, Entonces encuentra un email de contacto y un formulario rápido de contacto. **Escenario \#3: Links secundarios útiles** \- Dado que un visitante busca más información, Cuando observa el footer, Entonces ve links a "Blog", "Documentación", "Reportar un problema". **Escenario \#4: Footer responsive** \- Dado que un visitante accede desde mobile, Cuando visualiza el footer, Entonces los enlaces se distribuyen en columnas apilables sin perder legibilidad. |  |  |
 
-## Tabla de User Stories por Epic
+**Tabla de User Stories por Epic**
 
 | Story ID | User | Story Points | Epic |
 | :--- | :--- | :--- | :--- |
@@ -206,8 +206,8 @@ Con esta escala, se asignan Story Points a cada User Story para reflejar su comp
 | Story ID | User | Priority | Epic |
 | :--- | :--- | :--- | :--- |
 | US18 | Aprendiz | 5 | Gestión de Encuentros (Event) |
-| **Title** | **Recibir confirmación con código QR** |
-| **Description** | **Como** aprendiz **Quiero** recibir una confirmación de mi reserva **para** poder hacer check-in fácilmente al llegar al local. **Escenario \#1: Generación de QR** \- Dado que un aprendiz ha completado una reserva, Cuando consulta los detalles de su reserva, Entonces ve un código QR único y dinámico que lo identifica para ese encuentro específico. **Escenario \#2: QR accesible en múltiples lugares** \- Dado que un aprendiz tiene su reserva, Cuando abre la app o web, Entonces puede ver el QR en: email de confirmación, página "Mis Reservas", calendario, notificación recordatorio. **Escenario \#3: QR temporal y expiración** \- Dado que es el día del encuentro, Cuando el QR se escaneará, Entonces el código es válido solo desde 30 minutos antes hasta 30 minutos después del encuentro. **Escenario \#4: Alternativa sin QR** \- Dado que un aprendiz no puede mostrar QR (sin batería en móvil), Cuando llega al local, Entonces puede decir su nombre al organizador y se valida manualmente en la lista. |
+| **Title** | **Recibir confirmación con código OTP** |
+| **Description** | **Como** aprendiz **Quiero** recibir una confirmación de mi reserva **para** poder hacer check-in fácilmente al llegar al local. **Escenario \#1: Generación de OTP** \- Dado que un aprendiz ha completado una reserva, Cuando consulta los detalles de su reserva, Entonces ve un código OTP único y dinámico que lo identifica para ese encuentro específico. **Escenario \#2: OTP accesible en múltiples lugares** \- Dado que un aprendiz tiene su reserva, Cuando abre la app o web, Entonces puede ver el OTP en: email de confirmación, página "Mis Reservas", calendario, notificación recordatorio. **Escenario \#3: OTP temporal y expiración** \- Dado que es el día del encuentro, Cuando el OTP se escaneará, Entonces el código es válido solo desde 30 minutos antes hasta 30 minutos después del encuentro. **Escenario \#4: Alternativa sin OTP** \- Dado que un aprendiz no puede mostrar OTP (sin batería en móvil), Cuando llega al local, Entonces puede decir su nombre al organizador y se valida manualmente en la lista. |
 
 | Story ID | User | Priority | Epic |
 | :--- | :--- | :--- | :--- |
@@ -219,7 +219,7 @@ Con esta escala, se asignan Story Points a cada User Story para reflejar su comp
 | :--- | :--- | :--- | :--- |
 | US20 | Aprendiz | 8 | Gestión de Encuentros (Event) |
 | **Title** | **Check-in en un encuentro** |
-| **Description** | **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **para** registrar mi participación y recibir los beneficios por ello. **Escenario \#1: Check-in exitoso** \- Dado que un aprendiz llega al local del encuentro, Cuando muestra su QR al organizador/partner, Entonces el sistema valida el código, registra su asistencia, actualiza contadores, asigna puntos de lealtad. **Escenario \#2: Check-in manual** \- Dado que un aprendiz no puede mostrar QR, Cuando dice su nombre al organizador, Entonces el sistema permite búsqueda manual en la lista de reservados. **Escenario \#3: No-show (ausencia)** \- Dado que faltan 30 minutos para el encuentro, Si ningún aprendiz hacía check-in, Entonces se marca como no-show y puede afectar su perfil. **Escenario \#4: Intento tardío de check-in** \- Dado que un aprendiz intenta hacer check-in 40 minutos después que terminó el encuentro, Cuando intenta, Entonces el sistema rechaza indicando "Encuentro finalizado, no es posible check-in". **Escenario \#5: Doble check-in** \- Dado que un aprendiz ya hizo check-in, Cuando intenta de nuevo, Entonces el sistema detecta la duplicación y lo evita. **Escenario \#6: Validación de puntos** \- Dado que se completó el check-in, Cuando el aprendiz abre su perfil, Entonces ve incremento automático de puntos de lealtad (ej: +10 puntos). |
+| **Description** | **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **para** registrar mi participación y recibir los beneficios por ello. **Escenario \#1: Check-in exitoso** \- Dado que un aprendiz llega al local del encuentro, Cuando muestra su OTP al organizador/partner, Entonces el sistema valida el código, registra su asistencia, actualiza contadores, asigna puntos de lealtad. **Escenario \#2: Check-in manual** \- Dado que un aprendiz no puede mostrar OTP, Cuando dice su nombre al organizador, Entonces el sistema permite búsqueda manual en la lista de reservados. **Escenario \#3: No-show (ausencia)** \- Dado que faltan 30 minutos para el encuentro, Si ningún aprendiz hacía check-in, Entonces se marca como no-show y puede afectar su perfil. **Escenario \#4: Intento tardío de check-in** \- Dado que un aprendiz intenta hacer check-in 40 minutos después que terminó el encuentro, Cuando intenta, Entonces el sistema rechaza indicando "Encuentro finalizado, no es posible check-in". **Escenario \#5: Doble check-in** \- Dado que un aprendiz ya hizo check-in, Cuando intenta de nuevo, Entonces el sistema detecta la duplicación y lo evita. **Escenario \#6: Validación de puntos** \- Dado que se completó el check-in, Cuando el aprendiz abre su perfil, Entonces ve incremento automático de puntos de lealtad (ej: +10 puntos). |
 
 | Story ID | User | Priority | Epic |
 | :--- | :--- | :--- | :--- |
@@ -303,7 +303,7 @@ Con esta escala, se asignan Story Points a cada User Story para reflejar su comp
 | :--- | :--- | :--- | :--- |
 | US34 | Aprendiz leal | 5 | Lealtad y Gamificación (Loyalty) |
 | **Title** | **Recibir ofertas de locales por lealtad** |
-| **Description** | **Como** aprendiz leal **Quiero** recibir ofertas especiales o descuentos de los locales asociados **para** tener recompensas por mi participación. **Escenario \#1: Ofertas automáticas** \- Dado que un aprendiz alcanza nivel "Oro", Cuando entra a un local aliado, Entonces ve notificación "Bienvenida Miembro Oro - 15% descuento en bebidas". **Escenario \#2: Catálogo de ofertas** \- Dado que un aprendiz quiere aprovechar beneficios, Cuando accede a la sección "Mis Ofertas", Entonces ve todas las promociones activas de locales donde frecuenta. **Escenario \#3: Cupones digitales** \- Dado que desea usar oferta, Cuando hace clic en promoción, Entonces obtiene código QR descargable para presentar en el local. **Escenario \#4: Ofertas personalizadas** \- Dado que frecuenta cierto idioma, Cuando hay promoción de encuentros de francés, Entonces la ofrece prioritariamente. |
+| **Description** | **Como** aprendiz leal **Quiero** recibir ofertas especiales o descuentos de los locales asociados **para** tener recompensas por mi participación. **Escenario \#1: Ofertas automáticas** \- Dado que un aprendiz alcanza nivel "Oro", Cuando entra a un local aliado, Entonces ve notificación "Bienvenida Miembro Oro - 15% descuento en bebidas". **Escenario \#2: Catálogo de ofertas** \- Dado que un aprendiz quiere aprovechar beneficios, Cuando accede a la sección "Mis Ofertas", Entonces ve todas las promociones activas de locales donde frecuenta. **Escenario \#3: Cupones digitales** \- Dado que desea usar oferta, Cuando hace clic en promoción, Entonces obtiene código OTP descargable para presentar en el local. **Escenario \#4: Ofertas personalizadas** \- Dado que frecuenta cierto idioma, Cuando hay promoción de encuentros de francés, Entonces la ofrece prioritariamente. |
 
 | Story ID | User | Priority | Epic |
 | :--- | :--- | :--- | :--- |
@@ -439,7 +439,7 @@ A continuación se presenta la tabla con el orden de desarrollo propuesto:
 
 | Orden | User Story Id | Título | Descripción | Story Points |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | US01 | Registro de nuevo aprendiz | Como** una persona interesada en practicar idiomas **Quiero** registrarme en la plataforma con mi correo y contraseña **Para** poder acceder a la comunidad y a los encuentros. | 3 |
+| 1 | US01 | Registro de nuevo aprendiz | **Como** una persona interesada en practicar idiomas **Quiero** registrarme en la plataforma con mi correo y contraseña **Para** poder acceder a la comunidad y a los encuentros. | 3 |
 | 2 | US03 | Inicio de sesión | **Como** usuario registrado (aprendiz o dueño de local) **Quiero** iniciar sesión con mi correo y contraseña **Para** acceder a mis funcionalidades personalizadas. | 3 |
 | 3 | US06 | Completar perfil de aprendiz | **Como** nuevo aprendiz **Quiero** completar mi perfil con mi idioma nativo, los idiomas que quiero practicar y mi nivel **Para** que otros usuarios me conozcan y el sistema me recomiende encuentros relevantes. | 3 |
 | 4 | US15 | Buscar encuentros | **Como** aprendiz **Quiero** buscar encuentros usando filtros por idioma, ciudad y fecha **Para** encontrar fácilmente una sesión de práctica que me interese. | 3 |
@@ -476,8 +476,8 @@ A continuación se presenta la tabla con el orden de desarrollo propuesto:
 | 35 | US49 | Validar locales | **Como** administrador **Quiero** tener un proceso para validar y aprobar los nuevos locales que se registran **Para** asegurar que son lugares apropiados y reales. | 5 |
 | 36 | US50 | Gestionar reportes |  **Como** administrador **Quiero** ver una lista de todos los reportes enviados por los usuarios **Para** poder investigarlos y tomar acciones. | 8 |
 | 37 | US51 | Comunicación global | **Como** administrador **Quiero** poder enviar notificaciones o correos electrónicos a todos los usuarios **Para** comunicar novedades o mantenimientos de la plataforma.| 8 |
-| 38 | US18 | Confirmación con QR | **Como** aprendiz **Quiero** recibir una confirmación de mi reserva **Para** poder hacer check-in fácilmente al llegar al local. | 5 |
-| 39 | US20 | Check-in con QR |  **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **Para** para registrar mi participación y recibir los beneficios por ello. | 8 |
+| 38 | US18 | Confirmación con OTP | **Como** aprendiz **Quiero** recibir una confirmación de mi reserva **Para** poder hacer check-in fácilmente al llegar al local. | 5 |
+| 39 | US20 | Check-in con OTP |  **Como** aprendiz **Quiero** confirmar mi asistencia a un encuentro **Para** para registrar mi participación y recibir los beneficios por ello. | 8 |
 | 40 | US23 | Lista de espera |  **Como** aprendiz **Quiero** unirme a una lista de espera si un encuentro está lleno **Para** tener la oportunidad de asistir si alguien cancela. | 3 |
 | 41 | US24 | Notificación de cupo | **Como** aprendiz en una lista de espera **Quiero** recibir una notificación inmediata si un cupo se libera **Para** poder reservarlo rápidamente. | 5 |
 | 42 | US04 | Cierre de sesión | **Como** usuario autenticado **Quiero** poder cerrar mi sesión **Para** proteger la privacidad de mi cuenta en dispositivos compartidos.  | 1 |

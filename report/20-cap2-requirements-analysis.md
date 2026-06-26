@@ -1,10 +1,10 @@
 # Capítulo II: Requirements & Analysis
 En este capítulo, el equipo recopila a información y requerimientos para realizar análisis y proyectar la solución frente a los competidores directos.
 
-## 2.1 Competidores
+## 2.1 Competitors
 En esta sección se identifican y describen los principales competidores de Glottia, considerando tanto competidores directos (plataformas de intercambio de idiomas) como indirectos (plataformas de eventos sociales).
 
-### 2.1.1 Análisis Competitivo
+### 2.1.1 Competitive Analysis
 **Competitive Analysis Landscape**
 
 | **Categoría** | **Subcategoría** | **Glottia (Startup)** | **HelloTalk (Competidor 1)** | **Tandem (Competidor 2)** | **Meetup (Competidor 3)** |
@@ -22,7 +22,7 @@ En esta sección se identifican y describen los principales competidores de Glot
 |  | Oportunidades | Crecimiento del aprendizaje social | Expansión digital | Crecimiento global | Más eventos sociales |
 |  | Amenazas | Competidores digitales fuertes | Nuevas plataformas híbridas | Competencia innovadora | Plataformas nicho |
 
-### 2.1.2 Análisis SWOT
+### 2.1.2 SWOT Analysis
 
 #### 2.1.2.1 Glottia
 
@@ -100,9 +100,9 @@ En esta sección se identifican y describen los principales competidores de Glot
 
 ---
 
-### 2.1.3 Estrategias frente a competidores
+### 2.1.3 Strategies for Dealing with Competitors
 
-#### 2.1.3.1 Competidores directos
+#### 2.1.3.1 Direct competitors
 
 Son aquellas plataformas que, al igual que Glottia, buscan conectar personas interesadas en practicar idiomas, ya sea de forma presencial o con posibilidad de interacción social.
 
@@ -114,7 +114,7 @@ Estas plataformas están enfocadas principalmente en el intercambio virtual medi
 
 ---
 
-#### 2.1.3.2 Competidores indirectos
+#### 2.1.3.2 Indirect competitors
 
 Son servicios que no ofrecen exactamente la misma propuesta que Glottia, pero satisfacen la necesidad de practicar idiomas o socializar en contextos similares.
 
@@ -126,7 +126,7 @@ Plataformas como Bumble o grupos de Facebook permiten a los usuarios encontrar p
 
 ---
 
-#### 2.1.3.3 Estrategias frente a competidores
+#### 2.1.3.3 Strategies for Dealing with Competitors
 
 Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la diferenciación y en la creación de valor a través de la experiencia del usuario:
 
@@ -136,7 +136,7 @@ Para enfrentar a estos competidores, Glottia plantea una estrategia basada en la
 
 ---
 
-#### 2.1.3.4 Tácticas de implementación
+#### 2.1.3.4 Implementation Tactics
 
 Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
@@ -148,13 +148,13 @@ Para ejecutar estas estrategias, se plantean las siguientes tácticas:
 
 ---
 
-## 2.2 Entrevistas
+## 2.2 Interviews
 
 En esta sección se busca comprender, a partir de entrevistas estructuradas, cuáles son las necesidades, dolores, expectativas y condiciones de confianza de los dos segmentos objetivo. La información obtenida permite identificar patrones de comportamiento y sustentar, con evidencia directa, las decisiones de diseño y priorización que se desarrollan posteriormente para los siguientes capítulos.
 
-### 2.2.1 Diseño de entrevistas
+### 2.2.1 Interview Design
 
-#### 2.2.1.1 Plan Ejecutivo de Entrevistas
+#### 2.2.1.1 Executive Interview Plan
 
 **Objetivo General**  
 Comprender necesidades, motivaciones, fricciones y condiciones de confianza para asistir a encuentros presenciales de práctica de idiomas; validar la propuesta de valor de Glottia con ambos segmentos objetivo; e identificar patrones de comportamiento que guíen decisiones de diseño y priorización.
@@ -184,7 +184,8 @@ Comprender necesidades, motivaciones, fricciones y condiciones de confianza para
 
 Cada sesión de entrevista contó con **al menos dos miembros del equipo** (entrevistador + observador/co-investigador) para reducir sesgo de un solo entrevistador, validar interpretaciones y asegurar rigor en la recopilación de datos cualitativos. Esta práctica de "triangulación de observadores" mejora la confiabilidad de los hallazgos.
 
-#### 2.2.1.2 Guion de entrevista — Segmento 1: Usuarios (aprendices de idiomas)
+#### 2.2.1.2 Interview Script — Segment 1: Users (language learners)
+
 Cada pregunta va acompañada de una breve justificación metodológica.
 
 - **Contexto y métodos actuales**
@@ -229,7 +230,8 @@ Cada pregunta va acompañada de una breve justificación metodológica.
   - ¿Qué rol sueles tomar en una conversación en otro idioma: hablar mucho, escuchar más, participar poco?
     - Justificación: Ayuda a diseñar dinámicas de encuentro que fomenten participación equilibrada.
 
-#### 2.2.1.3 Guion de entrevista — Segmento 2: Administradores / Locales aliados
+#### 2.2.1.3 Interview Script — Segment 2: Administrators / Partner Locations
+
 Cada pregunta va acompañada de su justificación.
 
 - **Contexto operativo**
@@ -259,7 +261,7 @@ Cada pregunta va acompañada de su justificación.
 - **Promociones y autonomía de gestión**
   - ¿Preferirías definir tú mismo las promociones o que la app sugiera algunas?
     - Justificación: Determina el nivel de control que se debe ofrecer en el panel de partners.
-  - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio? (código QR, verificación en app, pago adelantado)
+  - ¿Cómo te gustaría que se controle o valide que un cliente califica para un beneficio? (código OTP, verificación en app, pago adelantado)
     - Justificación: Informa mecanismos técnicos y operativos para canje de incentivos.
 
 - **Preguntas complementarias (opcional)**
@@ -268,11 +270,11 @@ Cada pregunta va acompañada de su justificación.
   - ¿Qué tipo de incentivo te resultaría más atractivo ofrecer? (descuentos, combos, promociones por grupo, etc.)
     - Justificación: Ayuda a diseñar ofertas que sean atractivas para el socio y rentables para el negocio.
 
-### 2.2.2 Registro de entrevistas
+### 2.2.2 Interview Log
 
 En esta sección se documentan las entrevistas a los segmentos respectivos.
 
-#### Segmento 1: Usuarios aprendices de idiomas
+**Segmento 1: Usuarios aprendices de idiomas**
 
 **Entrevista N°1: Alexander Gabriel Montoya**
 
@@ -350,7 +352,7 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 - **Expectativas e inquietudes sobre la aplicación:** Espera que la plataforma sea **fácil de usar** y permita visualizar el nivel de los participantes para formar grupos equilibrados. Los factores clave son la **verificación de perfiles**, la existencia de **reseñas** y la presencia de **moderadores o facilitadores**. Valora dinámicas que *"eviten que algunos participantes dominen la conversación y limiten la participación de otros"*, señalando la importancia del diseño de encuentros, no solo del matching.
 
-#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+**Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión**
 
 **Entrevista N°1: Virgilio Sanchez**
 
@@ -431,11 +433,11 @@ En esta sección se documentan las entrevistas a los segmentos respectivos.
 
 ---
 
-### 2.2.3 Análisis de entrevistas
+### 2.2.3 Interview Analysis
 
 En este apartado se realiza un análisis de las entrevistas realizadas a los segmentos objetivo, identificando patrones, insights y oportunidades clave para el diseño de la solución.
 
-#### Segmento 1: Usuarios aprendices de idiomas
+**Segmento 1: Usuarios aprendices de idiomas**
 
 **Total de entrevistas:** 3 entrevistas estructuradas (Alexander Montoya, Ricardo Del Aguila, Eric Olivera). Todas contaron con triangulación de observadores.
 
@@ -468,7 +470,7 @@ A partir de las entrevistas realizadas a los usuarios del Segmento 1 (jóvenes u
 - Se valora que la plataforma reduzca fricción: descubrir un encuentro, reservar, asistir con reglas claras y obtener continuidad.
 - Implicancia para priorización: las capacidades iniciales deben enfocarse en descubrimiento, reserva, seguridad y control del encuentro (antes de features avanzadas).
 
-#### Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión
+**Segmento 2: Administradores que ofrecen su establecimiento como punto de reunión**
 
 **Total de entrevistas:** 3 entrevistas estructuradas (Virgilio Sanchez, Yamile Francia, Mercedez Gonzalez). Todas contaron con triangulación de observadores. 
 
@@ -500,7 +502,7 @@ A partir de las entrevistas realizadas a los administradores de establecimientos
 - Se necesita **reducir no-shows y desorden operativo**: confirmaciones claras, reglas de cancelación y control de cupos. Virgilio menciona experiencias negativas con *"pedidos muy grandes que no fueron pagados"*; Yamile refiere *"cancelaciones sin aviso generan pérdidas y desorganización"*. Mercedez mantiene *"un margen de espera de 15–20 minutos"* antes de liberar mesas. Esto refleja fricción operativa real que la solución debe eliminar.
 - El **control de aforo es el núcleo del valor** para el local: saber cuántas personas llegarán y cuándo. Mercedez espera *"gestionar y difundir cupos máximos"*; Yamile busca *"controlar aforo"*. Este es un requerimiento universal en Segmento 2.
 - La aplicación debe servir también como **herramienta de visibilidad**: Virgilio espera que indique *"ubicación exacta, cómo llegar y catálogo de productos"*; Mercedez valora la *"intuitiva para confirmar asistencias"*. Balance entre operativa y marketing.
-- **Implicancia para la solución:** Se requiere un flujo de reserva con estados claros (p. ej., reservada → confirmada → asistida/cancelada), mecanismos de confirmación previa (p. ej., 24–48 h antes del evento), control de cupos con límites ajustables, y un mecanismo de validación presencial (código QR) para cerrar el ciclo de compromiso. Opcionalmente, analytics para mostrar ROI (clientes nuevos, consumo incremental, ocupación de horas valle).
+- **Implicancia para la solución:** Se requiere un flujo de reserva con estados claros (p. ej., reservada → confirmada → asistida/cancelada), mecanismos de confirmación previa (p. ej., 24–48 h antes del evento), control de cupos con límites ajustables, y un mecanismo de validación presencial (código OTP) para cerrar el ciclo de compromiso. Opcionalmente, analytics para mostrar ROI (clientes nuevos, consumo incremental, ocupación de horas valle).
 
 ## 2.3 Needfinding
 
@@ -510,7 +512,7 @@ En esta sección se sintetizan los hallazgos obtenidos a partir de la investigac
 
 En la presente sección se presentan las fichas de User Persona elaboradas teniendo en cuenta las entrevistas realizadas y analizadas previamente y la revisión de soluciones existentes en el mercado. En cada arquetipo se presentan las características demográficas, de personalidad, los objetivos, las motivaciones, frustraciones y preferencias de los usuarios clave de cada segmento. La construcción de estos User Persona se basa en resultados y análisis obtenidos durante la investigación previa con el objetivo de tomar decisiones de diseño y desarrollo adecuadas para resolver los problemas identificados.
 
-#### Segmento 1:
+**Segmento 1:**
 
 \begin{center}
 \includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-1.png}
@@ -518,7 +520,7 @@ En la presente sección se presentan las fichas de User Persona elaboradas tenie
 
 *Descripción:* Ficha resumida de la persona (demografía, metas, motivaciones y canales preferidos).
 
-#### Segmento 2:
+**Segmento 2:**
 
 \begin{center}
 \includegraphics[width=0.78\textwidth,height=0.45\textheight,keepaspectratio]{assets/img/cap2/user-person-2.png}
@@ -544,7 +546,7 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 | Reservar cupo seguro en una mesa temática para practicar en grupo | Sí | - | Frecuente | Alta |
 | Monitorear y gestionar las reservas activas para controlar el aforo máximo | - | Sí | Frecuente | Alta |
 | **Durante el Encuentro (Dinámica Presencial)** | | | | |
-| Mostrar código QR de reserva para registrar asistencia (Check-in) | Sí | - | Frecuente | Alta |
+| Mostrar código OTP de reserva para registrar asistencia (Check-in) | Sí | - | Frecuente | Alta |
 | Escanear y validar ingresos (Check-in) para mantener el orden y seguridad | - | Sí | Frecuente | Alta |
 | Redimir descuentos y promociones en consumos por pertenecer al encuentro | Sí | - | Frecuente | Alta |
 | **Retención, Análisis & Gamificación** | | | | |
@@ -559,7 +561,7 @@ Esta matriz categoriza las acciones principales según la etapa de interacción 
 
 El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la solución y la priorización del *Product Backlog* en futuras iteraciones:
 
-1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante QR es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
+1. **Intersección Crítica:** El éxito de la plataforma reside en el momento de la experiencia híbrida, específicamente en el proceso de "Check-in". La validación mediante OTP es una tarea de frecuencia e importancia alta para ambos segmentos, ya que asegura el control de aforo y consumo que busca Enzo (Administrador) y garantiza el acceso seguro al evento que espera Sofía (Aprendiz).
 2. **Estrategias de Retención Diferenciadas:** Las razones por las que cada usuario volverá a utilizar la plataforma son totalmente distintas. Para mantener motivada a la aprendiz, el sistema debe enfocarse en la **Gamificación** (otorgar insignias, mostrar su evolución y darle puntos de lealtad) para premiar su constancia. Por el contrario, para retener al dueño del local, el sistema debe ofrecerle herramientas de **valor comercial** mediante un panel de administración o un dashboard analítico para medir su ROI y la opción de activar promociones personalizadas.
 3. **Roles Complementarios (Oferta y Demanda):** Se observa una clara separación de tareas en la fase de descubrimiento. Sofía tiene un rol activo de búsqueda y reserva, mientras que Enzo asume un rol asíncrono de configuración de disponibilidad. Esta asimetría indica que los flujos de experiencia de usuario serán completamente distintos, justificando la creación de interfaces o módulos separados.
 
@@ -567,7 +569,7 @@ El desarrollo de esta matriz revela hallazgos clave para la arquitectura de la s
 
 ### 2.3.3 Empathy Maps
 
-#### Empathy Map para los dueños de cafeterías.
+**Empathy Map para los dueños de cafeterías.**
 
 \begin{center}
 \includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-enzo-fernandez.png}
@@ -577,7 +579,7 @@ En este Empathy Map se presenta una representación visual de las emociones, pen
 
 ---
 
-#### Empathy Map para los aprendices.
+**Empathy Map para los aprendices.**
 
 \begin{center}
 \includegraphics[width=0.85\textwidth,height=0.55\textheight,keepaspectratio]{assets/img/cap2/empathy-map-sofia-ramirez.png}
@@ -666,7 +668,7 @@ Sofía enfrenta múltiples dificultades a lo largo de su proceso de aprendizaje 
 
 Sin embargo, existen momentos clave de motivación y satisfacción cuando logra interactuar exitosamente, lo que evidencia un alto interés en este tipo de experiencias. Esto demuestra la necesidad de una solución como Glottia, que permita centralizar, organizar y facilitar encuentros seguros, accesibles y constantes para la práctica de idiomas, mejorando significativamente la experiencia del usuario.
 
-## Sustento para la Especificación de Requisitos
+**Sustento para la Especificación de Requisitos**
 
 Los hallazgos de las entrevistas y del Needfinding no solo describen el contexto del problema, sino que también definen con claridad las capacidades que la solución debe priorizar. En el segmento de aprendices se identificó una necesidad dominante de práctica oral estructurada, confianza, segmentación por nivel, visibilidad de los participantes y continuidad en el aprendizaje. En el segmento de locales se confirmó la necesidad de control operativo, confirmación de asistencias, gestión de cupos, promociones administrables por el negocio y evidencia del valor comercial generado por la plataforma.
 

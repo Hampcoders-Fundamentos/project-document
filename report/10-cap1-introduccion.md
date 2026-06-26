@@ -1,17 +1,17 @@
-# Capítulo I: Introducción
+# Capítulo I: Introduction
 En este capítulo el equipo presenta el contexto general del proyecto que se trabajará durante el ciclo, incluyendo la descripción de la startup, los problemas identificados y la solución propuesta. En adición, se especifica el proceso de Lean UX utilizado para la validación del producto y segmentos objetivos.
 
 ## 1.1. Startup Profile
 En esta sección el equipo describe el perfil de la startup, el propósito y el perfil de los integrantes.
 
-### 1.1.1. Descripción de la Startup
+### 1.1.1. Startup Description
 En Hampcoders creemos en crear tecnología que realmente tenga impacto. Usamos herramientas open-source para desarrollar soluciones digitales pensadas en problemas reales del día a día. Desde el inicio tuvimos claro que no se trata solo de programar, sino de ayudar a las personas y a los emprendedores a trabajar mejor, simplificando sus procesos y dándoles herramientas útiles, prácticas y sin complicaciones.
 
 Misión: Democratizar la tecnología open-source para resolver los problemas reales de personas y emprendedores.
 
 Visión: Ser el motor tecnológico detrás de la próxima generación de emprendedores exitosos, impulsados por el código abierto.
 
-### 1.1.2. Perfiles de Integrantes del equipo
+### 1.1.2. Team Member Profiles
 
 <!-- Imitar esto-->
 \begin{minipage}{0.3\textwidth}
@@ -98,13 +98,13 @@ Soy César Augusto, estudiante de Ingeniería de Software. Actualmente tengo 21 
 
 En esta sección el equipo describe el perfil de la solución, incluyendo el análisis mediante la metodología Lean UX
 
-### 1.2.1 Nombre del producto
+### 1.2.1 Product Name
 
 Tras la pandemia en Perú, notamos una oportunidad al juntar tres problemas actuales. Por una parte, muchos jóvenes tienen dificultades para relacionarse cara a cara, mientras que miles de estudiantes de idiomas se quedan en la teoría por falta de espacios para conversar. A esto se le suma que los pequeños negocios, como cafeterías, buscan constantemente nuevas formas de generar tráfico de clientes. 
 
 Así nace Glottia, una iniciativa para incentivar la práctica presencial de idiomas. Lo que hacemos es conectar a personas que quieren soltarse al hablar con restaurantes y cafés locales, dándoles a los usuarios un lugar cómodo para practicar y a los negocios un flujo constante de público.
 
-### 1.2.2 Antecedentes y problemática
+### 1.2.2 Background and Issues
 
 Para detallar los antecedentes de la solución y describir la problemática de manera estructurada, se utilizó la técnica de las 5W + 2H.
 
@@ -234,7 +234,7 @@ Ante este desafío, surge la pregunta: ¿Cómo podemos proporcionar opciones acc
 
 ![Imagen del Lean UX Canvas](assets/img/cap1/canvas/lean-ux-canvas-Glottia.jpg)
 
-## 1.3 Segmentos objetivo
+## 1.3 Target Segments
 
 **Segmento objetivo #1: Usuarios aprendices de idiomas**
 

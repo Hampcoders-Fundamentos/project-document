@@ -127,11 +127,11 @@ Plataforma en la nube diseñada para el desarrollo colaborativo de software, per
 
 ### 5.2.2 Source Code Management
 
-### Repositorio de GitHub:
+**Repositorios de GitHub:**
 
 - Enlace para acceder al [Repositorio del Documento](https://github.com/Hampcoders-Fundamentos/project-document)
-- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)
-- Enlace para acceder al [Repositorio del Backend Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices)
+- Enlace para acceder al [Repositorio del Backend como Monolito](https://github.com/Hampcoders-Fundamentos/glottia-backend-monolith)
+- Enlace para acceder al [Repositorio del Backend como Microservicios](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices)
 
 ![Gitflow Graphic](assets/img/cap5/Gitflow-Graphic.jpeg)
 
@@ -152,45 +152,52 @@ La rama **feature** agrupa las ramas de características de nuestro proyecto, ca
 #### 1. Arquitectura del Sistema
 El repositorio sigue un patrón de **Monolito Modular** basado en los principios de **Clean Architecture** y **Domain-Driven Design (DDD)**.
 
-#### Organización de Carpetas
-La estructura se organiza por **Bounded Contexts** (Contextos Delimitados) dentro de `src/`:
+#### Organización de Paquetes
+La estructura se organiza por **Bounded Contexts** dentro de `src/main/java/com/hampcoders/glottia/platform/api/`:
 
-* **`src/api/`**: Capa de entrada. Contiene los controladores, rutas de Express y middlewares de validación de HTTP.
-* **`src/[contexto]/`**: Cada módulo funcional (ej. `users`, `courses`) se divide en:
-    * **`domain/`**: El corazón del negocio. Contiene Entidades, Value Objects e interfaces de Repositorios (Ports). **No tiene dependencias externas**.
-    * **`application/`**: Casos de uso que orquestan la lógica de negocio.
-    * **`infrastructure/`**: Implementaciones técnicas (TypeORM, adaptadores de terceros, persistencia).
-* **`src/shared/`**: Lógica transversal, utilitarios y clases base reutilizables por múltiples contextos.
+* **`[contexto]/domain/`**: El corazón del negocio. No tiene dependencias externas. Contiene:
+    * `model/aggregates/`: Raíces de agregados.
+    * `model/entities/`: Entidades del dominio.
+    * `model/valueobjects/`: Objetos de valor.
+    * `model/commands/` y `model/queries/`: Comandos y consultas específicos.
+    * `model/events/`: Eventos de dominio.
+    * `services/`: Interfaces de servicios de dominio.
+* **`[contexto]/application/`**: Capa de aplicación que orquesta la lógica de negocio:
+    * `internal/commandservices/` e `internal/queryservices/`: Implementaciones de servicios de comandos y consultas.
+    * `internal/eventhandlers/`: Manejadores de eventos de dominio e integración.
+    * `acl/`: Capa de anticorrupción (Anti-Corruption Layer) para interactuar con otros contextos.
+* **`[contexto]/infrastructure/`**: Implementaciones técnicas, persistencia de datos (JPA/Hibernate), configuraciones de infraestructura y adaptadores de servicios externos (LLM, notificaciones).
+* **`[contexto]/interfaces/`**: Capa de entrada del contexto. Contiene `rest/` con controladores (`Controllers`), recursos de transferencia de datos (`Resources`) y ensambladores (`Transform/Assemblers`).
+* **`shared/`**: Lógica transversal, excepciones globales, utilitarios y clases base reutilizables (como raíces de agregados auditales).
 
 #### 2. Convenciones de Nomenclatura
 
-#### Clases y Tipos
-* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su capa.
-    * *Controladores:* `UserGetController`
-    * *Casos de Uso:* `CreateCourseUseCase`
-    * *Repositorios:* `SqliteUserRepository`
-* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `UserRepository` en lugar de `IUserRepository`).
+#### Clases e Interfaces
+* **Clases**: Se utiliza `PascalCase`. Deben incluir un sufijo descriptivo según su rol arquitectónico.
+    * *Controladores:* `AnalyticsController`
+    * *Servicios de Aplicación:* `EncounterCommandServiceImpl`
+    * *Repositorios JPA:* `EncounterRepository`
+    * *Manejadores de Eventos:* `AssessmentCompletedEventHandler`
+* **Interfaces**: Se utiliza `PascalCase`. **No se utiliza el prefijo `I`**. El nombre debe describir el contrato de forma natural (ej. `EncounterCommandService` en lugar de `IEncounterCommandService`).
 
 #### 3. Archivos
-* **Formato**: Se utiliza `kebab-case`.
-* **Sufijos de archivo**: El nombre del archivo debe reflejar su propósito:
-    * `user.entity.java`
-    * `user-repository.java`
-    * `create-user-use-case.java`
-    * `user-post-controller.java`
+* **Formato**: Se utiliza `PascalCase` obligatorio para todos los archivos fuente de Java (`.java`), coincidiendo exactamente con el nombre de la clase o interfaz contenida.
+    * `Encounter.java`
+    * `EncounterRepository.java`
+    * `CreateEncounterCommand.java`
+    * `EncountersController.java`
 
 #### 4. Variables y Funciones
-* **Formato**: Se utiliza `camelCase`.
-* **Claridad**: Los nombres deben ser descriptivos. Evitar abreviaturas crípticas (usar `userRepository` en lugar de `uRepo`).
+* **Formato**: Se utiliza `camelCase` para variables locales, atributos de clase y nombres de métodos.
+* **Claridad**: Los nombres deben ser descriptivos en inglés. Evitar abreviaturas crípticas (usar `encounterRepository` en lugar de `encRepo`).
 
 #### 5. Estándares de Codificación
+* El código se rige por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias mediante Spring Framework (`@Service`, `@Repository`, `@RestController`) y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento directo entre contextos bounded independientes, utilizando el `DomainEventPublisher` de Spring para comunicación asíncrona desacoplada o fachadas ACL.
 
-- Se rige el código por los principios SOLID, promoviendo la separación de responsabilidades, la inversión de dependencias y el diseño orientado a interfaces. Se favorece la composición sobre la herencia y se evita el acoplamiento entre capas. El código debe ser legible, mantenible y fácil de probar, siguiendo las mejores prácticas de desarrollo de software.
-
-#### 6. Lógica de Negocio
-* **Inyección de Dependencias**: Se favorece el uso de inyección por constructor para facilitar el desacoplamiento y las pruebas unitarias.
-* **Regla de Dependencia**: Las capas internas (Domain) nunca deben depender de las capas externas (Infrastructure).
-* **Manejo de Errores**: Se utilizan excepciones de dominio específicas que luego son transformadas en códigos HTTP en la capa de API.
+#### 6. Lógica de Negocio y Persistencia
+* **Inyección de Dependencias**: Se utiliza inyección por constructor implícita de Spring para garantizar la inmutabilidad y facilitar las pruebas unitarias.
+* **Regla de Dependencia**: Las capas internas (`Domain`) nunca deben depender de las capas externas (`Infrastructure`, `Interfaces`).
+* **Manejo de Errores**: Se manejan excepciones de dominio específicas o infraestructura que son interceptadas de manera centralizada por un `GlobalExceptionHandler` (`@ControllerAdvice`) para transformarlas en respuestas HTTP estandarizadas.
 
 #### Backend Code Style Guide (Microservices)
 
@@ -242,9 +249,60 @@ Cada microservicio dentro de la carpeta `services/` (o repositorios independient
 
 ### 5.2.4 Software Deployment Configuration
 
+La plataforma Glottia adopta una estrategia de despliegue basada en contenedores Docker, utilizando **docker-compose** para la orquestación local y **Terraform** como Infrastructure as Code (IaC) para el aprovisionamiento automatizado de la infraestructura en **AWS**. Cada microservicio se empaqueta como una imagen Docker independiente, permitiendo despliegues aislados, escalables y reproducibles.
+
+#### Docker y Contenerización
+
+Cada microservicio (IAM, Profiles, Encounters, Venues, Promotions, Learning Feedback, Engagement) cuenta con su propio `Dockerfile` que define el entorno de ejecución basado en OpenJDK 21 para los servicios Spring Boot. Las imágenes se almacenan en **Amazon Elastic Container Registry (ECR)** y se despliegan en instancias EC2 o servicios administrados de AWS.
+
+#### Orquestación con Docker Compose
+
+Para el entorno de desarrollo y validación local, se utiliza `docker-compose.yml` que orquesta los servicios auxiliares necesarios para la comunicación entre microservicios:
+
+```yaml
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: glottia-rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+```
+
+RabbitMQ actúa como bus de mensajería asíncrona, permitiendo la comunicación desacoplada entre microservicios para eventos como notificaciones de encuentros, actualización de puntos de lealtad y procesamiento de badges.
+
+#### Infraestructura como Código con Terraform
+
+La infraestructura en AWS se define y gestiona mediante scripts de Terraform, garantizando que el entorno de producción sea reproducible, versionable y auditable. Los recursos aprovisionados incluyen:
+
+- **AWS VPC** con subredes públicas y privadas, tablas de enrutamiento, grupos de seguridad y balanceador de carga para el acceso seguro a los microservicios.
+- **AWS ECR** para el almacenamiento de imágenes Docker de cada microservicio.
+- **AWS RDS PostgreSQL** como base de datos relacional compartida para los microservicios.
+- **AWS EC2** como plataforma de ejecución para los contenedores de cada servicio.
+
+#### Variables de Entorno
+
+Cada microservicio se configura mediante variables de entorno inyectadas en tiempo de ejecución:
+
+| Variable | Descripción | Ejemplo |
+|---|---|---|
+| `SPRING_DATASOURCE_URL` | URL de conexión a base de datos | `jdbc:postgresql://glottia-db...:5432/glottia` |
+| `SPRING_DATASOURCE_USERNAME` | Usuario de base de datos | `glottia_user` |
+| `SPRING_DATASOURCE_PASSWORD` | Contraseña de base de datos | `****` |
+| `JWT_SECRET` | Clave secreta para firma de tokens JWT | `****` |
+| `RABBITMQ_HOST` | Host del servidor RabbitMQ | `glottia-rabbitmq` |
+| `RABBITMQ_PORT` | Puerto de conexión RabbitMQ | `5672` |
+
+#### Evidencia de Despliegue
+
+Las evidencias de la ejecución de Terraform, los repositorios ECR, la base de datos RDS, la configuración de VPC y los servicios corriendo se presentan en la sección de despliegue correspondiente a cada sprint (secciones 5.3.1.6 y 5.3.2.6).
+
 ## 5.3 Microservices Implementation
 
-### 5.2.1 Sprint 1
+### 5.3.1 Sprint 1
 
 El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (IAM, Profiles y Encounters, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
 
@@ -254,7 +312,7 @@ El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: l
 Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia funcional de punta a punta al equipo de desarrollo y a los primeros aprendices.
 Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
 
-#### 5.2.1.1 Sprint Backlog 1
+#### 5.3.1.1 Sprint Backlog 1
 
 \
 ![Sprint Backlog 1](assets/img/cap5/Glottia-SprintBacklog-1.jpeg)
@@ -262,32 +320,58 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 [Ver Sprint Backlog 1 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiOGU3YWU0ZDBkN2NjNGQ2MDkxMGQxZjk4ZjUwYWFmNTAiLCJwIjoiaiJ9)
 
 
-#### 5.2.1.2 Development Evidence for Sprint Review
+#### 5.3.1.2 Development Evidence for Sprint Review
 
-Durante el Sprint 1, se logró un avance parcial en el despliegue de la landing page.
-[Link del landing Page](https://glottia-landing-page-master.vercel.app/) 
-Actualmente, el sitio ya cuenta con diversas secciones operativas que ofrecen información clave sobre los servicios y el equipo de Glottia. Las evidencias de este progreso se detallan a continuación:
+Durante el Sprint 1, el equipo Hampcoders desarrolló e implementó los microservicios correspondientes a los Bounded Contexts de **IAM**, **Profiles** y **Encounters**, dando inicio a la migración desde la arquitectura monolito modular hacia microservicios independientes. A continuación se detalla el desarrollo realizado por cada microservicio, incluyendo los endpoints implementados, las decisiones arquitectónicas adoptadas y las evidencias de código.
 
- - **Sección Hero (Inicio):** El usuario visualiza la propuesta de valor principal centrada en la práctica de idiomas cara a cara. La sección destaca beneficios clave como conversaciones   reales, la posibilidad de conocer gente nueva y el acceso a espacios seguros.
- (assets/img/cap5/hero-section.png)
+##### IAM Microservice
 
- - **Sección ¿Cómo funciona?:** El usuario puede visualizar el proceso de funcionamiento de la plataforma dividido en dos perfiles: Aprendices y Locales. Para los aprendices, se detallan tres pasos que incluyen el registro de perfil, la búsqueda de encuentros temáticos y la asistencia a las sesiones. Para los locales, se explica el flujo para convertir su negocio en un "hub cultural" mediante el registro del establecimiento, la definición de horarios disponibles y la recepción de los practicantes de idiomas.
- (assets/img/cap5/how-it-works.png)
+El microservicio IAM (Identity and Access Management) fue desarrollado como el primer módulo extraído del monolito, con los siguientes entregables:
 
- - **Sección Nuestra Solución:** El usuario obtiene una visión detallada del ecosistema de la plataforma, destacando pilares como conversaciones reales, una comunidad activa, soporte para múltiples idiomas y un enfoque en el progreso garantizado.
- (assets/img/cap5/our-solution.png)
+- **Repositorio y configuración inicial:** Se creó un repositorio independiente para el microservicio IAM con Spring Boot 3.x, configuración de conexión a base de datos MySQL propia y empaquetado Docker.
+- **Módulo de Autenticación:** Implementación de flujo completo de registro (`POST /api/v1/auth/register`) e inicio de sesión (`POST /api/v1/auth/login`) con generación de tokens JWT.
+- **Módulo de Usuarios:** Endpoints CRUD para gestión de usuarios (`GET /api/v1/users`, `GET /api/v1/users/{id}`).
+- **Seguridad:** Integración de Spring Security con BCrypt para hashing de contraseñas y filtro JWT para validación de tokens en cada request.
+- **Pruebas de integración:** Se implementaron escenarios BDD para registro de aprendiz, registro de partner, inicio y cierre de sesión (Archivos: `auth_register_learner.feature`, `auth_register_partner.feature`, `auth_login.feature`, `auth_logout.feature`).
 
- - **Sección Ve Glottia en Acción:** El usuario puede visualizar una demostración práctica de la plataforma a través de un video interactivo que muestra la interfaz de la aplicación en funcionamiento.
- (assets/img/cap5/glottia-in-action.png)
+La documentación Swagger/OpenAPI del microservicio IAM se detalla en la sección 5.3.1.5.
 
- - **Sección Beneficios para todos:** El usuario puede explorar las ventajas competitivas de la plataforma segmentadas para Aprendices y Locales. Para los estudiantes, se resaltan beneficios como la ganancia de fluidez en situaciones reales, el networking cultural, el ahorro frente a academias tradicionales y la flexibilidad de horarios. 
- (assets/img/cap5/benefits.png)
+##### Profiles Microservice
 
- - **Sección Sobre Nosotros:** El usuario puede conocer la identidad corporativa de la plataforma a través de su Misión, enfocada en facilitar la práctica oral mediante experiencias reales y seguras, y su Visión, que aspira a convertir a Glottia en la comunidad global de referencia para el intercambio cultural.. 
- (assets/img/cap5/about-us.png)
-***
+El microservicio Profiles fue desarrollado para gestionar la información de perfiles de learners y partners, con los siguientes entregables:
 
-#### 5.2.1.3 Testing Suite Evidence for Sprint Review
+- **Repositorio y configuración inicial:** Se configuró el proyecto con Spring Boot, base de datos independiente y esquema de datos propio.
+- **API de Perfiles:** Endpoints para creación, consulta, actualización y eliminación de perfiles (`GET/POST/PUT/DELETE /api/v1/profiles/{id}`).
+- **Gestión de Idiomas:** Endpoints para que los learners puedan agregar, actualizar y eliminar idiomas de su perfil (`POST/PUT/DELETE /api/v1/profiles/{id}/learner/languages/{languageId}`).
+- **Búsqueda:** Endpoint de búsqueda de perfiles por email (`GET /api/v1/profiles/search`).
+- **Avatar:** Integración con el servicio de almacenamiento en la nube para subida y gestión de fotos de perfil.
+- **Pruebas de integración:** Escenarios BDD para onboarding, edición de perfil, visualización de perfil de otros usuarios y subida de avatar (Archivos: `profile_*.feature`).
+
+La documentación Swagger/OpenAPI del microservicio Profiles se detalla en la sección 5.3.1.5.
+
+##### Encounters Microservice
+
+El microservicio Encounters fue desarrollado para administrar el ciclo de vida completo de los encuentros conversacionales, con los siguientes entregables:
+
+- **Repositorio y configuración inicial:** Separación del schema de Encounters con su propia base de datos y configuración de integraciones hacia Venues y Profiles.
+- **API de Encuentros:** Endpoints para creación (`POST /api/v1/encounters`), búsqueda (`GET /api/v1/encounters/search`), consulta por ID (`GET /api/v1/encounters/{encounterId}`) y cancelación (`DELETE /api/v1/encounters/{encounterId}`).
+- **Flujo de Ciclo de Vida:** Endpoints para iniciar (`POST .../start`), completar (`POST .../complete`) encuentros, y gestionar asistencias (`POST .../attendances`, `POST .../check-in`).
+- **Integraciones:** Conexión con el microservicio de Profiles para datos de participantes y con Venues para disponibilidad de locales.
+- **Pruebas de integración:** Escenarios BDD para el flujo completo de búsqueda, registro de asistencia y check-in.
+
+La documentación Swagger/OpenAPI del microservicio Encounters se detalla en la sección 5.3.1.5.
+
+##### API Gateway
+
+Se inició la configuración del API Gateway como punto de entrada único para todos los microservicios, implementando enrutamiento perimetral hacia IAM, Profiles y Encounters, con políticas centralizadas de CORS y seguridad.
+
+##### Control de Versiones y Colaboración
+
+Todo el desarrollo fue gestionado mediante GitHub siguiendo la estrategia GitFlow, con ramas `main` y `develop` como base, y ramas `feature/` para cada tarea del sprint. Cada integración fue realizada mediante Pull Requests con revisión de código por pares. Las evidencias de commits, contribuciones y flujo de trabajo colaborativo se presentan en la sección 5.3.1.7.
+
+---
+
+#### 5.3.1.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
 
@@ -295,11 +379,11 @@ Esta metodología permite definir el comportamiento del sistema desde la perspec
 
 ***
 
-### IAM Microservice Testing Suite
+##### 5.3.1.3.1 IAM Microservice — BDD Testing Suite
 
 A continuación, se presentan las especificaciones en código Gherkin encargadas de validar los procesos de soporte críticos de autenticación, autorización y registro en el contexto de IAM.
 
-#### `auth_register_learner.feature` (Relacionado con US01)
+#### `auth_register_learner.feature` — Relacionado con US-01
 
 \
 ```gherkin
@@ -335,7 +419,7 @@ Feature: Learner Registration Management
 ```
 
 
-#### `auth_register_partner.feature` (Relacionado con US02)
+#### `auth_register_partner.feature` — Relacionado con US-02
 
 \
 ```gherkin
@@ -372,7 +456,7 @@ Feature: Partner and Business Registration
 
 ***
 
-#### `auth_login.feature` (Relacionado con US03)
+#### `auth_login.feature` — Relacionado con US-03
 
 \
 ```gherkin
@@ -421,7 +505,7 @@ Feature: General User Authentication
 
 ***
 
-#### `auth_logout.feature` (Relacionado con US04)
+#### `auth_logout.feature` — Relacionado con US-04
 
 \
 ```gherkin
@@ -451,7 +535,7 @@ Feature: User Session Invalidation
 ***
 
 
-#### `auth_password_recovery.feature` (Relacionado con US05)
+#### `auth_password_recovery.feature` — Relacionado con US-05
 
 \
 ```gherkin
@@ -490,11 +574,11 @@ Feature: Password Recovery Protocol
 
 ---
 
-#### Profiles Microservice Testing Suite
+##### 5.3.1.3.2 Profiles Microservice — BDD Testing Suite
 
 A continuación, se detallan las especificaciones Gherkin enfocadas en validar las reglas de la gestión de perfiles e idiomas dentro del microservicio Profiles.
 
-#### `profile_onboarding.feature` (Relacionado con US06)
+#### `profile_onboarding.feature` — Relacionado con US-06
 
 \
 ```gherkin
@@ -528,7 +612,7 @@ Feature: Learner Profile Onboarding
 
 ---
 
-#### `profile_edition.feature` (Relacionado con US07)
+#### `profile_edition.feature` — Relacionado con US-07
 
 \
 ```gherkin
@@ -555,7 +639,7 @@ Feature: Learner Profile Edition
 
 ---
 
-#### `profile_discovery.feature` (Relacionado con US08)
+#### `profile_discovery.feature` — Relacionado con US-08
 
 \
 ```gherkin
@@ -581,7 +665,7 @@ Feature: Public Profile Discovery
 
 ---
 
-#### `profile_avatar.feature` (Relacionado con US09)
+#### `profile_avatar.feature` — Relacionado con US-09
 
 \
 ```gherkin
@@ -611,7 +695,7 @@ Feature: Profile Avatar Management
     Then the image path field in the database should revert to the default system placeholder avatar string
 ```
 
-#### 5.2.1.4 Execution Evidence for Sprint Review
+#### 5.3.1.4 Execution Evidence for Sprint Review
 
 El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Hampcoders, tuvo como objetivo principal iniciar la migración del backend de una arquitectura monolito modular hacia microservicios independientes, abarcando los bounded contexts de IAM, Profiles y Encounters, al mismo tiempo que se implementaban las funcionalidades base de la plataforma y se atendían mejoras y correcciones en la aplicación móvil Flutter. En cuanto a la migración, se logró extraer y dockerizar el servicio de IAM con su propia base de datos, se avanzó en la separación del servicio de Encounters con la configuración de su schema independiente y sus integraciones hacia Venues y Profiles, y se inició la configuración del API Gateway como punto de entrada único para todos los microservicios. En el frente funcional, se completaron las historias de usuario correspondientes al ciclo de autenticación completo (registro de aprendiz y partner, inicio y cierre de sesión), el perfil base del aprendiz, y el flujo de check-in en encuentros. En paralelo, el equipo de mobile resolvió los bugs críticos de crash en el registro y persistencia de sesión, además de entregar el rediseño de la pantalla home. Como trabajo pendiente para el siguiente sprint quedan la separación completa de Profiles y Encounters como microservicios autónomos, la historia US05 recuperación de contraseña y un bugfix en el cierre de sesión.
 
@@ -646,7 +730,7 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 ![Captura 7 de la ejecución de Postman](assets/img/cap5/Postman7.jpeg){width=50%}
 
-#### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
+#### 5.3.1.5 Microservices Documentation Evidence for Sprint Review
 
 En este Sprint se implementó y documentó la primera versión de los microservicios correspondientes a los Bounded Contexts de IAM, Profiles y Encounters de la plataforma Glottia.
 
@@ -801,7 +885,7 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 
 *Figura 28. Ejecución exitosa de una consulta masiva mediante el endpoint GET /api/v1/profiles. Swagger UI despliega la respuesta simulada con código 200 (OK) exponiendo la estructura en formato de arreglo JSON de los perfiles guardados en el sistema.*
 
-#### 5.2.1.6 Software Deployment Evidence for Sprint Review
+#### 5.3.1.6 Software Deployment Evidence for Sprint Review
 
 **Software Deployment Evidence for Sprint Review**
 Durante el Sprint 1 se llevaron a cabo las actividades iniciales de despliegue de la plataforma Glottia en la nube, marcando el primer hito en la transición de la arquitectura monolito modular hacia microservicios independientes. Las actividades de despliegue abarcaron la creación de cuenta en Render como proveedor cloud, la configuración de los proyectos de despliegue para los primeros servicios extraídos del monolito, y el despliegue manual de dos Web Services: el monolito existente y el microservicio de IAM.
@@ -821,7 +905,7 @@ Se configuró el microservicio de IAM como un Web Service independiente en Rende
 **Pendiente**
 Las URLs públicas de los tres servicios desplegados estarán disponibles para la siguiente iteración del informe una vez que los servicios completen su proceso de inicialización en Render. Se adjuntarán capturas de pantalla del dashboard de Render, la configuración de cada Web Service y las evidencias de los despliegues exitosos en cuanto estén disponibles.
 
-#### 5.2.1.7 Team Collaboration Insights during Sprint
+#### 5.3.1.7 Team Collaboration Insights during Sprint
 
 Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el control de versiones mediante GitHub, adoptando GitFlow como estrategia de branching. Esto implicó el uso de ramas main y develop como ramas base, y la creación de ramas de tipo feature/ para cada tarea del sprint, asegurando que ningún cambio fuera integrado directamente a las ramas principales sin pasar por un proceso de Pull Request y revisión de código por parte de otro miembro del equipo. Las capturas de los analíticos de commits y la participación de cada integrante en los repositorios de los Web Services se presentan a continuación.
 
@@ -830,7 +914,7 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 \
 ![Contributors](assets/img/cap5/Contributors.jpeg)
 
-#### 5.2.1.8 Kanban Board --> TP1
+#### 5.3.1.8 Kanban Board --> TP1
 
 \
 ![Sprint 1 Kanban Board](assets/img/cap5/Glottia-Sprint1-KanbanBoard.jpeg)
@@ -863,14 +947,17 @@ Esta metodología permite definir el comportamiento del sistema desde la perspec
 
 Durante el Sprint 2 se implementaron los Bounded Contexts de Venues, Promotions, Learning Feedback y Engagement, cubriendo las funcionalidades de gestión de locales comerciales, promociones y ofertas por lealtad, retroalimentación de encuentros mediante autoevaluación y quizzes, y el sistema de gamificación con puntos, insignias, leaderboard y rachas de asistencia.
 
+> **Nota sobre convención de idiomas:** Los archivos Gherkin se escriben en inglés siguiendo la convención del equipo de desarrollo para mantener consistencia con las herramientas de ejecución (Cucumber.js); los mensajes de respuesta al usuario final se mantienen en español según los requisitos de localización del producto.
+
 ***
 
-### Venues Microservice Testing Suite
+##### 5.3.2.3.1 Venues Microservice — BDD Testing Suite
 
 A continuación, se presentan las especificaciones en código Gherkin encargadas de validar los procesos de gestión de locales comerciales (venues), sus mesas, disponibilidad, galería de fotos y registro de partners en el contexto de Venues.
 
-#### `venue_management.feature` (Relacionado con US10)
+#### `venue_management.feature` — Relacionado con US-10
 
+\
 ```gherkin
 Feature: Venue Registration and Management
   As a business owner (Partner)
@@ -878,7 +965,8 @@ Feature: Venue Registration and Management
   So that I can offer my space for language encounters and gain visibility
 
   Background:
-    Given the venues API endpoint "/api/v1/venues" is available
+    Given I am authenticated as a partner with ID "partner-123"
+    And the venues API endpoint "/api/v1/venues" is available
 
   Scenario: Successful Venue Registration (Escenario #1)
     When I send a POST request with valid "name" as "Glottia Cafe", "address" as "Av. Salaverry 123, Lima", validated via Google Maps, "capacity" as 30, and "operatingHours" specifying different schedules per day
@@ -907,10 +995,28 @@ Feature: Venue Registration and Management
     When they attempt to register another venue with the same name
     Then the system should return a status code 409
     And the response should contain the error message "Ya tienes un local registrado con este nombre"
+
+  Scenario: Unauthorized Venue Creation (Escenario #6)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/venues" with valid data
+    Then the system should return a status code 401
+
+  Scenario: Invalid Capacity Value (Escenario #7)
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a POST request to "/api/v1/venues" with "capacity" as -5
+    Then the system should return a status code 400
+    And the response should indicate "La capacidad debe ser un número positivo"
+
+  Scenario: Invalid Operating Hours Format (Escenario #8)
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a POST request to "/api/v1/venues" with "operatingHours" as "invalid-time"
+    Then the system should return a status code 400
+    And the response should indicate "El formato de horario es inválido"
 ```
 
-#### `venue_edition.feature` (Relacionado con US11)
+#### `venue_edition.feature` — Relacionado con US-11
 
+\
 ```gherkin
 Feature: Venue Information Edition
   As a Partner
@@ -918,7 +1024,8 @@ Feature: Venue Information Edition
   So that I can keep the information up to date
 
   Background:
-    Given a venue with ID "venue-123" exists and is in "ACTIVE" status
+    Given I am authenticated as a partner with ID "partner-123"
+    And a venue with ID "venue-123" exists and is in "ACTIVE" status
 
   Scenario: Successful Operating Hours Update (Escenario #1)
     When I send a PUT request to "/api/v1/venues/venue-123" updating the operating hours to "Mon-Fri 8AM-10PM, Sat 9AM-11PM"
@@ -932,6 +1039,7 @@ Feature: Venue Information Edition
     And the new capacity applies to upcoming encounters without affecting already confirmed reservations
 
   Scenario: Address Change Requiring Revalidation (Escenario #3)
+    Given I am authenticated as a partner with ID "partner-123"
     When I attempt to change the venue address
     Then the system should return a status code 200
     And the venue status should revert to "PENDING_APPROVAL"
@@ -939,12 +1047,19 @@ Feature: Venue Information Edition
 
   Scenario: Audit Trail on Edition (Escenario #4)
     Given a venue was edited by a partner
-    When an administrator reviews the audit log
-    Then they can see who changed what field and when
+    When an administrator sends a GET request to "/api/v1/venues/venue-123/audit-log"
+    Then the system should return a status code 200
+    And the response should contain entries with "changedBy", "field", "oldValue", "newValue", and "timestamp"
+
+  Scenario: Unauthorized Venue Edition (Escenario #5)
+    Given I am not authenticated
+    When I send a PUT request to "/api/v1/venues/venue-123" with valid data
+    Then the system should return a status code 401
 ```
 
-#### `venue_photos.feature` (Relacionado con US12)
+#### `venue_photos.feature` — Relacionado con US-12
 
+\
 ```gherkin
 Feature: Venue Photo Gallery Management
   As a Partner
@@ -952,7 +1067,8 @@ Feature: Venue Photo Gallery Management
   So that I can make it more attractive to learners
 
   Background:
-    Given a venue with ID "venue-123" exists and is active
+    Given I am authenticated as a partner with ID "partner-123"
+    And a venue with ID "venue-123" exists and is active
 
   Scenario: Successful Photo Gallery Upload (Escenario #1)
     When I send a multipart/form-data POST request to "/api/v1/venues/venue-123/photos" with a set of valid JPG/PNG images (max 10 files, 5MB each)
@@ -974,10 +1090,16 @@ Feature: Venue Photo Gallery Management
     When I attempt to upload an image of size 10MB
     Then the system should reject the payload with status code 413
     And return the localized message "Archivo demasiado grande. Máximo 5MB"
+
+  Scenario: Unauthorized Photo Upload (Escenario #5)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/venues/venue-123/photos" with a valid image
+    Then the system should return a status code 401
 ```
 
-#### `venue_minimum_consumption.feature` (Relacionado con US13)
+#### `venue_minimum_consumption.feature` — Relacionado con US-13
 
+\
 ```gherkin
 Feature: Minimum Consumption Configuration
   As a Partner
@@ -985,7 +1107,8 @@ Feature: Minimum Consumption Configuration
   So that I can ensure economic return from encounters held at my venue
 
   Background:
-    Given a venue with ID "venue-123" exists and is active
+    Given I am authenticated as a partner with ID "partner-123"
+    And a venue with ID "venue-123" exists and is active
 
   Scenario: Set Minimum Consumption Successfully (Escenario #1)
     When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as 10.00
@@ -998,16 +1121,30 @@ Feature: Minimum Consumption Configuration
     Then the encounter detail page should display "Consumo mínimo sugerido: $10.00"
 
   Scenario: Update Minimum Consumption (Escenario #3)
-    When the partner changes the minimum consumption from $10 to $15
+    Given I am authenticated as a partner with ID "partner-123"
+    When I change the minimum consumption from $10 to $15
     Then all upcoming encounters should reflect the new value
 
   Scenario: Disable Minimum Consumption (Escenario #4)
-    When the partner sets "minimumConsumption" to 0 or null
+    Given I am authenticated as a partner with ID "partner-123"
+    When I set "minimumConsumption" to 0 or null
     Then the encounters at this venue should no longer display a minimum consumption notice
+
+  Scenario: Unauthorized Minimum Consumption Update (Escenario #5)
+    Given I am not authenticated
+    When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as 10.00
+    Then the system should return a status code 401
+
+  Scenario: Negative Minimum Consumption (Escenario #6)
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as -5.00
+    Then the system should return a status code 400
+    And the response should indicate "El consumo mínimo debe ser un valor positivo o cero"
 ```
 
-#### `partner_venue_registry.feature` (Relacionado con US10 — Registro de Partner)
+#### `partner_venue_registry.feature` — Relacionado con US-10 (Registro de Partner)
 
+\
 ```gherkin
 Feature: Partner Venue Registry Management
   As a Partner
@@ -1015,11 +1152,12 @@ Feature: Partner Venue Registry Management
   So that I can control which venues are active on the platform
 
   Background:
-    Given a registered partner with ID "partner-123"
+    Given I am authenticated as a partner with ID "partner-123"
+    And a registered partner with ID "partner-123"
 
   Scenario: Register Venue Under Partner (Escenario #1)
     When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues" with valid venue data
-    Then the system should return a status code 200
+    Then the system should return a status code 201
     And the venue should be linked to the partner's registry
 
   Scenario: List Partner Venues (Escenario #2)
@@ -1037,10 +1175,16 @@ Feature: Partner Venue Registry Management
     When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues/venue-123/activations"
     Then the system should return a status code 200
     And the venue should become active again in the partner's registry
+
+  Scenario: Unauthorized Venue Registration (Escenario #5)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues" with valid data
+    Then the system should return a status code 401
 ```
 
-#### `venue_dashboard.feature` (Relacionado con US14)
+#### `venue_dashboard.feature` — Relacionado con US-14
 
+\
 ```gherkin
 Feature: Partner Venue Dashboard
   As a Partner
@@ -1048,7 +1192,8 @@ Feature: Partner Venue Dashboard
   So that I can quickly understand how many encounters have taken place and how many people attended
 
   Background:
-    Given a partner with ID "partner-123" and an active venue "venue-123"
+    Given I am authenticated as a partner with ID "partner-123"
+    And a partner with ID "partner-123" and an active venue "venue-123"
 
   Scenario: Key Metrics Visualization (Escenario #1)
     When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
@@ -1064,16 +1209,28 @@ Feature: Partner Venue Dashboard
     Given the venue has no encounters in the requested period
     When I request encounter statistics
     Then the response should indicate zero activity with appropriate empty state
+
+  Scenario: Unauthorized Dashboard Access (Escenario #4)
+    Given I am not authenticated
+    When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
+    Then the system should return a status code 401
+
+  Scenario: Unauthorized Access to Another Partner's Dashboard (Escenario #5)
+    Given I am authenticated as a partner with ID "partner-999"
+    When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
+    Then the system should return a status code 403
+    And the response should indicate "No tienes acceso a las estadísticas de este local"
 ```
 
 ***
 
-### Promotions Microservice Testing Suite
+##### 5.3.2.3.2 Promotions Microservice — BDD Testing Suite
 
 A continuación, se detallan las especificaciones Gherkin enfocadas en validar la gestión de promociones y ofertas especiales para aprendices según su nivel de lealtad dentro del microservicio Promotions.
 
-#### `promotion_management.feature` (Relacionado con US34)
+#### `promotion_management.feature` — Relacionado con US-34
 
+\
 ```gherkin
 Feature: Promotion Management
   As a platform administrator
@@ -1081,7 +1238,8 @@ Feature: Promotion Management
   So that partners can offer special deals to loyal learners
 
   Background:
-    Given the promotions API endpoint "/api/v1/promotions" is available
+    Given I am authenticated as an administrator with ID "admin-001"
+    And the promotions API endpoint "/api/v1/promotions" is available
 
   Scenario: Create Promotion Successfully (Escenario #1)
     When I send a POST request with valid promotion data including "title" as "15% Off Drinks", "description", "discountPercentage" as 15, "validFrom" and "validUntil" dates
@@ -1104,13 +1262,25 @@ Feature: Promotion Management
     And the promotion should reflect the new discount value
 
   Scenario: Deactivate Promotion (Escenario #5)
-    When I send a PATCH request to "/api/v1/promotions/promo-123/deactivation"
-    Then the system should return a status code 204
+    When I send a PATCH request to "/api/v1/promotions/promo-123" with body {"status": "INACTIVE"}
+    Then the system should return a status code 200
     And the promotion should no longer be available for redemption
+
+  Scenario: Unauthorized Promotion Creation (Escenario #6)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/promotions" with valid promotion data
+    Then the system should return a status code 401
+
+  Scenario: Invalid Discount Percentage (Escenario #7)
+    Given I am authenticated as an administrator with ID "admin-001"
+    When I send a POST request to "/api/v1/promotions" with "discountPercentage" as 150
+    Then the system should return a status code 400
+    And the response should indicate "El porcentaje de descuento no puede exceder 100"
 ```
 
-#### `promotion_redemption.feature` (Relacionado con US34)
+#### `promotion_redemption.feature` — Relacionado con US-34
 
+\
 ```gherkin
 Feature: Promotion Redemption
   As a loyal learner
@@ -1118,7 +1288,8 @@ Feature: Promotion Redemption
   So that I can receive rewards for my participation
 
   Background:
-    Given a learner with ID "learner-123" has reached loyalty level "ORO"
+    Given I am authenticated as a learner with ID "learner-123"
+    And a learner with ID "learner-123" has reached loyalty level "ORO"
     And a promotion "promo-123" exists and is active
 
   Scenario: Successful Promotion Redemption (Escenario #1)
@@ -1138,10 +1309,24 @@ Feature: Promotion Redemption
     When I attempt to redeem it at "venue-456"
     Then the system should return a status code 400
     And the response should indicate that the promotion is not valid at that venue
+
+  Scenario: Unauthorized Redemption (Escenario #4)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/promotions/promo-123/redeem?venueId=venue-123"
+    Then the system should return a status code 401
+
+  Scenario: Redemption Blocked by Insufficient Loyalty Level (Escenario #5)
+    Given I am authenticated as a learner with ID "learner-456"
+    And a learner with ID "learner-456" has loyalty level "BRONCE"
+    And a promotion "promo-123" exists with required loyalty level "ORO"
+    When I send a POST request to "/api/v1/promotions/promo-123/redeem?venueId=venue-123"
+    Then the system should return a status code 403
+    And the response should indicate "No cumples el nivel de lealtad requerido para esta promoción"
 ```
 
-#### `venue_promotion_link.feature` (Relacionado con US34)
+#### `venue_promotion_link.feature` — Relacionado con US-34
 
+\
 ```gherkin
 Feature: Venue Promotion Association
   As a platform administrator
@@ -1149,7 +1334,8 @@ Feature: Venue Promotion Association
   So that learners can redeem offers at participating locations
 
   Background:
-    Given a venue with ID "venue-123" exists and is active
+    Given I am authenticated as an administrator with ID "admin-001"
+    And a venue with ID "venue-123" exists and is active
     And a promotion with ID "promo-123" exists and is active
 
   Scenario: Associate Promotion to Venue (Escenario #1)
@@ -1180,12 +1366,13 @@ Feature: Venue Promotion Association
 
 ***
 
-### Learning Feedback Microservice Testing Suite
+##### 5.3.2.3.3 Learning Feedback Microservice — BDD Testing Suite
 
 A continuación, se presentan las especificaciones Gherkin orientadas a validar el flujo de feedback de encuentros, incluyendo autoevaluación, coevaluación y quizzes generados por IA dentro del microservicio Learning Feedback.
 
-#### `self_assessment.feature` (Relacionado con US25)
+#### `self_assessment.feature` — Relacionado con US-25
 
+\
 ```gherkin
 Feature: Self-Assessment Submission
   As a learner who attended an encounter
@@ -1212,8 +1399,9 @@ Feature: Self-Assessment Submission
     And the response should contain a list of all self-assessments submitted by that learner
 ```
 
-#### `peer_feedback.feature` (Relacionado con US25)
+#### `peer_feedback.feature` — Relacionado con US-25
 
+\
 ```gherkin
 Feature: Peer Feedback Submission
   As a learner who attended an encounter
@@ -1240,8 +1428,9 @@ Feature: Peer Feedback Submission
     And the response should indicate that self-feedback is not allowed via this endpoint
 ```
 
-#### `quiz_management.feature` (Relacionado con US25 — Engagement Quiz)
+#### `quiz_management.feature` — Relacionado con US-25 (Engagement Quiz)
 
+\
 ```gherkin
 Feature: Quiz Generation and Answering
   As a learner
@@ -1280,12 +1469,13 @@ Feature: Quiz Generation and Answering
 
 ***
 
-### Engagement Microservice Testing Suite
+##### 5.3.2.3.4 Engagement Microservice — BDD Testing Suite
 
 A continuación, se detallan las especificaciones Gherkin diseñadas para validar el sistema de gamificación y lealtad del microservicio Engagement, incluyendo puntos, insignias, leaderboard y rachas.
 
-#### `loyalty_points.feature` (Relacionado con US29 y US30)
+#### `loyalty_points.feature` — Relacionado con US-29 y US-30
 
+\
 ```gherkin
 Feature: Loyalty Points Accumulation and Tracking
   As a learner
@@ -1323,8 +1513,9 @@ Feature: Loyalty Points Accumulation and Tracking
     Then both the referrer and the referred learner should receive +15 referral bonus points
 ```
 
-#### `badges_unlock.feature` (Relacionado con US31 y US32)
+#### `badges_unlock.feature` — Relacionado con US-31 y US-32
 
+\
 ```gherkin
 Feature: Badge Unlocking and Display
   As a learner
@@ -1359,8 +1550,9 @@ Feature: Badge Unlocking and Display
     And the badge should appear in the learner's collection
 ```
 
-#### `leaderboard.feature` (Relacionado con US33)
+#### `leaderboard.feature` — Relacionado con US-33
 
+\
 ```gherkin
 Feature: Learner Leaderboard
   As a learner
@@ -1392,8 +1584,9 @@ Feature: Learner Leaderboard
     Then the learner should be awarded the special badge "Top 10 Del Mes"
 ```
 
-#### `loyalty_streak.feature` (Relacionado con US35)
+#### `loyalty_streak.feature` — Relacionado con US-35
 
+\
 ```gherkin
 Feature: Attendance Streak Management
   As a learner
@@ -1424,7 +1617,7 @@ Feature: Attendance Streak Management
     And grant +50 bonus points
 ```
 
-#### 5.2.2.4 Execution Evidence for Sprint Review
+#### 5.3.2.4 Execution Evidence for Sprint Review
 
 En esta sección el equipo presenta la evidencia de ejecución de la aplicación móvil.
 
@@ -1493,7 +1686,7 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-#### 5.2.2.6 Software Deployment Evidence for Sprint Review
+#### 5.3.2.6 Software Deployment Evidence for Sprint Review
 
 En el Deployment de los microservicios del Sprint 2, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
 
@@ -1520,7 +1713,7 @@ VPC configurada con subredes públicas y privadas, grupos de seguridad y balance
 ![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
 
 
-#### 5.2.2.7 Team Collaboration Insights during Sprint
+#### 5.3.2.7 Team Collaboration Insights during Sprint
 
 Durante el Sprint 2, el equipo de desarrollo de Glottia enfocó sus esfuerzos en la migración de la arquitectura del sistema desde un monolito modular hacia una arquitectura basada en microservicios. Esta transición tuvo como objetivo mejorar la escalabilidad, mantenibilidad y flexibilidad de la plataforma.
 
@@ -1535,7 +1728,7 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 \
 ![Sprint 2-Commits-venues](assets/img/cap5/feat-venues.PNG)
 
-#### 5.2.2.8 Kanban Board --> (Avance 3)
+#### 5.3.2.8 Kanban Board --> (Avance 3)
 \
 ![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part1.png)
 \
