@@ -244,7 +244,7 @@ Cada microservicio dentro de la carpeta `services/` (o repositorios independient
 
 ## 5.3 Microservices Implementation
 
-### 5.2.1 Sprint 1
+### 5.3.1 Sprint 1
 
 El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: la migración del backend de monolito modular a microservicios independientes (IAM, Profiles y Encounters, cada uno con su propia base de datos y dockerizado), la implementación de las funcionalidades base de la plataforma que incluyen el registro y autenticación de usuarios, la gestión del perfil del aprendiz y el flujo completo de un encuentro desde la búsqueda hasta el check-in, y en paralelo la corrección de bugs existentes en la app junto con mejoras de UI en la pantalla home y el perfil de aprendiz, todo con el objetivo de tener los tres microservicios desplegados de forma autónoma y el ciclo de vida completo de un encuentro funcionando de punta a punta al cierre del sprint.
 
@@ -254,7 +254,7 @@ El Sprint 1 tiene una duración de 2 semanas y abarca tres frentes de trabajo: l
 Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia funcional de punta a punta al equipo de desarrollo y a los primeros aprendices.
 Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
 
-#### 5.2.1.1 Sprint Backlog 1
+#### 5.3.1.1 Sprint Backlog 1
 
 \
 ![Sprint Backlog 1](assets/img/cap5/Glottia-SprintBacklog-1.jpeg)
@@ -262,7 +262,7 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 [Ver Sprint Backlog 1 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiOGU3YWU0ZDBkN2NjNGQ2MDkxMGQxZjk4ZjUwYWFmNTAiLCJwIjoiaiJ9)
 
 
-#### 5.2.1.2 Development Evidence for Sprint Review
+#### 5.3.1.2 Development Evidence for Sprint Review
 
 Durante el Sprint 1, se logró un avance parcial en el despliegue de la landing page.
 [Link del landing Page](https://glottia-landing-page-master.vercel.app/) 
@@ -287,7 +287,7 @@ Actualmente, el sitio ya cuenta con diversas secciones operativas que ofrecen in
  (assets/img/cap5/about-us.png)
 ***
 
-#### 5.2.1.3 Testing Suite Evidence for Sprint Review
+#### 5.3.1.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
 
@@ -611,7 +611,7 @@ Feature: Profile Avatar Management
     Then the image path field in the database should revert to the default system placeholder avatar string
 ```
 
-#### 5.2.1.4 Execution Evidence for Sprint Review
+#### 5.3.1.4 Execution Evidence for Sprint Review
 
 El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Hampcoders, tuvo como objetivo principal iniciar la migración del backend de una arquitectura monolito modular hacia microservicios independientes, abarcando los bounded contexts de IAM, Profiles y Encounters, al mismo tiempo que se implementaban las funcionalidades base de la plataforma y se atendían mejoras y correcciones en la aplicación móvil Flutter. En cuanto a la migración, se logró extraer y dockerizar el servicio de IAM con su propia base de datos, se avanzó en la separación del servicio de Encounters con la configuración de su schema independiente y sus integraciones hacia Venues y Profiles, y se inició la configuración del API Gateway como punto de entrada único para todos los microservicios. En el frente funcional, se completaron las historias de usuario correspondientes al ciclo de autenticación completo (registro de aprendiz y partner, inicio y cierre de sesión), el perfil base del aprendiz, y el flujo de check-in en encuentros. En paralelo, el equipo de mobile resolvió los bugs críticos de crash en el registro y persistencia de sesión, además de entregar el rediseño de la pantalla home. Como trabajo pendiente para el siguiente sprint quedan la separación completa de Profiles y Encounters como microservicios autónomos, la historia US05 recuperación de contraseña y un bugfix en el cierre de sesión.
 
@@ -646,7 +646,7 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 ![Captura 7 de la ejecución de Postman](assets/img/cap5/Postman7.jpeg){width=50%}
 
-#### 5.2.1.5 Microservices Documentation Evidence for Sprint Review
+#### 5.3.1.5 Microservices Documentation Evidence for Sprint Review
 
 En este Sprint se implementó y documentó la primera versión de los microservicios correspondientes a los Bounded Contexts de IAM, Profiles y Encounters de la plataforma Glottia.
 
@@ -801,7 +801,7 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 
 *Figura 28. Ejecución exitosa de una consulta masiva mediante el endpoint GET /api/v1/profiles. Swagger UI despliega la respuesta simulada con código 200 (OK) exponiendo la estructura en formato de arreglo JSON de los perfiles guardados en el sistema.*
 
-#### 5.2.1.6 Software Deployment Evidence for Sprint Review
+#### 5.3.1.6 Software Deployment Evidence for Sprint Review
 
 **Software Deployment Evidence for Sprint Review**
 Durante el Sprint 1 se llevaron a cabo las actividades iniciales de despliegue de la plataforma Glottia en la nube, marcando el primer hito en la transición de la arquitectura monolito modular hacia microservicios independientes. Las actividades de despliegue abarcaron la creación de cuenta en Render como proveedor cloud, la configuración de los proyectos de despliegue para los primeros servicios extraídos del monolito, y el despliegue manual de dos Web Services: el monolito existente y el microservicio de IAM.
@@ -821,7 +821,7 @@ Se configuró el microservicio de IAM como un Web Service independiente en Rende
 **Pendiente**
 Las URLs públicas de los tres servicios desplegados estarán disponibles para la siguiente iteración del informe una vez que los servicios completen su proceso de inicialización en Render. Se adjuntarán capturas de pantalla del dashboard de Render, la configuración de cada Web Service y las evidencias de los despliegues exitosos en cuanto estén disponibles.
 
-#### 5.2.1.7 Team Collaboration Insights during Sprint
+#### 5.3.1.7 Team Collaboration Insights during Sprint
 
 Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el control de versiones mediante GitHub, adoptando GitFlow como estrategia de branching. Esto implicó el uso de ramas main y develop como ramas base, y la creación de ramas de tipo feature/ para cada tarea del sprint, asegurando que ningún cambio fuera integrado directamente a las ramas principales sin pasar por un proceso de Pull Request y revisión de código por parte de otro miembro del equipo. Las capturas de los analíticos de commits y la participación de cada integrante en los repositorios de los Web Services se presentan a continuación.
 
@@ -830,15 +830,15 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 \
 ![Contributors](assets/img/cap5/Contributors.jpeg)
 
-#### 5.2.1.8 Kanban Board --> TP1
+#### 5.3.1.8 Kanban Board --> TP1
 
 \
 ![Sprint 1 Kanban Board](assets/img/cap5/Glottia-Sprint1-KanbanBoard.jpeg)
 \
 [Ver Sprint 1 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34?atlOrigin=eyJpIjoiMDFiMTg2M2NkNTA3NDJjZDllZTQ3ZTlhNDU5MmNjMjUiLCJwIjoiaiJ9)
 
-### 5.2.2 Sprint 2
-#### 5.2.2.1 Sprint Backlog 2
+### 5.3.2 Sprint 2
+#### 5.3.2.1 Sprint Backlog 2
 \
 ![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part1.png)
 \
@@ -846,8 +846,8 @@ Durante el Sprint 1, el equipo Hampcoders gestionó la colaboración y el contro
 \
 [Ver Sprint Backlog 2 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog?atlOrigin=eyJpIjoiY2E3Mzk2N2MyN2U4NGYwZGExZGRkM2U2ZGE5MGYyN2QiLCJwIjoiaiJ9)
 
-#### 5.2.2.2 Development Evidence for Sprint Review
-#### 5.2.2.3 Testing Suite Evidence for Sprint Review
+#### 5.3.2.2 Development Evidence for Sprint Review
+#### 5.3.2.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia correspondiente al Sprint 2. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**.
 
@@ -1416,11 +1416,11 @@ Feature: Attendance Streak Management
     And grant +50 bonus points
 ```
 
-#### 5.2.2.4 Execution Evidence for Sprint Review
+#### 5.3.2.4 Execution Evidence for Sprint Review
 
 
 
-#### 5.2.2.5 Microservices Documentation Evidence for Sprint Review
+#### 5.3.2.5 Microservices Documentation Evidence for Sprint Review
 ### Swagger/OpenAPI Documentation Evidence
 
 La documentación de los Web Services para los microservicios del Sprint 2 fue desarrollada utilizando **OpenAPI/Swagger** mediante **SpringDoc**, permitiendo definir formalmente los endpoints REST, parámetros de entrada, estructuras de request/response y códigos HTTP soportados.
@@ -1469,7 +1469,7 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 ---
 
-#### 5.2.2.6 Software Deployment Evidence for Sprint Review
+#### 5.3.2.6 Software Deployment Evidence for Sprint Review
 
 En el Deployment de los microservicios del Sprint 2, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
 
@@ -1496,7 +1496,7 @@ VPC configurada con subredes públicas y privadas, grupos de seguridad y balance
 ![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
 
 
-#### 5.2.2.7 Team Collaboration Insights during Sprint
+#### 5.3.2.7 Team Collaboration Insights during Sprint
 
 Durante el Sprint 2, el equipo de desarrollo de Glottia enfocó sus esfuerzos en la migración de la arquitectura del sistema desde un monolito modular hacia una arquitectura basada en microservicios. Esta transición tuvo como objetivo mejorar la escalabilidad, mantenibilidad y flexibilidad de la plataforma.
 
@@ -1511,7 +1511,7 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 \
 ![Sprint 2-Commits-venues](assets/img/cap5/feat-venues.PNG)
 
-#### 5.2.2.8 Kanban Board --> (Avance 3)
+#### 5.3.2.8 Kanban Board --> (Avance 3)
 \
 ![Sprint 2 Kanban Board](assets/img/cap5/Sprint2KanbanBoard-part1.png)
 \
