@@ -3,7 +3,12 @@
 \usepackage{seqsplit}
 \usepackage{needspace}
 \usepackage{enumitem}
-\usepackage{microtype}
+
+% Soporte de color, fuentes avanzadas y herramientas de entorno
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{etoolbox}
+
 \usepackage{fvextra}
 \usepackage{makecell}
 
@@ -20,19 +25,38 @@
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{tabularx}
-\usepackage{etoolbox}
+\usepackage{multirow}
 
 \RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breakanywhere}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
 \setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.5}
+
+% Configuración de fuentes en entornos tabulares
 \AtBeginEnvironment{tabular}{\footnotesize}
 \AtBeginEnvironment{tabularx}{\footnotesize}
 \AtBeginEnvironment{longtable}{\footnotesize}
 
-% Soporte de color y fuentes avanzadas para renderizado de emojis
-\usepackage{xcolor}
-\usepackage{fontspec}
+% Desactiva ligaduras comunes (fi, fl, ff) que fragmentan caracteres durante la extracción
+\defaultfontfeatures{Ligatures=NoCommon}
+
+% Configuración compatible con Tectonic local usando nombres de archivo tipográficos estrictos
+\setmainfont{lmroman10-regular.otf}[
+  BoldFont = lmroman10-bold.otf,
+  ItalicFont = lmroman10-italic.otf,
+  BoldItalicFont = lmroman10-bolditalic.otf,
+  WordSpace={1,1,1}
+]
+
+% Desactivación de protrusión para evitar compresión de palabras en entornos de Pandoc
+\XeTeXprotrudechars=0
+\XeTeXlinebreaklocale "es"
+
+% Habilita mapeo ActualText por glifo para extracción correcta de texto
+\ifdefined\XeTeXgenerateactualtext
+  \XeTeXgenerateactualtext=1
+\fi
+
 \usepackage{newunicodechar}
 \definecolor{emojiyellow}{HTML}{FFD700}
 \newfontfamily{\emojifont}{Segoe UI Emoji}[Renderer=HarfBuzz,Color=FFD700]
@@ -47,6 +71,7 @@
 \definecolor{gherkinComment}{HTML}{808080}   % Gris para comentarios
 \definecolor{gherkinText}{HTML}{000000}      % Negro para texto plano
 \definecolor{gherkinBg}{HTML}{F8F8F8}        % Gris muy claro para el fondo
+
 \lstdefinelanguage{Gherkin}{
   keywords={Feature, Background, Scenario, Scenario Outline, Given, When, Then, And, But, Examples, Functional Requirement, Business Need, Requirement, Scenario Template, Scenarios},
   sensitive=true,
@@ -54,6 +79,7 @@
   morestring=[b]",
   morestring=[b]'
 }
+
 \lstset{
   language=Gherkin,
   backgroundcolor=\color{gherkinBg},
@@ -77,22 +103,23 @@
 
 % Forzar el centrado automático de todas las figuras del documento
 \usepackage[justification=centering]{caption}
-\AtBeginEnvironment{figure}{\centering}
 
-% Forzar el centrado automático de todas las tablas del documento
+% Reemplazo seguro de entornos flotantes para evitar degradación del espacio interpalabras en la extracción
 \makeatletter
-% Reemplaza el entorno de figuras flotantes por un bloque estricto de texto
 \renewenvironment{figure}[1][]{%
-  \gdef\@captype{figure}% Permite que el comando \caption funcione fuera de un float
-  \par\medskip\centering
+  \gdef\@captype{figure}%
+  \par\medskip
+  \centering
+  \leavevmode
 }{%
   \par\medskip
 }
 
-% Reemplaza el entorno de tablas flotantes por un bloque estricto de texto
 \renewenvironment{table}[1][]{%
-  \gdef\@captype{table}% Permite que el comando \caption funcione fuera de un float
-  \par\medskip\centering
+  \gdef\@captype{table}%
+  \par\medskip
+  \centering
+  \leavevmode
 }{%
   \par\medskip
 }

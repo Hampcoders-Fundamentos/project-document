@@ -439,7 +439,7 @@ A continuación se presenta la tabla con el orden de desarrollo propuesto:
 
 | Orden | User Story Id | Título | Descripción | Story Points |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | US01 | Registro de nuevo aprendiz | Como** una persona interesada en practicar idiomas **Quiero** registrarme en la plataforma con mi correo y contraseña **Para** poder acceder a la comunidad y a los encuentros. | 3 |
+| 1 | US01 | Registro de nuevo aprendiz | **Como** una persona interesada en practicar idiomas **Quiero** registrarme en la plataforma con mi correo y contraseña **Para** poder acceder a la comunidad y a los encuentros. | 3 |
 | 2 | US03 | Inicio de sesión | **Como** usuario registrado (aprendiz o dueño de local) **Quiero** iniciar sesión con mi correo y contraseña **Para** acceder a mis funcionalidades personalizadas. | 3 |
 | 3 | US06 | Completar perfil de aprendiz | **Como** nuevo aprendiz **Quiero** completar mi perfil con mi idioma nativo, los idiomas que quiero practicar y mi nivel **Para** que otros usuarios me conozcan y el sistema me recomiende encuentros relevantes. | 3 |
 | 4 | US15 | Buscar encuentros | **Como** aprendiz **Quiero** buscar encuentros usando filtros por idioma, ciudad y fecha **Para** encontrar fácilmente una sesión de práctica que me interese. | 3 |

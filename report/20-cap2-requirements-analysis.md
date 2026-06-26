@@ -666,7 +666,7 @@ Sofía enfrenta múltiples dificultades a lo largo de su proceso de aprendizaje 
 
 Sin embargo, existen momentos clave de motivación y satisfacción cuando logra interactuar exitosamente, lo que evidencia un alto interés en este tipo de experiencias. Esto demuestra la necesidad de una solución como Glottia, que permita centralizar, organizar y facilitar encuentros seguros, accesibles y constantes para la práctica de idiomas, mejorando significativamente la experiencia del usuario.
 
-## Sustento para la Especificación de Requisitos
+**Sustento para la Especificación de Requisitos**
 
 Los hallazgos de las entrevistas y del Needfinding no solo describen el contexto del problema, sino que también definen con claridad las capacidades que la solución debe priorizar. En el segmento de aprendices se identificó una necesidad dominante de práctica oral estructurada, confianza, segmentación por nivel, visibilidad de los participantes y continuidad en el aprendizaje. En el segmento de locales se confirmó la necesidad de control operativo, confirmación de asistencias, gestión de cupos, promociones administrables por el negocio y evidencia del valor comercial generado por la plataforma.
 
