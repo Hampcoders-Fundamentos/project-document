@@ -2148,6 +2148,10 @@ VPC configurada con subredes públicas y privadas, grupos de seguridad y balance
 
 ![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
 
+Github Actions CI/CD Pipeline configurado para automatizar la construcción, pruebas y despliegue de los microservicios en AWS:
+
+![Github Actions CI/CD](assets/img/cap5/sprint3/github-actions-ci-cd.png)
+
 #### 5.3.3.7 Team Collaboration Insights during Sprint
 
 
