@@ -295,11 +295,11 @@ Esta metodología permite definir el comportamiento del sistema desde la perspec
 
 ***
 
-### IAM Microservice Testing Suite
+##### 5.3.1.3.1 IAM Microservice — BDD Testing Suite
 
 A continuación, se presentan las especificaciones en código Gherkin encargadas de validar los procesos de soporte críticos de autenticación, autorización y registro en el contexto de IAM.
 
-#### `auth_register_learner.feature` (Relacionado con US01)
+#### `auth_register_learner.feature` — Relacionado con US-01
 
 \
 ```gherkin
@@ -335,7 +335,7 @@ Feature: Learner Registration Management
 ```
 
 
-#### `auth_register_partner.feature` (Relacionado con US02)
+#### `auth_register_partner.feature` — Relacionado con US-02
 
 \
 ```gherkin
@@ -372,7 +372,7 @@ Feature: Partner and Business Registration
 
 ***
 
-#### `auth_login.feature` (Relacionado con US03)
+#### `auth_login.feature` — Relacionado con US-03
 
 \
 ```gherkin
@@ -421,7 +421,7 @@ Feature: General User Authentication
 
 ***
 
-#### `auth_logout.feature` (Relacionado con US04)
+#### `auth_logout.feature` — Relacionado con US-04
 
 \
 ```gherkin
@@ -451,7 +451,7 @@ Feature: User Session Invalidation
 ***
 
 
-#### `auth_password_recovery.feature` (Relacionado con US05)
+#### `auth_password_recovery.feature` — Relacionado con US-05
 
 \
 ```gherkin
@@ -490,11 +490,11 @@ Feature: Password Recovery Protocol
 
 ---
 
-#### Profiles Microservice Testing Suite
+##### 5.3.1.3.2 Profiles Microservice — BDD Testing Suite
 
 A continuación, se detallan las especificaciones Gherkin enfocadas en validar las reglas de la gestión de perfiles e idiomas dentro del microservicio Profiles.
 
-#### `profile_onboarding.feature` (Relacionado con US06)
+#### `profile_onboarding.feature` — Relacionado con US-06
 
 \
 ```gherkin
@@ -528,7 +528,7 @@ Feature: Learner Profile Onboarding
 
 ---
 
-#### `profile_edition.feature` (Relacionado con US07)
+#### `profile_edition.feature` — Relacionado con US-07
 
 \
 ```gherkin
@@ -555,7 +555,7 @@ Feature: Learner Profile Edition
 
 ---
 
-#### `profile_discovery.feature` (Relacionado con US08)
+#### `profile_discovery.feature` — Relacionado con US-08
 
 \
 ```gherkin
@@ -581,7 +581,7 @@ Feature: Public Profile Discovery
 
 ---
 
-#### `profile_avatar.feature` (Relacionado con US09)
+#### `profile_avatar.feature` — Relacionado con US-09
 
 \
 ```gherkin
@@ -855,14 +855,17 @@ Esta metodología permite definir el comportamiento del sistema desde la perspec
 
 Durante el Sprint 2 se implementaron los Bounded Contexts de Venues, Promotions, Learning Feedback y Engagement, cubriendo las funcionalidades de gestión de locales comerciales, promociones y ofertas por lealtad, retroalimentación de encuentros mediante autoevaluación y quizzes, y el sistema de gamificación con puntos, insignias, leaderboard y rachas de asistencia.
 
+> **Nota sobre convención de idiomas:** Los archivos Gherkin se escriben en inglés siguiendo la convención del equipo de desarrollo para mantener consistencia con las herramientas de ejecución (Cucumber.js); los mensajes de respuesta al usuario final se mantienen en español según los requisitos de localización del producto.
+
 ***
 
-### Venues Microservice Testing Suite
+##### 5.3.2.3.1 Venues Microservice — BDD Testing Suite
 
 A continuación, se presentan las especificaciones en código Gherkin encargadas de validar los procesos de gestión de locales comerciales (venues), sus mesas, disponibilidad, galería de fotos y registro de partners en el contexto de Venues.
 
-#### `venue_management.feature` (Relacionado con US10)
+#### `venue_management.feature` — Relacionado con US-10
 
+\
 ```gherkin
 Feature: Venue Registration and Management
   As a business owner (Partner)
@@ -870,7 +873,8 @@ Feature: Venue Registration and Management
   So that I can offer my space for language encounters and gain visibility
 
   Background:
-    Given the venues API endpoint "/api/v1/venues" is available
+    Given I am authenticated as a partner with ID "partner-123"
+    And the venues API endpoint "/api/v1/venues" is available
 
   Scenario: Successful Venue Registration (Escenario #1)
     When I send a POST request with valid "name" as "Glottia Cafe", "address" as "Av. Salaverry 123, Lima", validated via Google Maps, "capacity" as 30, and "operatingHours" specifying different schedules per day
@@ -899,10 +903,28 @@ Feature: Venue Registration and Management
     When they attempt to register another venue with the same name
     Then the system should return a status code 409
     And the response should contain the error message "Ya tienes un local registrado con este nombre"
+
+  Scenario: Unauthorized Venue Creation (Escenario #6)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/venues" with valid data
+    Then the system should return a status code 401
+
+  Scenario: Invalid Capacity Value (Escenario #7)
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a POST request to "/api/v1/venues" with "capacity" as -5
+    Then the system should return a status code 400
+    And the response should indicate "La capacidad debe ser un número positivo"
+
+  Scenario: Invalid Operating Hours Format (Escenario #8)
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a POST request to "/api/v1/venues" with "operatingHours" as "invalid-time"
+    Then the system should return a status code 400
+    And the response should indicate "El formato de horario es inválido"
 ```
 
-#### `venue_edition.feature` (Relacionado con US11)
+#### `venue_edition.feature` — Relacionado con US-11
 
+\
 ```gherkin
 Feature: Venue Information Edition
   As a Partner
@@ -910,7 +932,8 @@ Feature: Venue Information Edition
   So that I can keep the information up to date
 
   Background:
-    Given a venue with ID "venue-123" exists and is in "ACTIVE" status
+    Given I am authenticated as a partner with ID "partner-123"
+    And a venue with ID "venue-123" exists and is in "ACTIVE" status
 
   Scenario: Successful Operating Hours Update (Escenario #1)
     When I send a PUT request to "/api/v1/venues/venue-123" updating the operating hours to "Mon-Fri 8AM-10PM, Sat 9AM-11PM"
@@ -924,6 +947,7 @@ Feature: Venue Information Edition
     And the new capacity applies to upcoming encounters without affecting already confirmed reservations
 
   Scenario: Address Change Requiring Revalidation (Escenario #3)
+    Given I am authenticated as a partner with ID "partner-123"
     When I attempt to change the venue address
     Then the system should return a status code 200
     And the venue status should revert to "PENDING_APPROVAL"
@@ -931,12 +955,19 @@ Feature: Venue Information Edition
 
   Scenario: Audit Trail on Edition (Escenario #4)
     Given a venue was edited by a partner
-    When an administrator reviews the audit log
-    Then they can see who changed what field and when
+    When an administrator sends a GET request to "/api/v1/venues/venue-123/audit-log"
+    Then the system should return a status code 200
+    And the response should contain entries with "changedBy", "field", "oldValue", "newValue", and "timestamp"
+
+  Scenario: Unauthorized Venue Edition (Escenario #5)
+    Given I am not authenticated
+    When I send a PUT request to "/api/v1/venues/venue-123" with valid data
+    Then the system should return a status code 401
 ```
 
-#### `venue_photos.feature` (Relacionado con US12)
+#### `venue_photos.feature` — Relacionado con US-12
 
+\
 ```gherkin
 Feature: Venue Photo Gallery Management
   As a Partner
@@ -944,7 +975,8 @@ Feature: Venue Photo Gallery Management
   So that I can make it more attractive to learners
 
   Background:
-    Given a venue with ID "venue-123" exists and is active
+    Given I am authenticated as a partner with ID "partner-123"
+    And a venue with ID "venue-123" exists and is active
 
   Scenario: Successful Photo Gallery Upload (Escenario #1)
     When I send a multipart/form-data POST request to "/api/v1/venues/venue-123/photos" with a set of valid JPG/PNG images (max 10 files, 5MB each)
@@ -966,10 +998,16 @@ Feature: Venue Photo Gallery Management
     When I attempt to upload an image of size 10MB
     Then the system should reject the payload with status code 413
     And return the localized message "Archivo demasiado grande. Máximo 5MB"
+
+  Scenario: Unauthorized Photo Upload (Escenario #5)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/venues/venue-123/photos" with a valid image
+    Then the system should return a status code 401
 ```
 
-#### `venue_minimum_consumption.feature` (Relacionado con US13)
+#### `venue_minimum_consumption.feature` — Relacionado con US-13
 
+\
 ```gherkin
 Feature: Minimum Consumption Configuration
   As a Partner
@@ -977,7 +1015,8 @@ Feature: Minimum Consumption Configuration
   So that I can ensure economic return from encounters held at my venue
 
   Background:
-    Given a venue with ID "venue-123" exists and is active
+    Given I am authenticated as a partner with ID "partner-123"
+    And a venue with ID "venue-123" exists and is active
 
   Scenario: Set Minimum Consumption Successfully (Escenario #1)
     When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as 10.00
@@ -990,16 +1029,30 @@ Feature: Minimum Consumption Configuration
     Then the encounter detail page should display "Consumo mínimo sugerido: $10.00"
 
   Scenario: Update Minimum Consumption (Escenario #3)
-    When the partner changes the minimum consumption from $10 to $15
+    Given I am authenticated as a partner with ID "partner-123"
+    When I change the minimum consumption from $10 to $15
     Then all upcoming encounters should reflect the new value
 
   Scenario: Disable Minimum Consumption (Escenario #4)
-    When the partner sets "minimumConsumption" to 0 or null
+    Given I am authenticated as a partner with ID "partner-123"
+    When I set "minimumConsumption" to 0 or null
     Then the encounters at this venue should no longer display a minimum consumption notice
+
+  Scenario: Unauthorized Minimum Consumption Update (Escenario #5)
+    Given I am not authenticated
+    When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as 10.00
+    Then the system should return a status code 401
+
+  Scenario: Negative Minimum Consumption (Escenario #6)
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as -5.00
+    Then the system should return a status code 400
+    And the response should indicate "El consumo mínimo debe ser un valor positivo o cero"
 ```
 
-#### `partner_venue_registry.feature` (Relacionado con US10 — Registro de Partner)
+#### `partner_venue_registry.feature` — Relacionado con US-10 (Registro de Partner)
 
+\
 ```gherkin
 Feature: Partner Venue Registry Management
   As a Partner
@@ -1007,11 +1060,12 @@ Feature: Partner Venue Registry Management
   So that I can control which venues are active on the platform
 
   Background:
-    Given a registered partner with ID "partner-123"
+    Given I am authenticated as a partner with ID "partner-123"
+    And a registered partner with ID "partner-123"
 
   Scenario: Register Venue Under Partner (Escenario #1)
     When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues" with valid venue data
-    Then the system should return a status code 200
+    Then the system should return a status code 201
     And the venue should be linked to the partner's registry
 
   Scenario: List Partner Venues (Escenario #2)
@@ -1029,10 +1083,16 @@ Feature: Partner Venue Registry Management
     When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues/venue-123/activations"
     Then the system should return a status code 200
     And the venue should become active again in the partner's registry
+
+  Scenario: Unauthorized Venue Registration (Escenario #5)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/partner-venue-registries/partner-123/venues" with valid data
+    Then the system should return a status code 401
 ```
 
-#### `venue_dashboard.feature` (Relacionado con US14)
+#### `venue_dashboard.feature` — Relacionado con US-14
 
+\
 ```gherkin
 Feature: Partner Venue Dashboard
   As a Partner
@@ -1040,7 +1100,8 @@ Feature: Partner Venue Dashboard
   So that I can quickly understand how many encounters have taken place and how many people attended
 
   Background:
-    Given a partner with ID "partner-123" and an active venue "venue-123"
+    Given I am authenticated as a partner with ID "partner-123"
+    And a partner with ID "partner-123" and an active venue "venue-123"
 
   Scenario: Key Metrics Visualization (Escenario #1)
     When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
@@ -1056,16 +1117,28 @@ Feature: Partner Venue Dashboard
     Given the venue has no encounters in the requested period
     When I request encounter statistics
     Then the response should indicate zero activity with appropriate empty state
+
+  Scenario: Unauthorized Dashboard Access (Escenario #4)
+    Given I am not authenticated
+    When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
+    Then the system should return a status code 401
+
+  Scenario: Unauthorized Access to Another Partner's Dashboard (Escenario #5)
+    Given I am authenticated as a partner with ID "partner-999"
+    When I send a GET request to "/api/v1/venues/venue-123/encounter-statistics"
+    Then the system should return a status code 403
+    And the response should indicate "No tienes acceso a las estadísticas de este local"
 ```
 
 ***
 
-### Promotions Microservice Testing Suite
+##### 5.3.2.3.2 Promotions Microservice — BDD Testing Suite
 
 A continuación, se detallan las especificaciones Gherkin enfocadas en validar la gestión de promociones y ofertas especiales para aprendices según su nivel de lealtad dentro del microservicio Promotions.
 
-#### `promotion_management.feature` (Relacionado con US34)
+#### `promotion_management.feature` — Relacionado con US-34
 
+\
 ```gherkin
 Feature: Promotion Management
   As a platform administrator
@@ -1073,7 +1146,8 @@ Feature: Promotion Management
   So that partners can offer special deals to loyal learners
 
   Background:
-    Given the promotions API endpoint "/api/v1/promotions" is available
+    Given I am authenticated as an administrator with ID "admin-001"
+    And the promotions API endpoint "/api/v1/promotions" is available
 
   Scenario: Create Promotion Successfully (Escenario #1)
     When I send a POST request with valid promotion data including "title" as "15% Off Drinks", "description", "discountPercentage" as 15, "validFrom" and "validUntil" dates
@@ -1096,13 +1170,25 @@ Feature: Promotion Management
     And the promotion should reflect the new discount value
 
   Scenario: Deactivate Promotion (Escenario #5)
-    When I send a PATCH request to "/api/v1/promotions/promo-123/deactivation"
-    Then the system should return a status code 204
+    When I send a PATCH request to "/api/v1/promotions/promo-123" with body {"status": "INACTIVE"}
+    Then the system should return a status code 200
     And the promotion should no longer be available for redemption
+
+  Scenario: Unauthorized Promotion Creation (Escenario #6)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/promotions" with valid promotion data
+    Then the system should return a status code 401
+
+  Scenario: Invalid Discount Percentage (Escenario #7)
+    Given I am authenticated as an administrator with ID "admin-001"
+    When I send a POST request to "/api/v1/promotions" with "discountPercentage" as 150
+    Then the system should return a status code 400
+    And the response should indicate "El porcentaje de descuento no puede exceder 100"
 ```
 
-#### `promotion_redemption.feature` (Relacionado con US34)
+#### `promotion_redemption.feature` — Relacionado con US-34
 
+\
 ```gherkin
 Feature: Promotion Redemption
   As a loyal learner
@@ -1110,7 +1196,8 @@ Feature: Promotion Redemption
   So that I can receive rewards for my participation
 
   Background:
-    Given a learner with ID "learner-123" has reached loyalty level "ORO"
+    Given I am authenticated as a learner with ID "learner-123"
+    And a learner with ID "learner-123" has reached loyalty level "ORO"
     And a promotion "promo-123" exists and is active
 
   Scenario: Successful Promotion Redemption (Escenario #1)
@@ -1130,10 +1217,24 @@ Feature: Promotion Redemption
     When I attempt to redeem it at "venue-456"
     Then the system should return a status code 400
     And the response should indicate that the promotion is not valid at that venue
+
+  Scenario: Unauthorized Redemption (Escenario #4)
+    Given I am not authenticated
+    When I send a POST request to "/api/v1/promotions/promo-123/redeem?venueId=venue-123"
+    Then the system should return a status code 401
+
+  Scenario: Redemption Blocked by Insufficient Loyalty Level (Escenario #5)
+    Given I am authenticated as a learner with ID "learner-456"
+    And a learner with ID "learner-456" has loyalty level "BRONCE"
+    And a promotion "promo-123" exists with required loyalty level "ORO"
+    When I send a POST request to "/api/v1/promotions/promo-123/redeem?venueId=venue-123"
+    Then the system should return a status code 403
+    And the response should indicate "No cumples el nivel de lealtad requerido para esta promoción"
 ```
 
-#### `venue_promotion_link.feature` (Relacionado con US34)
+#### `venue_promotion_link.feature` — Relacionado con US-34
 
+\
 ```gherkin
 Feature: Venue Promotion Association
   As a platform administrator
@@ -1141,7 +1242,8 @@ Feature: Venue Promotion Association
   So that learners can redeem offers at participating locations
 
   Background:
-    Given a venue with ID "venue-123" exists and is active
+    Given I am authenticated as an administrator with ID "admin-001"
+    And a venue with ID "venue-123" exists and is active
     And a promotion with ID "promo-123" exists and is active
 
   Scenario: Associate Promotion to Venue (Escenario #1)
@@ -1172,12 +1274,13 @@ Feature: Venue Promotion Association
 
 ***
 
-### Learning Feedback Microservice Testing Suite
+##### 5.3.2.3.3 Learning Feedback Microservice — BDD Testing Suite
 
 A continuación, se presentan las especificaciones Gherkin orientadas a validar el flujo de feedback de encuentros, incluyendo autoevaluación, coevaluación y quizzes generados por IA dentro del microservicio Learning Feedback.
 
-#### `self_assessment.feature` (Relacionado con US25)
+#### `self_assessment.feature` — Relacionado con US-25
 
+\
 ```gherkin
 Feature: Self-Assessment Submission
   As a learner who attended an encounter
@@ -1204,8 +1307,9 @@ Feature: Self-Assessment Submission
     And the response should contain a list of all self-assessments submitted by that learner
 ```
 
-#### `peer_feedback.feature` (Relacionado con US25)
+#### `peer_feedback.feature` — Relacionado con US-25
 
+\
 ```gherkin
 Feature: Peer Feedback Submission
   As a learner who attended an encounter
@@ -1232,8 +1336,9 @@ Feature: Peer Feedback Submission
     And the response should indicate that self-feedback is not allowed via this endpoint
 ```
 
-#### `quiz_management.feature` (Relacionado con US25 — Engagement Quiz)
+#### `quiz_management.feature` — Relacionado con US-25 (Engagement Quiz)
 
+\
 ```gherkin
 Feature: Quiz Generation and Answering
   As a learner
@@ -1272,12 +1377,13 @@ Feature: Quiz Generation and Answering
 
 ***
 
-### Engagement Microservice Testing Suite
+##### 5.3.2.3.4 Engagement Microservice — BDD Testing Suite
 
 A continuación, se detallan las especificaciones Gherkin diseñadas para validar el sistema de gamificación y lealtad del microservicio Engagement, incluyendo puntos, insignias, leaderboard y rachas.
 
-#### `loyalty_points.feature` (Relacionado con US29 y US30)
+#### `loyalty_points.feature` — Relacionado con US-29 y US-30
 
+\
 ```gherkin
 Feature: Loyalty Points Accumulation and Tracking
   As a learner
@@ -1315,8 +1421,9 @@ Feature: Loyalty Points Accumulation and Tracking
     Then both the referrer and the referred learner should receive +15 referral bonus points
 ```
 
-#### `badges_unlock.feature` (Relacionado con US31 y US32)
+#### `badges_unlock.feature` — Relacionado con US-31 y US-32
 
+\
 ```gherkin
 Feature: Badge Unlocking and Display
   As a learner
@@ -1351,8 +1458,9 @@ Feature: Badge Unlocking and Display
     And the badge should appear in the learner's collection
 ```
 
-#### `leaderboard.feature` (Relacionado con US33)
+#### `leaderboard.feature` — Relacionado con US-33
 
+\
 ```gherkin
 Feature: Learner Leaderboard
   As a learner
@@ -1384,8 +1492,9 @@ Feature: Learner Leaderboard
     Then the learner should be awarded the special badge "Top 10 Del Mes"
 ```
 
-#### `loyalty_streak.feature` (Relacionado con US35)
+#### `loyalty_streak.feature` — Relacionado con US-35
 
+\
 ```gherkin
 Feature: Attendance Streak Management
   As a learner
