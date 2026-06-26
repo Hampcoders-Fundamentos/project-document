@@ -1823,6 +1823,66 @@ Feature: Messaging Notifications
 
 #### 5.2.3.4 Execution Evidence for Sprint Review
 
+Durante el Sprint 3 se logró implementar y validar el flujo principal del sistema desde la perspectiva del usuario Partner, cubriendo desde el registro hasta la gestión operativa de locales y encuentros. A continuación, se presenta la evidencia visual que respalda el cumplimiento del Sprint Goal.
+
+---
+
+#### 1. Registro de Usuario 
+
+Se implementó la interfaz de creación de cuenta, permitiendo a nuevos usuarios registrarse en la plataforma mediante correo electrónico y contraseña.
+\
+![](assets/img/cap5/sprint3/Registro-Usuario.PNG)
+\
+**Resultado:**
+El sistema permite la creación de nuevas cuentas, validando datos de entrada y estableciendo el punto de acceso al sistema.
+
+---
+
+#### 2. Completar Perfil del Partner
+
+Luego del registro, el usuario debe completar su perfil con información personal, datos del negocio y datos de contacto.
+\
+![](assets/img/cap5/sprint3/Completar-Perfil.PNG)
+\
+**Resultado:**
+Se valida la persistencia de datos del usuario y la correcta estructuración del perfil del partner dentro del sistema.
+
+---
+
+#### 3. Dashboard Principal
+
+Se desarrolló el dashboard principal donde el usuario visualiza métricas clave como encuentros, reservas activas, tasa de asistencia y promociones.
+\
+![](assets/img/cap5/sprint3/Dashboard-Principal.PNG)
+\
+**Resultado:**
+El usuario puede visualizar información resumida y relevante de sus operaciones, confirmando la integración de datos desde múltiples servicios.
+
+---
+
+#### 4. Gestión de Locales
+
+El sistema permite la visualización y edición de locales registrados, incluyendo información como dirección, capacidad y tipo de establecimiento.
+\
+![](assets/img/cap5/sprint3/Gestion-Locales.PNG)
+\
+**Resultado:**
+Se valida la funcionalidad CRUD de locales, asegurando la correcta gestión de recursos del partner.
+
+---
+
+#### 5. Historial de Encuentros
+
+Se implementó la vista de historial de encuentros, donde el usuario puede consultar eventos pasados, estado, asistencia y detalles asociados.
+
+\
+![](assets/img/cap5/sprint3/Historial-Encuentros.PNG)
+\
+**Resultado:**
+El sistema permite la trazabilidad de eventos, mostrando información clave para la toma de decisiones del usuario.
+
+---
+
 
 #### 5.2.3.5 Microservices Documentation Evidence for Sprint Review
 
