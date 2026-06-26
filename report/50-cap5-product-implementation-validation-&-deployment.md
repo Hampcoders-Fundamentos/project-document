@@ -35,17 +35,100 @@ Esta suite de pruebas agrupa los escenarios de prueba funcionales, unitarios y d
 ***
 
 ### 5.1.2 Pattern Based Backend Application(s)
+\
 
 El backend modular y la subsiguiente arquitectura de microservicios de Glottia han sido desarrollados aplicando patrones de diseño de software y patrones arquitectónicos avanzados basados en **Domain-Driven Design (DDD)** y **Clean Architecture**. La validación mediante pruebas automatizadas en esta sección se estructura bajo estos patrones para garantizar la escalabilidad, la mantenibilidad y el aislamiento de fallas en el ecosistema:
 
-* **Repository Pattern (Patrón Repositorio):** Se implementa para encapsular por completo la lógica de acceso, consulta y persistencia de datos (utilizando ORMs como TypeORM / Prisma) en clases especializadas. Esto desacopla la base de datos relacional de la lógica de negocio pura de los casos de uso. Las pruebas de integración aseguran que las consultas se ejecuten correctamente sin comprometer la integridad referencial.
-* **Data Transfer Object - DTO (Objeto de Transferencia de Datos):** Patrón utilizado de manera obligatoria en las capas de entrada para moldear, filtrar y estandarizar los payloads que viajan a través de la red de microservicios. Evita la exposición directa de las entidades de la base de datos hacia los clientes de la API, y las suites de pruebas auditan que los validadores de los DTOs rechacen estructuras maliciosas o incompletas con códigos HTTP 400.
-* **Dependency Injection (Inyección de Dependencias):** Utilizado de forma nativa para desacoplar las clases de la capa de infraestructura de las capas de aplicación y dominio. Permite que, durante la ejecución de los Testing Suites, se puedan inyectar dobles de prueba (*Mocks* o *Stubs*) de componentes de infraestructura complejos, permitiendo probar la lógica de las historias de usuario de forma aislada.
-* **API Gateway Pattern:** Actúa como punto único de entrada para el cliente móvil (Flutter). Las pruebas orientadas a este patrón validan el correcto enrutamiento perimetral, la agregación de solicitudes hacia los microservicios internos de IAM y Profiles, y el manejo centralizado de políticas de Cross-Origin Resource Sharing (CORS).
+#### 5.1.2.1 Arquitectura General
+\
 
-***
+La arquitectura general sigue el patrón **Hexagonal (Ports & Adapters)** y **Clean Architecture** combinado con **CQRS (Command Query Responsibility Segregation)**. Cada microservicio organiza su código en cuatro capas bien definidas:
+- **Capa de Interfaces** : constituye los adaptadores de entrada, incluyendo controladores REST (expuestos al mundo exterior) y las interfaces ACL (Anti-Corruption Layer) que publica cada contexto para que otros bounded contexts puedan consumirlo de manera controlada.
+- **Capa de Aplicación** : orquesta los casos de uso. Contiene los servicios de comando (escritura), servicios de consulta (lectura), manejadores de eventos, e implementaciones de las fachadas ACL. Es responsable de las transacciones y la coordinación entre el dominio y la infraestructura.
+- **Capa de Dominio** : el núcleo del negocio. Contiene los aggregates raíz, entidades owned, objetos de valor, comandos, consultas, eventos de dominio e interfaces de servicio. Esta capa no tiene dependencias con frameworks externos.
+- **Capa de Infraestructura** : adaptadores de salida. Incluye repositorios JPA, clientes Feign para comunicación entre servicios, configuración de seguridad con OAuth2 Resource Server, configuración de RabbitMQ, e implementaciones del patrón Transactional Outbox para mensajería confiable.
 
-### 5.1.3 Pattern Based Custom Software Library
+Tres servicios transversales complementan la arquitectura: un **API Gateway** (Spring Cloud Gateway) que actúa como punto único de entrada, un **Service Registry** (Netflix Eureka) para descubrimiento de servicios, y un **Config Service** para configuración compartida. La comunicación asíncrona entre bounded contexts se realiza mediante **RabbitMQ**, utilizando el patrón Transactional Outbox para garantizar la entrega confiable de eventos.
+
+
+#### 5.1.2.2 Mapa de Microservicios
+\
+
+
+La plataforma se compone de los siguientes microservicios, clasificados según su rol dentro de la estrategia DDD:
+
+##### Servicios de Infraestructura
+
+| Microservicio | Puerto | Propósito |
+|---|---|---|
+| **glottia-gateway-service** | 8081 | Punto único de entrada basado en Spring Cloud Gateway. Valida tokens JWT en las peticiones entrantes, extrae los claims de seguridad y los reenvía como encabezados HTTP a los microservicios internos, y agrega las rutas de documentación OpenAPI de todos los servicios. |
+| **glottia-discovery-service** | 8761 | Servicio de registro y descubrimiento basado en Netflix Eureka Server. Todos los microservicios se registran en este servicio al iniciar, permitiendo la comunicación mediante nombres lógicos en lugar de direcciones físicas. |
+| **glottia-config-service** | 8082 | Servicio de configuración centralizada que proporciona beans compartidos de OpenAPI, CORS, Jackson y Caffeine cache a todos los microservicios. |
+
+##### Bounded Contexts de Tipo Genérico
+
+| Microservicio | Puerto | Propósito |
+|---|---|---|
+| **glottia-iam-service** | 8083 | Gestiona la autenticación, registro de usuarios, generación y validación de tokens JWT, y roles de acceso (USER, ADMIN, SUPERADMIN, SUPPORT). Es el contexto del que dependen todos los demás para la seguridad. |
+
+##### Bounded Contexts de Tipo Soporte
+
+| Microservicio | Puerto | Propósito |
+|---|---|---|
+| **glottia-profiles-service** | 8084 | Administra los perfiles de usuarios (Learner y Partner), incluyendo idiomas nativos y meta, niveles CEFR, disponibilidad, y roles de negocio (LEARNER/PARTNER). |
+| **glottia-feedback-service** | 8089 | Proporciona mecanismos de evaluación post-encuentro: autoevaluación del aprendiz, retroalimentación anónima entre pares, y quizzes generados por inteligencia artificial (LLM) para reforzar el aprendizaje. |
+| **glottia-analytics-service** | 8090 | Pendiente de implementación completa. Proveerá KPIs y reportes mensuales para partners y administradores. |
+| **glottia-verification-service** | 8091 | Genera y verifica códigos OTP (One-Time Password) para procesos como verificación de email, reseteo de contraseña y confirmación de check-in. |
+| **glottia-notification-service** | 8092 | Orquesta el envío de notificaciones multicanal: email mediante SendGrid, notificaciones push mediante Firebase Cloud Messaging, SMS mediante Twilio, y notificaciones in-app. |
+
+##### Bounded Contexts de Tipo Core
+
+| Microservicio | Puerto | Propósito |
+|---|---|---|
+| **glottia-venues-service** | 8085 | Gestiona el ciclo de vida completo de los locales aliados (venues), incluyendo su registro, mesas, disponibilidad horaria, y la vinculación con los partners propietarios. |
+| **glottia-promotions-service** | 8086 | Administra el catálogo de promociones (descuentos porcentuales, cortesías, 2x1), su vigencia, stock disponible para canje, y la asociación a uno o múltiples venues. |
+| **glottia-encounters-service** | 8087 | Corazón operativo de la plataforma. Gestiona la creación de encuentros, matchmaking entre aprendices, reserva de cupo, check-in mediante QR, y la máquina de estados del encuentro (borrador, publicado, listo, en progreso, completado, cancelado). |
+| **glottia-engagement-service** | 8088 | Sistema de gamificación que gestiona la acumulación de puntos, el desbloqueo de insignias (badges), el leaderboard por niveles CEFR, y el canje de puntos por promociones. |
+
+
+#### 5.1.2.3 Patrones Arquitectónicos
+\
+
+
+##### Hexagonal Architecture (Ports & Adapters)
+\
+
+
+Todos los microservicios implementan el patrón de Arquitectura Hexagonal, donde el núcleo de dominio permanece aislado de los detalles técnicos. Los puertos de entrada son las interfaces de servicio definidas en la capa de dominio (`domain/services/`), mientras que los adaptadores de entrada son los controladores REST y los listeners de RabbitMQ en la capa de interfaces. Los puertos de salida son las interfaces de repositorio y servicios externos definidos en la capa de aplicación, mientras que los adaptadores de salida son las implementaciones JPA, Feign, y de mensajería en la capa de infraestructura.
+
+##### Domain-Driven Design (DDD) Táctico
+\
+
+
+Cada bounded context implementa los patrones tácticos de DDD de manera consistente: *aggregates* raíz que encapsulan invariantes de negocio y publican eventos de dominio, *entidades* owned con identidad propia dentro del aggregate, *objetos de valor* inmutables representados como *records* de Java, y *eventos de dominio* que notifican ocurrencias significativas del negocio.
+
+##### Command Query Responsibility Segregation (CQRS)
+\
+
+
+La separación entre operaciones de comando (escritura) y consulta (lectura) es explícita en todos los microservicios. Los comandos y consultas son objetos inmutables (*records* de Java) ubicados en paquetes separados (`commands/` y `queries/`). Los servicios de comando están anotados con `@Transactional` para garantizar la integridad de las escrituras, mientras que los servicios de consulta usan `@Transactional(readOnly = true)` para optimizar el rendimiento de las lecturas.
+
+##### Event-Driven Architecture
+\
+
+
+La comunicación asíncrona entre bounded contexts se realiza mediante eventos de dominio. Los aggregates registran eventos mediante el mecanismo provisto por Spring Data (`AbstractAggregateRoot.registerEvent()`), que son capturados por el **Transactional Outbox Bridge** y persistidos en la base de datos dentro de la misma transacción. Un proceso scheduleado (Outbox Relay) publica estos eventos en RabbitMQ, garantizando entrega confiable. Los microservicios consumidores escuchan estos eventos mediante `@RabbitListener`.
+
+##### Microservices Architecture
+\
+
+
+Cada bounded context es un microservicio independiente con su propio proceso JVM, su propio esquema de base de datos PostgreSQL, y su propio pipeline de despliegue. La comunicación síncrona entre servicios se realiza mediante clientes Feign (HTTP) protegidos por un interceptor que añade un encabezado de autenticación interna. La comunicación asíncrona se realiza mediante RabbitMQ.
+
+
+##### 5.1.3 Pattern Based Custom Software Library
+\
+
 
 Para resolver necesidades transversales dentro del ecosistema de Glottia (*Cross-Cutting Concerns*) y evitar la duplicidad de código (*Don't Repeat Yourself - DRY*), el equipo diseñó y aisló librerías de software personalizadas internas. Estas librerías se rigen estrictamente por los principios **SOLID** y cuentan con especificaciones de prueba aisladas para garantizar su reutilización segura:
 
@@ -53,16 +136,556 @@ Para resolver necesidades transversales dentro del ecosistema de Glottia (*Cross
 * **Crypto Guard Engine (BCrypt Wrapper):** Componente dedicado a la seguridad adaptativa de datos sensibles mediante algoritmos de hash unidireccionales de alto costo computacional. Se utiliza para el cifrado seguro (*salting* y *hashing*) de contraseñas durante el registro e inicio de sesión, impidiendo el almacenamiento de texto plano en la base de datos.
 * **Custom Cloud Storage & Media Curation Library:** Utilizada de manera transversal por el microservicio de perfiles para interactuar de forma segura con APIs de almacenamiento de objetos en la nube (ej. Amazon S3 o Cloudinary). Esta librería procesa flujos de datos *multipart/form-data*, valida las restricciones de peso (máximo 5MB) y dimensiones, y realiza la curación de imágenes de los avatares de usuario. Sus pruebas de aceptación validan el rechazo de extensiones de archivos no permitidas (ej. ejecutables maliciosos).
 
+
+#### 5.1.2.4 Patrones Creacionales
+\
+
+
+##### Factory Method
+\
+
+
+El patrón **Factory Method** se utiliza extensivamente en los objetos de valor y aggregates para encapsular la lógica de creación. Cada identificador tipado (como `UserId`, `EncounterId`, `VenueId`, `ProfileId`, `EngagementId`) proporciona un método estático `newInstance()` o `newId()` que genera identificadores únicos basados en UUID con prefijos semánticos (ej. `us-` para usuarios, `en-` para encuentros, `vn-` para venues). Los aggregates raíz también implementan métodos de fábrica estáticos, como `User.create()`, que validan los invariantes de creación antes de instanciar el aggregate.
+
+##### Static Factory
+\
+
+
+Además de los Factory Methods, los objetos de valor proporcionan métodos `of()` y `fromValue()` para crear instancias a partir de valores existentes, con validación incorporada en los constructores *compactos* de los *records* de Java. Las entidades de catálogo (como `PromotionType`, `Language`, `CEFRLevel`) proporcionan métodos estáticos `toEntityFromName()` para realizar búsquedas y conversiones.
+
+##### Singleton
+\
+
+
+Todos los componentes gestionados por Spring (`@Service`, `@Repository`, `@Component`, `@Controller`) son *singletons* por defecto, garantizando una única instancia por contenedor de Spring. El contenedor gestiona el ciclo de vida completo de estos objetos.
+
+
+#### 5.1.2.5 Patrones Estructurales
+\
+
+
+##### Adapter (Ports & Adapters)
+\
+
+
+El patrón **Adapter** es fundamental en la arquitectura. Las interfaces definidas en la capa de aplicación (`application/internal/outboundservices/`) actúan como puertos de salida, mientras que las implementaciones concretas en la capa de infraestructura (`infrastructure/`) actúan como adaptadores. Ejemplos: la interfaz `TokenService` (puerto) es implementada por `TokenServiceImpl` que utiliza la librería JJWT (adaptador); la interfaz `HashingService` es implementada por `HashingServiceImpl` que utiliza BCrypt.
+
+##### Facade (ACL)
+\
+
+
+Cada bounded context publica una interfaz **Facade** en `interfaces/acl/` que proporciona una API simplificada para que otros contextos consuman sus servicios sin conocer los detalles internos. Por ejemplo, `VenuesContextFacade` expone operaciones como `isVenueActive()` y `findAvailableTableAtTime()` que encapsulan toda la lógica de negocio del contexto Venues. La implementación reside en `application/acl/`, manteniendo el aislamiento entre bounded contexts.
+
+##### Bridge
+\
+
+
+El patrón **Bridge** se observa en la implementación del Transactional Outbox. Cada microservicio extiende clases abstractas definidas en `glottia-commons`: `DomainEventToOutboxBridge<E>` y `OutboxRelay<E>`. La abstracción (el "puente") separa la lógica de persistencia de eventos de su publicación en RabbitMQ, permitiendo que cada servicio concrete los detalles específicos (como la resolución de routing keys y la entidad de outbox) sin modificar el algoritmo general.
+
+##### Proxy (Feign Clients)
+\
+
+
+Los clientes **Feign** actúan como proxies declarativos para la comunicación HTTP entre microservicios. Interfaces como `ProfilesIntegrationClient`, `EncountersIntegrationClient`, y `VenuesIntegrationClient` definen los endpoints remotos mediante anotaciones, y Spring Cloud genera dinámicamente la implementación del proxy que realiza las peticiones HTTP reales.
+
+
+#### 5.1.2.6 Patrones de Comportamiento
+\
+
+
+##### Strategy
+\
+
+
+El patrón **Strategy** se implementa en dos áreas clave:
+
+1. **Proveedores de LLM** en el servicio de Feedback: una interfaz `LlmService` define el contrato para generar quizzes, con tres implementaciones intercambiables mediante configuración: `AnthropicLlmServiceImpl` (Claude), `GeminiLlmServiceImpl` (Gemini), y `OpenAiLlmServiceImpl` (GPT-4). La estrategia activa se selecciona mediante una propiedad de configuración (`glottia.llm.provider`) usando `@ConditionalOnProperty`.
+
+2. **Canales de notificación** en el servicio de Notifications: un `NotificationDispatcher` selecciona dinámicamente entre `EmailNotificationService` (SendGrid), `PushNotificationService` (Firebase), y `SmsNotificationService` (Twilio) según el canal de notificación solicitado.
+
+3. **Resolución de routing keys**: la interfaz funcional `RoutingKeyResolver` permite que cada servicio implemente su propia estrategia para determinar el routing key de RabbitMQ según el tipo de evento.
+
+##### Observer / Event Listener
+\
+
+
+El patrón **Observer** se manifiesta en dos niveles:
+
+- **Eventos de dominio intra-servicio**: los aggregates registran eventos mediante `registerEvent()`, que son capturados por `@TransactionalEventListener` en el mismo proceso para persistirlos en el outbox.
+- **Eventos de integración entre servicios**: los eventos se publican en RabbitMQ y son consumidos por `@RabbitListener` en otros servicios. Por ejemplo, el servicio Encounters publica `LearnerCheckedInEvent` que es consumido por Engagement para acreditar puntos.
+
+##### Template Method
+\
+
+
+El patrón **Template Method** se utiliza en la implementación del Transactional Outbox. `DomainEventToOutboxBridge<E>` define el esqueleto del algoritmo (escuchar eventos, serializar, persistir), mientras que las subclases concretas (como `IamDomainEventToOutboxBridge`) implementan los detalles específicos (extraer aggregate ID, crear la entrada de outbox). De manera similar, `OutboxRelay<E>` define el algoritmo de polling y publicación, delegando a las subclases la obtención de entradas pendientes y el envío a RabbitMQ.
+
+##### State
+\
+
+
+El patrón **State** se implementa en el servicio Encounters mediante una máquina de estados explícita en la entidad `EncounterStatus`. El aggregate `Encounter` verifica transiciones de estado válidas mediante el método `canTransitionTo()`, que define la matriz de transiciones: los encuentros inician como borrador (DRAFT), pasan a publicado (PUBLISHED), luego a listo (READY), después a en progreso (IN_PROGRESS), y finalmente a completado (COMPLETED). Desde varios estados es posible la cancelación (CANCELLED). La entidad `Attendance` también posee su propia máquina de estados: RESERVED puede transicionar a CHECKED_IN, NO_SHOW, o CANCELLED.
+
+##### Chain of Responsibility
+\
+
+
+El pipeline de seguridad de Spring Security constituye una implementación del patrón **Chain of Responsibility**. El filtro `BearerAuthorizationRequestFilter` extrae y valida el token JWT de cada petición entrante. Si la autenticación falla, el `UnauthorizedRequestHandlerEntryPoint` maneja el error y retorna un código HTTP 401. Esta cadena de filtros es configurada en `WebSecurityConfiguration`.
+
+
+#### 5.1.2.7 Patrones Backend
+\
+
+
+##### Repository
+\
+
+
+Cada aggregate raíz tiene un repositorio Spring Data JPA dedicado en `infrastructure/persistence/jpa/repositories/`. Estos repositorios extienden `JpaRepository<T, ID>` y heredan automáticamente operaciones CRUD, paginación, y ordenamiento. Los métodos de búsqueda personalizados se declaran mediante convenciones de nomenclatura (ej. `findByEmail()`, `existsByUserId()`). No existe una capa de abstracción adicional sobre JpaRepository, siguiendo el principio YAGNI.
+
+##### Unit of Work
+\
+
+
+Spring Data JPA implementa el patrón **Unit of Work** de manera transparente. El `EntityManager` de JPA rastrea todos los cambios realizados a las entidades dentro de una transacción y los sincroniza con la base de datos al hacer *flush*. La anotación `@Transactional` en los servicios de comando delimita explícitamente las unidades de trabajo.
+
+##### Service Layer
+\
+
+
+La capa de servicio está dividida en dos niveles: las interfaces de servicio de dominio (`domain/services/`) definen los contratos, mientras que las implementaciones en la capa de aplicación (`application/internal/commandservices/`, `application/internal/queryservices/`) orquestan la lógica de negocio. Los servicios de aplicación son responsables de cargar aggregates del repositorio, invocar métodos de dominio, y persistir los cambios.
+
+##### Data Transfer Object (DTO)
+\
+
+
+Los DTOs de entrada y salida se definen como *records* de Java en `interfaces/rest/resources/`. Los DTOs de entrada incluyen validación mediante anotaciones de Bean Validation (`@NotBlank`, `@NotNull`, `@Size`). Los DTOs de salida exponen únicamente la información necesaria para la API, sin filtrar detalles internos del modelo de dominio. Existen también DTOs específicos para la comunicación ACL entre servicios, ubicados en `infrastructure/acl/*/services/resources/`.
+
+##### Assembler
+\
+
+
+Los **Assemblers** son clases con métodos estáticos que convierten entre DTOs de recurso y comandos/entidades de dominio. Se ubican en `interfaces/rest/transform/` y siguen una convención de nomenclatura clara: `XXXCommandFromResourceAssembler` para conversión de recurso a comando, y `XXXResourceFromEntityAssembler` para conversión de entidad a recurso. Esta separación mantiene la capa de interfaces independiente de los cambios en el modelo de dominio.
+
+##### Transactional Outbox
+\
+
+
+El patrón **Transactional Outbox** garantiza la entrega confiable de eventos de dominio a RabbitMQ. El flujo es el siguiente:
+
+1. El aggregate registra un evento de dominio mediante `registerEvent()`.
+2. El `DomainEventToOutboxBridge` (escucha con `@TransactionalEventListener(phase = BEFORE_COMMIT)`) captura el evento, lo serializa a JSON, y lo persiste en la tabla de outbox dentro de la misma transacción de base de datos.
+3. El `OutboxRelay` (ejecutado cada 500ms mediante `@Scheduled`) consulta las entradas de outbox no publicadas, las envía a RabbitMQ con el routing key correspondiente, y marca la entrada como publicada.
+
+Este patrón asegura que ningún evento se pierda incluso si RabbitMQ no está disponible temporalmente, ya que los eventos se recuperan de la base de datos en el próximo ciclo de polling.
+
+##### Anti-Corruption Layer (ACL)
+\
+
+
+Cada bounded context define una o más interfaces **ACL Facade** que actúan como fronteras explícitas entre contextos. La interfaz reside en `interfaces/acl/` y su implementación en `application/acl/`. Por ejemplo, el contexto Encounters expone `EncountersContextFacade` con el método `fetchLearnerIdsByEncounterId()`, y el contexto IAM expone `IamContextFacade` con métodos como `fetchUserIdByEmail()` y `existsByEmail()`. Otros contextos consumen estas fachadas sin acceder nunca a los repositorios o aggregates internos.
+
+##### API Gateway
+\
+
+
+El **API Gateway** (Spring Cloud Gateway) actúa como punto único de entrada para todas las peticiones externas. Define 17 rutas que redirigen el tráfico a los microservicios correspondientes utilizando el descubrimiento de servicios de Eureka (`lb://service-name`). El gateway valida los tokens JWT en las peticiones, extrae los claims de seguridad, y los reenvía como encabezados `X-User-*` a los microservicios internos.
+
+##### Service Registry
+\
+
+
+El **Service Registry** (Netflix Eureka) proporciona descubrimiento de servicios. Cada microservicio se registra con su nombre lógico al iniciar, y el gateway y los clientes Feign utilizan estos nombres lógicos en lugar de direcciones IP y puertos fijos.
+
+##### Marker Interface (para Dependency Injection)
+\
+
+
+Para resolver ambigüedades en la inyección de dependencias de Spring, se utilizan **marker interfaces**. Por ejemplo, `BCryptHashingService` extiende tanto la interfaz del dominio (`HashingService`) como la interfaz de Spring Security (`PasswordEncoder`), permitiendo que el mismo bean sea inyectado en ambos contextos sin necesidad de `@Qualifier` o `@Primary`.
+
+##### Rate Limiting
+\
+
+
+El servicio Verification implementa **Rate Limiting** mediante Resilience4j (`@RateLimiter(name = "otpGenerator")`) para limitar la frecuencia de generación de códigos OTP y prevenir abusos.
+
+##### Optimistic Locking
+\
+
+
+El aggregate `Verification` utiliza **Optimistic Locking** mediante `@Version` de JPA para manejar concurrencia en la verificación de códigos OTP, lanzando `OptimisticLockingFailureException` cuando dos procesos intentan verificar el mismo código simultáneamente.
+
+##### Idempotency
+\
+
+
+El aggregate `Notification` incorpora soporte para **idempotencia**, permitiendo que el envío de una notificación con la misma clave de idempotencia sea seguro de reintentar sin duplicar el envío.
+
+##### Interceptor
+\
+
+
+Los microservicios que realizan llamadas Feign a otros servicios implementan un **Feign RequestInterceptor** (`InternalServiceAuthInterceptor`) que añade automáticamente un encabezado `X-Internal-Request` con un secreto compartido a todas las peticiones salientes, proporcionando un mecanismo de autenticación entre servicios.
+
+---
+
+# 5.1.3 Pattern Based Custom Software Library
+\
+
+
+## 5.1.3.1 Introducción
+\
+
+
+El proyecto Glottia incluye un módulo compartido denominado **glottia-commons** que funciona como un **Shared Kernel** minimalista según la terminología de Domain-Driven Design. Este módulo no es una librería de utilidades genérica, sino un conjunto cuidadosamente seleccionado de clases base, interfaces y configuraciones que todos los bounded contexts comparten por necesidad. La filosofía detrás de su diseño es que solo debe contener aquello que todos los contextos genuinamente necesitan, evitando la tentación de convertirlo en un repositorio de código genérico sin propósito claro.
+
+
+## 5.1.3.2 Arquitectura de glottia-commons
+\
+
+
+La estructura de `glottia-commons` refleja la misma organización en capas que los microservicios, pero a nivel de infraestructura compartida:
+
+```
+glottia-commons/
+├── domain/model/
+│   ├── aggregates/          → Clase base para todos los aggregates
+│   ├── entities/            → Clase base para entidades owned
+│   ├── events/              → Interface de evento de dominio + eventos de integración
+│   └── security/            → DTO de seguridad compartido
+├── infrastructure/
+│   ├── persistence/         → Configuración de JPA Auditing
+│   └── persistence/jpa/     → Estrategia de naming de tablas
+├── shared/
+│   ├── messaging/outbox/    → Implementación completa del patrón Transactional Outbox
+│   ├── messaging/rabbitmq/  → Publisher de eventos para RabbitMQ
+│   └── interfaces/rest/     → Helper de seguridad para obtener el usuario autenticado
+└── interfaces/rest/         → DTO genérico de respuesta
+```
+
+El módulo utiliza **Spring Boot Auto-Configuration** para que la configuración de JPA Auditing se active automáticamente cuando `glottia-commons` está en el classpath, sin necesidad de anotaciones explícitas en cada microservicio.
+
+
+#### 5.1.3.3 Componentes Compartidos
+\
+
+
+##### AuditableAbstractAggregateRoot (Clase Base para Aggregates)
+\
+
+
+Es la clase fundamental del Shared Kernel. Extiende `AbstractAggregateRoot<T>` de Spring Data, lo que proporciona el mecanismo de registro y publicación de eventos de dominio. Además, incorpora campos de auditoría temporal (`createdAt`, `updatedAt`) que se pueblan automáticamente mediante `@CreatedDate` y `@LastModifiedDate` de Spring Data JPA.
+
+Todos los aggregates de la plataforma extienden esta clase, heredando:
+- Capacidad de registrar eventos de dominio mediante `registerEvent(T event)`.
+- Recolección automática de eventos por parte de Spring Data para su publicación.
+- Marcas de tiempo automáticas sin intervención del desarrollador.
+- Método `validateInvariants()` que las subclases pueden sobrescribir para validar reglas de negocio antes de la persistencia.
+
+##### AuditableModel (Clase Base para Entidades Owned)
+\
+
+
+Una versión más ligera de la clase anterior, destinada a entidades owned que no son aggregates raíz. Proporciona únicamente los campos de auditoría temporal sin el soporte de eventos de dominio.
+
+##### DomainEvent (Interface)
+\
+
+
+Define el contrato que todos los eventos de dominio deben cumplir. Especifica dos métodos:
+- `eventId()`: identificador único del evento (típicamente un UUID).
+- `occurredOn()`: marca de tiempo de cuando ocurrió el evento.
+
+Diez eventos de integración concretos implementan esta interfaz, definiendo los contratos de comunicación entre bounded contexts:
+
+| Evento | Propósito |
+|---|---|
+| `LearnerCheckedInIntegrationEvent` | Notifica que un aprendiz realizó check-in a un encuentro |
+| `EncounterCompletedIntegrationEvent` | Notifica que un encuentro fue completado |
+| `EncounterCancelledIntegrationEvent` | Notifica que un encuentro fue cancelado |
+| `PointsAwardedIntegrationEvent` | Notifica que se otorgaron puntos a un aprendiz |
+| `BadgeUnlockedIntegrationEvent` | Notifica que un aprendiz desbloqueó una insignia |
+| `PromotionRedeemedIntegrationEvent` | Notifica que una promoción fue canjeada |
+| `AssessmentCompletedIntegrationEvent` | Notifica que una autoevaluación fue completada |
+| `QuizPassedIntegrationEvent` | Notifica que un quiz fue aprobado |
+| `OtpGeneratedIntegrationEvent` | Notifica que se generó un código OTP |
+| `OtpVerifiedIntegrationEvent` | Notifica que un código OTP fue verificado |
+
+##### AuthenticatedUser (DTO de Seguridad)
+\
+
+
+Un *record* de Java que representa al usuario autenticado en el sistema. Contiene `userId`, `subjectId`, `role`, `profileId`, y `authorities`. Es utilizado por los controladores REST y servicios de aplicación para conocer la identidad del usuario que realiza la petición, sin depender directamente de los detalles de implementación de Spring Security.
+
+##### Transactional Outbox (Infraestructura de Mensajería Confiable)
+\
+
+
+El componente más complejo del Shared Kernel. Proporciona las clases base para implementar el patrón Transactional Outbox en cualquier microservicio. Incluye:
+
+- **BaseOutboxEntry**: clase abstracta `@MappedSuperclass` que define la estructura de la tabla de outbox: `id`, `aggregateId`, `eventType`, `routingKey`, `payload` (JSON), `occurredOn`, `publishedAt`, `createdAt`.
+- **DomainEventToOutboxBridge<E>**: clase abstracta que implementa el listener transaccional para capturar eventos de dominio y persistirlos en la tabla de outbox.
+- **OutboxRelay<E>**: clase abstracta que implementa el proceso scheduleado de polling y publicación a RabbitMQ.
+- **RoutingKeyResolver**: interfaz funcional (`@FunctionalInterface`) para determinar el routing key de RabbitMQ según el tipo de evento.
+- **RabbitMqDomainEventPublisher**: clase abstracta que implementa la publicación directa de eventos a RabbitMQ.
+
+##### SnakeCaseWithPluralizedTablePhysicalNamingStrategy (Estrategia de Naming JPA)
+\
+
+Una estrategia de naming físico personalizada para Hibernate que convierte automáticamente los nombres de entidades CamelCase a snake_case y pluraliza el nombre de la tabla. Por ejemplo, la entidad `UserProfile` se mapea automáticamente a la tabla `user_profiles`, y `EncounterStatus` a `encounter_statuses`. Esto garantiza consistencia en la nomenclatura de tablas en toda la plataforma.
+
+##### CurrentUserProvider (Helper de Seguridad)
+\
+
+
+Un utilitario que extrae el `AuthenticatedUser` del `SecurityContextHolder` de Spring Security, proporcionando un acceso limpio y tipado a la identidad del usuario autenticado desde cualquier punto del código.
+
+##### MessageResource (DTO Genérico)
+\
+
+
+Un *record* simple que encapsula un mensaje de texto para respuestas API que no requieren un DTO específico, como confirmaciones de operación (`"Check-in successful"`) o mensajes de error simples.
+
+
+#### 5.1.3.4 Patrones Implementados
+\
+
+
+##### Template Method
+\
+
+
+El patrón **Template Method** es el más utilizado en `glottia-commons`. Tanto `DomainEventToOutboxBridge<E>` como `OutboxRelay<E>` definen el esqueleto de un algoritmo mientras delegan detalles específicos a las subclases. En `DomainEventToOutboxBridge`, el algoritmo general es: recibir evento, resolver routing key, serializar a JSON, crear entrada de outbox, persistir. Los métodos abstractos que las subclases deben implementar incluyen `extractAggregateId()` y `createEntry()`. En `OutboxRelay`, el algoritmo es: consultar entradas pendientes, publicar a RabbitMQ, marcar como publicadas. Las subclases proporcionan el exchange y el repositorio.
+
+##### Domain Event
+\
+
+
+La interfaz `DomainEvent` establece el contrato para todos los eventos de dominio. Los diez eventos de integración concretos implementan este contrato como *records* inmutables de Java, garantizando que los eventos sean intercambiables y polimórficos.
+
+##### Mapped Superclass (JPA Inheritance)
+\
+
+
+Tanto `AuditableAbstractAggregateRoot` como `AuditableModel` y `BaseOutboxEntry` están anotados con `@MappedSuperclass`, lo que permite que las subclases hereden el mapeo JPA sin que la superclase sea una entidad por sí misma. Este es un uso correcto del patrón de herencia de JPA.
+
+##### Auto-Configuration (Spring Boot)
+\
+
+
+`JpaAuditingConfiguration` está registrada como una **auto-configuración** de Spring Boot mediante el archivo `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`. Esto significa que cuando `glottia-commons` está en el classpath de cualquier microservicio, la configuración de JPA Auditing se activa automáticamente sin necesidad de `@EnableJpaAuditing` en cada servicio.
+
+##### Naming Strategy
+\
+
+
+`SnakeCaseWithPluralizedTablePhysicalNamingStrategy` es una implementación del patrón **Strategy** para la nomenclatura de tablas de Hibernate, haciendo que la estrategia de naming sea intercambiable mediante configuración de propiedades.
+
+##### Value Object
+\
+
+
+`AuthenticatedUser` es un *record* de Java inmutable que funciona como objeto de valor, identificando de manera única al usuario autenticado dentro del contexto de seguridad de la aplicación.
+
+##### Functional Interface
+\
+
+
+`RoutingKeyResolver` está anotada con `@FunctionalInterface`, permitiendo que se utilice como lambda o method reference en lugar de requerir una clase anónima, simplificando su implementación en cada microservicio.
+
+##### Static Helper
+\
+
+
+`CurrentUserProvider` es una clase utilitaria con un método estático que encapsula la lógica de acceso al `SecurityContextHolder`, proporcionando una API limpia y testeable.
+
+
 ***
 
-### 5.1.4 Framework Pattern Driven Refactoring Report
+#### 5.1.4 Framework Pattern Driven Refactoring Report
+\
 
-## 5.2 Software Configuration Management
+
+##### 5.1.4.1 Introducción
+\
+
+
+El framework **Spring Boot 3.5** (en conjunto con **Spring Cloud 2025.0.0**) ha sido el motor principal de refactorización en la plataforma Glottia. A diferencia de una adopción pasiva donde el framework simplemente proporciona infraestructura, Spring Boot ha *forzado* activamente una serie de transformaciones arquitectónicas que han moldeado la estructura final del código. Este reporte documenta diez refactorizaciones clave que el framework ha inducido, explicando para cada una cuál era el problema original, cómo quedó la solución, qué patrón se utilizó, y cuál fue el beneficio obtenido.
+
+La evidencia de estas refactorizaciones no proviene de un historial de commits específico (el repositorio fue construido siguiendo estas prácticas desde el inicio), sino del análisis estructural del código actual, que revela las huellas de las decisiones arquitectónicas tomadas.
+
+##### 5.1.4.2 Refactorización 1: Separación Controller → Service → Repository
+\
+
+
+**Problema original (ANTES):** En una arquitectura plana sin framework, los controladores HTTP tienden a mezclar responsabilidades: reciben la petición, validan datos, ejecutan lógica de negocio, acceden a la base de datos, y formatean la respuesta. Esto genera controladores con cientos de líneas, difícilmente testeables y con acoplamiento rígido a la tecnología de persistencia.
+
+**Solución implementada (DESPUÉS):** Spring Boot impone una separación natural en tres capas que se refleja en la estructura de paquetes de cada microservicio:
+
+- **Controller** (`interfaces/rest/controllers/`): responsable únicamente de recibir peticiones HTTP, delegar en servicios, y retornar respuestas. Sin lógica de negocio.
+- **Service** (`application/internal/commandservices/`, `application/internal/queryservices/`): orquesta la lógica de negocio, gestiona transacciones, y coordina repositorios.
+- **Repository** (`infrastructure/persistence/jpa/repositories/`): abstrae el acceso a datos mediante Spring Data JPA.
+
+**Patrón utilizado:** Service Layer + Repository.
+
+**Beneficio:** cada capa tiene una responsabilidad única y es testeable de forma aislada. Los controladores se prueban con `@WebMvcTest`, los servicios con Mockito, y los repositorios con `@DataJpaTest`.
+
+**Evidencia estructural:** en `glottia-encounters-service`, el controlador `EncountersController` tiene 16 endpoints pero ninguna línea de lógica de negocio; toda la lógica reside en `EncounterCommandServiceImpl` y `EncounterQueryServiceImpl`, y el acceso a datos en `EncounterRepository` y `AttendanceRepository`.
+
+##### 5.1.4.3 Refactorización 2: Extracción de Shared Kernel (glottia-commons)
+\
+
+
+**Problema original (ANTES):** Sin un Shared Kernel, cada microservicio definía su propia clase base para aggregates auditables, su propia implementación del outbox pattern, y su propia estrategia de naming de tablas. Esto resultaba en duplicación sustancial de código y, peor aún, en inconsistencias sutiles entre implementaciones.
+
+**Solución implementada (DESPUÉS):** Se extrajo un módulo Maven independiente (`glottia-commons`) que centraliza:
+
+- `AuditableAbstractAggregateRoot<T>`: base para todos los aggregates.
+- `AuditableModel`: base para entidades owned.
+- `DomainEvent` + 10 eventos de integración: contratos compartidos.
+- `BaseOutboxEntry` + `DomainEventToOutboxBridge` + `OutboxRelay`: outbox reutilizable.
+- `SnakeCaseWithPluralizedTablePhysicalNamingStrategy`: estrategia de naming consistente.
+- `CurrentUserProvider` + `AuthenticatedUser`: seguridad transversal.
+
+**Patrón utilizado:** Shared Kernel (DDD) + Template Method + Abstract Class.
+
+**Beneficio:** eliminación de duplicación, consistencia en todos los servicios, evolución centralizada.
+
+**Evidencia:** los 11 microservicios del proyecto declaran `<dependency><groupId>com.hampcoders</groupId><artifactId>glottia-commons</artifactId></dependency>` en sus `pom.xml`, y todos los aggregates extienden `AuditableAbstractAggregateRoot<T>`.
+
+##### 5.1.4.4 Refactorización 3: Dependency Injection Generalizada
+\
+
+
+**Problema original (ANTES):** Sin un contenedor de inversión de control, los servicios creaban sus dependencias manualmente con `new Repository()`, generando acoplamiento rígido a implementaciones concretas y haciendo imposible el mockeo en pruebas unitarias.
+
+**Solución implementada (DESPUÉS):** Spring Boot gestiona todas las dependencias mediante **constructor injection**. Todos los servicios, repositorios, controladores, y componentes reciben sus dependencias a través del constructor, que Spring resuelve automáticamente.
+
+**Patrón utilizado:** Dependency Injection (contenedor Spring IoC).
+
+**Beneficio:** testabilidad (las dependencias pueden ser mockeadas con Mockito), desacoplamiento (los componentes solo conocen interfaces, no implementaciones), y configuración centralizada (los beans se configuran en un solo lugar).
+
+**Evidencia:** todas las clases `@Service`, `@Controller`, y `@Component` utilizan constructor injection sin excepción. Por ejemplo, `EncounterCommandServiceImpl` recibe `EncounterRepository`, `EncounterStatusRepository`, y `ExternalVenueService` a través de su constructor.
+
+##### 5.1.4.5 Refactorización 4: Anti-Corruption Layer (ACL) para Aislamiento de Bounded Contexts
+\
+
+
+**Problema original (ANTES):** En una arquitectura sin fronteras explícitas, los servicios de un contexto accedían directamente a los repositorios y agregados de otros contextos. Esto generaba acoplamiento fuerte: un cambio en el modelo interno de un contexto podía romper funcionalidad en contextos no relacionados.
+
+**Solución implementada (DESPUÉS):** Cada bounded context expone **fachadas ACL** que definen contratos explícitos para el consumo externo. Un contexto nunca accede a los repositorios o agregados de otro contexto; solo interactúa a través de estas fachadas. La estructura es:
+
+```
+Contexto A expone: interfaces/acl/ContextoAFacade.java → application/acl/ContextoAFacadeImpl.java
+Contexto B inyecta: ContextoAFacade (depende de la interfaz, no de la implementación)
+```
+
+**Patrón utilizado:** Facade (ACL / Anti-Corruption Layer).
+
+**Beneficio:** aislamiento total entre bounded contexts. El modelo interno de un contexto puede cambiar sin afectar a los consumidores, siempre que la interfaz ACL permanezca estable. Las fachadas también proporcionan un punto ideal para aplicar transformaciones entre modelos (traducción de objetos de valor, adaptación de tipos).
+
+**Evidencia:** existen fachadas ACL en IAM (`IamContextFacade`), Profiles (`ProfilesContextFacade`), Venues (`VenuesContextFacade`), Encounters (`EncountersContextFacade`), Feedback (`LearningFeedbackContextFacade`), Notification (`NotificationsContextFacade`), y Verification (`VerificationContextFacade`).
+
+
+##### 5.1.4.6 Refactorización 5: Patrón Transactional Outbox para Mensajería Confiable
+\
+
+
+**Problema original (ANTES):** Sin outbox, los eventos de dominio se publicaban directamente a RabbitMQ en el mismo hilo que la transacción de negocio. Si RabbitMQ no estaba disponible en ese momento (fallo de red, reinicio, sobrecarga), el evento se perdía irreversiblemente, resultando en estados inconsistentes entre servicios.
+
+**Solución implementada (DESPUÉS):** Implementación completa del patrón Transactional Outbox con tres componentes:
+
+1. **Bridge**: captura eventos de dominio con `@TransactionalEventListener(phase = BEFORE_COMMIT)` y los persiste en la tabla de outbox en la misma transacción de base de datos.
+2. **Entrada de Outbox**: entidad JPA que almacena el evento serializado como JSON.
+3. **Relay**: proceso scheduleado (cada 500ms) que consulta entradas no publicadas, las envía a RabbitMQ, y las marca como publicadas.
+
+**Patrón utilizado:** Transactional Outbox + Polling Publisher.
+
+**Beneficio:** garantía **at-least-once delivery**. Incluso si RabbitMQ falla, los eventos permanecen en la base de datos y serán publicados cuando el servicio se recupere. Se elimina el riesgo de pérdida de eventos.
+
+**Evidencia:** seis microservicios implementan el patrón: IAM, Profiles, Venues, Encounters, Engagement, y Feedback. Cada uno tiene su propia `*OutboxEntry`, `*DomainEventToOutboxBridge`, y `*OutboxRelay`, que extienden las clases base de `glottia-commons`.
+
+
+##### 5.1.4.7 Refactorización 6: Estandarización de DTOs y Assemblers
+\
+
+
+**Problema original (ANTES):** Los agregados de dominio se serializaban directamente a JSON para las respuestas API, exponiendo detalles internos del modelo (como IDs técnicos, campos de auditoría, o relaciones internas) y acoplando la API pública al modelo de persistencia.
+
+**Solución implementada (DESPUÉS):** Se introdujo una capa explícita de **Resources (DTOs)** y **Assemblers**:
+
+- Los **DTOs de entrada** (`*Resource.java` en `interfaces/rest/resources/`) definen la estructura esperada de las peticiones, con validaciones mediante Bean Validation.
+- Los **DTOs de salida** definen la estructura de las respuestas, exponiendo solo la información relevante.
+- Los **Assemblers** (`*FromResourceAssembler.java` y `*FromEntityAssembler.java` en `interfaces/rest/transform/`) convierten entre DTOs y objetos de dominio mediante métodos estáticos.
+
+**Patrón utilizado:** DTO + Assembler.
+
+**Beneficio:** desacoplamiento total entre la API pública y el modelo interno. La API puede evolucionar independientemente del dominio. Las validaciones están centralizadas en los DTOs de entrada.
+
+**Evidencia:** cada microservicio tiene su propio paquete `interfaces/rest/transform/` con múltiples assemblers. Por ejemplo, `glottia-venues-service` tiene 24 assemblers y 27 DTOs.
+
+
+##### 5.1.4.8 Refactorización 7: CQRS (Command Query Responsibility Segregation)
+\
+
+
+**Problema original (ANTES):** Un único servicio manejaba tanto operaciones de lectura como de escritura. Las consultas podían desencadenar accidentalmente efectos secundarios, y no era posible optimizar las lecturas (con caché o transacciones de solo lectura) sin afectar las escrituras.
+
+**Solución implementada (DESPUÉS):** Separación explícita de responsabilidades:
+
+- **Command Services**: manejan operaciones de escritura (comandos), anotados con `@Transactional`.
+- **Query Services**: manejan operaciones de lectura (consultas), anotados con `@Transactional(readOnly = true)`.
+- **Comandos**: objetos inmutables en `domain/model/commands/`.
+- **Consultas**: objetos inmutables en `domain/model/queries/`.
+
+**Patrón utilizado:** CQRS.
+
+**Beneficio:** las consultas pueden optimizarse con `readOnly = true` (Hibernate deshabilita el dirty checking). Los comandos y consultas tienen ciclos de vida independientes. Se reduce el riesgo de efectos secundarios en operaciones de solo lectura.
+
+**Evidencia:** ocho microservicios implementan CQRS completo: IAM, Profiles, Venues, Promotions, Encounters, Engagement, Feedback, y Verification. Cada uno tiene interfaces de servicio separadas (`*CommandService` vs `*QueryService`) y paquetes separados para comandos y consultas.
+
+
+##### 5.1.4.9 Refactorización 8: Manejo Centralizado de Excepciones
+\
+
+
+**Problema original (ANTES):** Cada controlador manejaba sus propias excepciones con bloques `try-catch`, resultando en:
+
+- Código repetitivo en todos los endpoints.
+- Respuestas de error inconsistentes (diferentes formatos JSON, diferentes códigos HTTP para el mismo tipo de error).
+- Dificultad para mantener y evolucionar el manejo de errores.
+
+**Solución implementada (DESPUÉS):** Se implementaron manejadores globales de excepciones utilizando `@RestControllerAdvice` que capturan excepciones específicas y las convierten en respuestas HTTP estandarizadas siguiendo el formato `ProblemDetail` de RFC 9457.
+
+**Patrón utilizado:** Global Exception Handler + Problem Details (RFC 9457).
+
+**Beneficio:** respuestas de error consistentes en formato `ProblemDetail` (estándar RFC 9457), lógica de error centralizada en un solo lugar, controladores más limpios sin manejo disperso de excepciones.
+
+**Evidencia:** existen manejadores globales en cuatro microservicios: `ProfilesExceptionHandler`, `EncountersExceptionHandler`, `EngagementExceptionHandler`, y `LearningFeedbackExceptionHandler`.
+
+
+##### 5.1.4.10 Refactorización 9: Interceptor para Autenticación Interna entre Servicios
+\
+
+
+**Problema original (ANTES):** Las llamadas Feign entre microservicios no tenían un mecanismo de autenticación. Cualquier proceso que conociera la URL de un servicio podía invocar sus endpoints internos sin autorización.
+
+**Solución implementada (DESPUÉS):** Se implementó un `Feign RequestInterceptor` que añade automáticamente un encabezado `X-Internal-Request` con un secreto compartido a todas las peticiones salientes. Los microservicios receptores pueden verificar este encabezado para distinguir entre peticiones externas (autenticadas con JWT) y peticiones internas de servicio a servicio.
+
+**Patrón utilizado:** Interceptor (Feign `RequestInterceptor`).
+
+**Beneficio:** autenticación entre microservicios sin exponer tokens JWT de usuarios en la comunicación interna. El secreto compartido se configura externamente y puede rotarse sin afectar el código.
+
+**Evidencia:** tres microservicios implementan este interceptor: IAM, Notification, y Verification.
+
+
+##### 5.2 Software Configuration Management
 
 Software Configuration Management (SCM) —o Gestión de la Configuración de Software— es una disciplina de la ingeniería de software que se encarga de rastrear, controlar y organizar todos los cambios que ocurren en el ciclo de vida de un proyecto. 
 Su objetivo principal es asegurar que, sin importar cuántas personas estén trabajando en el proyecto o cuántas funciones nuevas se agreguen, el software se mantenga estable, consistente y libre de caos. (GeeksforGeeks, 2025)
 
 ***
+
 ### 5.2.1 Software Development Environment Configuration
 
 #### **Project Requirements Management**
