@@ -8,7 +8,7 @@ La especificación parte de los hallazgos obtenidos en el Capítulo II, donde la
 
 A continuación se presenta el To-Be Scenario Mapping para la aplicación de práctica de idiomas, que ilustra cómo los usuarios interactuarán con el sistema para practicar idiomas en espacios locales. Como tenemos dos segmentos objetivos (practicantes de idiomas y establecimientos aliados), se han desarrollado dos escenarios distintos para cada uno de ellos, con el fin de capturar sus respectivas experiencias y necesidades.
 
-### Sscenario 1: Language Learner's Experience
+### Scenario 1: Language Learner's Experience
  
 ![To Be Scenario 1](assets/img/cap3/to-be-scenario1.jpg)
 
@@ -16,7 +16,7 @@ Este escenario describe el viaje de un usuario que busca practicar un idioma. Ab
 
 ### Scenario 2: Partner Institution's Experience
  
-![To Be Sscenario 2](assets/img/cap3/to-be-scenario2.jpg)
+![To Be Scenario 2](assets/img/cap3/to-be-scenario2.jpg)
 
 Este escenario detalla la interacción de los negocios asociados (cafeterías) con la plataforma. Inicia con la configuración del perfil y disponibilidad del local, seguido por la gestión y validación de reservas durante los encuentros. Adicionalmente, incluye el análisis de métricas mediante un panel de control (dashboard) y culmina con la optimización de la oferta a través de promociones basadas en datos. El objetivo principal es maximizar la ocupación en horas valle, incrementar la rentabilidad y fidelizar a una nueva clientela.
 
