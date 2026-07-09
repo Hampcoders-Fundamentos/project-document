@@ -65,5 +65,16 @@
 | **AV3** | 06/06/2026 | **Sánchez Manrique, Italo Ludwing** | 5.2.2.7 Team Collaboration Insights during Sprint - Elaboración de insights colaborativos y análisis del trabajo distribuido durante la migración arquitectónica |
 | **AV3** | 08/06/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.2.2.6 Software Deployment Evidence for Sprint Review - Configuración de despliegue en Render, validación de servicios cloud y documentación de la estrategia de despliegue |
 | **AV3** | 10/06/2026 | **Equipo Hampcoders** | Feature/cap5 product implementation validation \& deployment - Consolidación de migración de IAM, Profiles, Venues, Promotions, Engagement, Feedback y Encounters a arquitectura de microservicios con integración progresiva mediante RabbitMQ **(Avance 3)** |
+| **AV4** | 20/05/2026 | **Arostegui Alzamora, Cesar Augusto** | 5.2.2.1 Sprint Backlog 3 - Planificación, priorización y seguimiento de tareas relacionadas con la migración completa hacia microservicios **(Avance 4)** |
+| **AV4** | 21/06/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.2.2.1 Sprint Backlog 3 -  Elaboración del Sprint Backlog 3 y alineación de tareas con los objetivos de migración a microservicios |
+| **AV4** | 21/06/2026 | **Aliaga Aguirre, Ethan Matías** | 5.2.2.2 Development Evidence for Sprint Review - Implementación y validación de la arquitectura de microservicios mediante la migración de bounded contexts y consolidación de evidencias técnicas del Sprint 2 |
+| **AV4** | 21/06/2026 | **Contreras López, Leandro Saul** | 5.2.2.5 Microservices Documentation Evidence - Documentación técnica de bounded contexts migrados y configuración de infraestructura distribuida |
+| **AV4** | 22/06/2026 | **Sánchez Manrique, Italo Ludwing** | 5.2.2.3 Testing Suite Evidence for Sprint Review - Validación de integración entre microservicios y evidencia de pruebas sobre bounded contexts migrados |
+| **AV4** | 22/06/2026 | **Contreras López, Leandro Saul** | 5.2.2.4 Execution Evidence for Sprint Review - Evidencia de ejecución de servicios independientes, pruebas funcionales y validación de comunicación entre microservicios |
+| **AV4** | 23/06/2026 | **Aliaga Aguirre, Ethan Matías** | 5.2.2.5 Microservices Documentation Evidence - Documentación de contratos OpenAPI y evidencia de integración entre servicios desacoplados |
+| **AV4** | 24/06/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.2.2 Source Code Management - Integración de ramas feature relacionadas con microservicios, RabbitMQ y despliegue mediante Gitflow y Pull Requests |
+| **AV4** | 25/06/2026 | **Arostegui Alzamora, Cesar Augusto** | 5.2.2.8 Kanban Board - Actualización y control del tablero Kanban para seguimiento del Sprint 3 y estado de despliegue |
+| **AV4** | 25/06/2026 | **Sánchez Manrique, Italo Ludwing** | 5.2.2.7 Team Collaboration Insights during Sprint - Elaboración de insights colaborativos y análisis del trabajo distribuido durante la migración arquitectónica |
+| **AV4** | 25/06/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.2.2.6 Software Deployment Evidence for Sprint Review - Configuración de despliegue en Render, validación de servicios cloud y documentación de la estrategia de despliegue |
 
 \newpage
