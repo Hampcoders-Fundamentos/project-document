@@ -76,5 +76,15 @@
 | **AV4** | 25/06/2026 | **Arostegui Alzamora, Cesar Augusto** | 5.2.2.8 Kanban Board - Actualización y control del tablero Kanban para seguimiento del Sprint 3 y estado de despliegue |
 | **AV4** | 25/06/2026 | **Sánchez Manrique, Italo Ludwing** | 5.2.2.7 Team Collaboration Insights during Sprint - Elaboración de insights colaborativos y análisis del trabajo distribuido durante la migración arquitectónica |
 | **AV4** | 25/06/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.2.2.6 Software Deployment Evidence for Sprint Review - Configuración de despliegue en Render, validación de servicios cloud y documentación de la estrategia de despliegue |
+| **TF** | 01/07/2026 | **Arostegui Alzamora, Cesar Augusto** | 5.3.1 Cloud Architecture Diagram - Diseño del diagrama de arquitectura cloud definiendo servicios, componentes y relaciones para la solución basada en microservicios |
+| **TF** | 02/07/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.3.1 Cloud Architecture Diagram - Modelado de la arquitectura en la nube considerando balanceadores, gateways y distribución de servicios |
+| **TF** | 02/07/2026 | **Aliaga Aguirre, Ethan Matías** | 5.3.2 Cloud Architecture Deployment - Configuración inicial de servicios en la nube (AWS/Azure/GCP) para despliegue de microservicios |
+| **TF** | 03/07/2026 | **Contreras López, Leandro Saul** | 5.3.2 Cloud Architecture Deployment - Implementación de infraestructura como servicio (IaaS/PaaS) y definición de redes, subredes y seguridad |
+| **TF** | 03/07/2026 | **Sánchez Manrique, Italo Ludwing** | 5.3.2 Cloud Architecture Deployment - Configuración de comunicación entre microservicios desplegados en la nube y validación de endpoints |
+| **TF** | 04/07/2026 | **Contreras López, Leandro Saul** | 5.3.2 Cloud Architecture Deployment - Despliegue de contenedores y configuración de servicios distribuidos en entorno cloud |
+| **TF** | 05/07/2026 | **Aliaga Aguirre, Ethan Matías** | 5.3.1 Cloud Architecture Diagram - Documentación del diagrama cloud incluyendo flujos de comunicación y componentes desacoplados |
+| **TF** | 06/07/2026 | **Machado Bracamonte, Ivo Marcelo** | 5.3.2 Cloud Architecture Deployment - Automatización del despliegue mediante pipelines CI/CD y validación del entorno productivo |
+| **TF** | 07/07/2026 | **Arostegui Alzamora, Cesar Augusto** | 5.3.1 Cloud Architecture Diagram - Revisión y optimización del diseño de arquitectura cloud basado en buenas prácticas |
+| **TF** | 07/07/2026 | **Sánchez Manrique, Italo Ludwing** | 5.3.2 Cloud Architecture Deployment - Pruebas de rendimiento, disponibilidad y escalabilidad de la arquitectura desplegada |
 
 \newpage
