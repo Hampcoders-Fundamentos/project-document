@@ -2765,3 +2765,20 @@ En paralelo, se realizaron tareas de integración entre frontend y backend, vali
 \
 ![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
 \
+
+#### 5.3.1 Cloud Architecture Diagram
+
+Nuestra arquitectura en la nube está montada sobre Amazon Web Services (AWS) y se gestiona bajo el enfoque de Infraestructura como Código (IaC) mediante Terraform. Esto nos permite automatizar por completo el aprovisionamiento de los recursos esenciales: la red virtual (VPC), las subredes, los grupos de seguridad y la instancia EC2 que aloja el sistema.
+
+Para garantizar el aislamiento de las funciones, los microservicios se ejecutan en contenedores independientes de Docker dentro de la misma instancia EC2. Mientras que la comunicación interna entre servicios ocurre de forma segura a través de la red nativa de Docker, los usuarios finales acceden a la aplicación desde internet apuntando directamente a la IP pública de la instancia.
+
+Este diseño no solo asegura la reproducibilidad de la infraestructura, sino que simplifica el mantenimiento y sienta las bases para escalar el sistema a futuro.
+
+
+#### 5.3.2 Cloud Architecture Deployment AWS, Microsoft Azure or Google Cloud
+
+El flujo de despliegue se divide en dos grandes etapas automatizadas. En primer lugar, Terraform entra en acción para levantar toda la infraestructura base en AWS de manera limpia y sin intervenciones manuales. Una vez que la instancia EC2 está activa y lista, Docker toma el relevo para descargar e iniciar los contenedores de cada microservicio a partir de imágenes previamente construidas.
+
+Al desacoplar los servicios en contenedores individuales, ganamos una enorme flexibilidad: podemos actualizar, apagar o modificar un módulo específico sin alterar el comportamiento de los demás.
+
+La combinación de Terraform y Docker elimina el clásico problema del "en mi máquina sí funciona". El resultado es un proceso de despliegue consistente y predecible en cualquier entorno, lo que minimiza los errores humanos y acelera el ciclo de actualizaciones.
