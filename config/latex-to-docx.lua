@@ -88,7 +88,17 @@ local function parse_inlines(text)
         if endpos then
           local path = text:match('\\includegraphics%b[]*{([^}]+)}', i)
           if path then
-            table.insert(inlines, pandoc.Image({}, path))
+            local img = pandoc.Image({}, path)
+            local opts = text:match('\\includegraphics%[([^]]+)%]', i)
+            if opts then
+              local w = opts:match('width%s*=%s*([^,]+)')
+              if w then
+                w = w:gsub('\\linewidth', '2in')
+                w = w:gsub('(%-?[%d.]+)\\textwidth', function(n) return string.format('%.0f%%%%', tonumber(n) * 100) end)
+                img.attributes['width'] = w
+              end
+            end
+            table.insert(inlines, img)
           end
           i = endpos + 1
         else i = i + 15 end
@@ -325,7 +335,17 @@ local function raw_tex_to_block(text)
   if text:match('^\\includegraphics') then
     local path = text:match('{([^}]+)}')
     if path then
-      return pandoc.Para({pandoc.Image({}, path)})
+      local img = pandoc.Image({}, path)
+      local opts = text:match('\\includegraphics%[([^]]+)%]')
+      if opts then
+        local w = opts:match('width%s*=%s*([^,]+)')
+        if w then
+          w = w:gsub('\\linewidth', '2in')
+          w = w:gsub('(%-?[%d.]+)\\textwidth', function(n) return string.format('%.0f%%%%', tonumber(n) * 100) end)
+          img.attributes['width'] = w
+        end
+      end
+      return pandoc.Para({img})
     end
     return nil
   end
