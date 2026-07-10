@@ -14,10 +14,11 @@ input-files:
 output-file: dist/upc-pre-202610-si657-7944-hampcoders-report-tf1.docx
 
 to: docx
-toc: true
+toc: false
 toc-depth: 4
 number-sections: false
 file-scope: true
+reference-doc: config/reference.docx
 
 resource-path:
   - "."

@@ -33,7 +33,7 @@ local function parse_inlines(text)
     if c == '\\' then
       local rest = text:sub(i)
       if rest:match('^\\\\') then
-        table.insert(inlines, pandoc.Str('\\'))
+        table.insert(inlines, pandoc.LineBreak())
         i = i + 2
       elseif rest:match('^\\newline') then
         table.insert(inlines, pandoc.LineBreak())
@@ -196,7 +196,7 @@ local function parse_longtable(latex_text)
   for cell in header_text:gmatch('([^&]+)') do
     cell = cell:gsub('^%s+', ''):gsub('%s+$', '')
     if #cell > 0 then
-      table.insert(hdr_cells, pandoc.TableCell(cell_to_blocks(cell)))
+      table.insert(hdr_cells, pandoc.Cell(cell_to_blocks(cell), pandoc.AlignDefault, 1, 1))
     end
   end
 
@@ -269,8 +269,8 @@ local function parse_longtable(latex_text)
       local rs = get_rowspan(col)
       if rs > 0 then
         rowspan_state[col].remaining = rs - 1
-        table.insert(pandoc_cells, pandoc.TableCell(
-          {pandoc.Para({pandoc.Str('')})}, 1, 1
+        table.insert(pandoc_cells, pandoc.Cell(
+          {pandoc.Para({pandoc.Str('')})}, pandoc.AlignDefault, 1, 1
         ))
         col = col + 1
       else
@@ -280,32 +280,35 @@ local function parse_longtable(latex_text)
           local rest = cell_text:gsub('\\multirow%b[]*%b{}%b{}%b{}', '')
           local full_text = mw.content .. ' ' .. rest
           local blocks = cell_to_blocks(full_text)
-          table.insert(pandoc_cells, pandoc.TableCell(
-            blocks, mw.rows, 1
+          table.insert(pandoc_cells, pandoc.Cell(
+            blocks, pandoc.AlignDefault, mw.rows, 1
           ))
           if mw.rows > 1 then
             rowspan_state[col] = {remaining = mw.rows - 1}
           end
           col = col + 1
         else
-          table.insert(pandoc_cells, pandoc.TableCell(
-            cell_to_blocks(cell_text), 1, 1
+          table.insert(pandoc_cells, pandoc.Cell(
+            cell_to_blocks(cell_text), pandoc.AlignDefault, 1, 1
           ))
           col = col + 1
         end
       end
     end
-    table.insert(table_rows, pandoc.TableRow(pandoc_cells))
+    table.insert(table_rows, pandoc.Row(pandoc_cells))
   end
 
-  -- Armar pandoc.Table (API Pandoc 2.10+ y 3.x)
-  local aligns = {pandoc.AlignDefault, pandoc.AlignDefault, pandoc.AlignDefault}
-  local widths = {0.22, 0.53, 0.20}
-  local head = pandoc.TableHead({pandoc.TableRow(hdr_cells)})
-  local bodies = {pandoc.TableBody({}, {}, table_rows, {})}
+  -- Armar pandoc.Table (API Pandoc 3.x)
+  local colspecs = {
+    {pandoc.AlignDefault, 0.22},
+    {pandoc.AlignDefault, 0.53},
+    {pandoc.AlignDefault, 0.20}
+  }
+  local head = pandoc.TableHead({pandoc.Row(hdr_cells)})
+  local tbl_body = {attr = {}, head = {}, body = table_rows, row_head_columns = 0}
   local foot = pandoc.TableFoot({})
 
-  return pandoc.Table({}, {}, aligns, widths, head, bodies, foot)
+  return pandoc.Table({}, colspecs, head, {tbl_body}, foot)
 end
 
 -- Convierte texto LaTeX raw a bloque de Pandoc (o nil para omitir)
@@ -388,6 +391,45 @@ local function process_simple_commands(text, out)
   end
 end
 
+-- Extrae el contenido de todos los minipages en un bloque de texto LaTeX
+local function extract_minipages(text)
+  local result = {}
+  local pos = 1
+  while true do
+    local s1, e1 = text:find('\\begin{minipage}%b{}', pos)
+    if not s1 then break end
+    local s2, e2 = text:find('\\end{minipage}', e1 + 1)
+    if not s2 then break end
+    local inner = text:sub(e1 + 1, s2 - 1)
+    inner = inner:gsub('^%s+', ''):gsub('%s+$', '')
+    table.insert(result, raw_center_to_blocks(inner))
+    pos = e2 + 1
+  end
+  return result
+end
+
+-- Crea una tabla Pandoc a partir de los bloques de contenido de varios minipages
+local function make_minipage_table(minipages)
+  local num = #minipages
+  if num == 0 then return nil end
+  if num == 1 then
+    return minipages[1]
+  end
+  local colspecs, cells = {}, {}
+  for _, blocks in ipairs(minipages) do
+    table.insert(colspecs, {pandoc.AlignDefault, 1.0 / num})
+    table.insert(cells, pandoc.Cell(blocks, pandoc.AlignDefault, 1, 1))
+  end
+  local row = pandoc.Row(cells)
+  local body = {attr = {}, head = {}, body = {row}, row_head_columns = 0}
+  return pandoc.Table(
+    {}, colspecs,
+    pandoc.TableHead({}),
+    {body},
+    pandoc.TableFoot({})
+  )
+end
+
 function Pandoc(doc)
   if is_latex_output() then return doc end
 
@@ -409,6 +451,19 @@ function Pandoc(doc)
 
       elseif text:match('^\\tableofcontents') then
         i = i + 1
+        while i <= #blocks do
+          local next_block = blocks[i]
+          if next_block.t == 'RawBlock' and next_block.format == 'tex' then
+            local next_text = next_block.text
+            if next_text:match('^\\newpage') or next_text:match('^\\clearpage') then
+              i = i + 1
+            else
+              break
+            end
+          else
+            break
+          end
+        end
 
       elseif text:match('^\\vspace%*?{') then
         i = i + 1
@@ -421,19 +476,42 @@ function Pandoc(doc)
         if inner then
           inner = inner:gsub('^%s+', ''):gsub('%s+$', '')
           local blocks = raw_center_to_blocks(inner)
-          table.insert(new_blocks, pandoc.Div(blocks, {align = 'center'}))
+          table.insert(new_blocks, pandoc.Div(blocks, {['custom-style'] = 'Centered'}))
         end
         i = i + 1
 
       elseif text:match('\\begin{minipage}') then
-        local inner = text:match('\\begin{minipage}%b{}%s*(.-)%s*\\end{minipage}')
-        if inner then
-          local blocks = raw_center_to_blocks(inner)
-          for _, b in ipairs(blocks) do
-            table.insert(new_blocks, b)
+        local all_minipages = extract_minipages(text)
+        i = i + 1
+        while i <= #blocks do
+          local nb = blocks[i]
+          if nb.t == 'RawBlock' and nb.format == 'tex' then
+            local nt = nb.text
+            if nt:match('^\\hfill') or nt:match('^\\vspace%*?{') then
+              i = i + 1
+            elseif nt:match('\\begin{minipage}') then
+              local more = extract_minipages(nt)
+              for _, m in ipairs(more) do
+                table.insert(all_minipages, m)
+              end
+              i = i + 1
+            else
+              break
+            end
+          else
+            break
           end
         end
-        i = i + 1
+        local tbl = make_minipage_table(all_minipages)
+        if tbl then
+          if tbl.t == 'Table' then
+            table.insert(new_blocks, tbl)
+          else
+            for _, b in ipairs(tbl) do
+              table.insert(new_blocks, b)
+            end
+          end
+        end
 
       elseif text:match('^\\begin{longtable}') then
         local tbl = parse_longtable(text)
