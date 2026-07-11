@@ -1028,6 +1028,7 @@ Todo el desarrollo fue gestionado mediante GitHub siguiendo la estrategia GitFlo
 
 ---
 
+
 #### 5.3.1.3 Testing Suite Evidence for Sprint Review
 
 En esta sección se detalla el conjunto de pruebas de integración y aceptación automatizadas que validan la lógica de negocio de la plataforma Glottia. Para el diseño de estas suites, el equipo ha adoptado el enfoque de **Behavior-Driven Development (BDD)**, utilizando el lenguaje **Gherkin**. 
@@ -2878,6 +2879,7 @@ En paralelo, se realizaron tareas de integración entre frontend y backend, vali
 ![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
 \
 
+<<<<<<< HEAD
 ### 5.3.4 Sprint 4
 
 El Sprint 4 tiene una duración de 2 semanas y se enfoca en dos frentes principales de trabajo: la implementación del microservicio de Analytics, que cubre la recolección, procesamiento y visualización de KPIs y reportes mensuales para partners y administradores; y la validación de integración end-to-end de todos los bounded contexts migrados en sprints anteriores, asegurando que los flujos completos de la plataforma —desde el registro de usuarios hasta la generación de reportes— funcionen de manera correcta, consistente y con rendimiento aceptable en un entorno integral.
@@ -3100,3 +3102,31 @@ En el frente de integración end-to-end, el equipo realizó una validación exha
 ![Sprint 4 Kanban Board](assets/img/cap5/sprint4/SprintBacklog-4.png)
 \
 [Ver Sprint 4 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34)
+
+
+### 5.4 Microservices Deployment
+
+En esta sección, el equipo evidencia los diagramas de despliegue de los microservicios.
+
+#### 5.4.1 Cloud Architecture Diagram
+
+Nuestra arquitectura en la nube está montada sobre Amazon Web Services (AWS) y se gestiona bajo el enfoque de Infraestructura como Código (IaC) mediante Terraform. Esto nos permite automatizar por completo el aprovisionamiento de los recursos esenciales: la red virtual (VPC), las subredes, los grupos de seguridad y la instancia EC2 que aloja el sistema.
+
+Para garantizar el aislamiento de las funciones, los microservicios se ejecutan en contenedores independientes de Docker dentro de la misma instancia EC2. Mientras que la comunicación interna entre servicios ocurre de forma segura a través de la red nativa de Docker, los usuarios finales acceden a la aplicación desde internet apuntando directamente a la IP pública de la instancia.
+
+Este diseño no solo asegura la reproducibilidad de la infraestructura, sino que simplifica el mantenimiento y sienta las bases para escalar el sistema a futuro.
+
+
+\
+![Cloud Architecture Diagram](assets/img/cap5/sprint3/cloud.PNG)
+
+#### 5.4.2 Cloud Architecture Deployment AWS, Microsoft Azure or Google Cloud
+
+El flujo de despliegue se divide en dos grandes etapas automatizadas. En primer lugar, Terraform entra en acción para levantar toda la infraestructura base en AWS de manera limpia y sin intervenciones manuales. Una vez que la instancia EC2 está activa y lista, Docker toma el relevo para descargar e iniciar los contenedores de cada microservicio a partir de imágenes previamente construidas.
+
+Al desacoplar los servicios en contenedores individuales, ganamos una enorme flexibilidad: podemos actualizar, apagar o modificar un módulo específico sin alterar el comportamiento de los demás.
+
+La combinación de Terraform y Docker elimina el clásico problema del "en mi máquina sí funciona". El resultado es un proceso de despliegue consistente y predecible en cualquier entorno, lo que minimiza los errores humanos y acelera el ciclo de actualizaciones.
+
+\
+![Cloud Deployment AWS](assets/img/cap5/sprint3/deployment-cloud.PNG)
