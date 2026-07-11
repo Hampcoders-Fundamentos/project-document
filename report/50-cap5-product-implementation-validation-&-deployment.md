@@ -2773,3 +2773,226 @@ En paralelo, se realizaron tareas de integración entre frontend y backend, vali
 \
 ![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
 \
+
+### 5.3.4 Sprint 4
+
+El Sprint 4 tiene una duración de 2 semanas y se enfoca en dos frentes principales de trabajo: la implementación del microservicio de Analytics, que cubre la recolección, procesamiento y visualización de KPIs y reportes mensuales para partners y administradores; y la validación de integración end-to-end de todos los bounded contexts migrados en sprints anteriores, asegurando que los flujos completos de la plataforma —desde el registro de usuarios hasta la generación de reportes— funcionen de manera correcta, consistente y con rendimiento aceptable en un entorno integral.
+
+### Sprint Goal
+
+"Nuestro enfoque está en implementar el microservicio de Analytics para la generación de KPIs y reportes, y validar la integración end-to-end de todos los bounded contexts de Glottia en un entorno unificado.
+Creemos que esto entrega visibilidad estratégica a partners y administradores, y garantiza la confiabilidad del sistema completo.
+Esto se confirmará cuando un administrador pueda visualizar reportes mensuales con métricas agregadas de toda la plataforma, y un usuario pueda completar un flujo de principio a fin (registro → perfil → encuentro → feedback → gamificación → notificación) sin errores de integración."
+
+#### 5.3.4.1 Sprint Backlog 4
+
+\
+![Sprint Backlog 4](assets/img/cap5/sprint4/SprintBacklog-4.png)
+\
+[Ver Sprint Backlog 4 en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34/backlog)
+
+#### 5.3.4.2 Development Evidence for Sprint Review
+
+Durante el Sprint 4, el equipo Hampcoders implementó el microservicio de **Analytics** como un bounded context independiente, responsable de la agregación de datos provenientes de todos los demás microservicios de la plataforma y la generación de reportes mensuales. Este microservicio consume eventos de dominio de los contextos de Encounters, Engagement, Promotions y Feedback para calcular KPIs clave como número de encuentros completados, tasa de asistencia, puntos acumulados, insignias desbloqueadas, promociones canjeadas y quizzes aprobados.
+
+Asimismo, se realizaron las siguientes actividades de integración end-to-end:
+
+- **Validación de flujos completos**: se verificaron los journeys de usuario Learner (registro → autenticación → completar perfil → buscar encuentro → check-in → participar → autoevaluación → recibir puntos/insignias) y Partner (registro → completar perfil → registrar local → crear promociones → gestionar encuentros → ver reportes).
+- **Pruebas de contrato entre servicios**: se validaron las interfaces ACL de todos los bounded contexts para garantizar compatibilidad en la comunicación síncrona (Feign) y asíncrona (RabbitMQ).
+- **Pruebas de rendimiento**: se ejecutaron pruebas de carga para identificar cuellos de botella en los endpoints críticos y en el procesamiento de eventos del outbox.
+
+| Microservicio | Repositorio | Rama Principal |
+|---|---|---|
+| glottia-analytics-service | [github.com/Hampcoders/glottia-analytics-service](https://github.com/Hampcoders/glottia-analytics-service) | `main` |
+| glottia-iam-service | [github.com/Hampcoders/glottia-iam-service](https://github.com/Hampcoders/glottia-iam-service) | `main` |
+| glottia-profiles-service | [github.com/Hampcoders/glottia-profiles-service](https://github.com/Hampcoders/glottia-profiles-service) | `main` |
+| glottia-encounters-service | [github.com/Hampcoders/glottia-encounters-service](https://github.com/Hampcoders/glottia-encounters-service) | `main` |
+| glottia-venues-service | [github.com/Hampcoders/glottia-venues-service](https://github.com/Hampcoders/glottia-venues-service) | `main` |
+| glottia-promotions-service | [github.com/Hampcoders/glottia-promotions-service](https://github.com/Hampcoders/glottia-promotions-service) | `main` |
+| glottia-engagement-service | [github.com/Hampcoders/glottia-engagement-service](https://github.com/Hampcoders/glottia-engagement-service) | `main` |
+| glottia-feedback-service | [github.com/Hampcoders/glottia-feedback-service](https://github.com/Hampcoders/glottia-feedback-service) | `main` |
+| glottia-notification-service | [github.com/Hampcoders/glottia-notification-service](https://github.com/Hampcoders/glottia-notification-service) | `main` |
+| glottia-verification-service | [github.com/Hampcoders/glottia-verification-service](https://github.com/Hampcoders/glottia-verification-service) | `main` |
+
+El desarrollo fue gestionado mediante GitHub siguiendo GitFlow, con ramas `main` y `develop` como base y ramas `feature/` para cada tarea del sprint. Cada integración fue realizada mediante Pull Requests con revisión de código por pares.
+
+*(pendiente agregar captura de commits y contribuciones)*
+
+#### 5.3.4.3 Testing Suite Evidence for Sprint Review
+
+En esta sección se presentan las especificaciones de pruebas en formato Gherkin correspondientes al Sprint 4, cubriendo las funcionalidades del microservicio de Analytics y las pruebas de integración end-to-end de la plataforma.
+
+##### Analytics Microservice Testing Suite
+
+```gherkin
+Feature: Analytics Dashboard - Monthly Reports
+  As an administrator
+  I want to view monthly KPI reports
+  So that I can monitor the platform's performance and growth
+
+  Scenario: Generate monthly report with aggregated metrics
+    Given there are encounters completed in the last month
+    And there are learners with points and badges awarded
+    And there are promotions redeemed
+    When the admin requests a monthly report for the last month
+    Then the response should contain total encounters count
+    And the response should contain average attendance rate
+    And the response should contain total points awarded
+    And the response should contain total badges unlocked
+    And the response should contain total promotions redeemed
+    And the response should contain new learners registered
+    And the response should contain active partners count
+```
+
+```gherkin
+Feature: Partner Analytics Dashboard
+  As a partner
+  I want to view my venue's performance metrics
+  So that I can make data-driven decisions
+
+  Scenario: Partner views their venue analytics
+    Given a partner owns venues with completed encounters
+    When the partner requests their analytics dashboard
+    Then the response should contain total encounters per venue
+    And the response should contain attendance rate per venue
+    And the response should contain promotions redeemed count
+    And the response should contain average learner rating
+```
+
+##### End-to-End Integration Testing Suite
+
+```gherkin
+Feature: Complete Learner Journey
+  As a learner
+  I want to complete the full platform flow
+  So that I can practice languages and track my progress
+
+  Scenario: Full learner registration to gamification flow
+    Given I am a new unregistered user
+    When I register as a learner with valid credentials
+    And I complete my profile with language preferences
+    And I search for available encounters near my location
+    And I reserve a spot in an encounter
+    And I check in to the encounter using the QR code
+    And I complete the encounter
+    And I submit a self-assessment
+    And I complete the AI-generated quiz
+    Then I should receive points for my participation
+    And I should see my updated streak count
+    And I should receive a notification confirming my achievements
+```
+
+```gherkin
+Feature: Complete Partner Journey
+  As a partner
+  I want to manage my venues and view reports
+  So that I can operate my business effectively
+
+  Scenario: Full partner registration to analytics flow
+    Given I am a new partner
+    When I register as a partner with valid business details
+    And I complete my business profile
+    And I register a new venue with tables and schedule
+    And I create a promotion for my venue
+    And learners check in to my venue during encounters
+    And I view my analytics dashboard
+    Then I should see encounter metrics for my venues
+    And I should see promotion redemption statistics
+```
+
+```gherkin
+Feature: Cross-Service Event Consistency
+  As a system
+  I want events published by one service to be consumed by all subscribers
+  So that the platform state remains consistent across bounded contexts
+
+  Scenario: Check-in event propagates to Engagement and Analytics
+    Given a learner has reserved a spot in an encounter
+    When the learner checks in successfully
+    Then the Encounters service should emit a LearnerCheckedInEvent
+    And the Engagement service should award attendance points
+    And the Analytics service should record the check-in metric
+    And the Notification service should send a check-in confirmation
+
+  Scenario: Encounter completion triggers feedback and gamification
+    Given an encounter is in progress
+    When the encounter is marked as completed
+    Then the Analytics service should record the completed encounter
+    And the Feedback service should prompt learner for self-assessment
+    And the Engagement service should update the learner's streak
+```
+
+#### 5.3.4.4 Execution Evidence for Sprint Review
+
+Durante el Sprint 4 se logró implementar y validar el microservicio de Analytics, así como verificar la correcta integración end-to-end de todos los bounded contexts de la plataforma. A continuación, se presenta la evidencia visual de los resultados obtenidos.
+
+##### Analytics Dashboard
+
+Se implementó el dashboard de Analytics con visualización de KPIs globales para administradores y métricas específicas para partners.
+
+\
+![Analytics Dashboard](assets/img/cap5/sprint4/analytics-dashboard.png)
+\
+![Partner Analytics](assets/img/cap5/sprint4/partner-analytics.png)
+
+##### Flujo End-to-End Learner
+
+Se validó el journey completo del Learner mediante la interfaz móvil, cubriendo desde la gestión de encuentros hasta la recepción de recompensas de gamificación.
+
+\
+![Learner - Encuentro](assets/img/cap5/sprint4/learner-encounter.png)
+\
+![Learner - Gamificación](assets/img/cap5/sprint4/learner-gamification.png)
+
+##### Flujo End-to-End Partner
+
+Se validó el journey completo del Partner, incluyendo la visualización de reportes y analíticas de negocio.
+
+\
+![Partner Reports](assets/img/cap5/sprint4/partner-reports.png)
+
+##### Ejecución de Endpoints de Analytics
+
+Se validaron los endpoints del microservicio de Analytics para la generación de reportes y métricas agregadas.
+
+\
+![Endpoints Analytics](assets/img/cap5/sprint4/endpoints-analytics.png)
+
+*(pendiente agregar captura de ejecución de tests BDD)*
+
+#### 5.3.4.5 Microservices Documentation Evidence for Sprint Review
+
+Durante el Sprint 4, se documentó el nuevo microservicio de Analytics mediante OpenAPI/Swagger y se actualizó la documentación de los microservicios existentes para reflejar los cambios de integración.
+
+*(pendiente agregar captura de Swagger UI del microservicio Analytics)*
+\
+*(pendiente agregar captura de Swagger UI de microservicios actualizados)*
+
+#### 5.3.4.6 Software Deployment Evidence for Sprint Review
+
+Para el despliegue del Sprint 4, se integró el microservicio de Analytics al ecosistema existente en AWS, con su propia base de datos PostgreSQL y configurado para consumir eventos de RabbitMQ desde todos los bounded contexts.
+
+*(pendiente agregar captura de despliegue en AWS ECS)*
+\
+*(pendiente agregar captura de Terraform)*
+\
+*(pendiente agregar captura de RDS Analytics)*
+\
+*(pendiente agregar captura de pruebas de humo end-to-end)*
+
+#### 5.3.4.7 Team Collaboration Insights during Sprint
+
+Durante el Sprint 4, el equipo de desarrollo de Glottia centró sus esfuerzos en dos frentes principales: la implementación del microservicio de Analytics y la validación de la integración end-to-end de la plataforma completa.
+
+En el frente de Analytics, se diseñó e implementó un bounded context independiente responsable de consumir eventos de dominio de todos los demás microservicios y generar KPIs agregados. Este servicio expone endpoints REST para consultar reportes mensuales globales y por partner, proporcionando visibilidad estratégica sobre el rendimiento de la plataforma.
+
+En el frente de integración end-to-end, el equipo realizó una validación exhaustiva de los flujos completos de usuario (Learner y Partner) a través de todos los bounded contexts, identificando y corrigiendo problemas de consistencia en la comunicación asíncrona mediante RabbitMQ, ajustes en los contratos ACL, y optimizaciones de rendimiento en los endpoints críticos. Se ejecutaron pruebas de humo en el entorno productivo para garantizar que todos los servicios desplegados funcionan correctamente de forma integrada.
+
+*(pendiente agregar captura de commits del Sprint 4)*
+
+#### 5.3.4.8 Kanban Board
+
+\
+![Sprint 4 Kanban Board](assets/img/cap5/sprint4/SprintBacklog-4.png)
+\
+[Ver Sprint 4 Kanban Board en Jira](https://fundamentos.atlassian.net/jira/software/projects/HGS1/boards/34)
