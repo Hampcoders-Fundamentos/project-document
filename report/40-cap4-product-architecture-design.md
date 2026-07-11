@@ -12,10 +12,10 @@ Partiendo de nuestra visión de negocio y arquitectura, el equipo de Hampcoders 
 
 | Principio | Descripción |
 | --------- | ----------- |
-| Arquitectura de Monolito Modular guiada por el Dominio | El sistema se estructurará internamente mediante Bounded Contexts (BC) estrictos. Cada BC es dueño absoluto de su modelo, lógica de negocio y datos.                                                                                            |
-| Coordinación Asíncrona basada en Eventos               | Con el fin de evitar el acoplamiento directo y mejorar el rendimiento de la experiencia de usuario, la comunicación de flujos no críticos entre módulos se realizará mediante publicación y suscripción de eventos.                             |
-| Consistencia Eventual sobre Consistencia Inmediata     | No se forzarán transacciones distribuidas entre diferentes Bounded Contexts. Cada módulo garantizará su consistencia interna inmediata, pero la sincronización de datos entre distintos BCs operará bajo el principio de consistencia eventual. |
-| Aislamiento de Datos e Interfaces Explícitas           | Toda comunicación e intercambio de información entre módulos se realizará mediante interfaces explícitas y transferencia de objetos de datos bien definidos y versionados.                                                                      |
+| Arquitectura de Monolito Modular como etapa inicial | El sistema se estructuró inicialmente mediante Bounded Contexts (BC) estrictos dentro de un monolito modular. Esta arquitectura permitió validar los límites de cada contexto con bajo costo operativo. La evolución hacia microservicios se realizó aplicando la estrategia Strangler Fig, extrayendo cada BC como servicio independiente en sprints sucesivos (Sprint 1: IAM, Profiles, Encounters; Sprint 2: Venues, Promotions, Learning Feedback, Engagement; Sprint 3: Notifications, Verification). Al cierre del proyecto, la arquitectura actual es 100% microservicios distribuidos. |
+| Coordinación Asíncrona basada en Eventos               | Con el fin de evitar el acoplamiento directo y mejorar el rendimiento de la experiencia de usuario, la comunicación de flujos no críticos entre servicios se realizará mediante publicación y suscripción de eventos a través de RabbitMQ.                             |
+| Consistencia Eventual sobre Consistencia Inmediata     | No se forzarán transacciones distribuidas entre diferentes Bounded Contexts. Cada microservicio garantizará su consistencia interna inmediata, pero la sincronización de datos entre distintos BCs operará bajo el principio de consistencia eventual. |
+| Aislamiento de Datos e Interfaces Explícitas           | Toda comunicación e intercambio de información entre servicios se realizará mediante interfaces explícitas y transferencia de objetos de datos bien definidos y versionados.                                                                      |
 | Encapsulamiento Estricto de Integraciones Externas     | Todo servicio o dependencia externa deberá estar aislado detrás de su propio adaptador evitando que la lógica de negocio dependa directamente de bibliotecas de terceros.                                                                       |
 | Seguridad en Profundidad por Defecto                   | La solución aplicará una autenticación centralizada stateless mediante tokens JWT auto-emitidos (JJWT) para la gestión de acceso, con cifrado de datos sensibles (contraseñas y códigos OTP mediante BCrypt) en cumplimiento con la Ley N.° 29733 de Protección de Datos Personales. |
 
@@ -26,9 +26,9 @@ Estos son los estilos y patrones arquitectónicos que se ha seleccionado para gu
 | Enfoque | Descripción |
 | ------- | ----------- |
 | Domain Driven Design (DDD) | Definir sub dominios con delimitaciones y alcances claros como bounded contexts. |
-| Arquitectura de Microservicios | Desglosar el sistema en servicios independientes y escalables. |
-| Organización N Capas | Dividir responsabilidades en 3 capas: presentación, lógica de negocio y acceso a datos |
-| Documentación OpenAPI | Documentar las APIs siguiendo el estándar OpenAPI |
+| Arquitectura de Microservicios | Desglosar el sistema en servicios independientes y escalables. La migración desde el monolito modular inicial se realizó mediante la estrategia Strangler Fig, donde cada bounded context fue extraído incrementalmente en sprints sucesivos sin afectar la operación del sistema. |
+| Organización N Capas | Dividir responsabilidades en 4 capas: interfaces, aplicación, dominio e infraestructura (Clean Architecture). |
+| Documentación OpenAPI | Documentar las APIs siguiendo el estándar OpenAPI con SpringDoc. |
 | Seguridad y Protección de información sensible | Gestión de acceso y autorización centralizada con JWT (JJWT) + RBAC, cifrado BCrypt de datos sensibles y cumplimiento con la Ley N.° 29733. |
 
 ### 4.1.3 Software Architecture Context Diagram
