@@ -2775,6 +2775,9 @@ Para garantizar el aislamiento de las funciones, los microservicios se ejecutan 
 Este diseño no solo asegura la reproducibilidad de la infraestructura, sino que simplifica el mantenimiento y sienta las bases para escalar el sistema a futuro.
 
 
+\
+![Cloud Architecture Diagram](assets/img/cap5/sprint3/cloud.PNG)
+
 #### 5.3.2 Cloud Architecture Deployment AWS, Microsoft Azure or Google Cloud
 
 El flujo de despliegue se divide en dos grandes etapas automatizadas. En primer lugar, Terraform entra en acción para levantar toda la infraestructura base en AWS de manera limpia y sin intervenciones manuales. Una vez que la instancia EC2 está activa y lista, Docker toma el relevo para descargar e iniciar los contenedores de cada microservicio a partir de imágenes previamente construidas.
@@ -2782,3 +2785,6 @@ El flujo de despliegue se divide en dos grandes etapas automatizadas. En primer 
 Al desacoplar los servicios en contenedores individuales, ganamos una enorme flexibilidad: podemos actualizar, apagar o modificar un módulo específico sin alterar el comportamiento de los demás.
 
 La combinación de Terraform y Docker elimina el clásico problema del "en mi máquina sí funciona". El resultado es un proceso de despliegue consistente y predecible en cualquier entorno, lo que minimiza los errores humanos y acelera el ciclo de actualizaciones.
+
+\
+![Cloud Deployment AWS](assets/img/cap5/sprint3/deployment-cloud.PNG)
