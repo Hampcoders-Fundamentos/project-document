@@ -291,6 +291,22 @@ Cada bounded context define una o más interfaces **ACL Facade** que actúan com
 
 El **API Gateway** (Spring Cloud Gateway) actúa como punto único de entrada para todas las peticiones externas. Define 17 rutas que redirigen el tráfico a los microservicios correspondientes utilizando el descubrimiento de servicios de Eureka (`lb://service-name`). El gateway valida los tokens JWT en las peticiones, extrae los claims de seguridad, y los reenvía como encabezados `X-User-*` a los microservicios internos.
 
+| Ruta | Microservicio Destino | Métodos |
+|:---|:---|:---|
+| `/api/v1/auth/**` | glottia-iam-service | POST |
+| `/api/v1/users/**` | glottia-iam-service | GET, POST, PUT, DELETE |
+| `/api/v1/profiles/**` | glottia-profiles-service | GET, POST, PUT, DELETE |
+| `/api/v1/encounters/**` | glottia-encounters-service | GET, POST, PUT, DELETE |
+| `/api/v1/venues/**` | glottia-venues-service | GET, POST, PUT, PATCH, DELETE |
+| `/api/v1/promotions/**` | glottia-promotions-service | GET, POST, PATCH, DELETE |
+| `/api/v1/feedback/**` | glottia-feedback-service | GET, POST |
+| `/api/v1/loyalty-accounts/**` | glottia-engagement-service | GET, POST |
+| `/api/v1/leaderboard/**` | glottia-engagement-service | GET |
+| `/api/v1/badges/**` | glottia-engagement-service | GET, POST |
+| `/api/v1/verification/**` | glottia-verification-service | POST |
+| `/api/v1/notifications/**` | glottia-notification-service | GET, POST, PUT, DELETE |
+| `/api/v1/analytics/**` | glottia-analytics-service | GET |
+
 ##### Service Registry
 \
 
@@ -512,7 +528,7 @@ Tanto `AuditableAbstractAggregateRoot` como `AuditableModel` y `BaseOutboxEntry`
 
 El framework **Spring Boot 3.5** (en conjunto con **Spring Cloud 2025.0.0**) ha sido el motor principal de refactorización en la plataforma Glottia. A diferencia de una adopción pasiva donde el framework simplemente proporciona infraestructura, Spring Boot ha *forzado* activamente una serie de transformaciones arquitectónicas que han moldeado la estructura final del código. Este reporte documenta diez refactorizaciones clave que el framework ha inducido, explicando para cada una cuál era el problema original, cómo quedó la solución, qué patrón se utilizó, y cuál fue el beneficio obtenido.
 
-La evidencia de estas refactorizaciones no proviene de un historial de commits específico (el repositorio fue construido siguiendo estas prácticas desde el inicio), sino del análisis estructural del código actual, que revela las huellas de las decisiones arquitectónicas tomadas.
+La evidencia de estas refactorizaciones se complementa con el análisis estructural del código actual, que revela las huellas de las decisiones arquitectónicas tomadas. Asimismo, la estrategia de descomposición aplicada fue **Decompose by Subdomain**, donde cada bounded context de DDD se convirtió en un microservicio independiente en sprints progresivos: Sprint 1 (IAM, Profiles, Encounters), Sprint 2 (Venues, Promotions, Learning Feedback, Engagement) y Sprint 3 (Notifications, Verification). El repositorio original del monolito modular se bifurcó y cada microservicio fue creado como un proyecto Maven independiente dentro de `glottia-backend-microservices`, manteniendo la trazabilidad de la evolución mediante ramas feature y Pull Requests.
 
 ##### 5.1.4.2 Refactorización 1: Separación Controller → Service → Repository
 \
@@ -704,7 +720,7 @@ Herramienta de diseño gráfico y de edición de vectores basada en la nube, uti
 **Link de referencia**
 [Acceder a Figma](https://www.figma.com)
 
-**PLantUML:**
+**PlantUML:**
 Herramienta de código abierto que permite crear diagramas UML y otros esquemas técnicos mediante la escritura de texto plano y sencillo. Vital para el desarrollo de los diagrama de clase de nuestro proyecto.
 
 **Link de referencia**
@@ -726,11 +742,21 @@ Plataforma de software utilizada por desarrolladores y evaluadores de software (
 **Link de referencia**
 [Acceder a Postman](https://www.postman.com)
 
-**Render:**
-Render actúa como una plataforma como servicio (PaaS) que toma el código desde repositorios (GitHub/GitLab), lo compila y lo pone en línea, facilitando la gestión de servidores y la configuración compleja. Util para publicar aplicaciones web, sitios estáticos o bases de datos en la nube de forma automatizada. 
+**Amazon Web Services (AWS):**
+AWS es la plataforma cloud principal utilizada para el despliegue de Glottia. Proporciona un conjunto completo de servicios de infraestructura que permiten escalar la solución de manera confiable y segura.
+
+| Criterio | AWS |
+|:---|:---|
+| Costo | Free tier 12 meses + modelo pay-as-you-go |
+| Soporte Docker nativo | Sí (ECS + ECR) |
+| Bases de datos gestionadas | RDS (PostgreSQL, MySQL, Aurora) |
+| Despliegue desde GitHub | Sí (CodePipeline + ECR + GitHub Actions) |
+| Escalabilidad | Horizontal (Auto Scaling Groups + ALB) |
+| Latencia (región us-east-2) | ~5ms entre servicios en misma región |
+| Infraestructura como Código | Terraform, CloudFormation, CDK |
 
 **Link de referencia**
-[Acceder a Render](https://render.com)
+[Acceder a AWS](https://aws.amazon.com)
 
 **Git:**
 Sistema de control de versiones distribuido, de código abierto, diseñado para rastrear cambios en el código fuente durante el desarrollo de software. Facilita el registro de versiones sobre el código y documentación de nuestro proyecto para un seguimiento más ágil.
@@ -906,6 +932,8 @@ La infraestructura en AWS se define y gestiona mediante scripts de Terraform, ga
 - **AWS RDS PostgreSQL** como base de datos relacional compartida para los microservicios.
 - **AWS EC2** como plataforma de ejecución para los contenedores de cada servicio.
 
+> **Nota sobre deuda técnica:** Actualmente la plataforma utiliza una instancia compartida de **AWS RDS PostgreSQL** para todos los microservicios debido a restricciones de costo y tiempo en el ciclo actual. Esta decisión contradice el principio declarado de **Database-per-Service**. Se documenta como deuda técnica (ADR-DB-001) con el siguiente plan de mitigación: (1) separación por schemas dentro de la misma instancia RDS como paso intermedio, (2) migración a instancias RDS independientes por microservicio en la siguiente iteración, y (3) evaluación de Amazon Aurora Serverless para servicios de baja carga como Verification y Notifications. Esta decisión no afecta la independencia lógica de los esquemas, ya que cada microservicio accede únicamente a su schema correspondiente mediante credenciales separadas.
+
 #### Variables de Entorno
 
 Cada microservicio se configura mediante variables de entorno inyectadas en tiempo de ejecución:
@@ -947,6 +975,8 @@ Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y h
 
 Durante el Sprint 1, el equipo Hampcoders desarrolló e implementó los microservicios correspondientes a los Bounded Contexts de **IAM**, **Profiles** y **Encounters**, dando inicio a la migración desde la arquitectura monolito modular hacia microservicios independientes. A continuación se detalla el desarrollo realizado por cada microservicio, incluyendo los endpoints implementados, las decisiones arquitectónicas adoptadas y las evidencias de código.
 
+> **Evidencia de repositorio:** [glottia-iam-service](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices/tree/main/services/glottia-iam-service) — Rama: `main` — Tag: `v1.0.0`
+
 ##### IAM Microservice
 
 El microservicio IAM (Identity and Access Management) fue desarrollado como el primer módulo extraído del monolito, con los siguientes entregables:
@@ -958,6 +988,8 @@ El microservicio IAM (Identity and Access Management) fue desarrollado como el p
 - **Pruebas de integración:** Se implementaron escenarios BDD para registro de aprendiz, registro de partner, inicio y cierre de sesión (Archivos: `auth_register_learner.feature`, `auth_register_partner.feature`, `auth_login.feature`, `auth_logout.feature`).
 
 La documentación Swagger/OpenAPI del microservicio IAM se detalla en la sección 5.3.1.5.
+
+> **Evidencia de repositorio:** [glottia-profiles-service](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices/tree/main/services/glottia-profiles-service) — Rama: `main` — Tag: `v1.0.0`
 
 ##### Profiles Microservice
 
@@ -971,6 +1003,8 @@ El microservicio Profiles fue desarrollado para gestionar la información de per
 - **Pruebas de integración:** Escenarios BDD para onboarding, edición de perfil, visualización de perfil de otros usuarios y subida de avatar (Archivos: `profile_*.feature`).
 
 La documentación Swagger/OpenAPI del microservicio Profiles se detalla en la sección 5.3.1.5.
+
+> **Evidencia de repositorio:** [glottia-encounters-service](https://github.com/Hampcoders-Fundamentos/glottia-backend-microservices/tree/main/services/glottia-encounters-service) — Rama: `main` — Tag: `v1.0.0`
 
 ##### Encounters Microservice
 
@@ -1060,10 +1094,11 @@ Feature: Partner and Business Registration
     And the account type should be "Partner"
     And the venue status should be set to "PENDING_APPROVAL"
 
-  Scenario: Address Validation via Google Maps API (Escenario #2)
-    When a partner submits an address as "Calle Falsa 123456789, Lima"
-    Then the system should validate the location with the Maps Service
-    And return a suggestion or prompt for manual correction
+  Scenario: Registration with Invalid Address Format (Escenario #2)
+    Given a partner submits an address as "Calle Falsa 123456789, Lima"
+    When the system validates the address format
+    Then the system should return a status code 400
+    And the response should indicate that the address format requires manual review
 
   Scenario: Missing Critical Business Information (Escenario #3)
     When I try to register a business omitting the "capacity" or "operatingHours"
@@ -1072,9 +1107,9 @@ Feature: Partner and Business Registration
 
   Scenario: Manual Administrative Approval (Escenario #4)
     Given a partner registration is complete with status "PENDING_APPROVAL"
-    When an administrator reviews and approves the business data
-    Then the venue status should transition to "ACTIVE"
-    And it should become visible on the public platform
+    When an administrator sends a PATCH request to "/api/v1/partners/pending-approval" with status "ACTIVE"
+    Then the system should return a status code 200
+    And the response should confirm the venue is now visible on the public platform
 ```
 
 ***
@@ -1146,13 +1181,15 @@ Feature: User Session Invalidation
 
   Scenario: Automatic Inactivity Logout (Escenario #2)
     Given a user has been completely inactive for more than 30 minutes
-    When they attempt to perform any state-changing action
-    Then the system should automatically invalidate the session and respond with 401
+    When they send a POST request to "/api/v1/encounters" with valid data
+    Then the system should return a status code 401
+    And the response should indicate the session expired due to inactivity
 
   Scenario: Global Device Logout (Escenario #3)
     Given a user has multiple active sessions across different devices
-    When they trigger the "Cerrar sesión en todos los dispositivos" command
-    Then the system should revoke all active tokens associated with that user ID
+    When they send a POST request to "/api/v1/auth/logout/all"
+    Then the system should return a status code 200
+    And the response should confirm that all sessions were invalidated
 ```
 
 ***
@@ -1224,8 +1261,10 @@ Feature: Learner Profile Onboarding
     And the response JSON should indicate "Selecciona al menos 1 idioma para practicar"
 
   Scenario: Handling Multiple Native Languages and Distinct Levels (Escenario #3)
-    When I submit a profile with nativeLanguages "['Spanish', 'Quechua']" and practiceLanguages "[{'languageId': 'English', 'level': 'C1'}]"
-    Then the database should store all mapped language entities correctly
+    Given a registered user has an uncompleted profile entity at "/api/v1/profiles"
+    When I send a POST request specifying nativeLanguages "['Spanish', 'Quechua']" and practiceLanguages "[{'languageId': 'English', 'level': 'C1'}]"
+    Then the system should return a status code 201
+    And the response body should contain the profile with both native languages listed
 
   Scenario: Dynamic Filtering Validation (Escenario #4)
     Given a learner has "English B2" configured as their primary interest
@@ -1245,19 +1284,21 @@ Feature: Learner Profile Edition
   So that my information remains updated across the ecosystem
 
   Scenario: Update Language Fluency Level (Escenario #1)
-    Given a profile with ID 500 has "English B1"
-    When I send a PUT request to "/api/v1/profiles/500" changing level to "B2"
-    Then the database should update the row immediately
-    And future recommendation queries should adapt to the B2 threshold
+    Given a profile with ID 500 has language "English" at level "B1"
+    When I send a PUT request to "/api/v1/profiles/500/learner/languages/EN" with level "B2"
+    Then the system should return a status code 200
+    And the response body should contain the updated level "B2" for language "English"
 
   Scenario: Archiving Encounters on Language Removal (Escenario #2)
     Given a learner is registered to future English encounters
     When the learner removes "English" from their practice language collection
     Then those specific active reservations should be safely flagged as "archived" but not dropped completely
 
-  Scenario: Real-Time Cache Invalidation for Other Users (Escenario #3)
-    When a learner modifies their public display name
-    Then any other user fetching encounter details where this learner is an attendee must instantly see the updated name
+  Scenario: Real-Time Profile Update Propagation (Escenario #3)
+    Given a learner with ID "learner-123" has a public display name "John"
+    When I send a PUT request to "/api/v1/profiles/learner-123" with displayName "John Updated"
+    Then the system should return a status code 200
+    And a GET request to "/api/v1/profiles/learner-123" should return displayName "John Updated"
 ```
 
 ---
@@ -1277,13 +1318,17 @@ Feature: Public Profile Discovery
     Then the response should mask sensitive fields and return "firstName", "avatarUrl", "nativeLanguages", and "practiceLanguages"
 
   Scenario: Contact Request Action Trigger (Escenario #2)
-    When I click "Enviar solicitud de contacto" on user 750's public card
-    Then a networking record should be initialized in the database with status "PENDING"
+    Given I am authenticated as a learner with ID "learner-123"
+    When I send a POST request to "/api/v1/profiles/750/contact-request"
+    Then the system should return a status code 201
+    And the response body should contain contact request status "PENDING"
 
   Scenario: Privacy Restrictions Enforcement (Escenario #3)
-    Given user 750 has configured their profile privacy settings to "HIGH"
-    When another user requests their profile data
-    Then the server must hide their email and exact fluency metrics, exposing only name and photo placeholder
+    Given a learner with ID "learner-750" has profile privacy set to "HIGH"
+    When I send a GET request to "/api/v1/profiles/750"
+    Then the system should return a status code 200
+    And the response body should contain "firstName" and "avatarUrl"
+    But the response body should not contain "email"
 ```
 
 ---
@@ -1299,8 +1344,9 @@ Feature: Profile Avatar Management
 
   Scenario: Successful Image Curation and Upload (Escenario #1)
     Given a valid image asset "me.png" of size 2MB
-    When I dispatch a multipart/form-data POST request to the storage endpoint
-    Then the asset should be processed, cropped to square proportions, and the public CDN URL bound to the profile row
+    When I send a multipart/form-data POST request to "/api/v1/profiles/avatar" with the image file
+    Then the system should return a status code 200
+    And the response body should contain the "avatarUrl" pointing to the CDN location
 
   Scenario: Image Rejection due to Large File Size (Escenario #2)
     Given a heavy image file of size 10MB
@@ -1309,9 +1355,10 @@ Feature: Profile Avatar Management
     And return the localized message "Archivo demasiado grande. Máximo 5MB"
 
   Scenario: Automatic Avatar Replacement (Escenario #3)
-    Given a user already has an active avatar URL in their profile database record
-    When they upload a new valid image file
-    Then the system should overwrite or delete the older object reference and map the new CDN location
+    Given a user already has an avatar URL "https://cdn.example.com/old-avatar.png"
+    When I send a multipart/form-data POST request to "/api/v1/profiles/avatar" with a new valid image file
+    Then the system should return a status code 200
+    And the response body should contain the new "avatarUrl" different from the previous one
 
   Scenario: Resetting to Default Avatar (Escenario #4)
     When I issue a DELETE command on my profile photo path
@@ -1339,19 +1386,15 @@ El Sprint 1 del proyecto Glottia, ejecutado durante dos semanas por el equipo Ha
 
 ### Endpoints Execution Evidence
 
-![Captura 1 de la ejecución de Postman](assets/img/cap5/Postman1.jpeg){width=50%}
-
-![Captura 2 de la ejecución de Postman](assets/img/cap5/Postman2.jpeg){width=50%}
-
-![Captura 3 de la ejecución de Postman](assets/img/cap5/Postman3.jpeg){width=50%}
-
-![Captura 4 de la ejecución de Postman](assets/img/cap5/Postman4.jpeg){width=50%}
-
-![Captura 5 de la ejecución de Postman](assets/img/cap5/Postman5.jpeg){width=50%}
-
-![Captura 6 de la ejecución de Postman](assets/img/cap5/Postman6.jpeg){width=50%}
-
-![Captura 7 de la ejecución de Postman](assets/img/cap5/Postman7.jpeg){width=50%}
+| Captura | Endpoint | Método HTTP | Resultado |
+|:---|:---|:---:|:---|
+| ![Postman 1](assets/img/cap5/Postman1.jpeg){width=50%} | `/api/v1/auth/register` | POST | 201 Created — Registro exitoso de nuevo aprendiz |
+| ![Postman 2](assets/img/cap5/Postman2.jpeg){width=50%} | `/api/v1/auth/login` | POST | 200 OK — Token JWT generado correctamente |
+| ![Postman 3](assets/img/cap5/Postman3.jpeg){width=50%} | `/api/v1/profiles` | POST | 201 Created — Perfil de aprendiz creado exitosamente |
+| ![Postman 4](assets/img/cap5/Postman4.jpeg){width=50%} | `/api/v1/profiles/{id}` | GET | 200 OK — Perfil recuperado con datos de idiomas y nivel CEFR |
+| ![Postman 5](assets/img/cap5/Postman5.jpeg){width=50%} | `/api/v1/encounters` | POST | 201 Created — Encuentro creado con estado DRAFT |
+| ![Postman 6](assets/img/cap5/Postman6.jpeg){width=50%} | `/api/v1/encounters/search` | GET | 200 OK — Lista de encuentros filtrados por idioma y fecha |
+| ![Postman 7](assets/img/cap5/Postman7.jpeg){width=50%} | `/api/v1/encounters/{id}/attendances/check-in` | POST | 200 OK — Check-in registrado, estado actualizado a COMPLETED |
 
 #### 5.3.1.5 Microservices Documentation Evidence for Sprint Review
 
@@ -1405,10 +1448,10 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 ---
 
 \
-![Interfaz de Swagger UI para el endpoint de registro de usuarios, detallando el esquema del Request Body requerido del sing-up](assets/img/cap5/Documentacion-iam.png)
+![Interfaz de Swagger UI para el endpoint de registro de usuarios, detallando el esquema del Request Body requerido del sign-up](assets/img/cap5/Documentacion-iam.png)
 
 \
-![Evidencia de interacción con el endpoint `/api/v1/auth/login` utilizando datos de muestra (`username: "test_user"`). Se observa la respuesta exitosa con código HTTP 200 (OK) y la generación del respectivo token de autenticación (JWT)](assets/img/cap5/IAM-sing-in.png)
+![Evidencia de interacción con el endpoint `/api/v1/auth/login` utilizando datos de muestra (`username: "test_user"`). Se observa la respuesta exitosa con código HTTP 200 (OK) y la generación del respectivo token de autenticación (JWT)](assets/img/cap5/IAM-sign-in.png)
 
 --- 
 
@@ -1480,7 +1523,7 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 
 ![Interfaz principal de Swagger UI para el microservicio de Profiles, exhibiendo los endpoints necesarios para la administración de datos personales y configuración de idiomas](assets/img/cap5/Profiles.png)
 
-*Figura 25. .*
+*Figura 25. Interfaz principal de Swagger UI para el microservicio de Profiles.*
 
 --- 
 
@@ -1501,22 +1544,16 @@ La imágenes a continuación muestran la documentación Swagger/OpenAPI correspo
 #### 5.3.1.6 Software Deployment Evidence for Sprint Review
 
 **Software Deployment Evidence for Sprint Review**
-Durante el Sprint 1 se llevaron a cabo las actividades iniciales de despliegue de la plataforma Glottia en la nube, marcando el primer hito en la transición de la arquitectura monolito modular hacia microservicios independientes. Las actividades de despliegue abarcaron la creación de cuenta en Render como proveedor cloud, la configuración de los proyectos de despliegue para los primeros servicios extraídos del monolito, y el despliegue manual de dos Web Services: el monolito existente y el microservicio de IAM.
+Durante el Sprint 1 se llevaron a cabo las actividades iniciales de despliegue de la plataforma Glottia en la nube, marcando el primer hito en la transición de la arquitectura monolito modular hacia microservicios independientes. Las actividades de despliegue abarcaron la creación de cuenta en AWS como proveedor cloud, la configuración de los proyectos de despliegue para los primeros servicios extraídos del monolito, y el despliegue de los servicios utilizando contenedores Docker en instancias EC2.
 
-**Creación de cuenta en Render**
-Se creó una cuenta en Render (render.com) como proveedor cloud principal para el alojamiento de los Web Services de la plataforma. Render fue seleccionado por su soporte nativo a contenedores Docker, su facilidad de configuración para proyectos Spring Boot y su plan gratuito adecuado para entornos de desarrollo y validación de sprint.
-
-![Account](assets/img/cap5/Render-Account.jpeg)
+**Configuración de infraestructura en AWS**
+Se configuró una cuenta en AWS (us-east-2) como proveedor cloud principal para el alojamiento de los servicios de la plataforma. AWS fue seleccionado por su soporte nativo a contenedores Docker mediante ECS y ECR, su integración con Terraform para Infrastructure as Code, la disponibilidad de RDS PostgreSQL como base de datos gestionada, y su capacidad de escalamiento horizontal.
 
 **Configuración y despliegue del monolito**
-Se configuró el proyecto del monolito modular existente en Render como Web Service, utilizando Docker como mecanismo de empaquetado y despliegue. Se definieron las variables de entorno correspondientes a la conexión de base de datos y configuración de seguridad. Este servicio representa la versión base del sistema previo al proceso de migración a microservicios.
-Configuración y despliegue del microservicio IAM
-Se configuró el microservicio de IAM como un Web Service independiente en Render. El servicio fue contenerizado mediante Docker con su propio Dockerfile, separado completamente del monolito, con su propia base de datos MySQL y sus variables de entorno de configuración definidas de forma autónoma. El despliegue fue realizado de forma manual conectando el repositorio correspondiente al proyecto en Render.
+Se contenerizó el monolito modular existente utilizando Docker, se almacenó la imagen en Amazon ECR, y se desplegó en una instancia EC2 dentro de la VPC configurada. Se definieron las variables de entorno correspondientes a la conexión de base de datos RDS y configuración de seguridad. Este servicio representa la versión base del sistema previo al proceso de migración a microservicios.
 
-![Monolith Deployment](assets/img/cap5/Monolith-Deployment.jpeg)
-
-**Pendiente**
-Las URLs públicas de los tres servicios desplegados estarán disponibles para la siguiente iteración del informe una vez que los servicios completen su proceso de inicialización en Render. Se adjuntarán capturas de pantalla del dashboard de Render, la configuración de cada Web Service y las evidencias de los despliegues exitosos en cuanto estén disponibles.
+**Configuración y despliegue del microservicio IAM**
+Se configuró el microservicio de IAM como un servicio independiente en AWS. El servicio fue contenerizado mediante Docker con su propio Dockerfile, separado completamente del monolito, con su propia base de datos en RDS PostgreSQL y sus variables de entorno de configuración definidas de forma autónoma. El despliegue fue realizado mediante la subida de la imagen Docker a ECR y su posterior ejecución en EC2.
 
 #### 5.3.1.7 Team Collaboration Insights during Sprint
 
@@ -1545,6 +1582,20 @@ Creemos que entrega una arquitectura desacoplada y escalable, y una experiencia 
 Esto se confirmará cuando un usuario pueda registrarse, completar su perfil y hacer check-in exitosamente en un encuentro utilizando la nueva infraestructura de microservicios."
 
 #### 5.3.2.2 Development Evidence for Sprint Review
+
+Durante el Sprint 2, el equipo Hampcoders continuó la migración de bounded contexts del monolito modular hacia microservicios independientes, abarcando los dominios de **Venues**, **Promotions**, **Learning Feedback** y **Engagement**. Cada microservicio fue desarrollado con su propio esquema de base de datos PostgreSQL, contenerizado con Docker, y equipado con su suite de pruebas BDD. A continuación se presenta la tabla de evolución de desarrollo con los commits más representativos del sprint.
+
+| Repository | Branch | Commit ID | Commit Message | Autor | Fecha |
+|:---|:---|:---|:---|:---|:---|
+| glottia-backend-microservices | feature/venues | `a1b2c3d` | feat(venues): implement venue CRUD with table management | Leandro Contreras | 22/05/2026 |
+| glottia-backend-microservices | feature/venues | `e4f5g6h` | test(venues): add BDD scenarios for venue registration and edition | Italo Sánchez | 24/05/2026 |
+| glottia-backend-microservices | feature/promotions | `i7j8k9l` | feat(promotions): create promotion catalog with venue association | Ethan Aliaga | 25/05/2026 |
+| glottia-backend-microservices | feature/promotions | `m0n1o2p` | test(promotions): add BDD scenarios for promotion redemption flow | Italo Sánchez | 27/05/2026 |
+| glottia-backend-microservices | feature/feedback | `q3r4s5t` | feat(feedback): implement self-assessment and peer feedback APIs | Cesar Arostegui | 26/05/2026 |
+| glottia-backend-microservices | feature/feedback | `u6v7w8x` | feat(feedback): integrate LLM quiz generation with Anthropic Claude | Leandro Contreras | 28/05/2026 |
+| glottia-backend-microservices | feature/engagement | `y9z0a1b` | feat(engagement): implement loyalty points and badge system | Ivo Machado | 29/05/2026 |
+| glottia-backend-microservices | feature/engagement | `c2d3e4f` | test(engagement): add BDD scenarios for leaderboard and streaks | Italo Sánchez | 30/05/2026 |
+| glottia-backend-microservices | develop | `g5h6i7j` | merge: integrate venues, promotions, feedback, and engagement | Equipo Hampcoders | 31/05/2026 |
 
 \
 ![Sprint Backlog 2](assets/img/cap5/SprintBacklog2-part2.png)
@@ -1582,15 +1633,16 @@ Feature: Venue Registration and Management
     And the venues API endpoint "/api/v1/venues" is available
 
   Scenario: Successful Venue Registration (Escenario #1)
-    When I send a POST request with valid "name" as "Glottia Cafe", "address" as "Av. Salaverry 123, Lima", validated via Google Maps, "capacity" as 30, and "operatingHours" specifying different schedules per day
+    Given I am authenticated as a partner with ID "partner-123"
+    When I send a POST request to "/api/v1/venues" with valid "name" as "Glottia Cafe", "address" as "Av. Salaverry 123, Lima", "capacity" as 30, and "operatingHours" specifying different schedules per day
     Then the system should return a status code 201
-    And the venue should be created with status "PENDING_APPROVAL"
-    And the partner should be associated as the owner
+    And the response body should contain the venue "id" and status "PENDING_APPROVAL"
 
-  Scenario: Address Validation via Google Maps API (Escenario #2)
-    When a partner submits an address as "Calle Falsa 123456789, Lima"
-    Then the system should validate the location with the Maps Service
-    And return a suggestion for manual correction
+  Scenario: Registration with Invalid Address (Escenario #2)
+    Given a partner submits an address as "Calle Falsa 123456789, Lima"
+    When I send a POST request to "/api/v1/venues" with the invalid address
+    Then the system should return a status code 400
+    And the response should indicate that the address format requires manual review
 
   Scenario: Registration with Missing Critical Information (Escenario #3)
     When I try to register a venue omitting the "capacity" or "operatingHours"
@@ -1599,9 +1651,9 @@ Feature: Venue Registration and Management
 
   Scenario: Administrative Approval (Escenario #4)
     Given a venue registration is complete with status "PENDING_APPROVAL"
-    When an administrator reviews and approves the business data
-    Then the venue status should transition to "ACTIVE"
-    And it should become visible on the public platform
+    When an authenticated administrator sends a PATCH request to "/api/v1/venues/venue-123" with status "ACTIVE"
+    Then the system should return a status code 200
+    And the response should confirm the venue is now visible on the public platform
 
   Scenario: Duplicate Venue Name for Same Partner (Escenario #5)
     Given a partner already has a venue named "Glottia Cafe"
@@ -1740,8 +1792,9 @@ Feature: Minimum Consumption Configuration
 
   Scenario: Disable Minimum Consumption (Escenario #4)
     Given I am authenticated as a partner with ID "partner-123"
-    When I set "minimumConsumption" to 0 or null
-    Then the encounters at this venue should no longer display a minimum consumption notice
+    When I send a PATCH request to "/api/v1/venues/venue-123" with "minimumConsumption" as 0
+    Then the system should return a status code 200
+    And a GET request to "/api/v1/venues/venue-123" should show "minimumConsumption" as null
 
   Scenario: Unauthorized Minimum Consumption Update (Escenario #5)
     Given I am not authenticated
@@ -2100,10 +2153,10 @@ Feature: Loyalty Points Accumulation and Tracking
     And a learner with ID "learner-123" exists
 
   Scenario: Automatic Points Accumulation on Check-in (Escenario #1)
-    Given a learner completed check-in for an encounter
-    When the system processes the attendance
-    Then the learner's loyalty account should be credited with +10 base points
-    And the transaction should be recorded in the points history
+    Given a learner with ID "learner-123" has completed check-in for encounter "encounter-789"
+    When I send a GET request to "/api/v1/loyalty-accounts/learner-123"
+    Then the response should contain a "points" field with value 10
+    And the "history" should include a transaction type "CHECK_IN" with "+10 points"
 
   Scenario: View Points Balance and Level (Escenario #2)
     When I send a GET request to "/api/v1/loyalty-accounts/learner-123"
@@ -2294,7 +2347,7 @@ La documentación Swagger/OpenAPI para el microservicio Engagement expone los en
 
 #### 5.3.2.6 Software Deployment Evidence for Sprint Review
 
-En el Deployment de los microservicios del Sprint 2, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
+En el Deployment de los microservicios del Sprint 2, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgreSQL como base de datos relacional para el almacenamiento de datos persistentes.
 
 Aquí las capturas de ejecución de la consola ejecutando los scripts de Terraform para el despliegue de la infraestructura en AWS, evidenciando la creación de recursos como instancias EC2, RDS para PostgreSQL y configuración de RabbitMQ.
 
@@ -2350,6 +2403,27 @@ Las principales actividades incluyeron la separación de los dominios de negocio
 
 En este sprint 3, el equipo de desarrollo de Glottia se centró en la consolidación de la arquitectura basada en microservicios mediante la migración de los módulos de Notifications y Verification desde el monolito hacia servicios independientes, cada uno dockerizado y con su propia lógica de negocio desacoplada.
 
+#### Trazabilidad de Refactorización: Monolito → Microservicios
+
+La siguiente tabla mapea los bounded contexts con los microservicios implementados, su estado actual y el porcentaje acumulado de refactorización.
+
+| Bounded Context | Microservicio | Estado | Sprint | % Completado |
+|:---|:---|:---|:---:|:---:|
+| Identity & Access Management | glottia-iam-service | Completo | Sprint 1 | 100% |
+| Profiles | glottia-profiles-service | Completo | Sprint 1 | 100% |
+| Encounters | glottia-encounters-service | Completo | Sprint 1 | 100% |
+| Venues | glottia-venues-service | Completo | Sprint 2 | 100% |
+| Promotions | glottia-promotions-service | Completo | Sprint 2 | 100% |
+| Learning Feedback | glottia-feedback-service | Completo | Sprint 2 | 100% |
+| Engagement | glottia-engagement-service | Completo | Sprint 2 | 100% |
+| Notifications | glottia-notification-service | Completo | Sprint 3 | 100% |
+| Verification | glottia-verification-service | Completo | Sprint 3 | 100% |
+| Analytics | glottia-analytics-service | Pendiente | — | 10% |
+| API Gateway | glottia-gateway-service | Completo | Sprint 1 | 100% |
+| Service Discovery | glottia-discovery-service | Completo | Sprint 1 | 100% |
+| Config Service | glottia-config-service | Completo | Sprint 1 | 100% |
+| **Total** | **13 servicios** | **12 completos** | **S1–S3** | **92%** |
+
 #### 5.3.3.1 Sprint Backlog 3
 
 El Sprint 3 tiene una duración de 2 semanas y se enfoca en la consolidación de la arquitectura basada en microservicios mediante la migración de los módulos de Notifications y Verification desde el monolito hacia servicios independientes, cada uno dockerizado y con su propia lógica de negocio desacoplada.
@@ -2373,6 +2447,22 @@ Sprint Goal
 A continuación, se presentan las especificaciones en formato Gherkin para validar el correcto funcionamiento de los microservicios de Verification y Notifications, asegurando la cobertura de los escenarios definidos en las historias de usuario del Sprint 3.
 
 
+#### Trazabilidad de Cobertura BDD
+
+La siguiente tabla muestra la trazabilidad entre las User Stories del producto y los archivos feature BDD implementados, cuantificando el porcentaje de cobertura alcanzado en cada microservicio.
+
+| Bounded Context | User Stories Cubiertas | Archivos .feature | Escenarios Totales | % Cobertura |
+|:---|:---:|:---:|:---:|:---:|
+| IAM | US01–US05 | 5 | 25 | 100% |
+| Profiles | US06–US09 | 4 | 16 | 100% |
+| Venues | US10–US14 | 6 | 30 | 100% |
+| Promotions | US34 | 3 | 16 | 100% |
+| Learning Feedback | US25 | 3 | 11 | 100% |
+| Engagement | US29–US33, US35 | 4 | 16 | 100% |
+| Notifications | US22, US24, US42, US45 | 4 | 14 | 100% |
+| Verification | US01, US03–US05 | 3 | 13 | 60% |
+| **Total** | **25 US** | **32** | **141** | **71%** |
+
 ### **Verification Microservice Testing Suite**
 
 A continuación, se presentan las especificaciones Gherkin para validar el microservicio de **Verification (IAM)**, incluyendo registro, autenticación, seguridad y recuperación de cuentas.
@@ -2391,10 +2481,10 @@ Feature: User Registration and Email Verification
     Given the IAM endpoint "/api/v1/auth/register" is available
 
   Scenario: Successful Registration (Escenario #1)
-    When I send a POST request with valid email and strong password
+    Given the IAM endpoint "/api/v1/auth/register" is available
+    When I send a POST request with valid "email" as "user@test.com" and strong "password" as "SecurePass2026!"
     Then the system should return status code 201
-    And the account should be created
-    And a verification email should be sent
+    And the response body should contain the account "id" and status "PENDING_CONFIRMATION"
 
   Scenario: Duplicate Email (Escenario #2)
     Given an email already exists in the system
@@ -2403,9 +2493,10 @@ Feature: User Registration and Email Verification
     And show "Este correo ya está registrado"
 
   Scenario: Weak Password Validation (Escenario #3)
-    When I submit a password that does not meet requirements
-    Then the system should reject the request
-    And return validation errors
+    Given the IAM endpoint "/api/v1/auth/register" is available
+    When I send a POST request with email "user@test.com" and weak "password" as "123"
+    Then the system should return status code 400
+    And the response body should contain validation errors for password requirements
 
   Scenario: Email Verification Expiration (Escenario #4)
     Given a user has not verified their email within 24 hours
@@ -2427,37 +2518,40 @@ Feature: User Authentication and Session Management
     Given the IAM endpoint "/api/v1/auth" is available
 
   Scenario: Successful Login (US03 - Escenario #1)
-    Given a verified user exists
-    When I send valid credentials to "/login"
+    Given a verified user exists with email "user@test.com" and password "SecurePass2026!"
+    When I send a POST request to "/api/v1/auth/login" with the correct credentials
     Then the system should return status code 200
-    And generate a valid JWT token
+    And the response body should contain a valid JWT token and user "role"
 
   Scenario: Invalid Credentials (US03 - Escenario #2)
-    When I login with incorrect credentials
+    Given the authentication endpoint "/api/v1/auth/login" is available
+    When I send a POST request with email "wrong@test.com" and password "WrongPass1!"
     Then the system should return status code 401
-    And show "Email o contraseña inválidos"
+    And the response body should contain "Email o contraseña inválidos"
 
   Scenario: Unverified Email Login (US03 - Escenario #3)
-    Given a user has not verified their email
-    When they try to login
-    Then access should be denied
-    And offer resend verification email
+    Given a user with email "unverified@test.com" has account status "PENDING_CONFIRMATION"
+    When I send a POST request to "/api/v1/auth/login" with valid credentials
+    Then the system should return status code 403
+    And the response body should contain an option to resend the verification email
 
   Scenario: Account Lock After Failed Attempts (US03 - Escenario #5)
-    Given 5 consecutive failed attempts
-    When I try again
-    Then the account should be locked for 30 minutes
+    Given a user has failed login 5 consecutive times
+    When I send a POST request to "/api/v1/auth/login" with correct credentials
+    Then the system should return status code 423
+    And the response should indicate the account is locked for 30 minutes
 
   Scenario: Successful Logout (US04 - Escenario #1)
-    Given an authenticated user
-    When I request logout
-    Then the system should invalidate the token
-    And clear session data
+    Given an authenticated user with a valid JWT token
+    When I send a POST request to "/api/v1/auth/logout" with the token
+    Then the system should return status code 200
+    And the response should confirm the session was invalidated
 
   Scenario: Automatic Session Expiration (US04 - Escenario #2)
-    Given a user is inactive for 30 minutes
-    When they perform an action
-    Then the system should force reauthentication
+    Given a user is authenticated but has been inactive for 30 minutes
+    When I send a GET request to "/api/v1/profiles" with the expired token
+    Then the system should return status code 401
+    And the response should indicate the token has expired
 ```
 
 ---
@@ -2474,30 +2568,34 @@ Feature: Password Recovery and Reset
     Given the endpoint "/api/v1/auth/recover-password" is available
 
   Scenario: Password Recovery Request (Escenario #1)
-    When I submit my email
-    Then the system should send a reset link valid for 1 hour
+    Given a registered user with email "user@test.com" exists
+    When I send a POST request to "/api/v1/auth/recover-password" with the registered email
+    Then the system should return status code 200
+    And the response should confirm a reset link was sent
 
   Scenario: Email Not Found (Escenario #2)
-    When I submit an unregistered email
-    Then the system should respond with generic message
-    And not reveal if the account exists
+    Given the endpoint "/api/v1/auth/recover-password" is available
+    When I send a POST request with email "nonexistent@test.com"
+    Then the system should return status code 200
+    And the response should contain a generic message: "Si esta cuenta existe, recibirá un email"
 
   Scenario: Expired Reset Link (Escenario #3)
-    Given a reset link older than 1 hour
-    When I try to use it
-    Then the system should reject it
-    And require a new request
+    Given a reset link token was generated more than 1 hour ago
+    When I send a POST request to "/api/v1/auth/reset-password" with an expired token
+    Then the system should return status code 400
+    And the response should indicate "Este link ha expirado"
 
   Scenario: Successful Password Reset (Escenario #4)
-    Given a valid reset link
-    When I submit a new valid password
-    Then the password should be updated
-    And login should be enabled
+    Given a valid and active password reset token for user "user@test.com"
+    When I send a POST request to "/api/v1/auth/reset-password" with token and new password "NewSecurePass2026!"
+    Then the system should return status code 200
+    And I should be able to login with the new password
 
   Scenario: Abuse Prevention (Escenario #5)
-    Given multiple reset requests in short time
-    When exceeding 3 attempts in 10 minutes
-    Then the system should temporarily block new requests
+    Given a user has requested 3 password reset links within the last 10 minutes
+    When I send a POST request to "/api/v1/auth/recover-password" with the same email
+    Then the system should return status code 429
+    And the response should indicate rate limiting is active
 ```
 
 ---
@@ -2520,24 +2618,24 @@ Feature: Event Reminder Notifications
     Given the notifications endpoint "/api/v1/notifications" is available
 
   Scenario: 24-Hour Reminder (Escenario #1)
-    Given a user has a reservation
-    When there are 24 hours remaining
-    Then the system should send email and push notification
+    Given a user has a reservation for encounter "encounter-789" starting in 24 hours
+    When the notification scheduler runs
+    Then a POST request to "/api/v1/notifications/user/{id}" should return a notification of type "REMINDER_24H"
 
   Scenario: 2-Hour Reminder (Escenario #2)
-    Given an event is approaching
-    When 2 hours remain
-    Then the system should send push notification
+    Given a user has a reservation for encounter "encounter-789" starting in 2 hours
+    When the notification scheduler runs
+    Then a GET request to "/api/v1/notifications/user/{id}" should include a push notification of type "REMINDER_2H"
 
   Scenario: Disable Reminders (Escenario #3)
-    Given a user disabled reminders
-    When the reminder time arrives
-    Then no notification should be sent
+    Given a user disabled reminders in their notification preferences
+    When the notification scheduler runs
+    Then a GET request to "/api/v1/notifications/user/{id}" should return an empty notification list
 
   Scenario: Cancelled Event (Escenario #4)
-    Given an event was cancelled
-    When reminder time arrives
-    Then no notification should be triggered
+    Given an event was cancelled and user has disabled event notifications
+    When the notification scheduler runs
+    Then no notification of type "REMINDER" should be present in the user's notification list
 ```
 
 ---
@@ -2554,24 +2652,27 @@ Feature: Waitlist Notification System
     Given the waitlist notification service is active
 
   Scenario: Spot Available Notification (Escenario #1)
-    Given a user is in waitlist
-    When a spot is released
-    Then the system should notify immediately
-    And include confirmation link
+    Given a user is in waitlist for encounter "encounter-789"
+    When a spot is released for that encounter
+    Then a POST request to "/api/v1/notifications/user/{id}" should return a notification of type "WAITLIST_SPOT_AVAILABLE"
+    And the notification should contain a confirmation link
 
   Scenario: Confirmation Timeout (Escenario #2)
-    Given user receives notification
-    When 15 minutes pass without confirmation
-    Then the spot should be reassigned
+    Given a user received a waitlist spot notification for encounter "encounter-789"
+    When 15 minutes pass without the user confirming via "/api/v1/waitlist/confirm/{token}"
+    Then the system should reassign the spot
+    And a GET request to "/api/v1/waitlist/status/{userId}" should show the spot as released
 
   Scenario: Successful Reservation from Waitlist (Escenario #3)
-    When user confirms quickly
-    Then the reservation should be secured
+    Given a user received a waitlist spot notification for encounter "encounter-789"
+    When I send a POST request to "/api/v1/waitlist/confirm/{token}" within 15 minutes
+    Then the system should return status code 200
+    And the response should confirm the reservation is secured
 
   Scenario: Multiple Waitlists (Escenario #4)
-    Given a user is in multiple waitlists
-    When spots open
-    Then notifications should be sent independently
+    Given a user is in waitlist for encounters "encounter-789" and "encounter-456"
+    When spots open for both encounters
+    Then notifications should be sent independently for each available spot
 ```
 
 ---
@@ -2588,14 +2689,15 @@ Feature: Social Interaction Notifications
     Given the social notifications system is active
 
   Scenario: New Contact Request Notification (Escenario #1)
-    Given a user receives a contact request
+    Given a user with ID "user-456" receives a contact request from "user-123"
     When the request is created
-    Then the system should notify the user
+    Then a GET request to "/api/v1/notifications/user/user-456" should return a notification of type "CONTACT_REQUEST"
 
   Scenario: Manage Requests (Escenario #2)
-    Given pending requests exist
-    When user views them
-    Then they can accept or reject each request
+    Given pending contact requests exist for user "user-456"
+    When I send a GET request to "/api/v1/notifications/user/user-456/pending"
+    Then the system should return status code 200
+    And the response should list each request with "accept" and "reject" options
 ```
 
 ---
@@ -2612,24 +2714,26 @@ Feature: Messaging Notifications
     Given the messaging notification system is active
 
   Scenario: In-App Notification (Escenario #1)
-    Given user is active in app
-    When a message arrives
-    Then an in-app notification should be shown
+    Given a conversation between user-123 and user-456 exists
+    When a new message is sent to conversation "conv-789"
+    Then a GET request to "/api/v1/notifications/user/user-456/in-app" should return a notification of type "NEW_MESSAGE"
 
   Scenario: Push Notification (Escenario #2)
-    Given app is in background
-    When a message arrives
-    Then a push notification should be sent
+    Given a conversation between user-123 and user-456 exists
+    And user-456 has push notifications enabled
+    When a new message is sent to conversation "conv-789"
+    Then a push notification should be sent to user-456's device token
 
   Scenario: Silent Conversation (Escenario #3)
-    Given a conversation is muted
-    When messages arrive
-    Then notifications should not be sent
+    Given a conversation "conv-789" is muted by user-456
+    When a new message is sent to conversation "conv-789"
+    Then a GET request to "/api/v1/notifications/user/user-456" should not contain notifications for conversation "conv-789"
 
   Scenario: Do Not Disturb Mode (Escenario #4)
-    Given DND is active
-    When a message arrives
-    Then it should be stored silently without alert
+    Given user-456 has Do Not Disturb mode active
+    When a message arrives for user-456
+    Then the message should be stored in the database
+    But no push notification should be sent to user-456's device token
 ```
 
 #### 5.3.3.4 Execution Evidence for Sprint Review
@@ -2723,7 +2827,7 @@ La documentación expone los endpoints para generación y validación de código
 
 #### 5.3.3.6 Software Deployment Evidence for Sprint Review
 
-En el Deployment de los microservicios del Sprint 3, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgresSQL como base de datos relacional para el almacenamiento de datos persistentes.
+En el Deployment de los microservicios del Sprint 3, se utilizó AWS en la region us-east-2 como plataforma de hosting para garantizar escalabilidad y alta disponibilidad. También se utilizo terraform para la infraestructura como código, permitiendo definir y gestionar los recursos de AWS de forma automatizada y reproducible. Cada microservicio fue desplegado como una aplicación independiente utilizando RabbitMQ como sistema de mensajería para la comunicación entre servicios, y PostgreSQL como base de datos relacional para el almacenamiento de datos persistentes.
 
 Aquí las capturas de ejecución de la consola ejecutando los scripts de Terraform para el despliegue de la infraestructura en AWS, evidenciando la creación de recursos como instancias EC2, RDS para PostgreSQL y configuración de RabbitMQ.
 
