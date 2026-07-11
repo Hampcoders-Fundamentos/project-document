@@ -2769,7 +2769,7 @@ En paralelo, se realizaron tareas de integración entre frontend y backend, vali
 \
 
 
-#### 5.3.3.8 Kanban Board --> (Avance 4)
+#### 5.3.3.8 Kanban Board
 \
 ![Sprint 3 Kanban Board](assets/img/cap5/sprint3/KanbanSP3.png)
 \
