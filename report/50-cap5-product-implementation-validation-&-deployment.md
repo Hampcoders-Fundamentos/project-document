@@ -3057,6 +3057,12 @@ Se validó el journey completo del Partner, incluyendo la visualización de repo
 \
 ![Partner Reports](assets/img/cap5/sprint4/partner-reports.png)
 
+
+
+#### 5.3.4.5 Microservices Documentation Evidence for Sprint Review
+
+Durante el Sprint 4, se documentó el nuevo microservicio de Analytics mediante OpenAPI/Swagger y se actualizó la documentación de los microservicios existentes para reflejar los cambios de integración.
+
 ##### Ejecución de Endpoints de Analytics
 
 Se validaron los endpoints del microservicio de Analytics para la generación de reportes y métricas agregadas.
@@ -3064,27 +3070,23 @@ Se validaron los endpoints del microservicio de Analytics para la generación de
 \
 ![Endpoints Analytics](assets/img/cap5/sprint4/endpoints-analytics.png)
 
-*(pendiente agregar captura de ejecución de tests BDD)*
-
-#### 5.3.4.5 Microservices Documentation Evidence for Sprint Review
-
-Durante el Sprint 4, se documentó el nuevo microservicio de Analytics mediante OpenAPI/Swagger y se actualizó la documentación de los microservicios existentes para reflejar los cambios de integración.
-
-*(pendiente agregar captura de Swagger UI del microservicio Analytics)*
 \
-*(pendiente agregar captura de Swagger UI de microservicios actualizados)*
+![Interfaz Swagger UI del microservicio Verification](assets/img/cap5/sprint3/Microservice-Notidications.jpeg)
 
 #### 5.3.4.6 Software Deployment Evidence for Sprint Review
 
 Para el despliegue del Sprint 4, se integró el microservicio de Analytics al ecosistema existente en AWS, con su propia base de datos PostgreSQL y configurado para consumir eventos de RabbitMQ desde todos los bounded contexts.
 
-*(pendiente agregar captura de despliegue en AWS ECS)*
+VPC configurada con subredes públicas y privadas, grupos de seguridad y balanceador de carga para el acceso a los microservicios:
+
 \
-*(pendiente agregar captura de Terraform)*
+![VPC Configuration](assets/img/cap5/sprint2/deploy-evidences/vpc-configuration.png)
+
+
+Github Actions CI/CD Pipeline configurado para automatizar la construcción, pruebas y despliegue de los microservicios en AWS:
+
 \
-*(pendiente agregar captura de RDS Analytics)*
-\
-*(pendiente agregar captura de pruebas de humo end-to-end)*
+![Github Actions CI/CD](assets/img/cap5/sprint3/github-actions-ci-cd.png)
 
 #### 5.3.4.7 Team Collaboration Insights during Sprint
 
@@ -3094,7 +3096,10 @@ En el frente de Analytics, se diseñó e implementó un bounded context independ
 
 En el frente de integración end-to-end, el equipo realizó una validación exhaustiva de los flujos completos de usuario (Learner y Partner) a través de todos los bounded contexts, identificando y corrigiendo problemas de consistencia en la comunicación asíncrona mediante RabbitMQ, ajustes en los contratos ACL, y optimizaciones de rendimiento en los endpoints críticos. Se ejecutaron pruebas de humo en el entorno productivo para garantizar que todos los servicios desplegados funcionan correctamente de forma integrada.
 
-*(pendiente agregar captura de commits del Sprint 4)*
+\
+![Sprint 3 - Registro](assets/img/cap5/sprint3/commits-verifications.PNG)
+\
+![Sprint 3 - Registro](assets/img/cap5/sprint3/commits-web.PNG)
 
 #### 5.3.4.8 Kanban Board
 
