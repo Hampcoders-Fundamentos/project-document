@@ -3123,7 +3123,7 @@ Este diseño no solo asegura la reproducibilidad de la infraestructura, sino que
 
 
 \
-![Cloud Architecture Diagram](assets/img/cap5/sprint3/cloud.PNG)
+![Cloud Architecture Diagram](assets/img/cap5/sprint4/cloud.PNG)
 
 #### 5.4.2 Cloud Architecture Deployment AWS, Microsoft Azure or Google Cloud
 
@@ -3134,4 +3134,4 @@ Al desacoplar los servicios en contenedores individuales, ganamos una enorme fle
 La combinación de Terraform y Docker elimina el clásico problema del "en mi máquina sí funciona". El resultado es un proceso de despliegue consistente y predecible en cualquier entorno, lo que minimiza los errores humanos y acelera el ciclo de actualizaciones.
 
 \
-![Cloud Deployment AWS](assets/img/cap5/sprint3/deployment-cloud.PNG)
+![Cloud Deployment AWS](assets/img/cap5/sprint4/deployment-cloud.PNG)
